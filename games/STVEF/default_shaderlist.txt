@@ -1,0 +1,16 @@
+common
+gfx
+dreadNought3
+voyager
+transporter
+borg
+engineering
+damagedvoyager
+stmodels
+scavenger
+decals
+stasis
+forge
+holodeck_temple
+holodeck_training
+ctf2

@@ -1,0 +1,55 @@
+  ///////////////////////////////////
+  //                               // 
+  //   **** Clean Shaders ****     //
+  //         Nov. 7th, 2003        //
+  //          By Astrocreep        //
+  //          -------------        //
+  //    For Level Editing info:    //
+  //       www.map-center.com      //
+  //          -------------        //
+  //    For GtkRadiant Updates:    //
+  //       www.qeradiant.com       //
+  //                               //
+  ///////////////////////////////////
+
+
+bespin
+bounty
+byss
+cairn
+common
+danger
+decals
+desert
+doomgiver
+factory
+flares
+fogs
+h_evil
+hoth
+imp_mine
+impdetention
+imperial
+jnegretetest
+kejim
+korriban
+models
+mp
+narshaddaa
+nar_streets
+quicktrip
+rail
+rbettenbergtest
+rift
+rocky_ruins
+rooftop
+sandcrawler
+siege
+skies
+stu
+system
+taspir
+tests
+vjun
+wedge
+yavin

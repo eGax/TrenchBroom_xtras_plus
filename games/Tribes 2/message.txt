@@ -1,0 +1,23 @@
+LOD - Level of detail
+
+ 
+
+Creating levels of detail for a shape is a way to reduce the number of rendered faces and vertices as your shape reduces its apparent size. The fewer the faces and vertices in a shape, the less the transformations the game engine will have to manage resulting in higher frames. The trick is to make these transitions as transparent as possible while reducing the total number of polygons and vertices in your shape.
+
+Morian.exe (the shape processing tool) looks for a specific naming convention to process all of the pieces of any given shape in the correct order and finally include all of the levels of detail into one final file that is displayed in the game engine. The naming convention is as follows:
+
+ 
+
+*****_#.map
+
+ 
+
+Morian uses only the .map format files. The .rmf files are a slightly more inclusive format that will save your grouping information, and vis group information. I primarily work with the .rmf format files to preserve my groups, and vis group information. When I am ready to process the entire group of LOD’s for one shape I export the latest version of each LOD in a given shape to .map format via the file menu “export to .map”.
+
+To set the LOD parameters for each level of detail in a shape you will have to access the "map properties" dialog box from the "Map" drop down.
+
+"Shape Detail Index" should be equal to the LOD value. "LOD_0.map" should have a "0" in this field. "LOD_1.map" should have a "1" in this field, and so on.
+
+"Minimum Pixels For Detail" sets the value for when the next LOD below the current LOD will be switched in the game engine. This value is based on the projected pixel height of the shape. If the value is set for 250 this means when the current shape is below 250 pixels high it will switch to the next lower LOD. The last LOD in any given shape should have a “minimum pixels for detail” of zero, however numbers higher than zero are acceptable.
+
+After you have created all of your LOD's and have properly established the parameters for the LOD switching you will have to export each separate LOD into .map format via the file menu "export to .map". Then when you process the highest order of detail shape the rest of your LOD's will be processed and incorporated into the final .dif. Morian.exe looks for up to 10 LOD's for any shape. It would take "LOD_0.map", "LOD_1.map", "LOD_2.map", and "LOD_3.map" and process them all into "LOD.dif".

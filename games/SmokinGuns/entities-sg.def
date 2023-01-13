@@ -1,0 +1,679 @@
+// SG entity definition file for Q3Radiant
+// by Lt.Frag and Spoon
+// Version: 1.0
+// Last updated: 28/07/2001
+// Updated 16 Oct 2005 by torhu
+
+//=============================================================================
+
+AMMO_* ENTITIES
+
+//=============================================================================
+
+
+
+//=============================================================================
+
+/*QUAKED ammo_bullets (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Pistol ammo. Gives the player 12 by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 50).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+
+/*QUAKED ammo_dynamite (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Dynamites. Gives the player 5 by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 5).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+/*QUAKED ammo_shells (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Shotgun Ammo. Gives the player 12 by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 5).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+/*QUAKED ammo_cartridges (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Rifle ammo. Gives the player 12 by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 10).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+
+/*QUAKED ammo_gatling (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Gatling Gun ammo. Gives the player 1 clip by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 10).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+/*QUAKED ammo_sharps (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Sharps Rifle ammo. Gives the player 12 by default.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 10).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+
+FUNC_* ENTITIES
+
+//=============================================================================
+
+/*QUAKED func_door_rotating (0 .5 .8) ? START_OPEN - CRUSHER RETURN TRIGGER_DOOR X_AXIS Y_AXIS ONE_WAY
+Rotating door.  By default it will always open away from the player.
+-------- KEYS --------
+speed : determines how fast the door moves (default 130).
+wait : number of seconds before door returns (default 4, -1 = return immediately)
+lip : lip remaining at end of move (default 8)
+targetname : if set, a func_button or trigger is required to activate the door.
+health : if set to a non-zero value, the door must be damaged by "health" amount of points to activate (default 0).
+dmg : damage to inflict on player when he blocks operation of door (default 4). Door will reverse direction when blocked unless CRUSHER spawnflag is set.
+team: assign the same team name to multiple doors that should operate together (see Notes).
+light : constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0).
+color : constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1).
+model2 : path/name of model to include (eg: models/mapobjects/pipe/pipe02.md3).
+distance : how many degrees the door will open, negative to reverse direction (default 90).
+origin : alternate method of setting XYZ origin of .md3 model included with entity (See Notes).
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+-------- SPAWNFLAGS --------
+START_OPEN : the door will spawn in the open state and operate in reverse.
+CRUSHER : door will not reverse direction when blocked and will keep damaging player until he dies or gets out of the way.
+RETURN: door will return automatically after having been opened
+TRIGGER_DOOR: door can't be used by an activate button but a trigger
+X_AXIS : open on the X-axis instead of the Z-axis
+Y_AXIS : open on the Y-axis instead of the Z-axis
+ONE_WAY : always open the same way, set negative distance to reverse
+-------- NOTES --------
+Unlike in Quake 2, doors that touch are NOT automatically teamed. If you want doors to operate together, you have to team them manually by assigning the same team name to all of them. Setting the origin key is simply an alternate method to using an origin brush. When using the model2 key, the origin point of the model will correspond to the origin point defined by either the origin brush or the origin coordinate value.*/
+
+//=============================================================================
+
+/*QUAKED func_door (0 .5 .8) ? START_OPEN - CRUSHER RETURN TRIGGER_DOOR
+Normal sliding door entity. By default, the door will activate when player walks close to it or when damage is inflicted to it.
+-------- KEYS --------
+angle : determines the opening direction of door (up = -1, down = -2).
+speed : determines how fast the door moves (default 100).
+wait : number of seconds before door returns (default 2, -1 = return immediately)
+lip : lip remaining at end of move (default 8)
+targetname : if set, a func_button or trigger is required to activate the door.
+health : if set to a non-zero value, the door must be damaged by "health" amount of points to activate (default 0).
+dmg : damage to inflict on player when he blocks operation of door (default 4). Door will reverse direction when blocked unless CRUSHER spawnflag is set.
+team: assign the same team name to multiple doors that should operate together (see Notes).
+light : constantLight radius of .md3 model included with entity. Has no effect on the entity's brushes (default 0).
+color : constantLight color of .md3 model included with entity. Has no effect on the entity's brushes (default 1 1 1).
+model2 : path/name of model to include (eg: models/mapobjects/pipe/pipe02.md3).
+origin : alternate method of setting XYZ origin of .md3 model included with entity (See Notes).
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+-------- SPAWNFLAGS --------
+START_OPEN : the door will spawn in the open state and operate in reverse.
+CRUSHER : door will not reverse direction when blocked and will keep damaging player until he dies or gets out of the way.
+RETURN: door will return automatically after having been opened
+TRIGGER_DOOR: door can't be used by an activate button but a trigger
+-------- NOTES --------
+Unlike in Quake 2, doors that touch are NOT automatically teamed. If you want doors to operate together, you have to team them manually by assigning the same team name to all of them. Setting the origin key is simply an alternate method to using an origin brush. When using the model2 key, the origin point of the model will correspond to the origin point defined by either the origin brush or the origin coordinate value.*/
+
+//=============================================================================
+
+/*QUAKED func_breakable (0 .5 .8) ? - - TYPE_METAL TYPE_WOOD TYPE_CLOTH TYPE_DIRT TYPE_GLASS TYPE_STONE
+Use spawnflags to manually set the breakable-type. Normally SG detects the breakable-type autmatically by its spawnflags.
+Health		health of the brush default: 7
+weapon		sets the weapon which the breakable must be destroyed use the classnames of the weapons to determine the weapon.
+*/
+
+//=============================================================================
+
+
+/*QUAKED func_flare (0 .5 .8) ? NO_GLOW NO_LENSFLARES
+Generates a Flare effect on a certain brush
+-------- KEYS --------
+maxsize : maximal size of the gloweffect (default 120 (hud units))
+minsize : minimal size of the gloweffect (default 30 (hud units))
+trans : transparency of glow/lens effect (default 0.6, max 1.0)
+color : color of the glow effect ( default 1 1 1)
+radius : radius of glow effect (default 20 (real units))
+*/
+
+//=============================================================================
+
+/*QUAKED func_smoke (0 .5 .8) ?
+Generates Smoke
+-------- KEYS --------
+size : size of the smoke particles (default 50)
+trans : transparency of the smoke (default 0.6, max 1.0)
+color : color of the smoke ( default 1 1 1)
+life : lifetime of the smoke (default 5 (secs))
+rate : generation rate of the smoke-sprites (default 3 (sprites per second))
+target : sets the direction of the wind
+wind : strength of the wind (default 5)
+boost : rise-up-velocity of the sprites (default 5)
+*/
+
+//=============================================================================
+
+INFO_* ENTITIES
+
+//=============================================================================
+
+//=============================================================================
+
+ITEM_* ENTITIES
+
+//=============================================================================
+
+/*QUAKED item_boiler_plate (.6 0 0) (-24 -24 -16) (24 24 40) SUSPENDED
+Boiler Plate
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 25, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/powerups/holdable/boiler.md3"*/
+
+//=============================================================================
+
+/*QUAKED item_scope (.6 0 0) (-24 -24 -16) (24 24 40) SUSPENDED
+Rifle Scope: adds the zoom function to the rifle
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 25, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/weapons2/shotgun/scope.md3"*/
+
+//=============================================================================
+
+
+/*QUAKED item_belt (.7 0 1) (-16 -16 -16) (16 16 32) SUSPENDED
+Ammuntion Belt
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 60, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+model="models/powerups/holdable/belt.md3"*/
+
+//=============================================================================
+
+
+/*QUAKED item_money (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Gold sack for bank robbery mode
+-------- KEYS --------
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+*/
+
+/*QUAKED pickup_money (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Money item for deathmatch modes(DM, TDM, DUEL)
+-------- KEYS --------
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notbot : used to make an item invisible for bot attraction.
+count: amount of money
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+*/
+
+//=============================================================================
+
+
+LIGHT ENTITY
+
+//=============================================================================
+
+
+MISC_* ENTITIES
+
+
+//=============================================================================
+
+PATH_* ENTITIES
+
+//=============================================================================
+
+
+SHOOTER_* ENTITIES
+
+//=============================================================================
+
+
+TARGET_* ENTITIES
+
+//=============================================================================
+
+TEAM_* ENTITIES
+
+
+//=============================================================================
+
+TRIGGER_* ENTITIES
+
+//=============================================================================
+
+/*QUAKED trigger_escape (.5 .5 .5) ?
+Touching this will let the team win the round who robbed the bank.
+*/
+
+
+//=============================================================================
+
+WEAPON_* ENTITIES
+
+//=============================================================================
+
+/*QUAKED weapon_knife (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Bowie Knife
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+
+/*QUAKED weapon_lightning (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Colt Lightning
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+/*QUAKED weapon_sharps (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Sharps Rifle
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+/*QUAKED weapon_gatling (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Gatling Gun
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+/*QUAKED weapon_remington58 (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Remington '58
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+/*QUAKED weapon_schofield (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Smith & Wesson Schofield
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+
+/*QUAKED weapon_dynamite (1 0 .5) (-16 -16 -16) (16 16 24) SUSPENDED
+Dynamite
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when weapon is picked up (default 10).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+
+/*QUAKED weapon_molotov (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED
+Molotov.
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 40, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when picked up (default 5).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+
+//=============================================================================
+
+/*QUAKED weapon_shotgun (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED
+Remington 12 Gauge Shotgun
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+
+/*QUAKED weapon_sawedoff (1 0 .5) (-28 -28 -16) (28 28 28) SUSPENDED
+Sawed Off Shotgun
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when weapon is picked up (default 100).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+/*QUAKED weapon_peacemaker(1 0 .5) (-16 -16 -16) (16 16 24) SUSPENDED
+Colt Peacemmaker
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when weapon is picked up (default 100).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+//=============================================================================
+
+
+
+/*QUAKED weapon_winch66 (1 0 .5) (-40 -40 -16) (40 40 24) SUSPENDED
+Winchester66
+-------- KEYS --------
+wait : time in seconds before item respawns after being picked up (default 5, -1 = never respawn).
+random : random time variance in seconds added or subtracted from "wait" delay (default 0 - see Notes).
+count: sets the amount of ammo given to the player when weapon is picked up (default 10).
+team : set this to team items. Teamed items will respawn randomly after team master is picked up (see Notes).
+target : picking up the item will trigger the entity this points to.
+targetname : a target_give entity can point to this for respawn freebies.
+notfree : when set to 1, entity will not spawn in "Free for all" and "Tournament" modes.
+notteam : when set to 1, entity will not spawn in "Teamplay" and "CTF" modes.
+notsingle : when set to 1, entity will not spawn in Single Player mode (bot play mode).
+notbot : used to make an item invisible for bot attraction.
+-------- SPAWNFLAGS --------
+SUSPENDED : item will spawn where it was placed in map and won't drop to the floor.
+-------- NOTES --------
+The amount of time it takes for an item in the team to respawn is determined by the "wait" value of the item that was picked up previously. So if one of the items in the team has it's "wait" key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+
+When the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+
+
+//=============================================================================
+
+WORLDSPAWN ENTITY
+
+//=============================================================================
+

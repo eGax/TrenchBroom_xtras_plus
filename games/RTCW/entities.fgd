@@ -1,0 +1,1769 @@
+@SolidClass = _decal : "Compiler-only entity that specifies a decal to be projected. Should contain 1 or more patch meshes (curves) and target an info_null entity. Patch mesh should be using a shader with polygonoffset (or other blending methods) or z-fighting will occur. The distance between the center of the _decal entity and the target is the axis and distance of projection."
+[
+	target(target_destination) : "Target" : : "The name of the entity targeted for projection."
+]
+@PointClass size(-4 -4 -4, 4 4 4) color(197 225 255) flags(Angle) = _skybox : "Compiler-only entity that specifies the origin of a skybox (a wholly contained, separate area of the map), similar to some games portal skies. When compiled with Q3Map2, the skybox surfaces will be visible from any place where sky is normally visible. It will cast shadows on the normal parts of the map, and can be used with cloud layers and other effects."
+[
+	angle(angle) : "Angle" : : "Rotation angle of the sky surfaces."
+	angles(angle) : "Angles" : : "Individual control of PITCH, YAW, and ROLL (default 0 0 0)."
+	_scale(float) : "_scale" : : "Scaling factor (default 64), good values are between 50 and 300, depending on the map."
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/bfgam.md3") = ammo_bfg : "BFG ammo. Gives the player 15 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 15)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/machinegunam.md3") = ammo_bullets : "Machine Gun ammo. Gives the player 50 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 50)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/plasmaam.md3") = ammo_cells : "Plasma Gun ammo. Gives the player 30 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/grenadeam.md3") = ammo_grenades : "Grenade Launcher ammo. Gives the player 5 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 5)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/lightningam.md3") = ammo_lightning : "Lightning Gun ammo. Gives the player 60 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 60)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, when set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/rocketam.md3") = ammo_rockets : "Rocket Launcher ammo. Gives the player 5 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 5)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/shotgunam.md3") = ammo_shells : "Shotgun ammo. Gives the player 10 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 10)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(77 77 255) studio("models/powerups/ammo/railgunam.md3") = ammo_slugs : "Railgun ammo. Gives the player 10 by default.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when picked up (default 10)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@SolidClass = func_bobbing : "Solid entity that oscillates back and forth in a linear motion. By default, it will have an amount of displacement in either direction equal to the dimension of the brush in the axis in which it's bobbing. Entity bobs on the Z axis (up-down) by default. It can also emit sound if the noise key is set. Will crush the player when blocked.
+\n\nIn order for the sound to be emitted from the entity, it is recommended to include a brush with an origin shader at its center, otherwise the sound will not follow the entity as it moves. When using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname)."
+[
+	speed(float) : "Speed" : : "Amount of time in seconds for one complete oscillation cycle (default 4)."
+	height(float) : "Height" : : "Sets the amount of travel of the oscillation movement (default 32)."
+	phase(float) : "Phase" : : "Sets the start offset of the oscillation cycle. Values must be 0 < phase < 1. Any integer phase value is the same as no offset (default 0)."
+	noise(sound) : "Noise" : : "Path/name of .wav file to play. Use looping sounds only (e.g. sound/world/drone6.wav - see notes)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/jets/jets01.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+	spawnflags(flags) = 
+	[
+		1 : "x_axis" : 0 : "Entity will bob along the X axis."
+		2 : "y_axis" : 0 : "Entity will bob along the Y axis."
+	]
+]
+@SolidClass = func_button : "When a button is touched by a player, it moves in the direction set by the angle key, triggers all its targets, stays pressed by an amount of time set by the wait key, then returns to it's original position where it can be operated again.
+\n\nWhen using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	angle(string) : "Angle" : : "Determines the direction in which the button will move (up = -1, down = -2)."
+	angles(angle) : "Angles" : : "Pitch and yaw moving direction angles of button (default 0 0). The roll angle does not apply."
+	target(target_destination) : "Target" : : "All entities with a matching targetname will be triggered."
+	targetname(target_source) : "Name" : : "If set, other entities can be used to activate the button along with touch or damage way of doing this."
+	speed(float) : "Speed" : : "Speed of button's displacement (default 40, -1 = reach the end of move instantly)."
+	wait(float) : "Wait" : : "Number of seconds button stays pressed (default 1, -1 = return immediately)."
+	lip(float) : "Lip" : : "Lip remaining at end of move. Default value is 4, which results in 2u of physical lip. I.e. for wished amount of move set key to [size + 2 - amount], 2 for full move, [size + 2] for none."
+	health(string) : "Health" : : "If set to any non-zero value, the button must take damage (any amount) to activate (default 0)."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/pipe/pipe02.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@SolidClass = func_door : "Normal sliding door entity. By default, the door will activate when player walks close to it or when damage is inflicted to it.
+\n\nUnlike in Quake 2, doors that touch are NOT automatically teamed. If you want doors to operate together, you have to team them manually by assigning the same team name to all of them. When using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname). Note: func_door and func_plat targeted by a misc_model will also require a trigger_* entity with the same target key/value as the model.
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	angle(string) : "Angle" : : "Determines the opening direction of door (up = -1, down = -2)."
+	angles(angle) : "Angles" : : "Pitch and yaw opening direction angles of door (default 0 0). The roll angle does not apply."
+	target(target_destination) : "Target" : : "All entities with a matching targetname will be triggered."
+	targetname(target_source) : "Name" : : "If set, a func_button or trigger is required to activate the door (unless using health key)."
+	speed(float) : "Speed" : : "Determines how fast the door moves (default 400, -1 = reach the end of move instantly)."
+	wait(float) : "Wait" : : "Number of seconds before door returns (default 2, -1 = return immediately)"
+	lip(float) : "Lip" : : "Lip remaining at end of move. Default value is 8, which results in 6u of physical lip. I.e. for wished amount of move set key to [size + 2 - amount], 2 for full move, [size + 2] for none."
+	health(string) : "Health" : : "If set to any non-zero value, the door must take damage (any amount) to activate (default 0)."
+	dmg(integer) : "Dmg" : : "Damage to inflict on player when he blocks operation of door (default 2). Door will reverse direction when blocked unless CRUSHER spawnflag is set."
+	team(string) : "Team" : : "Assign the same team name to multiple doors that should operate together (see notes)."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/pipe/pipe02.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+	spawnflags(flags) = 
+	[
+		1 : "start_open" : 0 : "The door will spawn in the open state and operate in reverse."
+		4 : "crusher" : 0 : "Door will not reverse direction when blocked and will keep damaging player until he dies or gets out of the way."
+	]
+]
+@SolidClass = func_group : "This is not an entity as such. It is strictly an editor utility to group world brushes and patches together for convenience (selecting, moving, copying, applying special compilation parameters etc). You cannot group entities with this. Func_group contents is merged into worldspawn entity during compilation process.\n\nTo make a func_group into a terrain entity, refer to the Terrain Construction documentation."
+[
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@SolidClass = func_pendulum : "Solid entity that describes a pendulum back and forth rotation movement. Rotates on the X axis by default. Pendulum frequency is a physical constant based on the height of the entity and gravity. Blocking the pendulum instantly kills a player.
+\n\nYou need to have an origin brush as part of this entity. The center of that brush will be the point through which the rotation axis passes. When using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname)."
+[
+	angle(angle) : "Angle" : : "Angle offset of axis of rotation from default X axis (default 0)."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll offsets of axis of rotation from default X axis (default 0 0 0)."
+	speed(float) : "Speed" : : "Angle of swing arc in either direction from initial position (default 30)."
+	phase(float) : "Phase" : : "Sets the start offset of the swinging cycle. Values must be 0 < phase < 1. Any integer phase value is the same as no offset (default 0)."
+	noise(sound) : "Noise" : : "Path/name of .wav file to play. Use looping sounds only (e.g. sound/world/drone6.wav)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/jets/jets01.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@SolidClass = func_plat : "Rising platform the player can ride to reach higher places. Plats must always be drawn in the raised position, so they will operate and be lighted correctly but they spawn in the lowered position (which equals to behavior of func_door with START_OPEN flag set). The plat will stay in the raised position until the player steps off.
+\n\nMay also be descending platform with negative height or according lip keys set.
+\n\nWhen using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname). Note: func_door and func_plat targeted by a misc_model will also require a trigger_* entity with the same target key/value as the model.
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	speed(float) : "Speed" : : "Determines how fast the plat moves (default 200, -1 = reach the end of move instantly)."
+	lip(float) : "Lip" : : "Lip remaining at start of move. Default value is 8, which results in 6u of physical lip. I.e. for wished amount of move set key to [size + 2 - amount], 2 for full move, [size + 2] for none. Has no effect if height is set."
+	height(float) : "Height" : : "Sets the total amount of vertical travel of the plat. It's convenient alternative to lip key (overrides one)."
+	dmg(integer) : "Dmg" : : "Damage to inflict on player when he blocks operation of plat (default 2). Plat will reverse direction when blocked."
+	target(target_destination) : "Target" : : "All entities with a matching targetname will be triggered."
+	targetname(target_source) : "Name" : : "If set, the trigger that points to this will raise the plat each time it fires. The plat raises and comes back down a second later if no player is on it."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/pipe/pipe02.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@SolidClass = func_rotating : "Solid entity that rotates continuously. Rotates on the Z axis by default and requires an origin brush. It will always start on in the game and is not targetable.
+\n\nYou need to have an origin brush as part of this entity. The center of that brush will be the point through which the rotation axis passes. It will rotate along the Z axis by default. You can check either the X_AXIS or Y_AXIS box to change that. When using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname)."
+[
+	speed(float) : "Speed" : : "Determines how fast entity rotates (default = 100 degrees per second)."
+	noise(sound) : "Noise" : : "Path/name of .wav file to play. Use looping sounds only (e.g. sound/world/drone6.wav)."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/bitch/fembotbig.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+	spawnflags(flags) = 
+	[
+		4 : "x_axis" : 0 : "Entity will rotate along the X axis."
+		8 : "y_axis" : 0 : "Entity will rotate along the Y axis."
+	]
+]
+@SolidClass = func_static : "Static bspmodel. Can be used for conditional walls and models.
+\n\nWhen using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush. If a model is included with a targeted func_static, the brush(es) of the entity will be removed from the game but the .md3 model won't: It will automatically be moved to the (0 0 0) world origin so you should NOT include an .md3 model to a targeted func_static.
+\n\nBecause the map has only a single bot navigation file, func_static cannot be used to make significant changes in game play flow between differing game types.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname)."
+[
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/bitch/fembotbig.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	targetname(target_source) : "Name" : : "NOT SUPPORTED BY RENDERER - if set, a func_button or trigger can make entity disappear from the game (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 102 255) = func_timer : "Time delay trigger that will continuously fire its targets after a preset time delay. The time delay can also be randomized. When triggered, the timer will toggle on/off.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Delay in seconds between each triggering of its targets (default 1)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 1 - see notes)."
+	target(target_destination) : "Target" : : "This points to the entities to trigger."
+	targetname(target_source) : "Name" : : "A func_button or trigger that points to this will toggle the timer on/off when activated."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "start_on" : 0 : "Timer will start on in the game and continuously fire its targets."
+	]
+]
+@SolidClass = func_train : "Trains are moving solids that follow a looped string of path_corner entities. Trains in Q3A are very basic, they also require an origin brush (see notes).
+\n\n1. Trains always start on in the game.
+\n\n2. Trains do not damage the played when blocked.
+\n\n3. Trains cannot emit sound.
+\n\n4. Trains are not triggerable or toggle-able.
+\n\n5. Trains cannot be block-stopped just by getting in their way, the player must be wedged between the train and another obstacle to block it.
+\n\nYou need to have an origin brush as part of this entity. When using the model2 key, the origin point of the model will correspond to the origin point defined by the origin brush.
+\n\nTarget this entity with a misc_model to have the model attached to the entity (set the model's target key to the same value as this entity's targetname)."
+[
+	speed(float) : "Speed" : : "Speed of displacement of train (default 100 or overridden by speed value of path)."
+	target(target_destination) : "Target" : : "This points to the first path_corner of the path which is also the spawn location of the train's origin."
+	model2(studio) : "Model" : : "Path/name of model to include (.md3 files only, e.g. models/mapobjects/pipe/pipe02.md3)."
+	light(float) : "Light" : : "Diameter of constant light of .md3 model, included with entity (default 0, range 0 - 1024)."
+	color(string) : "Color" : : "Color of constant light of .md3 model, included with entity (default 1 1 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	targetname(target_source) : "Name" : : "Used to attach a misc_model entity to this entity."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in this entity (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(179 0 255) studio("models/powerups/holdable/medkit.md3") = holdable_medkit : "Medkit that can be picked up and used later. Brings the player's health back to 100 when used. Player can only carry one holdable item at a time.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 60, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(179 0 255) studio("models/powerups/holdable/teleporter.md3") = holdable_teleporter : "Teleporter item that can be picked up and used later. Teleports the player to a random player spawn point when used. Player can only carry one holdable item at a time.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 60, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = info_camp : "This attracts bots which have a camping preference in their AI characteristics. It should be placed at least 32 units away from any brush surface.
+\n\nExamples of bots which have a high camping preference are: Razor, Tank Jr., Grunt, Patriot and Doom. Examples of bots which have a low camping preference are: Klesk, Mynx, Sarge, Keel and Xaero."
+[
+	range(float) : "Range" : : "Number of units that the bot can move away from camp entity while camping on it."
+	weight(float) : "Weight" : : "Number that is compared against the weight assigned to all the other camp spots in the map to determine if a bot chooses to camp there. The value is normalized against all other weight values."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = info_notnull : "Used as a positional target for entities that can use directional pointing. A target_position can be used instead of this but was kept in Q3A for legacy purposes.
+"
+[
+	targetname(target_source) : "Name" : : "Must match the target key of entity that uses this for pointing."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = info_null : "Used as a positional target for light entities to create a spotlight effect. A target_position can be used instead of this but was kept in Q3A for legacy purposes.
+"
+[
+	targetname(target_source) : "Name" : : "Must match the target key of entity that uses this for pointing."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-16 -16 -24, 16 16 32) offset(0 0 24) color(255 0 255) flags(Angle) = info_player_deathmatch : "Normal player spawning location for Q3A levels.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game. Does not apply to bots."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+	nobots(string) : "Nobots" : : "When set to 1, bots will never use this spawn point to respawn in the game."
+	nohumans(string) : "Nohumans" : : "When set to 1, human players will never use this spawn point to respawn in the game."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "initial" : 0 : "Makes the spawnpoint the initial place for the player to spawn at the beginning of the game."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 255) flags(Angle) = info_player_intermission : "Camera for intermission screen between matches. This also automatically generates the podium for bot arena matches (see notes). Can be aimed by setting the angle, angles keys or by targeting an aiming entity. Use only one per level.
+\n\nIn genuine bot arena matches, the podium for the 1st, 2nd and 3rd place players at the end of the match is generated by this entity. The podium's origin will automatically be located 128 units in the direction of the camera's view and 84 units down from the y height of the view line at that point. It will also always be generated on a level plane regardless of the pointing angle of the camera so if that angle is too steep, part of the podium model might not be visible. Make sure you leave at least 106 units of free space in front of where the camera points to otherwise the podium model won't be visible at all."
+[
+	angle(angle) : "Angle" : : "Yaw angle of sight direction."
+	angles(angle) : "Angles" : : "Alternate pitch, yaw, roll angles method of aiming intermission camera (default 0 0 0)."
+	target(target_destination) : "Target" : : "Point this to an info_notnull or target_position entity to set the camera's pointing angles."
+]
+@PointClass size(-16 -16 -24, 16 16 32) offset(0 0 24) color(255 0 0) flags(Angle) = info_player_start : "Player spawn location. It works in Quake III Arena, but it is not used in the Id maps. Use info_player_deathmatch instead.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(153 0 0) studio("models/powerups/armor/armor_red.md3") = item_armor_body : "Red Armor - 100 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 25, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 192 77) studio("models/powerups/armor/armor_yel.md3") = item_armor_combat : "Yellow Armor - 50 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 25, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(0 179 0) studio("models/powerups/armor/shard.md3") = item_armor_shard : "Green Armor Shard - 5 points. All armor can be cumulated up to a maximum of 200 points and slowly wears out to 100 points.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 25, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) offset(0 0 8) color(255 128 0) = item_botroam : "Game Function: An invisible entity which attracts a bot to it. Use to move bots to parts of a map that might otherwise not be used (NEW ENTITY).
+\n\nThe item_botroam entity can be used when a bot does not roam the whole level or prefers to go to only specific areas. This (invisible) item can be placed in a map just like regular items. Nobody can actually pick up the item it's only used to attract bots to certain places of the map. The value is the weight of the roam_item is relative to the weight assigned other items in the map (each bot has its own weights). The bot character specific item weights are stored with the bot characters AI files (botname_i.c for items and botname_w.c for weapons) in the botfiles/bots/ sub-folder in the .pk3 file."
+[
+	weight(float) : "Weight" : : "Non-zero floating point value, most often in the range 0 to 400. (Higher values are allowed but keep in mind that the bot should also be attracted to normal items.  Don't make the weight value too high."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(128 0 255) studio("models/powerups/instant/enviro.md3") = item_enviro : "Battle Suit power-up - Gives protection against slime, lava and weapon splash damage. Lasts 30 seconds.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(128 0 255) studio("models/powerups/instant/flight.md3") = item_flight : "Flight power-up. Lasts 60 seconds.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 60)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(128 0 255) studio("models/powerups/instant/haste.md3") = item_haste : "Speed power-up. Makes player run at double speed for 30 seconds.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(204 204 0) studio("models/powerups/health/medium_cross.md3") = item_health : "Yellow cross bubble - 25 Health. Cannot be picked up over 100 health.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 35, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Sets the amount of health points given to the player when item is picked up (default 25)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 0) studio("models/powerups/health/large_cross.md3") = item_health_large : "Gold cross bubble - 50 Health. Cannot be picked up over 100 health.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 35, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Sets the amount of health points given to the player when item is picked up (default 50)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(0 0 255) studio("models/powerups/health/mega_cross.md3") = item_health_mega : "Blue M bubble - 100 Health. Adds 100 health points to current health up to a maximum of 200.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 40, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Sets the amount of health points given to the player when item is picked up (default 100)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(0 255 0) studio("models/powerups/health/small_cross.md3") = item_health_small : "Green cross bubble - 5 Health. Can be picked up over 100 health but slowly wears out to 100 afterwards.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 35, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Sets the amount of health points given to the player when item is picked up (default 5)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(128 0 255) studio("models/powerups/instant/invis.md3") = item_invis : "Invisibility power-up. Lasts 30 seconds.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(102 153 255) studio("models/powerups/instant/quad.md3") = item_quad : "Quad Damage power-up. Lasts 30 seconds.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(128 0 255) studio("models/powerups/instant/regen.md3") = item_regen : "Health Regeneration power-up. This will boost your current health by 5 points every second for a period of up to 30 seconds or up to 200 points whichever comes first. Afterwards, any health points over 100 slowly wears out to 100.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 120, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(float) : "Count" : : "Time in seconds power-up will last when picked up (default 30)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) iconsprite("sprites/light.spr") flags(Light) = light : "Non-displayed point light source. The -pointscale and -scale arguments to Q3Map2 affect the brightness of these lights. The -skyscale argument affects brightness of entity sun lights.
+"
+[
+	light(float) : "Light" : : "Overrides the default 300 intensity. Negative values may be used for negative lights."
+	_color(color1) : "RGB color" : "1 1 0.5" : "Weighted RGB value of light color (default 1.0 1.0 1.0 = white)."
+	target(target_destination) : "Target" : : "Lights pointed at a target (info_null / target_position) will be spotlights."
+	radius(float) : "Radius" : : "Overrides the default 64 unit radius of a spotlight at the target point."
+	_sun(string) : "_sun" : : "Set this key to 1 on a spotlight to make an infinite sun light."
+	fade(float) : "Fade" : : "Fades light attenuation. Only affects linear lights."
+	scale(float) : "Scale" : : "Scales the light value."
+	_deviance(float) : "_deviance" : : "Penumbra effect - distance measured in world units for point/spot lights, and degrees for suns (~0.5-3)."
+	_samples(integer) : "_samples" : : "Penumbra effect - the number of random jitters distributed over the solid arc (~16)."
+	_filter(string) : "_filter" : : "Set this key to 1 to toggle on lightmap filtering."
+	_filterradius(float) : "_filterradius" : : "Filters lightmaps within set radius."
+	_anglescale(float) : "_anglescale" : : "Scales light attenuation. Smaller values lessens angle attenuation, larger values for sharper, more faceted lighting (default 1.0)."
+	style(integer) : "Style" : : "Light style index number associated with worldspawn light style. Values are between 1 and 31."
+	spawnflags(flags) = 
+	[
+		1 : "linear" : 0 : "Use a linear falloff. Default is inverse distance squared (more realistic)."
+		2 : "noangle" : 0 : "Ignore angle attenuation."
+		16 : "nogridlight" : 0 : "Do not affect the lightgrid (dynamic entity lighting)."
+	]
+]
+@PointClass size(-6 -6 -6, 6 6 6) iconsprite("sprites/light.spr") flags(Light) = lightJunior : "Non-displayed point light source THAT ONLY AFFECTS ENTITIES (lightgrid). The -pointscale and -scale arguments to Q3Map2 affect the brightness of these lights. The -skyscale argument affects brightness of entity sun lights.
+"
+[
+	light(float) : "Light" : : "Overrides the default 300 intensity."
+	_color(color1) : "RGB color" : "1 1 0.5" : "Weighted RGB value of light color (default 1.0 1.0 1.0 = white)."
+	target(target_destination) : "Target" : : "Lights pointed at a target will be spotlights."
+	radius(float) : "Radius" : : "Overrides the default 64 unit radius of a spotlight at the target point."
+	_sun(string) : "_sun" : : "Set this key to 1 on a spotlight to make an infinite sun light."
+	fade(float) : "Fade" : : "Fades light attenuation. Only affects linear lights."
+	scale(float) : "Scale" : : "Scales the light value."
+	spawnflags(flags) = 
+	[
+		1 : "linear" : 0 : "Use a linear falloff. Default is inverse distance squared (more realistic)."
+		2 : "noangle" : 0 : "Ignore angle attenuation."
+		16 : "nogridlight" : 0 : "Do not affect the lightgrid (dynamic entity lighting). Setting this spawnflag will disable this light entirely."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 128 64) flags(Angle) studio("{ path : model }") = misc_model : "Generic placeholder for inserting models to map. Model triangles are baked to BSP.
+\n\nMD3, ASE, 3DS, OBJ, FM, LWO, MD2, MDC, MS3D model formats are supported.
+\n\nother possible modes of clipping:
+\n\nCLIPMODEL+AXIAL_BACKPLANE
+\n\nEXTRUDE_FACE_NORMALS+PYRAMIDAL_CLIP - truncated pyramid with 45 degrees sides
+\n\nEXTRUDE_TERRAIN+MAX_EXTRUDE
+\n\nEXTRUDE_TERRAIN+AXIAL_BACKPLANE
+\n\nEXTRUDE_VERTEX_NORMALS + PYRAMIDAL_CLIP - vertex normals mode: don't check for sides, sticking outwards
+\n\nPYRAMIDAL_CLIP+AXIAL_BACKPLANE - pyramid with 3 of 4 sides axial (->small bsp)
+\n\nEXTRUDE_DOWNWARDS+EXTRUDE_UPWARDS
+\n\nEXTRUDE_DOWNWARDS+MAX_EXTRUDE
+\n\nEXTRUDE_DOWNWARDS+AXIAL_BACKPLANE
+\n\nEXTRUDE_DOWNWARDS+EXTRUDE_UPWARDS+MAX_EXTRUDE
+\n\nEXTRUDE_DOWNWARDS+EXTRUDE_UPWARDS+AXIAL_BACKPLANE
+\n\nEXTRUDE_UPWARDS+MAX_EXTRUDE
+\n\nEXTRUDE_UPWARDS+AXIAL_BACKPLANE"
+[
+	model(studio) : "Model" : : "Path/name of model to use (e.g. models/mapobjects/teleporter/teleporter.md3)."
+	angle(angle) : "Angle" : : "Direction in which model will be oriented."
+	angles(angle) : "Angles" : : "Individual control of PITCH, YAW, and ROLL (default 0 0 0)."
+	modelscale(float) : "Modelscale" : : "Floating-point value used to scale a model up or down (default 1.0)."
+	modelscale_vec(string) : "Modelscale_vec" : : "Floating-point vector used to scale a model's axes individually (default 1.0 1.0 1.0)."
+	_remap(string) : "_remap" : : "Used to remap textures/shaders in the model. To remap all shaders to a given shader, use *;models/mymodel/mytexture. To remap a specific shader, use models/mymodel/old;models/mymodel/new. Any key starting with _remap prefix will work, so if you need more remappings, create _remap2, _remap3 etc keys."
+	target(target_destination) : "Target" : : "Used to attach the misc_model to a brush entity, where its targetname key is the same value."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on this model (if model is using lightmapped shaders) (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_clipdepth(float) : "_clipdepth" : : "Autoclip brushes thickness (default 2.0)."
+	spawnflags(flags) = 
+	[
+		1 : "_rmg_bsp" : 0 : "in SoF2, append a _RMG_BSP suffix to shader names instead of _BSP"
+		2 : "clipmodel" : 0 : "Clips the model for player/weapon collisions; extruding every face along most perpendicular axial direction. For use on large architectural or terrain models, not for small decorative models."
+		4 : "forcemeta" : 0 : "Toggles on q3map_forceMeta for lightmapped models. Converts model triangles to bsp metasurfaces."
+		8 : "extrude_face_normals" : 0 : "extrude along the model face normals for clipping"
+		16 : "extrude_terrain" : 0 : "extrude each surface of the model along its average axial direction ( up/down/west/east/north/south ); faces with not matching direction (or too steep) are clipped in default mode"
+		32 : "color_to_alpha" : 0 : "use the color value as alpha (for terrain blending)"
+		64 : "nosmooth" : 0 : "Don't smooth normals when importing (forces all faces planar)."
+		128 : "extrude_vertex_normals" : 0 : "extrude along the model vertex normals for clipping; accurate collisions, if normals are fine; bad ones are replaced with 45 degrees to face"
+		256 : "pyramidal_clip" : 0 : "pyramidal clipping brushes (4-sided); accurate collisions"
+		512 : "extrude_downwards" : 0 : "for horizontal terrain; when not possible, extrude in default mode"
+		1024 : "extrude_upwards" : 0 : "-//-"
+		2048 : "max_extrude" : 0 : "Extrude to the max/min point of every model surface to reduce bsp size (uses axial back plane)"
+		4096 : "axial_backplane" : 0 : "use axial back plane for clipping brushes to effectively reduce bsp size; might cause unwanted collisions, make sure to -debugclip; negative _clipdepth / -clipdepth limits max thickness of resulting brushes (making non-axial backplane, if hit the limit)"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 64) flags(Angle) = misc_portal_camera : "Portal camera. This camera is used to project its view onto a portal surface in the level through the intermediary of a misc_portal_surface entity. Use the angle, angles keys or target a target_position or info_notnull entity to set the camera's pointing direction.
+\n\nBoth the setting angle(s) key or targeting a target_position methods can be used to aim the camera. In both cases, the roll key must be used to set the roll angle. If either the SLOWROTATE or FASTROTATE spawnflag is set, then the roll value is irrelevant."
+[
+	angle(angle) : "Angle" : : "Yaw aiming angle of the portal camera (default 0)."
+	angles(angle) : "Angles" : : "This sets the pitch and yaw aiming angles of the portal camera (default 0 0). Use roll key to set roll angle."
+	target(target_destination) : "Target" : : "Point this to a target_position entity to set the camera's pointing direction."
+	targetname(target_source) : "Name" : : "A misc_portal_surface portal surface indicator must point to this."
+	roll(float) : "Roll" : : "Roll angle of camera. For axial directions a value of 0 is upside down and 180 is the same as the player's view. For other sorts of directions values of 90 and -90 may work (inconsistent math)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "slowrotate" : 0 : "Makes the portal camera rotate slowly along the roll axis."
+		2 : "fastrotate" : 0 : "Makes the portal camera rotate faster along the roll axis."
+		4 : "nowobble" : 0 : "Stops the camera portal from wobbling."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 64) = misc_portal_surface : "Portal surface indicator. This will lock on the brush face closest to it and identify as a portal. The view displayed on the portal surface is the view of the misc_portal_camera that this entity targets. Also used for mirrors (see notes).
+\n\nThe entity must be no farther than 64 units away from the portal surface to lock onto it.
+\n\nTo make a mirror, apply the common/mirror shader to the surface, place this entity near it but don't target a misc_portal_camera.
+\n\nTo make a portal, you need to use a shader with alphagen portal, for instance textures/sfx/portal_sfx."
+[
+	target(target_destination) : "Target" : : "Point this to a misc_portal_camera that sees the view you want to display on the portal."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-32 -32 -24, 32 32 -16) color(255 128 64) flags(Angle) = misc_teleporter_dest : "Teleport destination location point for trigger_teleporter and target_teleporter entities.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when teleported."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction after teleportation."
+	targetname(target_source) : "Name" : : "Trigger_teleporter or target_teleporter point to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 77 0) = path_corner : "Path corner entity that func_trains can be made to follow.
+\n\nSetting the wait key to -1 will not make the train stop on the path corner, it will simply default to 0."
+[
+	target(target_destination) : "Target" : : "Point to next path_corner in the path and optionally to an entity to trigger, when train reaches this entity."
+	targetname(target_source) : "Name" : : "The train following the path or the previous path_corner in the path points to this."
+	speed(float) : "Speed" : : "Speed of func_train while moving to the next path corner. This will override the speed value of the train."
+	wait(float) : "Wait" : : "Number of seconds func_train will pause on path corner before moving to next path corner (default 0 - see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 0 128) flags(Angle) = shooter_grenade : "This will shoot a grenade each time it's triggered. Aiming is done by setting the angle, angles keys or by targeting an info_notnull, target_position or any other entity.
+\n\nWhen the random key is set, its value is used to calculate a maximum angle deviation from the normal trajectory formed by a straight line between the shooter and the aiming entity it targets. The final trajectory will be a random value anywhere between no deviation at all (0) to maximum deviation (value of the random key / 2). Setting random key to 0 wont disable random, setting it to 180, 360 or 0.0000001 will do.
+\n\nBoth the setting angle(s) key or targeting a target_position methods can be used to aim the shooter."
+[
+	angle(angle) : "Angle" : : "Yaw aiming angle of shooter."
+	angles(angle) : "Angles" : : "This sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+	target(target_destination) : "Target" : : "This points to a target_position entity for aiming the grenades."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	random(float) : "Random" : : "Random aiming variance in degrees (range 0 - 90, default 1 - see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 0 128) flags(Angle) = shooter_plasma : "This will shoot a plasma ball each time it's triggered. Aiming is done by setting the angle, angles keys or by targeting an info_notnull, target_position or any other entity.
+\n\nWhen the random key is set, its value is used to calculate a maximum angle deviation from the normal trajectory formed by a straight line between the shooter and the aiming entity it targets. The final trajectory will be a random value anywhere between no deviation at all (0) to maximum deviation (value of the random key / 2). Setting random key to 0 wont disable random, setting it to 180, 360 or 0.0000001 will do.
+\n\nBoth the setting angle(s) key or targeting a target_position methods can be used to aim the shooter."
+[
+	angle(angle) : "Angle" : : "Yaw aiming angle of shooter."
+	angles(angle) : "Angles" : : "This sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+	target(target_destination) : "Target" : : "This points to a target_position entity for aiming the plasma balls."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	random(float) : "Random" : : "Random aiming variance in degrees (range 0 - 90, default 1 - see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 0 128) flags(Angle) = shooter_rocket : "This will shoot a rocket each time it's triggered. Aiming is done by setting the angle, angles keys or by targeting an info_notnull, target_position or any other entity.
+\n\nWhen the random key is set, its value is used to calculate a maximum angle deviation from the normal trajectory formed by a straight line between the shooter and the aiming entity it targets. The final trajectory will be a random value anywhere between no deviation at all (0) to maximum deviation (value of the random key / 2). Setting random key to 0 wont disable random, setting it to 180, 360 or 0.0000001 will do.
+\n\nBoth the setting angle(s) key or targeting a target_position methods can be used to aim the shooter."
+[
+	angle(angle) : "Angle" : : "Yaw aiming angle of shooter."
+	angles(angle) : "Angles" : : "This sets the pitch and yaw aiming angles of shooter (default 0 0). The roll angle does not apply."
+	target(target_destination) : "Target" : : "This points to a target_position entity for aiming the rockets."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	random(float) : "Random" : : "Random aiming variance in degrees (range 0 - 90, default 1 - see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 179 179) = target_delay : "Time delay trigger intermediary. Like a target_relay, this can only be fired by other triggers which will cause it in turn to fire its own targets.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	target(target_destination) : "Target" : : "This points to entities to activate when this entity is triggered."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	wait(float) : "Wait" : : "Delay in seconds from when this gets triggered to when it fires its own targets (default 1)."
+	delay(float) : "Delay" : : "Same as wait. For consistency, wait is preferred."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_give : "This is used to give ammo, weapons, health or items to the player who activates it.
+\n\nThere are 2 ways to use this entity.
+\n\na) Automatically give items to players when they spawn in the game: Make a spawn location entity like info_player_deathmatch or CTF respawn, targeting this entity, then target it to the item(s) to give to the player upon respawn.
+\n\nb) Give items to players during the game: Make a trigger_multiple/func_button/other_activatable_entity target this entity, then make it target the item(s) to give to the player when the trigger is touched.
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	target(target_destination) : "Target" : : "This points to the item(s) to give when activated. These items aren't respawned in game."
+	targetname(target_source) : "Name" : : "Activating trigger or spawn entity points to this."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_kill : "This will kill the player who activates the trigger that fires this target.
+"
+[
+	targetname(target_source) : "Name" : : "The activating trigger points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(0 0 0, 0 0 0) color(200 0 200) = colorIndex
+[
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_location : "Location marker used by bots and players for team orders and team chat in the course of Teamplay games. The closest target_location in sight is used for the location. If none is in sight, the closest in distance is used.
+"
+[
+	message(string) : "Message" : : "Name of the location (text string). Displayed in parentheses in front of all team chat and order messages."
+	count(string) : "Count" : : "Color of the location text displayed in parentheses during team chat. Set to 0-7 for color.
+   0 : White (default)
+   1 : Red
+   2 : Green
+   3 : Yellow
+   4 : Blue
+   5 : Cyan
+   6 : Magenta
+   7 : White"
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_position : "Aiming target for entities like light, misc_portal_camera and trigger_push (jump pads) in particular.
+\n\nTo make a jump pad, place this entity at the highest point of the jump and target it with a trigger_push entity."
+[
+	targetname(target_source) : "Name" : : "The entity that requires an aiming direction points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_print : "This will print a message on the center of the screen when triggered. By default, all the clients will see the message.
+"
+[
+	message(string) : "Message" : : "Text string to print on screen."
+	targetname(target_source) : "Name" : : "The activating trigger points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "redteam" : 0 : "Only the red team players will see the message."
+		2 : "blueteam" : 0 : "Only the blue team players will see the message."
+		4 : "private" : 0 : "Only the player that activates the target will see the message."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 128 128) flags(Angle) = target_push : "This can be used to create jump pads and launch ramps. The direction of push can be set by the angle, angles keys or pointing to a target_position or info_notnull entity. Unlike trigger_push, this is NOT client side predicted and must be activated by a trigger.
+\n\nTo make a jump pad or launch ramp, create a trigger_multiple where the jump must originate. Place the target_push directly above the trigger_multiple and place the target_position entity at the highest point of the jump. Target the trigger_multiple to the target_push and target the target_push to the target_position/info_notnull (or set the target_push's angle(s) key). Note, that, when using aiming by target_position, it MUST be located higher, than target_push, while in angle(s) scenario player may be pushed downwards too."
+[
+	angle(angle) : "Angle" : : "Yaw aiming angle of push entity."
+	angles(angle) : "Angles" : : "This sets the pitch and yaw aiming angles of push entity (default 0 0). The roll angle does not apply."
+	speed(float) : "Speed" : : "Speed of push (default 1000). Has no effect if entity targets an aiming entity."
+	target(target_destination) : "Target" : : "This points to the aiming entity to which the player will jump."
+	targetname(target_source) : "Name" : : "The activating trigger points to this. Push originates from the location of the trigger."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "bouncepad" : 0 : "If set, trigger will play bounce noise instead of beep noise when activated (recommended)."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 179 179) = target_relay : "This can only be activated by other triggers which will cause it in turn to activate its own targets.
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	target(target_destination) : "Target" : : "This points to entities to activate when this entity is triggered."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "red_only" : 0 : "Only red team players can activate trigger."
+		2 : "blue_only" : 0 : "Only red team players can activate trigger."
+		4 : "random" : 0 : "One of the targeted entities will be triggered at random."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 179 179) = target_remove_powerups : "This takes away any and all item_* type powerups from player except health and armor (holdable_* items are not taken away either). Must be activated by a button or trigger_multiple entity. The player that activates the trigger will lose any powerup(s) currently in his possession.
+"
+[
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_score : "This is used to automatically give frag points to the player who activates this. A spawn location entity like info_player_* or CTF respawn points can target this entity to give points to the player when he spawns in the game. Or a trigger can also be used to activate this. The activator of the trigger will get the points.
+"
+[
+	targetname(target_source) : "Name" : : "Activating entity points to this."
+	count(integer) : "Count" : : "Number of frag points to give to player (default 1)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 179 179) = target_speaker : "Sound generating entity that plays .wav files. Normal non-looping sounds play each time the target_speaker is triggered. Looping sounds can be set to play by themselves (no activating trigger) or be toggled on/off by a trigger.
+\n\nThe path portion value of the noise key can be replaced by the implicit folder character * for triggered sounds that belong to a particular player model. For example, if you want to create a bottomless pit in which the player screams and dies when he falls into, you would place a trigger_multiple over the floor of the pit and target a target_speaker with it. Then, you would set the noise key to *falling1.wav. The * character means the current player model's sound folder. So if your current player model is Visor, * = sound/player/visor, if your current player model is Sarge, * = sound/player/sarge, etc. This cool feature provides an excellent way to create player-specific triggered sounds in your levels.
+\n\nThe combination of the wait and random keys can be used to play non-looping sounds without requiring an activating trigger but both keys must be used together. The value of the random key is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random)."
+[
+	noise(sound) : "Noise" : : "Path/name of .wav file to play (e.g. sound/world/growl1.wav - see notes)."
+	wait(float) : "Wait" : : "Delay in seconds between each time the sound is played (random key must be set - see notes)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (wait key must be set - see notes)."
+	targetname(target_source) : "Name" : : "The activating button or trigger points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "looped_on" : 0 : "Sound will loop and initially start on in level (will toggle on/off when triggered)."
+		2 : "looped_off" : 0 : "Sound will loop and initially start off in level (will toggle on/off when triggered)."
+		4 : "global" : 0 : "Sound will play full volume throughout the level."
+		8 : "activator" : 0 : "Sound will play only for the player that activated the target."
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 0) = target_teleporter : "Activating this will teleport players to the location of the targeted misc_teleporter_dest entity. Unlike trigger_teleport, this entity must be activated by a trigger and does NOT allow client prediction of events.
+"
+[
+	target(target_destination) : "Target" : : "This must point to a misc_teleporter_dest entity."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(0 51 255) studio("models/flags/b_flag.md3") = team_CTF_blueflag : "Blue team flag for CTF games.\n\nBlue team flag for CTF games."
+[
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(0 51 255) flags(Angle) = team_CTF_blueplayer : "Initial Blue team spawning position for CTF games. This is where players spawn when they join the Blue team.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(0 51 255) flags(Angle) = team_CTF_bluespawn : "Blue team respawning position for CTF games. This is where Blue team players respawn after they get fragged.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 51 0) studio("models/flags/r_flag.md3") = team_CTF_redflag : "Red team flag for CTF games.\n\nRed team flag for CTF games."
+[
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(255 51 0) flags(Angle) = team_CTF_redplayer : "Initial Red team spawning position for CTF games. This is where players spawn when they join the Red team.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(255 51 0) flags(Angle) = team_CTF_redspawn : "Red team respawning position for CTF games. This is where Red team players respawn after they get fragged.
+"
+[
+	angle(angle) : "Angle" : : "Direction in which player will look when spawning in the game."
+	angles(angle) : "Angles" : : "Pitch, yaw and roll angles of sight direction."
+	target(target_destination) : "Target" : : "This can point at a target_give entity for respawn freebies or to anything else to trigger."
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 128 128) = trigger_always : "Automatic trigger. It will fire the entities it targets as soon as it spawns in the game.
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	target(target_destination) : "Target" : : "This points to the entity to activate."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@SolidClass = trigger_hurt : "Any player that touches this will be hurt by dmg points of damage once per server frame (very fast). A sizzling sound is also played while the player is being hurt.
+\n\nThe invulnerability power-up (item_enviro) does not protect the player from damage caused by this entity regardless of whether the NO_PROTECTION spawnflag is set or not. Triggering a trigger_hurt will have no effect if the START_OFF spawnflag is not set. A trigger_hurt always starts on in the game."
+[
+	dmg(integer) : "Dmg" : : "Number of points of damage inflicted to player per server frame (default 5 - integer values only)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	spawnflags(flags) = 
+	[
+		1 : "start_off" : 0 : "Needs to be triggered (toggle) for damage"
+		2 : "toggle" : 0 : "Allows trigger_hurt to be toggled on/off."
+		4 : "silent" : 0 : "Suppresses the sizzling sound while player is being hurt."
+		8 : "no_protection" : 0 : "Player will be hurt regardless of protection (see notes)."
+		16 : "slow" : 0 : "Changes the damage rate to once per second."
+	]
+]
+@SolidClass = trigger_multiple : "Variable size repeatable trigger. It will fire the entities it targets when touched by player. Can be made to operate like a trigger_once entity by setting the wait key to -1. It can also be activated by another trigger that targets it.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds until trigger becomes re-triggerable after it's been touched (default 0.5, -1 = trigger once)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	target(target_destination) : "Target" : : "This points to the entity to activate."
+	targetname(target_source) : "Name" : : "Activating trigger points to this."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@SolidClass = trigger_push : "This is used to create jump pads and launch ramps. It MUST point to a target_position or info_notnull entity, located above trigger's origin, to work. Unlike target_push, this is client side predicted.
+\n\nTo make a jump pad or launch ramp, place the target_position/info_notnull entity at the highest point of the jump and target it with this entity."
+[
+	target(target_destination) : "Target" : : "This points to the target_position to which the player will jump."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@SolidClass = trigger_teleport : "Touching this will teleport players to the location of targeted entity. Allows client side prediction of teleportation events.
+"
+[
+	target(target_destination) : "Target" : : "This must point to a misc_teleporter_dest entity."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/bfg/bfg.md3") = weapon_bfg : "Big Freaking Gun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 20, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/gauntlet/gauntlet.md3") = weapon_gauntlet : "Gauntlet.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/grapple/grapple.md3") = weapon_grapplinghook : "Grappling Hook. Spawns in the game and works but is unskinned.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/grenadel/grenadel.md3") = weapon_grenadelauncher : "Grenade Launcher.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 10, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models\weapons2\lightning\lightning.md3") = weapon_lightning : "Lightning Gun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 100, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models\weapons2\machinegun\machinegun.md3") = weapon_machinegun : "Machine Gun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 40, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/plasma/plasma.md3") = weapon_plasmagun : "Plasma gun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 50, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/railgun/railgun.md3") = weapon_railgun : "Railgun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 10, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/rocketl/rocketl.md3") = weapon_rocketlauncher : "Rocket Launcher.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 10, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(255 0 128) studio("models/weapons2/shotgun/shotgun.md3") = weapon_shotgun : "Shotgun.
+\n\nThe amount of time it takes for an item in the team to respawn is determined by the wait value of the item that was picked up previously. So if one of the items in the team has it's wait key set to -1 (never respawn), the random respawning cycle of the teamed items will stop after that item is picked up.
+\n\nWhen the random key is set, its value is used to calculate a minimum and a maximum delay. The final time delay will be a random value anywhere between the minimum and maximum values: (min delay = wait - random) (max delay = wait + random).
+\n\nWhen the entity activates its targets, all shaders/textures in the map that were originally the same name as the 'targetShaderName' value, will be changed to the 'targetShaderNewName' value. For example, turning a light on:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_on
+\n\nAnd this would turn it back off:
+\n\n targetShaderName    textures/proto2/redlight_off
+\n\n targetShaderNewName textures/proto2/redlight_off"
+[
+	wait(float) : "Wait" : : "Time in seconds before item respawns after being picked up (default 5, -1 = never respawn)."
+	random(float) : "Random" : : "Random time variance in seconds added or subtracted from wait delay (default 0 - see notes)."
+	count(integer) : "Count" : : "Sets the amount of ammo given to the player when weapon is picked up (default 10, -1 for 0 count)."
+	team(string) : "Team" : : "Set this to team items. Teamed items will respawn randomly after team master is picked up (see notes)."
+	target(target_destination) : "Target" : : "Picking up the item will trigger the entity this points to."
+	targetname(target_source) : "Name" : : "A target_give entity, pointed to this, gives the item to player. Activating this by other entities will make the item to respawn."
+	targetShaderName(string) : "TargetShaderName" : : "Name of the original shader to remap (see notes)."
+	targetShaderNewName(string) : "TargetShaderNewName" : : "Name of the new shader to remap by (see notes)."
+	notfree(string) : "Notfree" : : "When set to 1, entity will not spawn in Free for all and Tournament modes."
+	notteam(string) : "Notteam" : : "When set to 1, entity will not spawn in Teamplay and CTF modes."
+	notsingle(string) : "Notsingle" : : "When set to 1, entity will not spawn in Single Player mode (bot play mode)."
+	gametype(string) : "Gametype" : : "Defines the gametypes that will spawn this item. Q3A values: ffa tournament single team ctf. Q3TA values: oneflag obelisk harvester teamtournament."
+	notbot(string) : "Notbot" : : "Used to make an item invisible for bot attraction."
+	spawnflags(flags) = 
+	[
+		1 : "suspended" : 0 : "Item will spawn where it was placed in map and won't drop to the floor."
+	]
+]
+@SolidClass = worldspawn : "Entity, which stores regular static map primitives (brushes and patches).
+"
+[
+	message(string) : "Message" : : "Text to print at user logon. Used for name of level."
+	music(sound) : "Music" : : "Path/name of looping .wav file used for level's music (e.g. music/sonic5.wav)."
+	gravity(float) : "Gravity" : : "Gravity of level (default normal gravity: 800)."
+	gridsize(integer) : "Gridsize" : : "Granularity of the lightgrid, created by q3map, which is used to dynamically light certain game objects, like players and items. Value is three integers separated by spaces, representing number of units between grid points in X Y Z. Default gridsize value is 64 64 128. Use larger powers of 2 to reduce BSP size and compile time on very large maps."
+	_blocksize(integer) : "_blocksize" : : "Map compiler splits the BSP tree along axial planes (X, Y and Z) for optimization. It does it as often, as specified in _blocksize key for respective axis (in units) (default 1024 1024 1024, 0 = disable, setting single value 'N' equals to setting 'N N N'). I.e. lower values result in more splits and vice versa. Increase the blocksize using larger powers of 2 to reduce compile times on very large maps with a low structural brush density. Maps, having flat architecture, might work better with horizontal splits disabled ('N N 0')."
+	_ambient(float) : "_ambient" : : "Adds a constant value to overall lighting (default 0, range 0 - 255). Only recommended use is small values for cosmetic purposes, as high values will have a tendency to flatten out variations in light and shade."
+	_color(color1) : "RGB color" : "1 1 0.5" : "RGB color value for ambient and other global light parameters (default is 1 1 1)."
+	_minlight(float) : "_minlight" : : "Minimum light value, levelwide. Uses the _color key to set color. Since it does not add unlike ambient, but overrides existing light values, affected areas will get flat constant light. Therefore use is highly not recommended!"
+	_minvertexlight(float) : "_minvertexlight" : : "Minimum vertex lighting, levelwide."
+	_mingridlight(float) : "_mingridlight" : : "Minimum lightgrid (dynamic entity lighting) levelwide."
+	_keeplights(string) : "_keeplights" : : "Keep light entities in the BSP. Normally stripped out by the BSP process and read from the .map file by the lighting phase."
+	_noshadersun(string) : "_noshadersun" : : "Ignore q3map_sun/sun directives in sky shaders and ONLY use entity sun lights."
+	_farplanedist(float) : "_farplanedist" : : "Limit on how many units the vis phase of compilation can see. Used in combination with level-wide fog, it can help reduce r_speeds on large, open maps."
+	_foghull(string) : "_foghull" : : "Shader to use for fog hull. Foghull shader should be a sky shader. Omit the textures/ prefix."
+	_lightmapscale(float) : "_lightmapscale" : : "Floating point value, scaling the resolution of lightmaps on brushes/patches in the world. Can be overridden in func_group (or other entities) (default 1.0)."
+	_castshadows(integer) : "_castshadows" : : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. > 1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world."
+	_receiveshadows(integer) : "_receiveshadows" : : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. > 1 = receive shadows only from corresponding keyed entities (see above) and world. < 1 = receive shadows ONLY from corresponding keyed entities."
+	_celshader(string) : "_celshader" : : "Sets the cel shader used for this geometry. Note: Omit the textures/ prefix."
+	_styleNalphaGen(string) : "_styleNalphaGen" : : "*IMPORTANT* Replace N in the key _styleNalphaGen with an integer between 1 and 31 as your style index. Values takes standard shader waveform functions (e.g. wave sin 0.5 0.3 0.25 1.5)"
+	_styleNrgbGen(string) : "_styleNrgbGen" : : "*IMPORTANT* Replace N in the key _styleNrgbGen with an integer between 1 and 31 as your style index. Values take standard shader waveform functions (e.g. wave sin 0.5 0.3 0.25 1.5)"
+	_indexmap(string) : "_indexmap" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "_layers" : : "Number of unique root shaders that will be used on the terrain."
+	_shader(string) : "_shader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the textures/ prefix."
+]

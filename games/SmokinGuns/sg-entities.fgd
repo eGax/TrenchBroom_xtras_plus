@@ -1,0 +1,134 @@
+@SolidClass = worldspawn : "This is the world entity. Each map can only contain one, and it's automatically created for you."
+[
+	message(string) : "message to player on load..."
+	music(sound) : "Music file" : : "Path/name of looping .wav file used for level's music (e.g. music/sonic5.wav)."
+	_ambient(integer) : "Ambient light level" : : "Adds a constant value to overall lighting. Use is not recommended. Ambient light will have a tendency to flatten out variations in light and shade."
+	color(color255) : "Ambient Color" : : "RGB value for ambient light color (default is 0 0 0)."
+	gravity(integer) : "Gravity" : : "Gravity of level (default normal gravity: 800)."
+	gridsize(string) : "Dynamic Light Granularity" : : "Granularity of the lightgrid created by q3map. Value is three integers separated by spaces, representing number of units between grid points in X Y Z. Default gridsize value is 128 128 256. Use larger powers of 2 to reduce BSP size and compile time on very large maps."
+	_blocksize(integer) : "BSP Block Size" : : "Q3Map always splits the BSP tree along the planes X=_blocksize*n and Y=_blocksize*n. Increase the blocksize using larger powers of 2 to reduce compile times on very large maps with a low structural brush density (default 1024 1024 0, 0 values = disable)."
+	//-------- Q3MAP2 KEYS --------
+	_minlight(integer) : "Min Lightmap Intensity" : : "Minimum light value, levelwide. Uses the _color key to set color. Does not add unlike ambient."
+	_minvertexlight(integer) : "Min Vertex Intensity" : : "Minimum vertex lighting, levelwide."
+	_mingridlight(integer) : "Min Dynamic Intensity" : : "Minimum lightgrid (dynamic entity lighting) levelwide."
+	_keeplights(choices) : "Keep Light Entities" : 0 : "Keep light entities in the BSP. Normally stripped out by the BSP process and read from the .map file by the lighting phase." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	_noshadersun(choices) : "Ignore Shader Sun" : 0 : "Ignore q3map_sun/sun directives in sky shaders and ONLY use entity sun lights." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	_farplanedist(integer) : "Far Clip Distance" : : "Limit on how many units the vis phase of compilation can see. Used in combination with level-wide fog, it can help reduce r_speeds on large, open maps."
+	_foghull(string) : "Fog Hull Shader" : : "Shader to use for 'fog hull'. Foghull shader should be a sky shader. Omit the 'textures/' prefix."
+	_lightmapscale(float) : "Lightmap Scale" : : "Floating point value scales the resolution of lightmaps on brushes/patches in the world. Can be overridden in func_group (or other entities) (default 1.0)."
+	_celshader(string) : "Cel Shader" : : "Sets the cel shader used for this geometry. Note: Omit the 'textures/' prefix."
+	_style1alphaGen(string) : "Style Light alphaGen" : : "*IMPORTANT* Replace 'N' in the key '_styleNalphaGen' with an integer between 1 and 31 as your style index. Values takes standard shader waveform functions (e.g. wave sin 0.5 0.3 0.25 1.5)"
+	_style1rgbGen(string) : "Style Light rgbGen" : : "*IMPORTANT* Replace 'N' in the key '_styleNrgbGen' with an integer between 1 and 31 as your style index. Values take standard shader waveform functions (e.g. wave sin 0.5 0.3 0.25 1.5)"
+	//-------- Q3MAP2 TERRAIN KEYS --------
+	_indexmap(string) : "Terrain Blending Map" : : "Path/name for the art file used to guide the mapping of textures on the terrain surface."
+	_layers(integer) : "Terrain Layers" : : "Integer value denotes number of unique root shaders that will be used on the terrain."
+	_shader(string) : "Terrain MetaShader" : : "Path to the metashader used to assign textures to the terrain entity. Note: Omit the 'textures/' prefix."
+]
+
+@BaseClass = ShadowControl
+[
+	_castshadows(choices) : "Shadow Caster Level" : 0 : "Allows per-entity control over shadow casting. Defaults to 0 on entities, 1 on world. 0 = no shadow casting. 1 = cast shadows on world. >1 = cast shadows on entities with _rs (or _receiveshadows) with the corresponding value, AND world. Negative values imply same, but DO NOT cast shadows on world." =
+	[
+		0 : "No shadow casting"
+		1 : "Cast shadows on world"
+	]
+	_receiveshadows(choices) : "Shadow Reciever Level" : 0 : "Allows per-entity control over shadow reception. Defaults to 1 on everything (world shadows). 0 = receives NO shadows. >1 = receive shadows only from corresponding keyed entities (see above) and world. &lt; 1 = receive shadows ONLY from corresponding keyed entities." =
+	[
+		0 : "No shadow casting"
+		1 : "Cast shadows on world"
+	]
+]
+
+@BaseClass = Angles
+[
+	angles(angle) : "Pitch Yaw Roll (Y Z X)" : "0 0 0" : "Sets the pitch (up / down), yaw (left / right) and roll (bank) respectively. The compass in Jackhammer corresponds to Yaw. The settings are not always (or not all) used."
+]
+
+@PointClass color(160 192 255) size(-4 -4 -4, 4 4 4) base(Angles) flags(Angle) = _skybox : "Compiler-only entity that specifies the origin of a skybox (a wholly contained, separate area of the map), similar to some games portal skies. When compiled with Q3Map2, the skybox surfaces will be visible from any place where sky is normally visible. It will cast shadows on the normal parts of the map, and can be used with cloud layers and other effects."
+[
+	_scale(integer) : "Scale" : : "Scaling factor (default 64), good values are between 50 and 300, depending on the map."
+]
+
+@BaseClass = Targetname
+[
+	targetname(target_source) : "Name" : : "Property used to identify entities."
+]
+@BaseClass = Target
+[
+	target(target_destination) : "Target" : : "When an entity is activated, it triggers the entity with the name specified by Target."
+	targetShaderName(string) : "Target Shader Name" : : "Points to the name of the original shader to swap out for triggerable shader entities (see notes)."
+	targetShaderNewName(string) : "Target Shader New Name" : : "Points to the name of the new shader to swap in for triggerable shader entities (see notes)."
+]
+
+@BaseClass base(Target) = Targetx
+[
+	delay(float) : "Delay before trigger" : 0.0 : "Usually the time in seconds before an entity should trigger its target (after being triggered itself). Under other SmartEdit names, delay might also be the time to wait before performing some other action."
+	killtarget(target_destination) : "KillTarget" : : "When an entity is triggered, it will remove from the game the entity specified by this property."
+]
+
+// ammo
+@BaseClass size(-16 -16 -16, 16 16 16) offset(0 0 16) color(96 96 255) base(Target, Targetname, Respawn, Modes) bobparms( 180 8 0 ) = Ammo
+[
+	count(integer) : "Ammo Given" : : "Sets the amount of ammo given to the player when picked up."
+	spawnflags(Flags) =
+	[
+		1 : "Suspended" 	: 0
+	]
+]
+@PointClass base(Ammo) size(-24 -24 -16, 24 24 16) studio("models/powerups/holdable/boiler.md3") = item_boiler_plate : "Boiler Plate" []
+@PointClass base(Ammo) studio("models/powerups/ammo/machinegunam.md3") = ammo_bullets : "Machinegun ammo. Gives the player 50 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/plasmaam.md3") = ammo_cells : "Plasma Gun ammo. Gives the player 30 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/grenadeam.md3") = ammo_grenades : "Grenade Launcher ammo. Gives the player 5 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/lightningam.md3") = ammo_lightning : "Lightning Gun ammo. Gives the player 60 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/rocketam.md3") = ammo_rockets : "Rocket Launcher ammo. Gives the player 5 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/shotgunam.md3") = ammo_shells : "Shotgun ammo. Gives the player 10 by default." []
+@PointClass base(Ammo) studio("models/powerups/ammo/railgunam.md3") = ammo_slugs : "Railgun ammo. Gives the player 10 by default." []
+
+
+// weapons
+
+
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/knife/e_knife.md3") = weapon_knife : "Bowie Knife" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/colt_light/e_lightning.md3") = weapon_lightning : "Colt Lightning" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/sharps/e_sharps.md3") = weapon_sharps : "Sharps rifle" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/gatling/e_gatling.md3") = weapon_gatling : "Gatling Gun." []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/remington58/e_remington58.md3") = weapon_remington58 : "Remington '58" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/schofield/e_schofield.md3") = weapon_schofield : "Smith & Wesson Schofield" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/dyn/e_dynamite.md3") = weapon_dynamite : "Dynamite" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/molotov/e_molotov.md3") = weapon_molotov : "Molotov cocktail" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/remgauge/e_remington.md3") = weapon_shotgun : "Remington 12 Gauge Shotgun" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/sawedoff/e_sawedoff.md3") = weapon_sawedoff : "Sawed Off Shotgun" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/peacemaker/e_peacemaker.md3") = weapon_peacemaker : "Colt Peacemmaker" []
+@PointClass size(-16 -16 -16, 16 16 28) studio("models/weapons2/winch66/e_winchester66.md3") = weapon_winch66 : "Winchester '66" []
+
+
+//*QUAKED weapon_knife (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Bowie Knife
+//*QUAKED weapon_lightning (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Colt Lightning
+//*QUAKED weapon_sharps (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Sharps Rifle
+//*QUAKED weapon_gatling (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Gatling Gun
+//*QUAKED weapon_remington58 (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Remington '58
+//*QUAKED weapon_schofield (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Smith & Wesson Schofield
+//*QUAKED weapon_dynamite (1 0 .5) (-16 -16 -16) (16 16 24) SUSPENDED Dynamite
+//*QUAKED weapon_molotov (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED Molotov.
+//*QUAKED weapon_shotgun (1 0 .5) (-16 -16 -16) (16 16 28) SUSPENDED Remington 12 Gauge Shotgun
+//*QUAKED weapon_sawedoff (1 0 .5) (-28 -28 -16) (28 28 28) SUSPENDED Sawed Off Shotgun
+//*QUAKED weapon_peacemaker(1 0 .5) (-16 -16 -16) (16 16 24) SUSPENDED Colt Peacemmaker
+//*QUAKED weapon_winch66 (1 0 .5) (-40 -40 -16) (40 40 24) SUSPENDED Winchester66
+
+// items
+
+//*QUAKED item_boiler_plate (.6 0 0) (-24 -24 -16) (24 24 40) SUSPENDED Boiler Plate
+//*QUAKED item_scope (.6 0 0) (-24 -24 -16) (24 24 40) SUSPENDED Rifle Scope: adds the zoom function to the rifle
+//*QUAKED item_belt (.7 0 1) (-16 -16 -16) (16 16 32) SUSPENDED Ammuntion Belt
+//*QUAKED item_money (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED Gold sack for bank robbery mode
+//*QUAKED pickup_money (.3 .3 1) (-20 -20 -16) (20 20 20) SUSPENDED Money item for deathmatch modes(DM, TDM, DUEL)
+
+// triggers

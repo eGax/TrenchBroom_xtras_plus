@@ -1,0 +1,54 @@
+Marble Blast Level Building - Common Questions
+by Alex Swanson · 04/29/2004 (3:28 pm) · 5 comments
+
+This is an extensive "how-to" that I posted in the Marble Blast forums in response to some questions by one of the pioneers of custom level creation for MB, Jayar. Be certain that you have the Marble Blast Level Tools installed for QuArK into the Quark/add-ons/Torque directory, as they are required for many of the steps listed here.
+
+1. How do you ensure that a pattern starts AND ends evenly on a surface? i.e. it doesn't begin offset by half--it looks tacky
+1) For best results on fitting patterns it is good to make sure your surfaces actually fit the dimensions of the texture - the MB grids are 64 x 64 quark units, so if you want to use them without scaling, try to match your geometry to that size.
+There are always instances when that is not possible, or where it would interfere with the level design (such as on ramps, where the angle of the ramp causes it to be slightly too long for the texture to fit on it) Luckilly, Quark has a solution: If you select a face and then select the face properties tab on the main quark panel, you will see a bunch of weird icons right below the "texture angle" entry. They are all useful for various texture scaling tasks. The most useful is to the far right: "adjust texture on face but keep scaling to a minimum." This is the easiest way to get a texture to line up properly on a face of unusual dimensions.
+
+2. How do you create "trim" on the edges of the platforms to make it look nice and neat?
+2) Trim is just some extra geometry stuck on along the edge - it is in most levels 16 units wide. It uses the edge_white2 texture for level surfaces, and edge_white for vertical or strangely shaped surfaces surfaces. edge_white2 is like a mini-grid, so it only looks right on surfaces that are 16 units wide exactly, and not at an angle.
+I find it best to just build my trim along with the level. I start my first section with trim, and duplicate the trim along with the surface object. Adding in trim at a later time is not such a fun experience. I had to do so on Escher -- a very frustrating experience.
+Trim on cruves is a bit mor complicated. I usually use the "Make Prism" tool, making a prism whose inner radius is the same as the outer edge of the object being trimmed, with an outer radius 16 wider, and a height of 16, using edge_white.
+
+3. How do you tell a platform to move between point A and point B?
+3) Moving platforms are a bit confusing at first, but simple once you get the ang of it. You have to make sure that you put the "DataTorque" file that comes with the Marble Blast Level Tools into the Quark/add-ons/Torque directory.
+Once that has been done, you should see a "Torque Entities" section in the "New Map Items" window. This is where all of the MarbleBlast entities exist. In "Special Entities" you will see lots of cool stuff:
+
+Door_Elevator - This is the base entity for your MarbleBlast moving platform. You will want to create one of these, and put inside it all of the geometry for the platform, path_nodes for motion, and any triggers that start the platform's motion.
+You will need to set some variables in the parameters panel in Quark for your door_elevator.
+* datablock must be set to "PathedDefault" (so the game knows that this is a regular pathed object)
+* initialPosition as you see fit (0 by default, will start the placement of the platform a certain number of milliseconds along its path)
+* initialTargetPosition (leave this blank if you are going to be using a trigger to start the platform's motion, set it to -1 to have the object loop continuosly on its path and -2 to loop backward - or set it to a specific millisecond value to have the elevator begin moving at the start of the level and continue until it reaches that point on its path (does not loop))
+
+path_node - found in the same place as door elevator, these are the points that define the motion of your elevator/platform/whatever. Put these where you want the elevator to change direction or pause, and make sure that they are in the Door_Elevator in the heirarchy window. Parameters:
+* next_time indicates the number of millisecond that it will take the platform to move from this node to the next one.
+* smoothing changes the behaviour of the platform as it moves (linear = even motion, accelerate = smooth start and stop)
+
+trigger - use this if you want the elevator to stay put until the marble gets on it (or hits some other position) This is another grouping object, you need to put brushes inside of it to define its hit area. These brushes will show up in Quark, but will be invisible in-game. Parameters:
+* datablock must be TriggerGoToTarget
+* targetTime this is the millisecond value along its path to which the platform will advance when the trigger is hit.
+Be careful with triggers, its easy to get people stranded unless you add failsafes to ensure that the platforms return to their starting positions if a plyer somehow falls down to them and survives. Most of the elevators in marble blast are simply on a looping cycle (see initialTargetPosition above) and do not have triggers at all.
+
+To review, the heirarchy of an elevator should look something like this:
+
+[] Door_Elevator
+-| Poly (there could be more or fewer polys)
+-| Poly (they define the platform itself)
+-| Poly
+-| path_node (there can be more nodes as necessary)
+-| path_node
+-| path_node
+-[] trigger (optional)
+--| poly (this poly is where the trigger will be hit)
+
+Elevators will only be created correctly when you use "MarbleBlastGold.exe -test mapname" (from shell). You will need to do this each time you change the elevators (yes, this requires you to reset all the mission information - though you can just copy and paste that in the .mis file.
+
+I think that sums up the elevators, ask if you need any clarification.
+
+4. How do you make the catapults seen in Money Tree, Battlements, and Acrobat?
+4) the catapults are just elevators with a very quick portion of their motion. They hit your marble at that speed and you go flying! Depending on how far the platform moves, I find something around 50-100 milliseconds to be a good path_node -> next_time value to really send you flying.
+
+5. Is there a way to place start/end pads, powerups, and gems in Quark?
+5) Also under the "Torque Entities" in "New Map Items" you will find Pads, Obstacles, and Items - place these in your Quark map and they will be automatically placed in the mission when you use the "MarbleBlastGold.exe -test mapname" command to generate your mission.
