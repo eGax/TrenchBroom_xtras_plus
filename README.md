@@ -3,7 +3,7 @@ My experimental game support profiles and works.
 
 Adds game profiles for:
 
-Xonotic
-Open Arena
-The Ascension of Vigil
+Xonotic<br>
+Open Arena<br>
+The Ascension of Vigil<br>
 
