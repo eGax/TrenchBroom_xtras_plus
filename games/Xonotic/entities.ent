@@ -26,8 +26,7 @@ In order to get Domination working well in your map, you need to place dom_team 
 -------- KEYS --------
 <string key="message" name="message">message to be displayed to all players when this point is captured, preceded by the team's name.  This defaults to &quot; has captured a control point&quot;.  You can specify different names for each point, for example &quot; has captured the Lava Room&quot;.</string>
 <real key="wait" name="wait">How often this point gives its controlling team frags.</real>
-<real key="frags" name="frags">How many frags this point giv point gives its controlling team frags.</real>
-<real key="frags" name="frags">How many frags this point gives each wait cycle.</real>
+<real key="frags" name="frags">How many frags this point gives point gives its controlling team frags each wait cycle.</real>
 -------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
 zbqry=&quot;zbqryf/qbzvangvba/qbz_hapynvzrq.zq3&quot;
 
@@ -871,7 +870,6 @@ The keys below actually apply to most brush entities as they are engine features
 <targetname key="_clonename" name="_clonename">template name so one can clone from it</targetname>
 <real3 key="mins" name="mins">override automatically found minimum coordinate bounds</real3>
 <real3 key="maxs" name="maxs">override automatically found maximum coordinate bounds</real3>
-<targetname key="targetname" name="targetname">if targeted by a misc_model, its brushes get inserted into this</targetname>
 <texture key="_celshader" name="_celshader">Sets the cel shader used for this geometry. Note: omit the &quot;textures/&quot; prefix.</texture>
 </group>
 
@@ -903,7 +901,6 @@ The keys below actually apply to most brush entities as they are engine features
 <targetname key="_clonename" name="_clonename">template name so one can clone from it</targetname>
 <real3 key="mins" name="mins">override automatically found minimum coordinate bounds</real3>
 <real3 key="maxs" name="maxs">override automatically found maximum coordinate bounds</real3>
-<targetname key="targetname" name="targetname">if targeted by a misc_model, its brushes get inserted into this</targetname>
 <texture key="_celshader" name="_celshader">Sets the cel shader used for this geometry. Note: omit the &quot;textures/&quot; prefix.</texture>
 </group>
 
@@ -956,7 +953,6 @@ A client-side non-solid brush entity. Use func_wall if you want it solid.
 <targetname key="_clonename" name="_clonename">template name so one can clone from it</targetname>
 <real3 key="mins" name="mins">override automatically found minimum coordinate bounds</real3>
 <real3 key="maxs" name="maxs">override automatically found maximum coordinate bounds</real3>
-<targetname key="targetname" name="targetname">if targeted by a misc_model, its brushes get inserted into this</targetname>
 <texture key="_celshader" name="_celshader">Sets the cel shader used for this geometry. Note: omit the &quot;textures/&quot; prefix.</texture>
 </group>
 
@@ -987,7 +983,6 @@ A client-side solid brush entity. Use func_clientillusionary if you want it non-
 <targetname key="_clonename" name="_clonename">template name so one can clone from it</targetname>
 <real3 key="mins" name="mins">override automatically found minimum coordinate bounds</real3>
 <real3 key="maxs" name="maxs">override automatically found maximum coordinate bounds</real3>
-<targetname key="targetname" name="targetname">if targeted by a misc_model, its brushes get inserted into this</targetname>
 <texture key="_celshader" name="_celshader">Sets the cel shader used for this geometry. Note: omit the &quot;textures/&quot; prefix.</texture>
 </group>
 
