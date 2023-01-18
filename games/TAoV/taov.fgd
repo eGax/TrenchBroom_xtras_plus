@@ -906,6 +906,7 @@ gives off shadows for effect. Used for lightning in a game area. Spawnflag 1 sta
 	cnt == 8 -> 	{"path":"progs/relic9.mdl", "skin": 0, "scale":scale},
 	cnt == 9 -> 	{"path":"progs/relic3.mdl", "skin": 2, "scale":scale},
 	cnt == 10-> 	{"path":"progs/relic8.mdl", "skin": 0, "scale":scale},
+	cnt == 11-> 	{"path":"progs/relic11.mdl", "skin": 0, "scale":scale},		
 						"progs/relic1.mdl"
 	}}) = item_relic :
 
@@ -921,7 +922,8 @@ gives off shadows for effect. Used for lightning in a game area. Spawnflag 1 sta
 7 : Perfect Guard (Sheild) allows to Vigil perform a perfect guard when blocking enemy attacks at just the right time.
 8 : Soul Candle Automatically lights up pitch black areas.
 9 : Burning Epitome unlocks the Flaming head smash.
-10: Stalwart Perfect Guard (Sheild) Perfect Guarding a magic spell will absorb the mana cost and add it to Vigils mana pool. Perfect Guard now lasts 5 seconds."
+10: Stalwart Perfect Guard (Sheild) Perfect Guarding a magic spell will absorb the mana cost and add it to Vigils mana pool. Perfect Guard now lasts 5 seconds.
+11: Horned helmet go smash!."
  [
 cnt(choices) : "Relic type" : 0 =
 	[
