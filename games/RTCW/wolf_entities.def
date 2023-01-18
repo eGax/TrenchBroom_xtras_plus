@@ -647,6 +647,7 @@ model="models/powerups/keys/key.md3"
 */
 
 /*QUAKED key_key16 (1 1 0) (-8 -8 -8) (8 8 8) SUSPENDED SPIN - RESPAWN
+{model({"path":"models/powerups/keys/key.md3", "scale":modelscale, "scale":modelscale_vec});}
 key 16
 
 pickup sound : "sound/pickup/keys/key16.wav"
@@ -659,6 +660,7 @@ model="models/powerups/keys/key.md3"
 ///
 
 /*QUAKED alarm_box (1 0 1) START_ON
+{model({"path":"models/mapobjects/electronics/alarmbox.md3", "scale":modelscale, "scale":modelscale_vec});}
 You need to have an origin brush as part of this entity
 current alarm box model is (8 x 16 x 28)
 "health" defaults to 10
@@ -798,9 +800,7 @@ BACK_AND_FORTH - when end of target spline is hit, reverse direction rather than
 */
 
 /*QUAKED misc_model (1 0 0) (-16 -16 -16) (16 16 16)
-	{
-		model({"path":model, "scale":modelscale, "scale":modelscale_vec});
-	}
+{model({"path":model, "scale":modelscale, "scale":modelscale_vec});}
 "model"		arbitrary .md3 file to display
 "modelscale"	scale multiplier (defaults to 1x)
 "modelscale_vec"	scale multiplier (defaults to 1 1 1, scales each axis as requested)
@@ -809,9 +809,7 @@ BACK_AND_FORTH - when end of target spline is hit, reverse direction rather than
 */
 
 /*QUAKED misc_gamemodel (1 0 0) (-16 -16 -16) (16 16 16) ORIENT_LOD
-	{
-		model({"path":model, "scale":modelscale, "scale":modelscale_vec});
-	}
+{model({"path":model, "scale":modelscale, "scale":modelscale_vec});}
 md3 placed in the game at runtime (rather than in the bsp)
 
 "model"			arbitrary .md3 file to display
@@ -1003,6 +1001,7 @@ This entity must target the plane its going to be attached to
 ///
 
 /*QUAKED func_door (0 .5 .8) ? START_OPEN TOGGLE CRUSHER TOUCH SHOOT-THRU
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 TOGGLE      wait in both the start and end states for a trigger event.
 START_OPEN  the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
 NOMONSTER   monsters will not trigger this door
@@ -1035,6 +1034,7 @@ SHOOT-THRU	Bullets don't stop when they hit the door.  Set "shoot_thru_scale" wi
 
 
 /*QUAKED func_plat (0 .5 .8) ?
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 Plats are always drawn in the extended position so they will light correctly.
 
 "lip"		default 8, protrusion above rest position
@@ -1047,6 +1047,7 @@ Plats are always drawn in the extended position so they will light correctly.
 */
 
 /*QUAKED func_button (0 .5 .8) ? x x x TOUCH x x STAYOPEN
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 When a button is touched, it moves some distance in the direction of it's angle, triggers all of it's targets, waits some time, then returns to it's original position where it can be triggered again.
 
 "model2"	.md3 model to also draw
@@ -1071,6 +1072,7 @@ Target: next path corner and other targets to fire
 */
 
 /*QUAKED func_train_rotating (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 *** use script_mover instead ***
 
 A train is a mover that moves between path_corner target points.
@@ -1101,6 +1103,7 @@ duration duration for angle change (overrides speed)
 */
 
 /*QUAKED func_static (0 .5 .8) ? start_invis pain painEFX
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 A bmodel that just sits there, doing nothing.  Can be used for conditional walls and models.
 "model2"	.md3 model to also draw
 "color"		constantLight color
@@ -1133,7 +1136,8 @@ shard_ceramic = 3,
 shard_pebbles = 4
 */
 
-/*QUAKED func_rotating (0 .5 .8) ? START_ON STARTINVIS X_AXIS Y_AXIS 
+/*QUAKED func_rotating (0 .5 .8) ? START_ON STARTINVIS X_AXIS Y_AXIS
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 You need to have an origin brush as part of this entity.
 The center of that brush will be the point around which it is rotated. It will rotate around the Z axis by default.  You can check either the X_AXIS or Y_AXIS box to change that.
 
@@ -1145,6 +1149,7 @@ The center of that brush will be the point around which it is rotated. It will r
 */
 
 /*QUAKED func_bobbing (0 .5 .8) ? X_AXIS Y_AXIS
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 Normally bobs on the Z axis
 "model2"	.md3 model to also draw
 "height"	amplitude of bob (32 default)
@@ -1156,6 +1161,7 @@ Normally bobs on the Z axis
 */
 
 /*QUAKED func_pendulum (0 .5 .8) ?
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 You need to have an origin brush as part of this entity.
 Pendulums always swing north / south on unrotated models.  Add an angles field to the model to allow rotation in other directions.
 Pendulum frequency is a physical constant based on the length of the beam and gravity.
@@ -1168,6 +1174,7 @@ Pendulum frequency is a physical constant based on the length of the beam and gr
 */
 
 /*QUAKED func_door_rotating (0 .5 .8) ? - TOGGLE X_AXIS Y_AXIS REVERSE FORCE STAYOPEN TAKE_KEY
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 You need to have an origin brush as part of this entity.
 The center of that brush will be the point around which it is rotated. It will rotate around the Z axis by default.  You can check either the X_AXIS or Y_AXIS box to change that (only one axis allowed. If both X and Y are checked, the default of Z will be used).
 FORCE		door opens even if blocked
@@ -1203,6 +1210,7 @@ SHOOT-THRU	Bullets don't stop when they hit the door.  Set "shoot_thru_scale" wi
 */
 
 /*QUAKED func_explosive (0 .5 .8) ? START_INVIS TOUCHABLE USESHADER LOWGRAV NOBLOCKAAS EXPLO DYNOMITE
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 EXPLO only explosives can damage it rockets grendades etc
 DYNOMITE only can be damaged by DY-NO-MITE!
 Any brush that you want to explode or break apart.  If you want an explosion, set dmg and it will do a radius explosion of that amount at the center of the bursh.
@@ -1588,7 +1596,8 @@ delay before it happens again use trigger_relay for now
 assign a model
 */
 
-/*QUAKED props_ExploPart (.3 .5 .7) (-8 -8 -16) (8 8 16) 
+/*QUAKED props_ExploPart (.3 .5 .7) (-8 -8 -16) (8 8 16)
+{model({"path":model, "scale":modelscale, "scale":modelscale_vec});}
 "model" will load a discreet model
 "noise" will load looping sound for the model
 "target" point to an infonotnull to specify dir default will be up
@@ -1603,6 +1612,8 @@ for stone:
 */
 
 /*QUAKED props_decoration (.6 .7 .7) (-8 -8 0) (8 8 16) STARTINVIS DEBRIS ANIMATE KEEPBLOCK TOUCHACTIVATE LOOPING STARTON
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
+
 "model2" will specify the model to load
 
 "noise"  the looping sound entity is to make
@@ -1620,6 +1631,7 @@ you will need to specify the bounding box for the entity
 */
 
 /*QUAKED props_decorBRUSH (.6 .7 .7) ? STARTINVIS DEBRIS ANIMATE KEEPBLOCK - LOOPING STARTON
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 ANIMATE animate on death
 STARTON playanimation on death
 must have an origin brush
@@ -1637,7 +1649,7 @@ must have an origin brush
 */
 
 /*QUAKED props_decoration_scale (.6 .7 .7) (-8 -8 0) (8 8 16) STARTINVIS DEBRIS ANIMATE KEEPBLOCK TOUCHACTIVATE LOOPING STARTON
-
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 "modelscale" - Scale multiplier (defaults to 1.0 and scales uniformly)
 "modelscale_vec" - Set scale per-axis.  Overrides "modelscale", so if you have both the "modelscale" is ignored
 
@@ -1666,6 +1678,7 @@ To have the portal sky fogged, enter any of the following values:
 */
 
 /*QUAKED props_statue (.6 .3 .2) (-8 -8 0) (8 8 128) HURT DEBRIS ANIMATE KEEPBLOCK
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 "model2" will specify the model to load
 
 "noise"  the sound entity is to make
@@ -1684,6 +1697,7 @@ you will need to specify the bounding box for the entity
 */
 
 /*QUAKED props_statueBRUSH (.6 .3 .2) ? HURT DEBRIS ANIMATE KEEPBLOCK
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 needs an origin brush
 
 "model2" will specify the model to load
@@ -1701,7 +1715,8 @@ THE damage has been disabled at the moment
 
 */
 
-/*QUAKED props_footlocker (.6 .7 .3) (-12 -21 -12) (12 21 12) ? NO_JUNK
+/*QUAKED props_footlocker (.6 .7 .3) (-12 -21 0) (12 21 24) ? NO_JUNK
+{model({"path":"models/mapobjects/furniture/footlocker.md3", "scale":modelscale, "scale":modelscale_vec});}
 "noise"  the sound entity is to make upon death
 the default sounds are:
   "wood"	- "sound/world/boardbreak.wav"
@@ -1724,9 +1739,6 @@ the default sounds are:
 "dl_shader" needs to be set the same way as a target_effect
 
 TBD: the spawning of junk still pending and animation when used
-
--------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
-model="models/mapobjects/furniture/footlocker.md3"
 */
 
 /*QUAKED props_flamethrower (.6 .7 .3) (-8 -8 -8) (8 8 8) TRACKING
@@ -1742,6 +1754,7 @@ needs to aim at a info_notnull
 ///
 
 /*QUAKED script_mover (0.5 0.25 1.0) ? TRIGGERSPAWN SOLID EXPLOSIVEDAMAGEONLY
+{model({"path":model2, "scale":modelscale, "scale":modelscale_vec});}
 Scripted brush entity. A simplified means of moving brushes around based on events.
 Requires an origin brush.
 
