@@ -1,0 +1,82 @@
+// Game: xaGe_spr_testing
+// Format: Valve
+// entity 0
+{
+"mapversion" "220"
+"classname" "worldspawn"
+"_tb_def" "builtin:xaGe_spr_testing.fgd"
+// brush 0
+{
+( -320 -64 0 ) ( -320 64 -32 ) ( -320 64 0 ) __TB_empty [ 1.2246467991473532e-16 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 -64 0 ) ( -320 -64 -32 ) ( -320 -64 0 ) __TB_empty [ 1 1.2246467991473532e-16 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 64 -32 ) ( -320 -64 -32 ) ( 320 -64 -32 ) __TB_empty [ 1 1.2246467991473532e-16 0 0 ] [ -1.2246467991473532e-16 1 0 0 ] 180 1 1
+( 320 64 0 ) ( -320 -64 0 ) ( -320 64 0 ) __TB_empty [ -1 -1.2246467991473532e-16 0 0 ] [ -1.2246467991473532e-16 1 0 0 ] 180 1 1
+( 320 64 0 ) ( -320 64 -32 ) ( 320 64 -32 ) __TB_empty [ -1 -1.2246467991473532e-16 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 64 0 ) ( 320 -64 -32 ) ( 320 -64 0 ) __TB_empty [ -1.2246467991473532e-16 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 1
+{
+"classname" "s_flame_18-00"
+"origin" "-184 0 104"
+}
+// entity 2
+{
+"classname" "s_flame_18-08"
+"origin" "-152 0 104"
+}
+// entity 3
+{
+"classname" "s_flame_18-16"
+"origin" "-120 0 104"
+}
+// entity 4
+{
+"classname" "s_flame_18-24"
+"origin" "-88 0 104"
+}
+// entity 5
+{
+"classname" "s_flame_18-32"
+"origin" "-56 0 104"
+}
+// entity 6
+{
+"classname" "s_flame_18-40"
+"origin" "-24 0 104"
+}
+// entity 7
+{
+"classname" "s_flame_18-48"
+"origin" "8 0 104"
+}
+// entity 8
+{
+"classname" "s_flame_18-56"
+"origin" "40 0 104"
+}
+// entity 9
+{
+"classname" "s_flame_18-64"
+"origin" "72 0 104"
+}
+// entity 10
+{
+"classname" "s_flame_18-72"
+"origin" "104 0 104"
+}
+// entity 11
+{
+"classname" "s_flame_18-80"
+"origin" "136 0 104"
+}
+// entity 12
+{
+"classname" "s_flame_18-88"
+"origin" "168 0 104"
+}
+// entity 13
+{
+"classname" "info_player_start"
+"origin" "-256 0 24"
+}

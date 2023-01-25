@@ -1,0 +1,16 @@
+@PointClass size(-16 -16 -24, 16 16 32) color(0 255 0) = info_player_start : "Player 1 start" []
+@PointClass size(-16 -16 -24, 16 16 32) color(255 0 0) = info_player_deathmatch : "Deathmatch start" []
+
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-00.spr"}) = s_flame_18-00 : "offset 18/00"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-08.spr"}) = s_flame_18-08 : "offset 18/08"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-16.spr"}) = s_flame_18-16 : "offset 18/16"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-24.spr"}) = s_flame_18-24 : "offset 18/24"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-32.spr"}) = s_flame_18-32 : "offset 18/32"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-40.spr"}) = s_flame_18-40 : "offset 18/40"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-48.spr"}) = s_flame_18-48 : "offset 18/48"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-56.spr"}) = s_flame_18-56 : "offset 18/56"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-64.spr"}) = s_flame_18-64 : "offset 18/64"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-72.spr"}) = s_flame_18-72 : "offset 18/72"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-80.spr"}) = s_flame_18-80 : "offset 18/80"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-88.spr"}) = s_flame_18-88 : "offset 18/88"[]

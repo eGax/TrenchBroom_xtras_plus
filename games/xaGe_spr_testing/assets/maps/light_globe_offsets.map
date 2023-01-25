@@ -1,0 +1,184 @@
+// Game: xaGe_spr_testing
+// Format: Valve
+// entity 0
+{
+"mapversion" "220"
+"classname" "worldspawn"
+"_tb_def" "builtin:xaGe_spr_testing.fgd"
+// brush 0
+{
+( -320 -64 0 ) ( -320 64 -32 ) ( -320 64 0 ) __TB_empty [ 1.2246467991473532e-16 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 -64 0 ) ( -320 -64 -32 ) ( -320 -64 0 ) __TB_empty [ 1 1.2246467991473532e-16 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 64 -32 ) ( -320 -64 -32 ) ( 320 -64 -32 ) __TB_empty [ 1 1.2246467991473532e-16 0 0 ] [ -1.2246467991473532e-16 1 0 0 ] 180 1 1
+( 320 64 0 ) ( -320 -64 0 ) ( -320 64 0 ) __TB_empty [ -1 -1.2246467991473532e-16 0 0 ] [ -1.2246467991473532e-16 1 0 0 ] 180 1 1
+( 320 64 0 ) ( -320 64 -32 ) ( 320 64 -32 ) __TB_empty [ -1 -1.2246467991473532e-16 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 320 64 0 ) ( 320 -64 -32 ) ( 320 -64 0 ) __TB_empty [ -1.2246467991473532e-16 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 1
+{
+"classname" "info_player_start"
+"origin" "-256 0 24"
+}
+// entity 2
+{
+"classname" "func_group"
+"_tb_type" "_tb_layer"
+"_tb_name" "orb-offsets"
+"_tb_id" "1"
+"_tb_layer_sort_index" "0"
+}
+// entity 3
+{
+"classname" "light_globe_16-00"
+"origin" "-136 0 56"
+"_tb_layer" "1"
+}
+// entity 4
+{
+"classname" "light_globe_16-04"
+"origin" "-104 0 56"
+"_tb_layer" "1"
+}
+// entity 5
+{
+"classname" "light_globe_16-08"
+"origin" "-72 0 56"
+"_tb_layer" "1"
+}
+// entity 6
+{
+"classname" "light_globe_16-12"
+"origin" "-40 0 56"
+"_tb_layer" "1"
+}
+// entity 7
+{
+"classname" "light_globe_16-16"
+"origin" "-8 0 56"
+"_tb_layer" "1"
+}
+// entity 8
+{
+"classname" "light_globe_16-20"
+"origin" "24 0 56"
+"_tb_layer" "1"
+}
+// entity 9
+{
+"classname" "light_globe_16-24"
+"origin" "56 0 56"
+"_tb_layer" "1"
+}
+// entity 10
+{
+"classname" "light_globe_16-28"
+"origin" "88 0 56"
+"_tb_layer" "1"
+}
+// entity 11
+{
+"classname" "light_globe_16-32"
+"origin" "120 0 56"
+"_tb_layer" "1"
+}
+// entity 12
+{
+"classname" "func_group"
+"_tb_type" "_tb_layer"
+"_tb_name" "flame-offsets"
+"_tb_id" "2"
+"_tb_layer_sort_index" "1"
+}
+// entity 13
+{
+"classname" "s_flame_18-00"
+"origin" "-136 0 200"
+"_tb_layer" "2"
+}
+// entity 14
+{
+"classname" "s_flame_18-08"
+"origin" "-104 0 200"
+"_tb_layer" "2"
+}
+// entity 15
+{
+"classname" "s_flame_18-16"
+"origin" "-72 0 200"
+"_tb_layer" "2"
+}
+// entity 16
+{
+"classname" "s_flame_18-24"
+"origin" "-40 0 200"
+"_tb_layer" "2"
+}
+// entity 17
+{
+"classname" "s_flame_18-32"
+"origin" "-8 0 200"
+"_tb_layer" "2"
+}
+// entity 18
+{
+"classname" "s_flame_18-40"
+"origin" "24 0 200"
+"_tb_layer" "2"
+}
+// entity 19
+{
+"classname" "s_flame_18-48"
+"origin" "56 0 200"
+"_tb_layer" "2"
+}
+// entity 20
+{
+"classname" "s_flame_18-56"
+"origin" "88 0 200"
+"_tb_layer" "2"
+}
+// entity 21
+{
+"classname" "s_flame_18-64"
+"origin" "120 0 200"
+"_tb_layer" "2"
+}
+// entity 22
+{
+"classname" "s_flame_18-72"
+"origin" "152 0 200"
+"_tb_layer" "2"
+}
+// entity 23
+{
+"classname" "s_flame_18-80"
+"origin" "184 0 200"
+"_tb_layer" "2"
+}
+// entity 24
+{
+"classname" "s_flame_18-88"
+"origin" "216 0 200"
+"_tb_layer" "2"
+}
+// entity 25
+{
+"classname" "func_group"
+"_tb_type" "_tb_layer"
+"_tb_name" "smoke-plum"
+"_tb_id" "3"
+"_tb_layer_sort_index" "2"
+}
+// entity 26
+{
+"classname" "smoke_plume_spr"
+"origin" "272 0 8"
+"_tb_layer" "3"
+}
+// entity 27
+{
+"classname" "smoke_plume_png"
+"origin" "304 0 8"
+"_tb_layer" "3"
+}

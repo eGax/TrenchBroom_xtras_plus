@@ -1,0 +1,57 @@
+//
+// TrenchBroom spr / png testing
+
+@PointClass size(-16 -16 -24, 16 16 32) color(0 255 0) = info_player_start : "Player 1 start" []
+@PointClass size(-16 -16 -24, 16 16 32) color(255 0 0) = info_player_deathmatch : "Deathmatch start" []
+
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-0.spr"}) = light_globe_16-00 : "offset 16/0"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-4.spr"}) = light_globe_16-04 : "offset 16/4"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-8.spr"}) = light_globe_16-08 : "offset 16/8"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-12.spr"}) = light_globe_16-12 : "offset 16/12"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-16.spr"}) = light_globe_16-16 : "offset 16/16"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-20.spr"}) = light_globe_16-20 : "offset 16/20"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-24.spr"}) = light_globe_16-24 : "offset 16/24"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-28.spr"}) = light_globe_16-28 : "offset 16/28"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_light_16-32.spr"}) = light_globe_16-32 : "offset 16/32"[]
+
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-00.spr"}) = s_flame_18-00 : "offset 18/00"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-08.spr"}) = s_flame_18-08 : "offset 18/08"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-16.spr"}) = s_flame_18-16 : "offset 18/16"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-24.spr"}) = s_flame_18-24 : "offset 18/24"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-32.spr"}) = s_flame_18-32 : "offset 18/32"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-40.spr"}) = s_flame_18-40 : "offset 18/40"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-48.spr"}) = s_flame_18-48 : "offset 18/48"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-56.spr"}) = s_flame_18-56 : "offset 18/56"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-64.spr"}) = s_flame_18-64 : "offset 18/64"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-72.spr"}) = s_flame_18-72 : "offset 18/72"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-80.spr"}) = s_flame_18-80 : "offset 18/80"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame_18-88.spr"}) = s_flame_18-88 : "offset 18/88"[]	
+
+
+@PointClass size(-8 -8 -8, 8 8 200) model({"path":"tb/smoke_plume.spr", "scale":"0.25"}) = smoke_plume_spr : "smoke plume spr"[]
+@PointClass size(-8 -8 -8, 8 8 200) model({"path":"tb/smoke_plume.png", "scale":"0.25"}) = smoke_plume_png : "smoke plume png :
+    Due to pngs can not be offset other their default center X/Y origin, and can only face the mapper at any angle makes it a bad choice for larger sprites"[]
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_bubble.spr_0.png"}) = s_bubble_spr0 : "s_bubble_spr0"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_bubble.spr_1.png"}) = s_bubble_spr1 : "s_bubble_spr1"[]
+@PointClass size(-16 -16 -14, 16 16 18) model({"path":"tb/!la_neko.spr"}) = !la_neko : "!la_neko.spr"[]
+@PointClass size(-32 -32 -54, 32 32 54) model({"path":"tb/s_arch_tele.spr"}) = s_arch_tele : "s_arch_tele.spr"[]
+@PointClass size(-48 -48 -48, 48 48 48) model({"path":"tb/s_bfg.spr"}) = s_bfg : "s_bfg.spr"[]
+@PointClass size(-32 -32 -32, 32 32 32) model({"path":"tb/s_jump.spr"}) = s_jump : "s_jump.spr"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_jump.spr"}) = s_jump8 : "s_jump.spr"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_exp_shockwave.spr"}) = s_exp_shockwave : "s_exp_shockwave.spr"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_flame.spr","frame":"7"}) = s_flame : "s_flame.spr"[]
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_exp_rocket.spr"}) = s_exp_rocket : "s_exp_rocket.spr"[]
+
+
+@PointClass size(-32 -8 -306, 32 8 0) model({"path":"tb/s_water_doom.spr"}) = s_water_doom : "s_water_doom.spr"[]
+
+@PointClass size(-8 -8 -0, 8 8 16) model({"path":"tb/skulltree.spr"}) = skulltree : "skulltree.spr"[]
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_exp_mushroom_alt.spr","frame":"20"}) = s_exp_mushroom_alt : "s_exp_mushroom_alt.spr"[]
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_exp_plasmadie.spr","frame":"2"}) = s_exp_plasmadie : "s_exp_plasmadie.spr"[]
+
+@PointClass size(-8 -8 -8, 8 8 8) model({"path":"tb/s_tele_spawn.spr","frame":"6"}) = s_tele_spawn : "s_tele_spawn.spr"[]
