@@ -1,0 +1,1157 @@
+// - The Ascension Of Vigil
+// - https://discord.gg/yVRqTmEzuM
+
+// - game definition file (.fgd) for TrenchBroom 2022.1+
+// - w/ support for Ericw-tools 18.1-63 (wbrushes working)
+// - https://ericwa.github.io/ericw-tools/
+
+//===============================================
+// - TAoV originally a Quake mod for Dreamcast & PC started in 2004,
+//  turned stand alone game running in FTE, mod created by RenegadeC.
+//
+// - Last Modified by xaGe : 20221109-1615
+
+// 	_example(integer) : "This is a tooltip" : 0 : "This is a comment"
+// worldspawn
+
+@SolidClass = worldspawn : "World entity"
+[
+	message(string) : "Level name"
+	sounds(integer) : "CD track to play" : 0
+	light(integer) : "Ambient light" : 0 : "Set a global minimum light level of 'n' across the whole map. This is an easy way to eliminate completely dark areas of the level, however you may lose some contrast as a result, so use with care. Default 0"
+	_sunlight(integer) : "Sunlight" : 0 : "Set the brightness of the sunlight coming from an unseen sun in the sky. Sky brushes (or more accurately bsp leafs with sky contents) will emit sunlight at an angle specified by the _sun_mangle key. Default 0"
+	_sun_mangle(string) : "Sun mangle (Yaw pitch roll)" : "0 -90 0" : "Specifies the direction of sunlight using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Default is straight down (0 -90 0)"
+	_sunlight_penumbra(integer) : "Sunlight penumbra in degrees" : 0 : "Specifies the penumbra width, in degrees, of sunlight. Useful values are 3-4 for a gentle soft edge, or 10-20+ for more diffuse sunlight. Default is 0"
+	_sunlight_color(color255) : "Sunlight color R G B" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the sunlight. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light (255 255 255)"
+	_sunlight2(integer) : "Sunlight 2 brightness" : 0 : "Set the brightness of a large dome of lights positioned around the map (16K unit radius). Useful for simulating higly diffused light (e.g. cloudy skies) in outdoor areas. Default 0"
+	_sunlight2_color(color255) : "Sunlight 2 color R G B" : "255 255 255" : "Specifies the colour of _sunlight2, same format as _sunlight_color. Default is white light (255 255 255)"
+	_sunlight3(integer) : "Sunlight 3 brightness" : 0 : "Same as _sunlight2 but creates lights on the bottom hemisphere. Default 0"
+	_sunlight3_color(color255) : "Sunlight 3 color R G B" : "255 255 255" : "Specifies the colour of _sunlight3, same format as _sunlight_color. Default is white light (255 255 255)"
+	_dist(integer) : "Global light scale" : 1 : "Scales the fade distance of all lights by a factor of n. If n is more than 1 lights fade more quickly with distance and if n is less than 1, lights fade more slowly with distance and light reaches further"
+	_range(float) : "Global light range" : "0.5" : "Scales the brightness range of all lights without affecting their fade discance. Values of n more than 0.5 makes lights brighter and n less than 0.5 makes lights less bright. The same effect can be achieved on individual lights by adjusting both the 'light' and 'wait' attributes"
+	_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of sunlight on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"
+	_dirt(integer) : "Dirt mapping (AO)" : -1 : "1 enables dirtmapping (ambient occlusion) on all lights, borrowed from q3map2. This adds shadows to corners and crevices. You can override the global setting for specific lights with the _dirt light entity key or _sunlight_dirt, _sunlight2_dirt, and _minlight_dirt worldspawn keys. Default is no dirtmapping (-1)"
+	_phong(float) : "1 to add phong lighting to map brushes" : "0" : "Defaults to 0"
+	_sunlight_dirt(integer) : "Sunlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on sunlight, -1 to disable (making it illuminate the dirtmapping shadows). Default is to use the value of '_dirt'"
+	_sunlight2_dirt(integer) : "Sublight 2 dirt" : -1 : "1 enables dirt
+	ping (ambient occlusion) on sunlight2, -1 to disable. Default is to use the value of '_dirt'"
+	_minlight_dirt(integer) : "Minlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on minlight, -1 to disable. Default is to use the value of '_dirt'"
+	_dirtmode(integer) : "Dirt mode" : 0 : "Choose between ordered (0, default) and randomized (1) dirtmapping."
+	_dirtdepth(integer) : "Dirt depth" : 128 : "Maximum depth of occlusion checking for dirtmapping, default 128."
+	_dirtscale(integer) : "Dirt scale" : 1 : "Scale factor used in dirt calculations, default 1. Lower values (e.g. 0.5) make the dirt fainter, 2.0 would create much darker shadows"
+	_dirtgain(integer) : "Dirt gain" : 1 : "Exponent used in dirt calculation, default 1. Lower values (e.g. 0.5) make the shadows darker and stretch further away from corners"
+	_gamma(integer) : "Lightmap gamma" : 1 : "Adjust brightness of final lightmap. Default 1, >1 is brighter, <1 is darker"
+    _wateralpha(float) : "water transparency" : "1.0" : ""
+    _lavaalpha(float) : "lava transparency" : "1.0" : ""
+    _slimealpha(float) : "slime transparency" : "1.0" : ""
+    _telealpha(float) : "teleport transparency" : "1.0" : ""
+    _fog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : "fog here"
+    _waterfog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : ""
+	_skyroomfog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : "Only comes into play when skyrooms are used."
+    _airfog(float) : " " : "1.0" : ""
+	_sky(string) : "Name" : "castle_" : "Name of a skybox to load."
+    _skyrotate(integer) : " " : 22 : ""
+    _skyaxis(integer) : " " : 1 : ""
+	//    _cvar_*(string) : " " : "1" : ""
+	//    _texpart_*(string) : " " : "1" : ""
+	_bounce(integer) : "...enable bounce lighting." : 0 : "1 enables bounce lighting, disabled by default 0"
+	_bouncescale(float) : "...brightness scale of bounce lighting." : "1" : "Scales brightness of bounce lighting, defaults to 1"
+	_bouncecolorscale(integer) : "...bounce lighting to use texture colors from the map." : 0 : "Weight for bounce lighting to use texture colors from the map: 0=ignore map textures (default), 1=multiply bounce light color by texture color."
+	_bouncestyled(integer) : "...makes styled lights bounce." : 0 : "Set to 1 makes styled lights bounce (e.g. flickering or switchable lights), default is 0, they do not bounce."
+]
+//	_comment_example(string) : "This is a tooltip" : "suggested defaults" : "This is a comment"
+// base marker definitions
+
+@BaseClass = alpha : "Similar to r_wateralpha but for models. (NOT SHOWN IN TB)" 
+	[
+	alpha(float) : "from 0.0 invisible to fully visible 1.0(default)). Similar to r_wateralpha but for models. (NOT SHOWN IN TB)"	
+	]
+
+@BaseClass = scale : "Bigger values makes the models appear bigger in game. Smaller values will do the oppisite." 
+	[
+	scale(float) : "Bigger values makes the models appear bigger in game. Smaller values will do the oppisite."
+	]
+
+@BaseClass = Blit
+	[
+	_dirt(integer) : "Dirt mapping (override)" :  : "For brush models, -1 prevents dirtmapping on the brush model. Useful it the bmodel touches or sticks into the world, and you want to those ares from turning black. Default 0"
+	_lightignore(choices) : "1 makes a model receive minlight only, ignoring all lights / sunlight. Could be useful on rotators / trains." =
+		[
+			0: "No"
+			1: "Yes"
+		]
+	_lmscale(float) : "Generates an LMSHIFT bspx lump for use by a light util. Note that both scaled and unscaled lighting will normally be used."	
+	_minlight(float) : "Set minimum light level to brush model..." : "0" : "Set the minimum light level for the whole brush model. Default none."
+	_mincolor(color255) : "Min light color R G B / default = off / WHITE" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the minlight. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light (255 255 255)"
+	_minlight_exclude(string) : "Faces with the given texture are excluded from receiving minlight on this brush model." : "texname"
+	_mirrorinside(choices) : "Save mirrored inside faces for bmodels, so when the player view is inside the bmodel, they will still see the faces. (e.g. for func_water, or func_illusionary)" =
+		[
+		0 : "Disabled"
+		1 : "Mirrored"
+		]
+	_phong(choices) : "Apply Phong shading" : 0 =
+		[
+			0: "No"
+			1: "Yes"
+		]
+	_phong_angle(float) : "Phong shading angle" : "89" : "Enables phong shading on faces of this model with a custom angle. Adjacent faces with normals this many degrees apart (or less) will be smoothed. Consider setting '_anglescale' to '1' on lights or worldspawn to make the effect of phong shading more visible. Use the '-phongdebug' command-line flag to save the interpolated normals to the lightmap for previewing (use 'r_lightmap 1' or 'gl_lightmaps 1' in supported engines to preview.)"
+	]	
+
+// Targets
+
+@BaseClass = Targetname [ targetname(target_source) : "name" ]
+@BaseClass = Target [ target(target_destination) : "target" killtarget(target_destination) : "killtarget"]
+@BaseClass = Target2 [ target2(target_destination) : "target2" ]
+@BaseClass = Target3 [ target3(target_destination) : "target3" ]
+@BaseClass = Target4 [ target4(target_destination) : "target4" ]
+@BaseClass = Target5 [ target5(target_destination) : "target5" ]
+@BaseClass = Target6 [ target6(target_destination) : "target6" ]
+@BaseClass = Target7 [ target7(target_destination) : "target7" ]
+@BaseClass = Target8 [ target8(target_destination) : "target8" ]
+@BaseClass = Target9 [ target9(target_destination) : "target9" ]
+@BaseClass base(Target,Target2,Target3,Target4,Target5,Target6,Target7,Target8,Target9,Targetname) = Targets : "Target up to 9 different entities"[]
+@BaseClass = Awaketarget [ awaketarget(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget2 [ awaketarget2(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget3 [ awaketarget3(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget4 [ awaketarget4(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget5 [ awaketarget5(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget6 [ awaketarget6(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget7 [ awaketarget7(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget8 [ awaketarget8(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass = Awaketarget9 [ awaketarget9(target_destination) : "monster only, fire target on wakeup." ]
+@BaseClass base(Awaketarget,Awaketarget2,Awaketarget3,Awaketarget4,Awaketarget5,Awaketarget6,Awaketarget7,Awaketarget8,Awaketarget9,Targetname) = Awmtargets : "monster only, fire up to 9 Targets per monster on wakeup."[]
+
+// func_ info_ trigger_
+
+@PointClass base(Targets) color(200 150 150) model({"path":"tb/null.png", "scale":".15"})= info_null : "info_null (spotlight target)"[]
+
+@PointClass base(Targets) color(200 150 150) model({{
+	targetname == "sun" -> 	{"path":"tb/sun.png"},
+							{"path":"tb/notnull.png", "scale":".15"}
+
+	}}) = info_notnull : "Wildcard entity that can used for lots of things. If you give it a targetname of 'sun' it will display a sun icon."
+[
+	use(string) : "self.use"
+	think(string) : "self.think"
+	nextthink(integer) : "nextthink"
+	noise(string) : "noise"
+	touch(string) : "self.touch"
+]
+
+@SolidClass base(Targets, Blit) color(0 .5 .8) = func_destroy : "Destroyable brush having HP determined by the 'health' key value amount. Example HP of wooden barrels is 25. The 'cnt' number determines which of the types of chunks are thrown on destruction: wood(default), rock, metal, or flesh."
+[
+health(integer): "Give the func_destroy brush a health value, for reference barrels have 25
+health so you can estimate how much health your func_destroy should have." : 0
+cnt(choices) : "What type of chunks to throw on destruction..." : 0 =
+	[
+		0: "wood"
+		1: "rock"
+		2: "metal"
+		3: "flesh"
+	]
+]
+
+@SolidClass base(Targets, Blit) color(0 .5 .8) = func_fall : "falling brush entity that can be targeted by other entities, including other func_falls. FYI : func_falls tied to a origin brush are NON-SOLID!."
+[
+pos1(string):	"x y z" : : "hi"
+pos2(string):	"x y z" : : "hi"	
+wait(integer) : "how long until the brush begins falling" : 2
+noise(string) : "sound to make when touched / activated"
+noise2(string): "sound to make before it's removed, pain_finished of -1 disables noise2 as the object stays forever"
+cnt(integer) : "0 is default behavior (MOVETYPE_TOSS), 1 means collisions are disabled while falling (MOVETYPE_NOCLIP), 2 turns the brush into a bouncing entity (MOVETYPE_BOUNCE): 0"
+pain_finished(float) : "default of 0.01, higher values make the object/brush fade out faster thus in turn affecting how long it stays. -1 stays forever" : "0.01"
+speed(integer) : "speed as to how fast something falls per game frame, default is 10, higher values mean faster falling. Only for cnt of 1 (MOVETYPE_NOCLIP). Recommended to use lip for max fall speed on MOVETYPE_TOSS/BOUNCE entities (cnt 0 and 2) as they follow Quake's default gravity."
+lip(integer) : "maximum fall speed that can be achieved, caps 'speed' variable. Default is -800" : 800
+avelocity(string) : "have it spin when activated using X, Y, Z vector coordinates. MOVETYPE_BOUNCE ignores avelocity !Use an origin brush for proper spin!"
+	spawnflags(flags) =
+	[
+		1 : "Player activated only" : 0
+		2 : "Monster activated only" : 0
+	]
+]
+
+// moving things
+@BaseClass base(Targets, Blit) = door
+[
+	speed(integer) : "Speed" : 100
+	sounds(choices) : "Sound" : 0 =
+	[
+		1: "Stone"
+		2: "Machine"
+		3: "Stone Chain"
+		4: "Screechy Metal"
+	]
+	wait(choices) : "Delay before close" : 4 =
+	[
+		-1 : "Stays open"
+	]
+	lip(integer) : "Lip" : 8
+	dmg(integer) : "Damage inflicted when blocked" : 0
+	message(string) : "Message if triggered"
+	health(integer) : "Health (shoot open)" : 0
+	angle(integer)	: "Direction of travel" : 0
+]
+
+@SolidClass base(door) = func_door : "Basic door"
+[
+	spawnflags(flags) =
+	[
+		1 : "Starts Open" : 0
+		4 : "Don't link" : 0
+		8 : "Gold Key required" : 0
+        16: "Silver Key required" : 0
+        32: "Toggle" : 0
+	]
+]
+
+@SolidClass base(door) = func_door2 : "Basic door"
+[
+	spawnflags(flags) =
+	[
+		1 : "Starts Open" : 0
+		4 : "Don't link" : 0
+		8 : "Gold Key required" : 0
+        16: "Silver Key required" : 0
+        32: "Toggle" : 0
+	]
+]
+
+@SolidClass base(door) = func_door_secret : "triggered door"
+[
+	t_width(integer) : "First move lenght"
+	t_length(integer) : "Second move lenght"
+	dmg(integer) : "Damage when blocked" : 2
+	wait(choices) : "Time before close" : 2 =
+	[
+		-1 : "Stay open"
+	]
+	sounds(choices) : "Sounds" : 3 =
+	[
+		1: "Medieval"
+		2: "Metal"
+		3: "Base"
+	]
+	spawnflags(flags) =
+	[
+		1 : "Open once only" : 0
+		2 : "Moves left first" : 0
+		4 : "Moves down first" : 0
+		8 : "Not shootable" : 0
+           16 : "Always shootable" : 0
+	]
+]
+
+@SolidClass base(Targets, Blit) color(0 .5 .8)= func_bell : "Make a bell noise when jumped on top of..." []
+@SolidClass base(Targetname, Blit) = func_wall : "Wall" []
+@SolidClass base(Targetname, Blit) = func_button : "Button"
+[
+	speed(integer) : "Speed" : 40
+	lip(integer) : "Lip" : 4
+	target(target_source) : "targetted object"
+	health(integer) : "Health (shootable if > 0)"
+	sounds(choices) : "Sounds" =
+	[
+		0 : "Steam metal"
+		1 : "Wooden clunk"
+		2 : "Metallic clink"
+		3 : "In-out"
+	]
+	wait(integer) : "Delay before reset" : 1
+	delay(string) : "Delay before trigger"
+	message(string) : "Message"
+]
+@SolidClass base(Targetname, Blit) = func_train : "Moving platform"
+[
+	sounds(choices) : "Sound" : 1 =
+	[
+		0: "None"
+		1: "Ratchet Metal"
+	]
+	speed(integer) : "Speed (units per second)" : 64
+	target(target_source) : "First stop target"
+	dmg(integer) : "Damage on crush" : 0
+]
+
+@PointClass base(Targetname) size(16 16 16) =
+	path_corner : "Moving platform stop"
+[
+	target(target_source) : "Next stop target"
+	wait(integer) : "Wait" : 0
+]
+
+@SolidClass base(Targetname, Blit) = func_plat : "Elevator"
+[
+	spawnflags(Flags) =
+	[
+		1 : "Low trigger" : 0
+	]
+	speed(integer) : "Speed" : 150
+	height(integer) : "Travel altitude (can be negative)" : 0
+	sounds(choices) : "Sound group" : 1 =
+	[
+		0: "None"
+		1: "Base fast"
+		2: "Chain Slow"
+	]
+]
+
+@SolidClass base(Blit) = func_jumpblock : "[jump blocks]
+Brush entities that are non solid when the player is below
+and solid when above, allows a player to jump through and land on top
+as seen in many platformer games" []
+
+@SolidClass base(Targetname, Blit) = func_barrier : "
+A barrier is similar to noclip brushes, is non-solid until triggered,
+used to stop Vigil from going backwards if needed, recommended to stop
+the camera from left/right tracking also but not neccessary.
+
+requires a target name
+single player only" []
+
+@BaseClass base(Targets) color(0 255 0) = trigger
+[
+	style(integer) : "Style" : 32
+	killtarget(target_source) : "Kill target"
+	sounds(choices) : "Sound style" : 3 =
+	[
+		1 : "Secret sound"
+		2 : "Beep beep"
+		3 : "Large switch"
+		4 : "Set message to text string"
+	]
+	delay(integer) : "Delay before trigger" : 2
+	message(string) : "Message (set sound too!)"
+]
+
+@SolidClass base(trigger) = trigger_fog : "Allows mappers to adjust fog when trigger is touched by player."
+	[
+		fog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : "Setup your fog trigger."
+	]
+@SolidClass base(trigger) = trigger_changelevel : "Trigger: Change level"
+	[
+	map(string) : "name of the map to change level to: 'mapname'" : "castle"
+	cnt(string)	: ""
+	cnt2(string): "cnt2 set to value of TRUE will now make it so Vigil warps back to the previous level he entered from according to teleport.txt otherwise normal changelevel occurs."
+	]
+@SolidClass base(trigger) = trigger_safezone : "Create safe places for Vigil" [ cnt(integer) : "If set to 1 Vigil can't attack or be attacked. A value of 0 de-activates it." ]
+@SolidClass base(trigger) = trigger_once : "Variable sized trigger. triggers once, then removes itself.  You must set the key 'target' to the name of another object in the level that has a matching
+'Targetname'.  If 'health' is set, the trigger must be killed to activate.\\n//n
+
+If notouch is set, the trigger is only fired by other entities, not by touching.
+if 'killtarget' is set, any objects that have a matching 'target' will be removed when the trigger is fired.
+if 'angle' is set, the trigger will only fire when someone is facing the direction of the angle.  Use '360' for an angle of 0.
+sounds
+1)	secret
+2)	beep beep
+3)	large switch
+4)
+set 'message' to text string"
+[
+	spawnflags(flags) = [ 1: "Entity only" : 0 ]
+]
+@SolidClass base(trigger) = trigger_multiple : "trigger: Activate multiple"
+[
+	spawnflags(flags) = [ 1: "Entity only" : 0 ]
+	wait(integer) : "Delay before reset" : 10
+]
+@SolidClass base(trigger) = trigger_secret : "trigger: Secret"
+[
+	spawnflags(flags) = [ 1: "Entity only" : 0 ]
+	wait(integer) : "Delay before reset" : 10
+]
+@SolidClass base(trigger) = trigger_teledoor : "[trigger_teledoor]
+A teledoor is simply a silent teleporter when touched by player will warp player to a new destination on the map.
+
+requires a target name." []
+@PointClass base(Targets) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":progs/plyr.mdl", "frame": "69"}) = info_teledoor_destination : "info_teledoor_destination"
+[]
+
+@PointClass base(trigger) = trigger_relay : "trigger relay" []
+@SolidClass base(trigger) = trigger_monsterjump : "trigger monster jump"
+[
+	speed(integer) : "Jump Speed" : 40
+	height(integer) : "Jump Height" : 128
+]
+@PointClass base(trigger) = trigger_counter : "trigger counter"
+[
+	spawnflags(flags) = [ 1: "No Message" : 0 ]
+	count(integer) : "Count before activation" : 2
+]
+@SolidClass base(trigger) = trigger_walk : "[trigger_walk]
+When the player touches this entity, he is forced to walk or run in the direction specified by the 'run' & 'angle' keys.
+
+-angle  : Accepted values are 0 to 360.
+-run    : If the 'run' spawnflag is checked (spawnflag 1), then the player is forced to run."
+    [
+	spawnflags(flags) = [ 1: "run or walk" : 0 ]
+	angle(integer) : "direction to walk" : 40
+    ]
+@SolidClass base(trigger) = trigger_hurt : "trigger player hurt"
+[
+	dmg(integer) : "Damage" : 10
+]
+@PointClass base(Targets) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":tb/null.mdl" }) = trigger_changemap : "triggers a map change. It requires a 'Targetname' of the map to be loaded" []
+@SolidClass base(trigger) = trigger_pit     : "Death pit" []
+@SolidClass base(trigger) = trigger_push    : "Pushes any entity, at a given velocity one time per second.
+Inactive trigger_push is activated by another trigger."
+ [
+	spawnflags(Flags) =
+	[
+		 1 : "1x use then removes itself after triggered"
+		 2 : "starts inactive"
+		 4 : "disables wind flying sound"
+		 8 : "plays player jump sound when touched"
+		16 : "only monsters"
+	]
+	speed(integer) : "How fast of a velocity to push an object" : 40
+ ]
+@SolidClass base(trigger) = trigger_camstyle : "[trigger_camstyle]
+0 : (default) Default camera tracking method
+1 : Stop tracking all together
+2 : Do not track Up or Down / Z
+3 : Do not track Left or Right / X
+4 : Track one location only, Envenom-style camera requiring campos!
+5 : Track statically
+
+Vigil must touch this trigger for it to take effect,
+remember you may have to set camera style back to 0
+using another trigger!"
+    [
+camerastyle(choices) : "def=0" : 0 =
+    [
+0 : "(default) Default camera tracking method"
+1 : "Stop tracking all together"
+2 : "Do not track Up or Down / Z"
+3 : "Do not track Left or Right / X"
+4 : "Track at one location only, Envenom-style camera requiring campos"
+5 : "Track statically"
+    ]
+campos(string) : "Required only for Envenom-style camera 4. Syntax: X Y Z. # # #"
+zoom(float) : "Set zoom level when camestyle is triggered. + values zoom out and - values zoom in." : "0" : "defaults to 0"
+]
+@SolidClass base(trigger) = trigger_lightstyle1	: "spawnflag 1 turns the light style back on (normal), otherwise it turns it off on touch entity removes itself."
+ [
+	spawnflags(Flags) =
+	[
+		 1 : "Spawnflag 1 turns the light style back on."
+	]
+]
+@PointClass base(Targetname) size(-4 -4 -4, 4 4 4) = info_rotate : "Point of rotation for rotatable objects." []
+@PointClass base(Targets, Blit) size(16 16 16) = func_rotate_entity : "Creates rotating entity"
+[
+	spawnflags(flags) =
+	[
+		1 : "Toggle" : 0
+		2 : "Start on" : 0
+	]
+	deathtype(string) : "Message that appears when a player is killed by the entity"
+	rotate(string) : "Rate of rotation"
+	target(string) : "Center of rotation"
+	speed(string) : "How long the entity takes to go from standing still to full speed and vice-versa."
+]
+
+@PointClass base(Targets, Blit) = path_rotate : "path_rotate
+ -ROTATION tells train to rotate at rate specified by 'rotate'.  Use '0 0 0' to stop rotation.
+ -ANGLES tells train to rotate to the angles specified by 'angles' while traveling to this path_rotate.  Use values < 0 or > 360 to guarantee that it turns in a certain direction.  Having this flag set automatically clears any rotation.
+ -STOP tells the train to stop and wait to be retriggered.
+ -NO_ROTATE tells the train to stop rotating when waiting to be triggered.
+ -DAMAGE tells the train to cause damage based on 'dmg'.
+ -MOVETIME tells the train to interpret 'speed' as the length of time to take moving from one corner to another.
+ -SET_DAMAGE tells the train to set all Targets damage to 'dmg'
+
+ -'noise' contains the name of the sound to play when train stops.
+ -'noise1' contains the name of the sound to play when train moves.
+ -'event' is a target to trigger when train arrives at path_rotate."
+[
+	spawnflags(flags) =
+	[
+		1 : "Rotation" : 0
+		2 : "Angles" : 0
+		4 : "Stop" : 0
+		8 : "No Rotate" : 0
+		16 : "Damage" : 0
+		32 : "Move Time" : 0
+		64 : "Set Damage" : 0
+	]
+	rotate(string) : "Rotation"
+	angles(string) : "Angles"
+	noise(string) : "Wait Noise"
+	noise1(string) : "Move Noise"
+	wait(integer) : "Wait Time"
+	event(string) : "Event target"
+	message(string) : "Event Message"
+	dmg(integer) : "Damage"
+	speed(integer) : "Move time(if flaged) or Speed"
+]
+@PointClass base(Targets, Blit) size(-8 -8 -8, 8 8 8) = func_rotate_train : "Moving platform"
+[
+	noise1(string) : "Train move noise"
+	noise(string) : "Train stop noise"
+	path(string) : "First path_rotate"
+	deathtype(string) : "Kill Message"
+	speed(integer) : "Speed" : 100
+	dmg(integer) : "Damage" : 0
+	sounds(choices) : "Sound" : 1 =
+	[
+		0: "None"
+		1: "Ratchet Metal"
+	]
+]
+@SolidClass base(Targetname, Blit) = func_movewall : "Emulate collision on rotating brushes
+-VISIBLE causes brush to be displayed.
+-TOUCH specifies whether to cause damage when touched by player.
+-NONBLOCKING makes the brush non-solid.  This is useless if VISIBLE is set.
+
+-'dmg' specifies the damage to cause when touched or blocked."
+[
+	spawnflags(flags) =
+	[
+		1 : "Visible" : 1
+		2 : "Damage on touch" : 0
+		4 : "Non-Solid" : 0
+	]
+	dmg(integer) : "Damage"
+]
+@SolidClass base(Targets) = rotate_object : "Object to be rotated. Used as the target of func_rotate_door." []
+@PointClass base(Targetname, Blit) = func_rotate_door : "Rotating door controller"
+[
+    dmg(integer) : "specifies the damage to cause when blocked.  Defaults to 2.  Negative numbers indicate no damage." : 2
+	speed(string): "specifies how the time it takes to rotate"
+	sounds(choices) =
+	[
+		1: "Medieval (def)"
+		2: "Metal"
+		3: "Base"
+	]
+	spawnflags(flags) =
+	[
+		1: "Stay open" : 0
+	]
+
+]
+@SolidClass base(Targets, Blit) color(0 .5 .8) = func_swing : "Swinging object w/ vector rotation along any axis requiring an origin textured brush as part as the swing group. Minus values on an axis will swing it the other way. Adjustable speed set through 'cnt'. time to swing (-1 is infinite), as well as vector rotation on any axis"
+[
+	cnt(float) : "How long to swing" : "1.0" : "time to swing, -1 = infinite"
+	pos1(string)	: "X,Y,Z rotation" : "0 350 0" : "minus values swings"
+	noise(string) : "sound to make when touched / activated" : ""
+	noise2(string): "sound to make before it's removed, pain_finished of -1 disables noise2 as the object stays forever" : ""
+	spawnflags(Flags) = [ 1 : "non-solid" : 0 : "Set 1 to make swing non-solid or leave 0 (default) for it to be  solid." ]
+]
+
+@SolidClass base(Blit) color(128 128 230) = func_group : "Good for grouping brush props or prefabs of brush & entity pieces. Double click to select everything in the group." []
+@SolidClass base(Blit) color(128 128 230) = func_illusionary : "Static nonsolid model"  []
+// ericw-tools oriented
+@SolidClass base(Blit) = func_illusionary_visblocker : "For creating vis-blocking illusionary brushes (similar to 'func_detail_illusionary' or 'func_illusionary'. The player can walk through them.) This gives the same effect as water brushes when the '-notranswater' flag is used, except the interior of these brushes are saved as CONTENTS_EMPTY. One thing to be aware of is, if the player’s view is very close to the faces of these brushes, they might be able to see into the void (depending on the engine). Fitzquake family engines have a workaround for this that is enabled if the brushes are textured with a water texture ('*' prefix)." []
+@PointClass base(Blit) size(16 16 16) color(200 200 0) model({"path": mdl}) = misc_external_map : "External map prefab each 'misc_external_map' imports brushes from an external .map file, applies rotations specified by the '_external_map_angles' key, then translates them to the 'origin' key of the 'misc_external_map' entity. Finally, the classname of the 'misc_external_map' is switched to the one provided by the mapper in the '_external_map_classname' key. (The 'origin' key is also cleared to '0 0 0' before saving the .bsp). The external .map file should consist of worldspawn brushes only, although you can use func_group for editing convenience. Brush entities are merged with the worldspawn brushes during import. All worldspawn keys, and any point entities are ignored. Currently, this means that the 'wad' key is not handled, so you need to add any texture wads required by the external .map file to your main map. Note that you can set other entity keys on the 'misc_external_map' to configure the final entity type. e.g. if you set '_external_map_classname' to 'func_door', you can also set a 'Targetname' key on the 'misc_external_map', or any other keys for 'func_door'"
+[
+	_external_map(string) : "Path" :  :"ABSOLUTE path to external .map file. For example 'c:\quake\myprefab.map'"
+	_external_map_classname(string) : "Class name" :  :"What internal qbsp entity type you want the external map to turn in to?
+	-'func_detail'
+	-'func_wall'
+	-'func_door'"
+	_external_map_angles(string) : "Angle" :  :"Rotation for the prefab, 'pitch yaw roll' format. Negative pitch is down"
+	_external_map_angle(integer) : "Short angle" :  :"Short version of '_external_map_angles' for when you want to specify just a yaw rotation"
+    mdl(string) : "location/name.bsp" : "maps/somename.map" : "Currently TB doesn't support"
+]
+
+@SolidClass base(Blit) color(128 128 230) = func_detail : "Detail brush. Ignored by vis so can speed up compile times consideratbly. Also allows you to set new compiler lighting options on brushes. DOES NOT SEAL MAPS FROM VOID" []
+@SolidClass base(Blit) color(128 128 230) = func_detail_fence : "Similar to func_detail_wall except it's suitable for fence textures, never clips away world faces. Useful for fences, grates, etc., that are solid and block gunfire" []
+@SolidClass base(Blit) color(128 128 230) = func_detail_illusionary : "func_detail variant with no collision (players / monsters / gunfire) and doesn't split world faces. Doesn't cast shadows unless enabled with _shadow 1. Useful for hanging vines. Still creates BSP leafs." []
+@SolidClass base(Blit) color(128 128 230) = func_detail_wall : "func_detail variant that doesn't split world faces. Useful for when you want a decoration touching a floor or wall to not split the floor - wall faces (you'll get some overdraw instead.) If it completely covers up a world face, that face will get clipped away, so it's not suitable for fence textures; see func_detail_fence instead" []
+
+// player
+@BaseClass base() size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":progs/plyr.mdl", "frame": "60" }) = PlayerClass []
+@PointClass base(PlayerClass) model({"path": ":progs/plyr.mdl", "frame": "0", "scale":"0.5" }) = info_player_start : "Game camera spawn location. Be sure to give it enough zooming in / out room which you can set it's default zoom by how close you've put it from Vigil's [player_spawn] location seperated from the gameplay by a clip brush wall." []
+@PointClass base(PlayerClass) = player_spawn : "Vigil's spawn location in the map." [spawnflags(flags) = [ 1 : "orb cinematic start" : 0 : "Do the orb cinematic start" ]]
+
+
+@PointClass base()  = info_intermission : "Intermission camera"
+[
+	mangle(string) : "Mangle (Pitch Yaw Roll)"
+]
+
+// monsters
+@BaseClass base(awareness, Awmtargets, Targets) size(0 0 0, 0 0 0) color(220 0 50) = monster
+[
+	spawnflags(flags) = [ 1 : "Ambush" : 0 : " Set 1 ambush or none to not." ]
+	halfhealth_target(string) : "monster only, fire target on half-health"
+	nodrop(integer) : "0 = Engine will pull the monster to the floor on spawn and 1 won't do that" : 0
+]
+@BaseClass = awareness : "
+    0 (default) notice player when near and visible
+    1 notice player if visible at all
+    2 notice player instantly
+    3 ignore player, check if camera is in front of monster
+    4 ignore the player outright until attacked / triggered	  
+
+- target:
+    If the monster is given a target, when monster dies it can cause an event such as a door opening!"
+[
+	awareness(choices) : "Player awareness (def=0)" : 0 =
+	[
+            0 : "notice player when near and visible (default)"
+            1 : "notice player if visible at all"
+            2 : "notice player instantly"
+            3 : "ignore player, check if camera is in front of monster"
+            4 : "ignore player outright until attacked / triggered"	
+	]
+]
+@PointClass base(monster) color(255 0 0) model({{
+	cnt == 0 ->		{"path":"progs/knight.mdl"},
+	cnt == 1 ->		{"path":"progs/dog.mdl"},
+	cnt == 2 ->		{"path":"progs/hknight.mdl"},
+	cnt == 3 ->		{"path":"progs/baron.mdl"},
+	cnt == 4 ->		{"path":"progs/skeleton.mdl"},
+	cnt == 5 ->		{"path":"progs/horror.mdl"},
+	cnt == 6 ->		{"path":"progs/gaunt.mdl"},
+	cnt == 7 ->		{"path":"progs/archg.mdl"},
+	cnt == 8 ->		{"path":"tb/null.mdl"},
+	cnt == 9 ->		{"path":"progs/wraith.mdl"},
+	cnt == 10 ->	{"path":"progs/esquid.mdl"},
+	cnt == 11 ->	{"path":"progs/grem.mdl"},
+	cnt == 12 ->	{"path":"progs/ghoul.mdl"},
+	cnt == 13 ->	{"path":"progs/archer.mdl"},
+	cnt == 14 ->	{"path":"progs/zombie.mdl"},
+	cnt == 15 ->	{"path":"progs/zombieb.mdl"},
+	cnt == 16 ->	{"path":"progs/troglod.mdl"},
+	cnt == 17 ->	{"path":"progs/dragon.mdl"},
+	cnt == 18 ->	{"path":"progs/hydra.mdl"},
+	cnt == 19 ->	{"path":"progs/needles.mdl"},
+	cnt == 20 ->	{"path":"progs/merman.mdl"},
+	cnt == 21 ->	{"path":"progs/ethskull.mdl"},
+	cnt == 22 ->	{"path":"progs/lwraith.mdl"},
+	cnt == 23 ->	{"path":"progs/raven.mdl"},
+	cnt == 24 ->	{"path":"progs/knight2.mdl"},
+	cnt == 25 ->	{"path":"progs/werewolf.mdl"},
+	cnt == 27 ->	{"path":"progs/golem.mdl"},
+	cnt == 98 ->	{"path":"progs/bat.mdl"},	
+	cnt == 99 ->	{"path":"progs/medusahead_spawner.mdl"},
+							"progs/knight.mdl"
+	}}) = spawn_monster :
+
+"Spawn one of these monster types to spawn in.
+
+ 0- Corrupted Knight
+ 1- Hunting Hound
+ 2- Corrupted Commander
+ 3- Baron
+ 4- Skeleton
+ 5- Horror
+ 6- Gaunt
+ 7- Arch-Ghoul
+ 8- Ghost
+ 9- Wraith
+10- Electric Squid
+11- Gremlin
+12- Ghoul
+13- Archer
+14- Zombie
+15- Zombie Boss
+16- Troglod
+17- Green Dragon
+18- Hydra (Water Only)
+19- Needles (Water Only)
+20- Merman
+21- Ethereal Skull
+22- Lesser Wraith
+23- Raven
+24- Corrupted Captain
+25- Werewolf
+27- Stone Golem
+98- Bat
+99- Medusa Head Spawner"
+[
+cnt(choices) : "Monster type" : 0 =
+	[
+		0	:	"Corrupted Knight"
+		1	:	"Hunting Hound"
+		2	:	"Corrupted Commander"
+		3	:	"Baron"
+		4	:	"Skeleton"
+		5	:	"Horror"
+		6	:	"Gaunt"
+		7	:	"Arch-Ghoul"
+		8	:	"Ghost"
+		9	:	"Wraith"
+		10 : 	"Electric Squid"
+		11 : 	"Gremlin"
+		12 : 	"Ghoul"
+		13 : 	"Archer"
+		14 : 	"Zombie"
+		15 : 	"Zombie Boss"
+		16 : 	"Troglod"
+		17 : 	"Green Dragon"
+		18 : 	"Hydra (Water Only)"
+		19 : 	"Needles (Water Only)"
+		20 : 	"Merman"
+		21 : 	"Ethereal Skull"
+		22 : 	"Lesser Wraith"
+		23 : 	"Mad Raven"
+		24 : 	"Corrupted Captain"
+		25 : 	"Werewolf"
+		27 :	"Stone Golem"
+		98 : 	"Bat"		
+		99 : 	"Medusa Head Spawner"
+		]
+]
+@PointClass base(monster) model({"path":"progs/knight.mdl"}) = monster_knight : "Corrupted Knight" []
+@PointClass base(monster) size(-24 -24 -24, 24 24 4) model({"path":"progs/dog.mdl"}) = monster_dog : "Hunting Hound - reg HP51" []
+@PointClass base(monster) model({"path":"progs/hknight.mdl"}) = monster_hell_knight : "Corrupted Commander" []
+@PointClass base(monster) model({"path":"progs/baron.mdl"}) = monster_baron : "The Baron is handy with a sword and great blockers that will knock you down w/ their ground smash. - reg HP300" []
+@PointClass base(monster) model({"path":"progs/skeleton.mdl"}) = monster_skeleton : "A sword weilding skeleton" []
+@PointClass base(monster) model({"path":"progs/horror.mdl"}) = monster_horror : "Agile winged death from above." []
+@PointClass base(monster) model({"path":"progs/gaunt.mdl"}) = monster_gaunt : "Magic using creature who primarily uses fire magic." []
+@PointClass base(monster) model({"path":"progs/archg.mdl"}) = monster_archghoul : "A higher level Gaunt that's a stronger spellcaster who likes to chill." []
+@PointClass base(monster) model({"path":"tb/null.mdl"}) = monster_ghost : "Remnants of a Wraith, an annoying soul of a defeated Wraith that will follow you and eat at your health 1 hp at a time." []
+@PointClass base(monster) model({"path":"tb/null.mdl"}) = monster_ghost2 : "Remnants of a Wraith, an annoying soul of a defeated Wraith that will follow you and eat at your health 1 hp at a time." []
+@PointClass base(monster) model({"path":"progs/wraith.mdl"}) = monster_wraith : "A hooded sword weilding apparition that can pass through anything to get you. " []
+@PointClass base(monster) model({"path":"progs/esquid.mdl"}) = monster_esquid : "An electric squid is a small tentacle beastie that will shoot lightning when provoked." []
+@PointClass base(monster) model({"path":"progs/grem.mdl"}) = monster_gremlin : "Very agile and deadly in large groups." []
+@PointClass base(monster) model({"path":"progs/ghoul.mdl"}) = monster_ghoul : "A ghoul." []
+@PointClass base(monster) model({"path":"progs/archer.mdl"}) = monster_archer : "Likes to keep their distance and rain down death from a far." []
+@PointClass base(monster) model({"path":"progs/zombie.mdl"}) = monster_zombie : "Shoots homing dark magic projectiles and can only be killed with fire. If placed near a Zombie boss they will heal him when hurt thru dark magic." []
+@PointClass base(monster) model({"path":"progs/zombieb.mdl"}) = monster_zombie_boss : "When placed with 1 or more normal monster_zombies they will heal the boss with dark magic when his health becomes low." []
+@PointClass base(monster) model({"path":"progs/troglod.mdl"}) = monster_troglod : "Highest class magic using demon, knows all spells and floats through the air." []
+@PointClass base(monster) model({"path":"progs/dragon.mdl"}) = monster_dragon : "Dragons are powerful but cannot block nor be lifted off the ground." []
+@PointClass base(monster) model({"path":"progs/hydra.mdl"}) = monster_hydra : "Hydra is a typical weak underwater enemy that slowly homes in and attacks. - water monster" []
+@PointClass base(monster) model({"path":"progs/needles.mdl"}) = monster_needles : "Ouch its needles - water monster" []
+@PointClass base(monster) model({"path":"progs/merman.mdl"}) = monster_merman : "Acid spitting Merman." []
+@PointClass base(monster) model({"path":"progs/ethskull.mdl"}) = monster_ethskull : "Ethereal Skull" []
+@PointClass base(monster) model({"path":"progs/lwraith.mdl"}) = monster_lesserwraith : "Lesser Wraith" []
+@PointClass base(monster) model({"path":"progs/raven.mdl"}) = monster_raven : "Mad Raven" []
+@PointClass base(monster) model({"path":"progs/knight2.mdl"}) = monster_knight2 : "Corrupted Captain" []
+@PointClass base(monster) size(-32 -32 -26, 32 32 76) model({"path":"progs/werewolf.mdl"}) = monster_werewolf : "Werewolf" []
+@PointClass base(monster) model({"path":"progs/golem.mdl"}) = monster_golem : "Stone Golem" []
+@PointClass base(monster) model({"path":"progs/bat.mdl"}) = monster_bat : "A bat that flies into an object and explodes into flames - hp1" []
+@PointClass base(monster) model({"path":"progs/medusahead.mdl"}) = medusahead_spawner : "These will spawn juicy medusa heads that fly through the map until explodes on contact."
+[
+    cnt(integer)    : "a flag of 1 will spawn Medusa heads without the NODEPTHTEST flag. Handy for background and foreground detail."
+    cnt2(integer)   : "controls how fast (in seconds) to spawn a medusa head" : 5
+    .speed(integer) : "controls how fast they move forward" : 70
+    .flytime(integer) : "This sets how far they move in each direction up/down as they fly forward. A bigger flytime results in longer up/down movements" :1
+]
+@PointClass base(monster) model({"path":"progs/s_knight.mdl"})= monster_boss1 : "Stained Glass Knight. Entity place holder for SGK. More info and keys will be added once he's coded in the game." []
+@PointClass base(monster) model({"path":"progs/boss.mdl"}) = monster_boss2 : "The Dragon boss usually perched in his lava pit nest. He will bite and shoot lava ball when you approach him." []
+@PointClass base(monster) model({"path":"progs/hanged.mdl"}) = misc_zombie : "Just hangs around for decoration." []
+
+// npc
+@BaseClass base(Targets, Targetname) = npc []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 42) model({"path": "progs/bartender.mdl", "skin": 0}) = npc_bartender : "" []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 42) model({"path": "progs/bsmith.mdl", "skin": 0}) = npc_bsmith : "Spend gold to have him upgrade your armor and sword." []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 32) model({"path": "progs/guard.mdl", "skin": 0}) = npc_guard : "" []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 32) model({"path": "progs/lisa.mdl", "skin": 0}) = npc_lisa : "Spend gold to train up your skills." []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 36) model({"path": "progs/priest.mdl", "skin": 0}) = npc_priest : "Spend gold to be bless by the gods" []
+@PointClass base(npc)  size(-16 -16 -24, 16 16 36) model({"path": "progs/wizard.mdl", "skin": 0}) = npc_wizard : "Learn new spells, but at a price." []
+
+// sounds
+@BaseClass base(Targetname) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_yel.png", "scale": .08}) = snd []
+@BaseClass base(snd) model({"path": "tb/speaker_grn.png", "scale": .08}) = sndamb []
+@BaseClass base(snd) model({"path": "tb/speaker_org.png", "scale": .08}) = sndmus []
+
+@PointClass base(sndmus) = music_track1 : "A BGM" []
+@PointClass base(sndmus) = music_track2 : "Another BGM" []
+@PointClass base(sndmus) = music_track3 : "Yet Another BGM" []
+@PointClass base(sndmus) = music_track4 : "Yet Another BGM" []
+@PointClass base(sndmus) = music_track5 : "Yet Another BGM" []
+@PointClass base(sndmus) = music_track6 : "Yet Another BGM" []
+@PointClass base(sndmus) = music_track7 : "Yet Another BGM" []
+@PointClass base(sndmus) = music_track8 : "Yet Another BGM" []
+@PointClass base(sndamb) = ambience_lava: "lava sounds : * it's important that ambience sounds should be placed near the camera *"[]
+@PointClass base(sndamb) = ambience_surfering : "Scaring sound" []
+@PointClass base(sndamb) = ambience_thunder : "Thunder SFX" []
+@PointClass base(sndamb) = ambience_waterfall : "a large waterfall. It's important that ambience sounds should be placed near the camera" []
+@PointClass base(sndamb) = ambience_speaker : "allows any ambience sound to be put into a map. It's important that ambience sounds should be placed near the camera model"
+[
+	model(string) : "sound (wav)"
+]
+@SolidClass base(trigger, sndmus) = trigger_music : "Allows mappers to change music track on touch or by targeting. Music done by trigger removes itself after one use unless 'cnt' flag is set to 1."
+	[
+	music(string) : "sound or music to play: sound/music/track9.ogg"
+	cnt(integer) : "default 0 to play once, 1 to repeat." : 0 : ""	
+	]
+
+@PointClass base(snd) = misc_sound : "allows any ambience sound to be put into a map. It's important that ambience sounds should be placed near the camera model"
+	[
+	noise(string) : "sound to play: sound/misc/gaxe.wav"
+	cnt(integer) : "set to 1 plays the sound thru the level." : 0 : "optional, default = 0"
+	]
+	
+// light
+@BaseClass size(16 16 16) color(200 255 255) model({{
+	spawnflags == 1 -> 	{"path": "tb/ent-bulb.mdl", "scale":"0.8", "skin":"1"},
+						{"path": "tb/ent-bulb.mdl", "scale":"0.8"}
+	}}) = lit  : "Hi, I am a light source." [
+	light(integer) : "Brightness" : 300 : "Set the light intensity. Negative values are also allowed and will cause the entity to subtract light cast by other entities. Default 300"
+	_color(color255) : "Light color" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the light. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light ('255 255 255')"
+	wait(float) : "Fade distance multiplier" : "1" : "Scale the fade distance of the light by 'n'. Values of n more than 1 make the light fade more quickly with distance, and values less than 1 make the light fade more slowly (and thus reach further). Default 1"
+	delay(choices) : "Attenuation" : 0 : "Select an attenuation formula for the light: 0 = Linear attenuation (default). 1 = 1/x attenuation. 2 = 1/(x^2) attenuation. 3 = No attenuation (same brightness at any distance). 4 = 'local minlight' - No attenuation and like minlight, it won't raise the lighting above it's light value. Unlike minlight, it will only affect surfaces within line of sight of the entity. 5 = 1/(x^2) attenuation, but slightly more attenuated and without the extra bright effect that 'delay 2' has near the source"  =
+	[
+		0 : "Linear falloff (Default)"
+		1 : "Inverse distance falloff"
+		2 : "Inverse distance squared"
+		3 : "No falloff"
+		4 : "Local minlight"
+		5 : "Inverse distance 2"
+		]
+	mangle(string) : "Spotlight direction" :  : "Turns the light into a spotlight and specifies the direction of light using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Often easier than the 'target' method"
+	angle(integer) : "Spotlight cone angle" :  : "Specifies the angle in degrees for a spotlight cone. Default 40"
+	style(choices) : "Appearance" : 0 =
+	[
+		0 : "Normal"
+		10: "Fluorescent flicker"
+		2 : "Slow, strong pulse"
+		11: "Slow pulse, noblack"
+		5 : "Gentle pulse"
+		1 : "Flicker A"
+		6 : "Flicker B"
+		3 : "Candle A"
+		7 : "Candle B"
+		8 : "Candle C"
+		4 : "Fast strobe"
+		9 : "Slow strobe"
+	]
+	spawnflags(Flags) = [ 1 : "Initially dark" : 0 ]
+	_softangle(integer) : "Spotlight soft angle" : 0 : "Specifies the angle in degrees for an inner spotlight cone (must be less than the 'angle' cone. Creates a softer transition between the full brightness of the inner cone to the edge of the outer cone. Default 0 (disabled)"
+	_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of light on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"
+	_dirtscale(integer) : "Dirt scale (override)" :  : "Override the global '_dirtscale' or '_dirtgain' settings to change how this light is affected by dirtmapping (ambient occlusion). See descriptions of these keys in the worldspawn section"
+	_dirt(integer) : "Dirt map (override)" :  : "Overrides the worldspawn setting of '_dirt' for this particular light. -1 to disable dirtmapping (ambient occlusion) for this light, making it illuminate the dirtmapping shadows. 1 to enable ambient occlusion for this light. Default is to defer to the worldspawn setting"
+	_deviance(integer) : "Deviance" :  : "Split up the light into a sphere of randomly positioned lights within radius 'n' (in world units). Useful to give shadows a wider penumbra. '_samples' specifies the number of lights in the sphere. The 'light' value is automatically scaled down for most lighting formulas (except linear and non-additive minlight) to attempt to keep the brightness equal. Default is 0, do not split up lights"
+	_samples(integer) : "No. of Deviance lights" :  : "Number of lights to use for '_deviance'. Default 16 (only used if '_deviance' is set)"
+	_surface(string) : "Surface light texture name" :  : "Makes surfaces with the given texture name emit light, by using this light as a template which is copied across those surfaces. Lights are spaced about 128 units (though possibly closer due to bsp splitting) apart and positioned 2 units above the surfaces"
+	_surface_offset(integer) : "Surface light offset" :  : "Controls the offset lights are placed above surfaces for '_surface'. Default 2"
+	_project_texture(string) : "Name of texture being projected" :  : "Specifies that a light should project this texture. The texture must be used in the map somewhere"
+	_project_mangle(string) : "Angle of projected texture" :  : "Specifies the yaw/pitch/roll angles for a texture projection (overriding mangle)"
+	_project_fov(integer) : "fov of projected texture" :  : "Specifies the fov angle for a texture projection. Default 90"
+	_bouncestyled(integer) : "Bounce styled light?" :  : "Set this to '1' to enable this styled light to bounce if you are using bounce lighting in your map"
+]
+
+@PointClass base(lit) = light : "Invisible lightsource"[]
+@PointClass base(lit) color(255 255 100) size(-10 -10 -12, 12 12 18) model({"path": "tb/flame_purple.png", "scale":"0.20"}) = light_flame_large_purple : "Large purple flame" []
+@PointClass base(lit) color(255 255 100) size(-8 -8 -12, 8 8 44) model({"path": "progs/flame2.mdl", "frame": 1}) = light_flame_large_yellow : "Large yellow flame" []
+@PointClass base(lit) color(255 255 100) size(-4 -4 -12, 4 4 20) model({"path": "progs/flame2.mdl"}) = light_flame_small_yellow : "Small yellow flame"[]
+@PointClass base(lit) color(255 255 100) size(-8 -8 -8, 8 8 8) model({"path": "tb/flame_purple.png", "scale":"0.16"}) = light_flame_small_purple : "Small purple flame"[]
+@PointClass base(lit) color(255 255 255) size(-4 -4 -12, 4 4 20) model({"path": "progs/flame2.mdl"}) = light_flame_small_white : "Small white flame"[]
+@PointClass base(lit) color(255 255 100) size(-10 -10 -20, 10 10 20) model("progs/flame.mdl") = light_torch_small_walltorch : "Small walltorch"[]
+@PointClass base(lit) color(255 255 100) size(-10 -10 -48, 10 10 24) model({"path": "progs/longtrch.mdl", "skin": 0}) = light_torch_long_walltorch : "Long walltorch"[]
+@PointClass base(lit) color(255 255 100) size(-7 -7 -17, 7 7 -2) model({"path": "progs/brazshrt.mdl", "skin": 0}) =  light_flame_brazier_short : "Short Brazier/n A short pillar that hosts a flame on top drops to floor automatically"[]
+@PointClass base(lit) color(255 255 100) size(-7 -7 -1, 7 7 95) model({"path": "progs/braztall.mdl", "skin": 0}) = light_flame_brazier_tall : "Tall Brazier"[]
+@PointClass base(lit) color(255 255 100) size(-7 -7 -1, 7 7 95) model({"path": "progs/braztall.mdl"}) = light_flame_brazier_tall_blue : "Tall brazier blue"[]
+@PointClass base(lit) color(255 255 100) size(-8 -8 -28, 8 8 10) model({"path": "progs/candle.mdl", "skin": 0}) = candle : "A candle sconce that's meant for wall mounting. It doesn't give off any light, add that manually with a light entity near it."[]
+@PointClass base(lit) color(255 255 100) size(-10 -10 -10, 10 10 10) model({"path": "progs/candle2.mdl", "skin": 0}) = candle2 : "A candle that should be placed on the ground it doesn't give off any light, add that manually."[]
+@PointClass base(item) model({"path": "tb/fairy.png", "scale":"0.32"}) = ambience_fairylight : "Entity that's invisible other than EF_BRIGHTFIELD and EF_DIMLIGHT"[]
+@PointClass base() model({"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"6"}) = dlight_dim : "A real-time light using EF_DIMLIGHT, uses a lot of resources so careful placement is recommended"[]
+@PointClass base() model({"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"5"}) = dlight_bright : "A real-time light using EF_BRIGHTLIGHT, uses a lot of resources so careful placement is recommended"[]
+@PointClass base() model({{
+	spawnflags == 1 -> 	{"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"1"},
+						{"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"4"}
+	}}) = dlight_pflags : "A real-time light using PFLAGS for full control. Spawnflag 1 starts the light OFF"
+ [
+	light_lev(integer) : "radiusoflight"
+	color(color255) : "R G B]" : "255 255 255"
+	style(choices) : "lightstyle" : 0 : "By default its set to normal." =
+	[
+		0 : "Normal"
+		1 : "Flicker A"
+		2 : "Slow, strong pulse"
+		3 : "Candle A"
+		4 : "Fast strobe"
+		5 : "Gentle pulse"
+		6 : "Flicker B"
+		7 : "Candle B"
+		8 : "Candle C"
+		9 : "Slow strobe"
+		10: "Fluorescent flicker"
+		11: "Slow pulse, noblack"		
+	]
+]
+ @PointClass base() model({{
+	spawnflags == 1 -> 	{"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"1"},
+						{"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"2"}
+	}}) = dlight_lightning : "A real-time light using PFLAGS for full control. A real-time light using PFLAGS for full control, flashes and
+gives off shadows for effect. Used for lightning in a game area. Spawnflag 1 starts the light OFF"
+ [
+	 light_lev(integer) : "radiusoflight"
+	 color(color255) : "R G B]" : "255 255 255"
+	 style(choices) : "lightstyle" : 0 : "By default its set to normal." =
+	 [
+		 0 : "Normal"
+		 1 : "Flicker A"
+		 2 : "Slow, strong pulse"
+		 3 : "Candle A"
+		 4 : "Fast strobe"
+		 5 : "Gentle pulse"
+		 6 : "Flicker B"
+		 7 : "Candle B"
+		 8 : "Candle C"
+		 9 : "Slow strobe"
+		 10: "Fluorescent flicker"
+		 11: "Slow pulse, noblack"		
+	 ]
+ ]
+
+// items
+@BaseClass size(24 24 24) color(80 0 200) base(alpha, scale, Targets) = item [
+	angles(string) : "pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
+]
+
+@PointClass base(item) model({{
+	cnt == 0 -> 	{"path":"progs/relic1.mdl"},
+	cnt == 1 -> 	{"path":"progs/relic2.mdl", "skin": 0, "scale":scale},
+	cnt == 2 -> 	{"path":"progs/relic3.mdl", "skin": 1, "scale":scale},
+	cnt == 3 -> 	{"path":"progs/relic4.mdl", "skin": 0, "scale":scale},
+	cnt == 4 -> 	{"path":"progs/relic5.mdl", "skin": 0, "scale":scale},
+	cnt == 5 -> 	{"path":"progs/relic6.mdl", "skin": 0, "scale":scale},
+	cnt == 6 -> 	{"path":"progs/relic7.mdl", "skin": 0, "scale":scale},
+	cnt == 7 -> 	{"path":"progs/relic8.mdl", "skin": 0, "scale":scale},
+	cnt == 8 -> 	{"path":"progs/relic9.mdl", "skin": 0, "scale":scale},
+	cnt == 9 -> 	{"path":"progs/relic3.mdl", "skin": 2, "scale":scale},
+	cnt == 10-> 	{"path":"progs/relic8.mdl", "skin": 1, "scale":scale},
+	cnt == 11-> 	{"path":"progs/relic10.mdl", "skin": 0, "scale":scale},		
+						"progs/relic1.mdl"
+	}}) = item_relic :
+
+"Relic Power-ups that when found grant Vigil additional abilities to aide him on his adventures.
+
+0 : Ledge Grab (Palm) enables ledges grabs and pull himself up if there is enough room to do so.
+1 : Double Jump (Feather) allows you to reach new heights.
+2 : Spin Slash Relic (Sword) grants your double jump to damage & combo enemies along with maybe slashing through certain obstacles.
+3 : Wall Grab (Fist) allows him the ability to grab and slowly slide down walls. Useful for jumping between the walls of tight vertical shafts to climb.
+4 : Spider Boots (Boots) allow for wall running short distances.
+5 : Water Breathing (Amulet) will save him from a watery grave.
+6 : Cube of Knowledge (Cube) grants you the beastiary allowing monster names to display on-screen.
+7 : Perfect Guard (Sheild) allows to Vigil perform a perfect guard when blocking enemy attacks at just the right time.
+8 : Soul Candle Automatically lights up pitch black areas.
+9 : Burning Epitome unlocks the Flaming head smash.
+10: Stalwart Perfect Guard (Sheild) Perfect Guarding a magic spell will absorb the mana cost and add it to Vigils mana pool. Perfect Guard now lasts 5 seconds.
+11: Horned helmet Protects Vigil from falling debris as well as allowing him to smash certain obstacles by jumping into them\n\n\n^3Press ATTACK or JUMP to resume ..."
+ [
+cnt(choices) : "Relic type" : 0 =
+	[
+		0 : "Ledge Grab (palm)"
+		1 : "Double Jump (feather)"
+		2 : "Combat Relic (sword)"
+		3 : "Wall Grab (fist)"
+        4 : "Spider Boots (boots)"
+        5 : "Water Breathing (amulet)"
+        6 : "Cube of Knowledge (cube)"
+        7 : "Perfect Guard (sheild)"
+		8 : "Soul Candle (candle)"
+		9 : "Burning Epitome (sword)"
+		10: "Stalwart Perfect Guard (yellow sheild)"
+		11: "Horned Helmet"
+    ]
+]
+
+@PointClass base(item) size(-13 -13 0, 13 13 4) model({"path": "progs/gold.mdl"}) = item_gold : "Pile of gold giving a random amount." [
+	maxgold(integer) : "Set max gold pick up amounts" : 25
+]
+
+@PointClass base(item) size(-6 -6 0, 6 6 14) model({"path": "progs/mpot.mdl"}) = item_mana : "Mana Vial" [ cnt(integer) : "Mana ammount" : 25 ]
+@PointClass base(item) size(-6 -6 0, 6 6 18) model({"path": "progs/hpot.mdl"}) = item_health : "Health Vial" [ cnt(integer) : "Health ammount" : 25 ]
+//	_comment_example(string) : "This is a tooltip" : "suggested defaults" : "This is a comment"
+@PointClass base(item) size(-6 -6 0, 6 6 18) model({"path": "progs/hpmaxup.mdl"}) = item_hpmaxup : "HP Upgrade max"
+ [
+	spawnflags(flags) = 
+	[
+		0 : "HP Max UP 1" : 0 : "default"
+		1 : "HP Max UP 2" : 0
+		2 : "HP Max UP 3" : 0
+		4 : "HP Max UP 4" : 0
+		8 : "HP Max UP 5" : 0
+	]
+]
+
+@PointClass base(item) size(-6 -6 -2, 6 6 14) model({"path": "progs/key.mdl", "skin": 0}) = item_key : "Gold key" []
+@PointClass base(item) size(-6 -6 -2, 6 6 14) model({"path": "progs/boulder.mdl", "skin": 0}) = misc_boulder : "A boulder that falls, damages player / func_walls / monsters, but must be triggered to fall!" []
+@PointClass base(item) model({{
+	cnt == 0 -> 	{"path":"progs/book.mdl"},
+	cnt == 1 -> 	{"path":"progs/book.mdl", "skin": 1},
+	cnt == 2 -> 	{"path":"progs/book.mdl", "skin": 2},
+	cnt == 3 -> 	{"path":"progs/book.mdl", "skin": 3},
+                        "progs/book.mdl"
+	}}) = item_spellbook :
+"Vigil starts the game with a fireball spell that when cast will home in on nearby enemies. You can place these spellbooks throughout your level to grant him 4 additional spells to cast provided you have the mana and time to cast it without being interrupted.
+
+0 : Lightning Storm casts a charged cloud overhead shooting lightning bolts at nearby enemies.
+1 : Ice field casts a rotating groundswell of ice damaging all enemies within its perimeter.
+2 : Fire Beam shoots a huge devastating blast of energy in the direction Vigil is facing when cast.
+3 : Twister creates 3 wind funnels that swirl around Vigil pulling in and damaging nearby enemies. This attack will do additional damage to flying enemies."
+	[
+ 	cnt(choices) : "Spell type" : 0 =
+	[
+		0 : "Lightning Storm"
+		1 : "Ice field"
+		2 : "Fire Beam"
+		3 : "Twister"
+	]
+]
+
+// misc
+@PointClass base(item) size(-16 -16 -24, 16 16 32) model({"path": "progs/axe.mdl"}) = axe : "" []
+@PointClass base(item) size(-8 -8 -8, 8 8 2) model({"path": "progs/banner.mdl"}) = banner : "A hanging banner" []
+@PointClass base(item) size(-16 -16 -24, 16 16 13) model({"path": "progs/barrel.mdl"}) = barrel : "Barrels are breakable and have a random chance to drop gold. Spawnflag set to 1 drops hp when broken, spawnflag 2 drops mp when broken."
+[
+	spawnflags(flags) =
+	[
+		1 : "Drops hp when broken." : 0
+		2 : "Drops mp when broken." : 0
+	]
+	maxgold(integer) : "Set max gold pick up amounts" : 25
+ ]
+
+@PointClass base(item) size(-55 -40 -1, 61 39 26) model({"path": "progs/bed.mdl"}) = bed : "Solid and will drop to floor if placed above a brush." []
+@PointClass base(item) size(-28 -20 0, 35 16 33) model({"path": "progs/bed2.mdl"}) = bed2 : "Solid and will drop to floor if placed above a brush." []
+@PointClass base(item) size(-2 -2 -16, 2 2 0) model({{
+frame == "0" ->	{"path":"progs/beer.mdl", "frame": 0},
+frame == "1" ->	{"path":"progs/beer.mdl", "frame": 1},
+frame == "2" ->	{"path":"progs/beer.mdl", "frame": 2},
+frame == "3" ->	{"path":"progs/beer.mdl", "frame": 3},
+			"progs/beer.mdl"
+}}) = beer : "A beer that comes in 4 sizes."
+[
+	frame(choices) : "set how big to make the beer" =
+		[
+			"0" : "size 1"
+			"1" : "size 2"
+			"2" : "size 3"
+			"3" : "size 4"
+        ]
+]
+@PointClass base(item) size(-16 -28 0, 16 28 31) model({"path": "progs/bench.mdl"}) = bench : "Wooden bench that can be placed in your levels" []
+@PointClass base(item) size(32 32 8) model({"path": "progs/bonepile.mdl"}) = bonepile : "A pile of bones." []
+@PointClass base(item) size(-24 -24 -1, 24 24 44) model({"path": "progs/cart.mdl"}) = cart : "[cart]" []
+@PointClass base(item) size(-12 -12 -24, 12 12 8) model({"path": "progs/chair.mdl"}) = chair : "[chair]" []
+@PointClass base(item) size(-16 -16 -2, 16 16 32) model({"path": "progs/curtain.mdl"}) = curtain : "" []
+@PointClass base(item) size(-50 -10 -17, 49 12 29) model({"path": "progs/fence.mdl", "frame" : frame}) = fence : "A fence entity with 13 different frames 0-12 and 4 skins 0-3."
+	[
+    frame(integer) : "Index # of the model frame to show 0 - 12 (default 0)" : 0
+	]
+@PointClass base(item) size(-16 -16 -18, 16 16 72) model({"path": "progs/flag.mdl"}) = flag : "Yellow flag" []
+@PointClass base(item) size(-16 -16 -18, 16 16 72) model({"path": "progs/flag2.mdl", "skin": skin}) = flag2 : "A flag that flaps in the breeze, not solid, uses framegroups and has 3 skins."
+ [
+	 skin(integer) : "...pick a skin 0-3" : 0 : "Choose the flag's skin 0, 1, 2 - defaults to 0"
+	 _comment_example(string) : "This is a tooltip" : "suggested defaults" : "This is a comment"
+ ]
+@PointClass base(item) size(-16 -16 -18, 16 16 6) model({"path": "progs/keg.mdl", "frame" : frame}) = keg : "beer keg with or without tap."
+[
+	frame(choices) : "tapped/untapped" : 0 =
+		[
+			0 : "tapped keg"
+			1 : "untapped keg"
+		]
+]
+@PointClass base(item) size(-4 -4 -4, 32 4 4) color(150 200 250) model({"path": "progs/bolt.mdl"}) = lightning : "Lightning bolts" []
+@PointClass base(item) size(-8 -24 -24, 8 24 24) model({"path": "progs/lionhead.mdl"}) = lionhead : "Lion head" []
+@PointClass base(item) size(-10 -10 -44, 10 10 5) model({"path": "progs/lantern.mdl", "skin": 0}) = light_lantern : "Lantern" []
+@PointClass base(item) size(-40 -43 -16, 51 39 160) model({"path": "progs/pine_scraggy.mdl"}) = pinetree_dead : "A pine trees that's dying, very little pines." []
+@PointClass base(item) size(-60 -68 -16, 61 63 128) model({"path": "progs/pinetreesm.mdl"}) = pinetree_small : "A small pine trees." []
+@PointClass base(item) size(-93 -90 -16, 94 97 175) model({"path": "progs/pinetree.mdl"}) = pinetree : "A pine trees." []
+@PointClass base(item) size(-16 -16 0, 16 16 24) model({"path": "progs/mushroom.mdl"}) = mushroom : "A mushroom." []
+@PointClass base(item) size(-56 -56 -0, 56 56 200) model({"path": "progs/tree.mdl", "skin": 0}) = tree : "Tree" []
+@PointClass base(item) size(-56 -56 -0, 56 56 200) model({"path": "progs/tree2.mdl", "skin": 0}) = tree2 : "Another Tree" []
+@PointClass base(item) size(-24 -24 -1, 24 24 132) model({"path": "progs/statue.mdl", "skin": 0}) = statue : "Man with sword" []
+@PointClass base(item) size(-24 -24 -6, 24 24 96) model({"path": "progs/statue2.mdl", "skin": 0}) = statue2 : "Angel" []
+@PointClass base(item) size(-93 -85 -86, 93 85 210) model({"path": "progs/statue3.mdl", "skin": 0}) = statue3 : "Woman with sword" []
+@PointClass base(item) size(-16 -16 -24, 16 16 33) model({"path": "progs/statue4.mdl", "skin": 0}) = statue4 : "Knight holding a sword." []
+@PointClass base(item) size(-32 -32 -1, 32 32 128) model({"path": "progs/statue5.mdl", "skin": 0}) = statue5 : "Large statue of a noble king holding a sword downward." []
+@PointClass base(item) size(-60 -48 -1, 60 48 87) model({"path": "progs/statue6.mdl", "skin": 0}) = statue6 : "Snake statue that's connected to something." []
+@PointClass base(item) size(-16 -16 -1, 16 16 56) model({"path": "progs/statue7.mdl", "skin": 0}) = statue7 : "Praying angel." []
+@PointClass base(item) size(-16 -16 -1, 16 16 56) model({"path": "progs/statue8.mdl", "skin": skin}) = statue8 : "Griffon statue, skins 0-4 change color."
+[
+ skin(choices) : "Skin choice" : 0 =
+	[
+		0 : "Skin 1"
+		1 : "Skin 2"
+		2 : "Skin 3"
+		3 : "Skin 4"
+	]
+]
+@PointClass base(item) size(-24 -24 -6, 24 24 96) model({"path": "progs/statue9.mdl", "skin": 0}) = statue9 : "A statue" []
+
+@PointClass base(item) size(-6 -6 -40, 6 6 38) model({"path": "progs/sword.mdl", "skin": 0}) = sword : "sword" []
+@PointClass base(item) size(-16 -16 -17, 16 16 40) model({"path": "progs/telescope.mdl", "skin": 0}) = telescope : "Its a telescope..." []
+@PointClass base(item) size(-32 -8 -144, 32 8 0) model({"path": "progs/waterfall.mdl", "skin": skin, "scale":scale, "frame":"52"}) = waterfall : "Hey its a blue water, brown water, slime, and lava fall you place in the map. skins 0-4 change color."
+	[
+	 skin(choices) : "Skin choice" : 0 =
+		[
+			0 : "water"
+			1 : "brown"
+			2 : "slime"
+			3 : "blood"
+			4 : "lava"
+		]
+	 drawflags(integer)	:	"Give this a value of 7 to be able to override lighting with the abslight key value."
+	 abslight(integer)	:	"Allows overriding light levels with this value if drawflags is set to 7."
+	 effects(string)	:	"EF_FULLBRIGHT works great for lava"
+	]
+
+@PointClass base(item) size(-16 -16 -17, 16 16 40) model({"path": "progs/fire_fx.mdl"}) = firefx : "Flames O fire..." []
+@PointClass base(item) size(-48 -48 -6, 48 48 16) model({"path": "progs/grass.mdl"}) = grass : "grass" []
+@PointClass base(item) size(-16 -16 -16, 16 16 6) model({"path": "progs/grass2.mdl"}) = grass2 : "grass2" []
+@PointClass base(item) size(-16 -16 -16, 16 16 8) model({"path": "progs/grass3.mdl"}) = grass3 : "grass3" []
+@PointClass base(item) size(-14 -8 -18, 14 8 24) model({"path": "progs/shield.mdl", "skin": 0}) = shield : "shield" []
+@PointClass base(item) size(-24 -24 -1, 24 24 24) model({"path": "progs/anvil.mdl", "skin": 0}) = anvil : "anvil" []
+@PointClass base(item) size(-12 -12 -1, 12 12 24) model({"path": "progs/stool.mdl", "skin": 0}) = stool : "stool" []
+@PointClass base(item) size(-12 -12 -1, 12 12 24) model({"path": "progs/seaweed.mdl", "skin": 0}) = seaweed : "seaweed" []
+@PointClass base(item) size(-16 -16 -0, 16 16 56) model({"path": "progs/candelabra.mdl", "skin": 0}) = candelabra : "Decorative candelabra, very beautiful" []
+@PointClass base(item) size(-24 -24 -16, 24 24 96) model({"path": "progs/candelabr2.mdl", "skin": 0}) = candelabra2 : "Decorative candelabra 2, very beautiful" []
+@PointClass base(item) size(-12 -12 0, 12 12 256) model({"path": "tb/null.mdl"}) = fountain : "fountain
+Water fountain that shoot water particles into the air. It will drop to floor under where its placed above and is very tall @256 quake units, give plenty of headroom to be seen." []
+@PointClass base(item) size(-8 -8 -2, 8 8 128) model({"path": "tb/smoke.spr", "scale": ".2 .4 .2"}) = ambience_smoke : "ambience_smoke
+smoke emitter that creates smoke particles. Make sure to give it 128 quake units of headroom." []
+@PointClass size(-12 -12 -1, 12 12 24) model({"path": "tb/null.mdl", "skin": 0}) = waterdrop : "A drop of water you can place on ceilings in wet areas." []
+@PointClass base(item) size(-12 -12 -12, 12 12 12) model({"path": "progs/cloud.spr", "skin": 0}) = misc_clouds : "misc_clouds
+Clouds that scroll by, randomly generates 3 between 1-4 seconds and move at desired angle with varing transparencies. You define how long before it's removed by editing 'cnt' value! cnt default=3. speed changes speed"
+[
+    cnt(integer) : "How long before it's removed" : 3 : "default = 3"
+    speed(integer) : "Changes the speed of the clouds"
+]
+// -74 -73 -17, 73 73 125
+// -11 -16 -1, 10 12 23
+@PointClass base(item) size(-74 -73 -17, 73 73 125) model({"path": "progs/chandelier.mdl", "skin": 0}) = chandelier : "
+chandelier
+A hanging chandelier that can be triggered to fall.
+Spawnflag 1 removes the dynamic light"
+[
+	spawnflags(flags) =
+	[
+		1 : "Remove the dynamic light" : 0
+	]
+]
+
+@PointClass base(item) size(16 16 16) color(255 128 0) model({ "path" : model, "skin" : skin, "frame" : frame, "alpha" : alpha}) = misc_model : "A point entity for displaying models. A frame range can be given to animate the model.
+model: The model to display. Can be of type mdl, bsp, or spr.
+skin: Which skin if the model to display(can be blank)
+frame: Single frame to display. Can also be used to offset the animation.
+first_frame: The starting frame of the animation.
+last_frame: The last frame of the animation.
+speed: The frames per second of animation. Divide 1 by the fps for this value.
+alpha: How visible is the model.
+angles: pitch roll yaw (up/down, angle, tilt left/right)
+NOTE: set angle value to 0 if using angles key to rotate models"
+[
+    model(string)   :   "Model Selection (ex subdirectory/model.mdl)"
+    skin(integer)   :   "Index # of desired skin to show (default = 0)" : 0
+    frame(integer)  :   "Frame # to show"
+    first_frame(integer)    :   "The starting frame # of the animation"
+    last_frame(integer)     :   "The last frame # of the animation"
+    speed(integer)  :   "Speed of animation (default = 10)" :   10
+    alpha(integer) : "How visible is the model?"
+    angles(string) : "pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
+]
+
+// Signage
+
+@PointClass base(item) size(-10 -10 -10, 10 10 10) model({"path": "progs/sign_atk.spr_0.png","scale":"0.5"}) = sign_attack_down :
+"A sign saying 'Attack!' with an arrow pointing down
+* Can be switch on/off by targetting"[]
+
+@PointClass base(item) size(-10 -10 -10, 10 10 10) model({"path": "progs/sign_rol.spr_0.png","scale":"0.5"}) = sign_roll_right :
+"A sign saying 'Roll' with an arrow pointing right
+* Can be switch on/off by targetting"[]
+
+// Main game titles, menus, and intro ents
+
+@PointClass base(item) size(-10 -10 -10, 10 10 10) model({"path": "progs/title.spr_0.png","scale":"0.45"}) = misc_title1 : "Main game menu 1"[]
+@PointClass base(item) size(-10 -10 -10, 10 10 10) model({"path": "progs/title2.spr_0.png","scale":"0.5"}) = misc_title2 : "Main game menu 1"[]
+@PointClass base(item) size(-10 -10 -10, 10 10 10) model({"path": "progs/menu1.spr_0.png","scale":"0.5"}) = misc_menu1 : "Main game menu 1"[]

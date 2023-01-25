@@ -1,0 +1,38 @@
+{
+	"profiles": [
+		{
+			"name": "Entities",
+			"tasks": [
+				{
+					"parameters": "-bsp -onlyents ${MAP_BASE_NAME}",
+					"tool": "${q2tool}",
+					"type": "tool"
+				}
+			],
+			"workdir": "${MAP_DIR_PATH}"
+		},
+		{
+			"name": "Relight Qrad",
+			"tasks": [
+				{
+					"parameters": "-bsp -onlyents -rad ${MAP_BASE_NAME}",
+					"tool": "${q2tool}",
+					"type": "tool"
+				}
+			],
+			"workdir": "${MAP_DIR_PATH}"
+		},
+		{
+			"name": "Bsp only",
+			"tasks": [
+				{
+					"parameters": "-bsp ${MAP_BASE_NAME}",
+					"tool": "${q2tool}",
+					"type": "tool"
+				}
+			],
+			"workdir": "${MAP_DIR_PATH}"
+		}
+	],
+	"version": 1
+}
