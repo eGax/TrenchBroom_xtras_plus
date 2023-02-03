@@ -1,0 +1,541 @@
+/*QUAKED info_grenade_hint (0.4 0.6 0.8) (-4 -4 -4) (4 4 4)
+AI will try to get a grenade to go through this point in space when throwing a grenade.  This is how AI understand throwing grenades through windows and doors.
+*/
+
+
+/*QUAKED info_player_start (1 0 0) (-16 -16 0) (16 16 72)
+equivelant to info_player_deathmatch
+*/
+
+
+/*QUAKED func_group (0 0 0) ?
+Used to group brushes together just for editor convenience.  They are turned into normal brushes by the utilities.
+*/
+
+
+/*QUAKED func_cullgroup (0 .5 .5) ?
+Used to group brushes together for culling in the portal-based renderer.  They are turned into world brushes by the utilities.
+*/
+
+
+/*QUAKED info_null (0 0.5 0) (-4 -4 -4) (4 4 4)
+Used as a positional target for calculations in the utilities (spotlights, etc), but removed during gameplay.
+*/
+
+
+/*QUAKED info_notnull (0 0.5 0) (-4 -4 -4) (4 4 4)
+Used as a positional target for in-game calculation, like jumppad targets.
+*/
+
+
+/*QUAKED info_notnull_big (1 0 0) (-16 -16 -24) (16 16 32)
+info_notnull with a bigger box for ease of positioning
+*/
+
+
+/*QUAKED light (0 1 0) (-8 -8 -8) (8 8 8) linear angle
+Non-displayed light.
+"light" overrides the default 300 intensity.
+Nonlinear checkbox gives inverse square falloff instead of linear 
+Angle adds light:surface angle calculations (only valid for "Linear" lights) (wolf)
+Lights pointed at a target will be spotlights.
+"radius" overrides the default 64 unit radius of a spotlight at the target point.
+"exponent" changes the default 0 exponent for the angle falloff.  Must be a non-negative integer.  High numbers (10-20) are needed for narrow spotlight angles to show falloff over angle.
+"fade" falloff/radius adjustment value. multiply the run of the slope by "fade" (1.0f default) (only valid for "Linear" lights) (wolf)
+"overbrightShift" controls overbright radius.  0 is default, 1 is no overbrighting at all, fractions in between do linear interpolation.
+*/
+
+
+/*QUAKED misc_model (1 0 0) (-16 -16 -16) (16 16 16) ORIENT_LOD NO_SHADOW
+If the misc_model has a targetname, it is kept as a server-side entity, so game scripts can modify it.
+If the misc_model does not have a targetname, it is only in the renderer on the client, so it cannot change.
+"model"			arbitrary xmodel file to display
+"modelscale"	scale multiplier (defaults to 1x, and scales uniformly)
+"modelscale_vec"	scale multiplier (defaults to 1 1 1, scales each axis as requested)
+ORIENT_LOD - if flagged, the entity will yaw towards the player when the LOD switches
+NO_SHADOW - the opaque surfaces will not cast shadows
+*/
+
+
+/*QUAKED misc_portal_surface (0 0 1) (-8 -8 -8) (8 8 8) 
+The portal surface nearest this entity will show a view from the targeted misc_portal_camera, or a mirror view if untargeted.
+This must be within 64 world units of the surface!
+*/
+
+
+/*QUAKED misc_portal_camera (0 0 1) (-8 -8 -8) (8 8 8) slowrotate fastrotate
+The target for a misc_portal_director.  You can set either angles or target another entity to determine the direction of view.
+"roll" an angle modifier to orient the camera around the target vector;
+*/
+
+
+/*QUAKED corona (0 1 0) (-4 -4 -4) (4 4 4) START_OFF
+Use color picker to set color or key "color".  values are 0.0-1.0 for each color (rgb).
+"scale" will designate a multiplier to the default size.  (so 2.0 is 2xdefault size, 0.5 is half)
+*/
+
+
+/*QUAKED misc_mg42 (1 0 0) (-16 -16 0) (16 16 56) x x
+weaponinfo - weapon info
+leftarc - horizonal left fire arc.
+rightarc - horizonal left fire arc.
+toparc - vertical top fire arc.
+bottomarc - vertical bottom fire arc.
+convergencetime - time (in seconds) to converge to target.
+maxrange - maximum firing/sight range.
+damage - determines how much the weapon will inflict if a non player uses it
+accuracy - all guns are 100% accurate a value of 0.5 would make it 50% 
+*/
+
+
+/*QUAKED misc_turret (1 0 0) (-16 -16 0) (16 16 56) x x
+weaponinfo - weapon info
+leftarc - horizonal left fire arc.
+rightarc - horizonal left fire arc.
+toparc - vertical top fire arc.
+bottomarc - vertical bottom fire arc.
+convergencetime - time (in seconds) to converge to target.
+maxrange - maximum firing/sight range.
+damage - determines how much the weapon will inflict if a non player uses it
+accuracy - all guns are 100% accurate a value of 0.5 would make it 50% 
+*/
+
+
+/*QUAKED func_door (0 .5 .8) ? START_OPEN TOGGLE CRUSHER TOUCH SHOOT-THRU
+TOGGLE      wait in both the start and end states for a trigger event.
+START_OPEN  the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
+NOMONSTER   monsters will not trigger this door
+SHOOT-THRU	Bullets don't stop when they hit the door.  Set "shoot_thru_scale" with bullet damage scale (see below)
+
+"key"       set to any non-zero value to start door as locked
+"angle"	    determines the opening direction
+"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
+"speed"	    movement speed (100 default)
+"closespeed" optional different movement speed for door closing
+"wait"      wait before returning (3 default, -1 = never return)
+"lip"       lip remaining at end of move (8 default)
+"dmg"       damage to inflict when blocked (2 default)
+"color"     constantLight color
+"light"     constantLight radius
+"health"    if set, the door must be shot open
+"teamname"	team name.  other doors with same team name will open/close in syncronicity
+"noisescale"multiplier for how far the noise from the door will travel to alert AI
+*/
+
+
+/*QUAKED func_static (0 .5 .8) ? start_invis pain painEFX
+A bmodel that just sits there, doing nothing.  Can be used for conditional walls and models.
+"color"		constantLight color
+"light"		constantLight radius
+"start_invis" will start the entity as non-existant
+If targeted, it will toggle existance when triggered
+
+pain will use its target
+
+When using pain you will need to specify the delay time
+value of 1 = 1 sec 2 = 2 sec so on...
+default is 1 sec you can use decimals 
+example :
+delay 
+1.27 
+
+painEFX will spawn a shards
+example:
+shard
+4
+will spawn rubble
+
+shard default is 4
+
+shard =
+shard_glass = 0,
+shard_wood = 1,
+shard_metal = 2,
+shard_ceramic = 3,
+shard_pebbles = 4
+*/
+
+
+/*QUAKED func_rotating (0 .5 .8) ? START_ON STARTINVIS X_AXIS Y_AXIS 
+You need to have an origin brush as part of this entity.
+The center of that brush will be the point around which it is rotated. It will rotate around the Z axis by default.  You can check either the X_AXIS or Y_AXIS box to change that.
+
+"speed"		determines how fast it moves; default value is 100.
+"dmg"		damage to inflict when blocked (2 default)
+"color"		constantLight color
+"light"		constantLight radius
+*/
+
+
+/*QUAKED func_bobbing (0 .5 .8) ? X_AXIS Y_AXIS
+Normally bobs on the Z axis
+"height"	amplitude of bob (32 default)
+"speed"		seconds to complete a bob cycle (4 default)
+"phase"		the 0.0 to 1.0 offset in the cycle to start at
+"dmg"		damage to inflict when blocked (2 default)
+"color"		constantLight color
+"light"		constantLight radius
+*/
+
+
+/*QUAKED func_pendulum (0 .5 .8) ?
+You need to have an origin brush as part of this entity.
+Pendulums always swing north / south on unrotated models.  Add an angles field to the model to allow rotation in other directions.
+Pendulum frequency is a physical constant based on the length of the beam and gravity.
+"speed"		the number of degrees each way the pendulum swings, (30 default)
+"phase"		the 0.0 to 1.0 offset in the cycle to start at
+"dmg"		damage to inflict when blocked (2 default)
+"color"		constantLight color
+"light"		constantLight radius
+*/
+
+
+/*QUAKED func_door_rotating (0 .5 .8) ? START_OPEN TOGGLE X_AXIS Y_AXIS REVERSE FORCE x
+You need to have an origin brush as part of this entity.
+The center of that brush will be the point around which it is rotated. It will rotate around the Z axis by default.  You can check either the X_AXIS or Y_AXIS box to change that (only one axis allowed. If both X and Y are checked, the default of Z will be used).
+FORCE		door opens even if blocked
+
+"key"       set to any non-zero value to start door as locked
+"degrees"   determines how many degrees it will turn (90 default)
+"speed"	    movement speed (100 default)
+"closespeed" optional different movement speed for door closing
+"time"      how many milliseconds it will take to open 1 sec = 1000
+"dmg"       damage to inflict when blocked (2 default)
+"color"     constantLight color
+"light"     constantLight radius
+"teamname"	team name.  other doors with same team name will open/close in syncronicity
+*/
+
+
+/*QUAKED trigger_use (.3 .5 .8) STARTOFF HAS_USER
+when activated will use its target
+"delay" - time (in seconds) before it can be used again
+"offnoise" - specifies an alternate sound
+"cursorhint" - sets the cursor hint icon to display when the player looks at it. Default is HINT_ACTIVATE.
+"hintstring" - hint string to display over the icon. Auto replaces [Use] with the key the player must press. Example: "Press [Use] to plant the bomb"
+
+"cursorhint" cursor types:
+	HINT_INHERIT
+	HINT_NONE		
+	HINT_ACTIVATE
+	HINT_NOACTIVATE
+	HINT_DOOR
+	HINT_DOOR_LOCKED
+	HINT_MG42
+	HINT_HEALTH
+	HINT_LADDER
+	HINT_EXIT
+	HINT_FRIENDLY
+*/
+
+
+/*QUAKED props_skyportal (.6 .7 .7) (-8 -8 0) (8 8 16)
+"fov" for the skybox default is 90
+To have the portal sky fogged, enter any of the following values:
+"fogcolor" (r g b) (values 0.0-1.0)
+"fognear" distance from entity to start fogging
+"fogfar" distance from entity that fog is opaque
+
+*/
+
+
+/*QUAKED script_brushmodel (0 .5 .8) ? DYNAMICPATH
+
+"color"     constantLight color
+"light"     constantLight radius
+*/
+
+
+/*QUAKED script_model (1 0 0) (-16 -16 -16) (16 16 16)
+
+"color"     constantLight color
+"light"     constantLight radius
+*/
+
+
+/*QUAKED script_origin (1 0 0) (-8 -8 -8) (8 8 8)
+
+"color"     constantLight color
+"light"     constantLight radius
+*/
+
+
+/*QUAKED info_vehicle_node (0.0 0.8 0.0) (-24 -24 -24) (24 24 24) START_NODE
+"targetname" - name of this node
+"target" - name of next node in this path
+"speed" - speed[mph] vehicle should have at this node
+"lookahead" - time[sec] vehicle should look ahead at this node
+*/
+
+
+/*QUAKED info_vehicle_node_rotate (0.2 0.4 1.0) (-24 -24 -24) (24 24 24) START_NODE
+"targetname" - name of this node
+"target" - name of next node in this path
+"speed" - speed[mph] vehicle should have at this node
+"lookahead" - time[sec] vehicle should look ahead at this node
+*/
+
+
+/*QUAKED script_vehicle (1 0 0) (-16 -16 -16) (16 16 16) USABLE
+"targetname" - name of this vehicle
+"model" - xmodel file to use as vehicle
+"vehicletype" - name of vehicle type to use in AssetManager
+*/
+
+
+/*QUAKED worldspawn (0 0 0) ? sun_cameraflare x x x x NO_GT_WOLF NO_STOPWATCH NO_CHECKPOINT
+
+Every map should have exactly one worldspawn.
+"music"     Music wav file. Can optionally specify intro & loop files to play
+"ambienttrack" Ambient wav file.
+"gravity"   800 is default gravity
+"message" Text to print during connection process
+"ambient"  Ambient light value (single scale, 1 = full bright, 2 = full overbright, must use '_color')
+"_color"    Ambient light color (RGB triple, must be used with 'ambient')
+"sun"        Shader to use for 'sun' image
+"suncolor"    RGB values for direct sunlight color (color only, not brightness, 0-1 scale, works with 'sunlight')
+"sunlight"    Intensity of the sun (1 = fullbright, 2 = full overbright for something facing directly at the sun, must use 'suncolor')
+"sundiffusecolor"  RGB values for diffuse sunlight color (color only, not brightness, 0-1 scale, works with 'diffusefraction')
+"diffusefraction" fraction of sunlight intensity to come from the diffuse lighting (in range 0-1; eg, 0.5, works with 'sundiffusecolor')
+"sundirection" pitch-yaw-roll for direction to sun (eg, sundirection -45 135 0)
+"minlight"  minimum intensity for a lightmap pixel (does not affect models in-game)
+"minlightcolor"  color to clamp to for minlight (color gets normalized)
+"northyaw"  yaw angle that denotes the direction of north
+
+Multiplayer specific stuff:
+NO_GT_WOLF specifies no objective mode for this map
+NO_STOPWATCH specifies no stopwatch mode for this map
+NO_CHECKPOINT specifies no checkpoint mode for this map
+*/
+
+
+/*QUAKED trigger_multiple (1 .3 .1) ? AI_AXIS AI_ALLIES AI_NEUTRAL NOTPLAYER VEHICLE
+"wait" : Seconds between triggerings, 0.5 default, -1 = one time only.
+"random"	wait variance, default is 0
+Variable sized repeatable trigger.  Must be targeted at one or more entities.
+so, the basic time between firing is a random time between
+(wait - random) and (wait + random)
+*/
+
+
+/*QUAKED trigger_friendlychain (1 .3 .1) ? AI_AXIS AI_ALLIES AI_NEUTRAL NOTPLAYER
+Forces any touching entity to be considered on the targeted friendly chain.
+*/
+
+
+/*QUAKED trigger_hurt (1 .3 .1) ? START_OFF PLAYER_ONLY SILENT NO_PROTECTION SLOW ONCE
+Any entity that touches this will be hurt.
+It does dmg points of damage each server frame
+Targeting the trigger will toggle its on / off state.
+
+PLAYER_ONLY   - only damages the player
+SILENT        - supresses playing the sound
+NO_PROTECTION - *nothing* stops the damage
+SLOW          - changes the damage rate to once per second
+
+"dmg"			default 5 (whole numbers only)
+
+"life"	time this brush will exist if value is zero will live for ever ei 0.5 sec 2.sec
+default is zero
+
+the entity must be used first before it will count down its life 
+*/
+
+
+/*QUAKED trigger_once (1 .3 .1) ? AI_AXIS AI_ALLIES AI_NEUTRAL NOTPLAYER VEHICLE
+Must be targeted at one or more entities.
+Once triggered, this entity is destroyed
+(you can actually do the same thing with trigger_multiple with a wait of -1)
+*/
+
+
+/*QUAKED trigger_damage (1 .3 .1) ? PISTOL_NO RIFLE_NO PROJ_NO EXPLOSION_NO SPLASH_NO MELEE_NO FLAME_NO - MISC_NO
+Trigger that responds to taking damage.
+
+"wait"			base time between triggering all targets, default is 1
+"random"		wait variance, default is 0
+so, the basic time between firing is a random time between
+(wait - random) and (wait + random)
+"accumulate"	If set, this much damage must be accumulated before it will trigger
+"threshold"		If set, the min amount of damage that must be done to it to trigger it
+
+Note that accumulate & threshold can used at the same time.
+
+PISTOL_NO turns off response to pistol damage
+RIFLE_NO turns off response to rifle damage
+PROJ_NO turns off response to projectile damage
+SPLASH_NO turns off response to splash damage
+MELEE_NO turns off response to melee damage
+FLAME_NO turns off response to fire damage
+MISC_NO turns off response to all other misc types of damage
+*/
+
+
+/*QUAKED trigger_lookat (1 .3 .1) (-16 -16 -16) (16 16 16)
+*/
+
+
+/*QUAKED node_pathnode (1 0 1) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - face this way when at this node on a friendly chain
+*/
+
+
+/*QUAKED node_cover_stand (0 .54 .66) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN - DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_crouch (0 .93 .72) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND - DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_prone (0 .60 .46) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH -
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_right (.85 .85 .10) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_left (1 .7 0) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_wide_right (.75 .75 0) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_cover_wide_left (.75 .525 .375) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - cover is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_concealment_stand (0 0 1) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN - DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - concealment is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_concealment_crouch (0 0 .75) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND - DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - concealment is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_concealment_prone (0 0 .5) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH -
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - concealment is valid against enemies from this direction
+*/
+
+
+/*QUAKED node_stack (.87 0 .41) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - face this direction while stacking here
+
+This node must target a cover node or another stack node.  It is treated as overflow for the first targeted non-stack node.
+*/
+
+
+/*QUAKED node_reacquire (.52 .52 .60) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - node can reacquire against enemies in this direction
+*/
+
+
+/*QUAKED node_balcony (.5 .5 0) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN - DONT_CROUCH DONT_PRONE NO_RAILING
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+NO_RAILING - the balcony is against a ledge and not a railing
+angles - the edge is in this direction
+*/
+
+
+/*QUAKED node_scripted (.72 .72 .83) (-16 -16 -16) (16 16 16) DONT_LINK NOT_CHAIN DONT_STAND DONT_CROUCH DONT_PRONE
+DONT_LINK - node is not included in navigation data
+NOT_CHAIN - node cannot start a friendly chain
+angles - orients the node for the animation
+*/
+
+
+/*QUAKED node_negotiation_begin (.5 .6 .5) (-16 -16 -16) (16 16 16) - - DONT_STAND DONT_CROUCH DONT_PRONE STOP_FIRST
+STOP_FIRST - if set, the AI comes to a complete stop before starting the node's animation script
+"animscript" - name without path or extension of the animation script to play when you reach this node.  This script must be in "animscripts/traverse/".
+Must target a single "node_negotiation_end".
+Always contributes to navigation data.
+Can never be included in a friendly chain.
+*/
+
+
+/*QUAKED node_negotiation_end (.6 .5 .5) (-16 -16 -16) (16 16 16) - - DONT_STAND DONT_CROUCH DONT_PRONE
+Must be targeted by a "node_negotiation_begin".
+Always contributes to navigation data.
+Can never be included in a friendly chain.
+*/
+
+
+/*QUAKED mp_target_location (0 0.5 0) (-8 -8 -8) (8 8 8)
+Set "message" to the name of this location.
+Set "count" to 0-7 for color.
+0:white 1:red 2:green 3:yellow 4:blue 5:cyan 6:magenta 7:white
+
+Closest target_location in sight used for the location, if none
+in site, closest in distance
+*/
+
+
+/*QUAKED item_ammo_stielhandgranate_open (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED SPIN - RESPAWN
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+defaultmdl="xmodel/ammo_stielhandgranate1"
+*/
+
+
+/*QUAKED item_ammo_stielhandgranate_closed (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED SPIN - RESPAWN
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+defaultmdl="xmodel/ammo_stielhandgranate2"
+*/
+
+
+/*QUAKED item_health_small (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED SPIN - RESPAWN
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+defaultmdl="xmodel/health_small"
+*/
+
+
+/*QUAKED item_health (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED SPIN - RESPAWN
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+defaultmdl="xmodel/health_medium"
+*/
+
+
+/*QUAKED item_health_large (.3 .3 1) (-16 -16 -16) (16 16 16) SUSPENDED SPIN - RESPAWN
+-------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
+defaultmdl="xmodel/health_large"
+*/
+
+
