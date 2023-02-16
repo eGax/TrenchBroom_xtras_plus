@@ -9,9 +9,13 @@
 // - TAoV originally a Quake mod for Dreamcast & PC started in 2004,
 //  turned stand alone game running in FTE, mod created by RenegadeC.
 //
-// - Last Modified by xaGe : 20230205-0000
+// - Last Modified by xaGe : 20230214-1745
 
-// 	_example(integer) : "This is a tooltip" : 0 : "This is a comment"
+//examples for reference:
+//name(string) : "Short tooltip description" : "Default" : "Long description"
+//name(integer) : "Short tooltip description" : 1 : "Long description"
+//name(float) : "Short tooltip description" : "1.5" : "Long description"
+
 // worldspawn
 
 @SolidClass = worldspawn : "World entity"
@@ -138,7 +142,8 @@ targetname == "sun" -> 	{"path":"tb/suntarget.png", "scale":".15"},
 	touch(string) : "self.touch"
 ]
 
-@SolidClass base(blit) color(0 .5 .8) = func_destroy : "Destroyable brush having HP determined by the 'health' key value amount. Example HP of wooden barrels is 25. The 'cnt' number determines which of the types of chunks are thrown on destruction: wood(default), rock, metal, or flesh."
+@SolidClass base(blit) color(0 .5 .8) = func_dragongate : "new thing coming" []
+@SolidClass base(blit) color(0 .5 .8) = func_destroy : "Destroyable brush having HP determined by the 'health' key value amount. Example HP of wooden barrels is 25. The 'cnt' number determines which of the types of chunks are thrown on destruction: wood(default), rock, metal, or flesh. If spawnflag 2 is set it will only be destroyable while wearing the Helmet relic."
 [
 health(integer): "Give the func_destroy brush a health value, for reference barrels have 25
 health so you can estimate how much health your func_destroy should have." : 0
@@ -149,9 +154,10 @@ cnt(choices) : "What type of chunks to throw on destruction..." : 0 =
 		2: "metal"
 		3: "flesh"
 	]
+	spawnflags(Flags) = [ 2 : "Only destroyable w/ helmet relic" : 0 ]
 ]
 
-@SolidClass base(blit) color(0 .5 .8) = func_fall : "falling brush entity that can be targeted by other entities, including other func_falls. FYI : func_falls tied to a origin brush are NON-SOLID!."
+@SolidClass base(blit) color(0 .5 .8) = func_fall : "Falling brush entity that can be targeted by other entities, including other func_falls. If spawnflag 4 is set it will only be destroyable while wearing the Helmet relic. FYI : func_falls tied to a origin brush are NON-SOLID!."
 [
 pos1(string):	"x y z" : : "hi"
 pos2(string):	"x y z" : : "hi"	
@@ -167,6 +173,7 @@ avelocity(string) : "have it spin when activated using X, Y, Z vector coordinate
 	[
 		1 : "Player activated only" : 0
 		2 : "Monster activated only" : 0
+		4 : "Only destroyable w/ helmet relic"
 	]
 ]
 
@@ -840,7 +847,8 @@ _sun == 1 -> 	{"path": "tb/sun.png"}
 @PointClass base(lit) color(255 255 100) size(-7 -7 -1, 7 7 95) model({"path": "progs/braztall.mdl", "skin": 0}) = light_flame_brazier_tall : "Tall Brazier"[]
 @PointClass base(lit) color(255 255 100) size(-7 -7 -1, 7 7 95) model({"path": "progs/braztall.mdl"}) = light_flame_brazier_tall_blue : "Tall brazier blue"[]
 @PointClass base(lit) color(255 255 100) size(-8 -8 -28, 8 8 10) model({"path": "progs/candle.mdl", "skin": 0}) = candle : "A candle sconce that's meant for wall mounting. It doesn't give off any light, add that manually with a light entity near it."[]
-@PointClass base(lit) color(255 255 100) size(-10 -10 -10, 10 10 10) model({"path": "progs/candle2.mdl", "skin": 0}) = candle2 : "A candle that should be placed on the ground it doesn't give off any light, add that manually."[]
+@PointClass base(lit) color(255 255 100) size(-10 -10 -10, 10 10 10) model({"path": "progs/candle2.mdl", "skin": 0}) = candle2 : "A candle that should be placed on the ground it doesn't give off any light, add that manually."
+[	spawnflags(Flags) = [ 1 : "disables drop to floor" : 0 ]]
 @PointClass base(item) model({"path": "tb/fairy.png", "scale":"0.32"}) = ambience_fairylight : "Entity that's invisible other than EF_BRIGHTFIELD and EF_DIMLIGHT"[]
 @PointClass base() model({"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"6"}) = dlight_dim : "A real-time light using EF_DIMLIGHT, uses a lot of resources so careful placement is recommended"[]
 @PointClass base() model({"path": "tb/ent-bulb.mdl", "scale":"0.5", "skin":"5"}) = dlight_bright : "A real-time light using EF_BRIGHTLIGHT, uses a lot of resources so careful placement is recommended"[]
@@ -1059,12 +1067,11 @@ frame == "3" ->	{"path":"progs/beer.mdl", "frame": 3},
 @PointClass base(item) size(-32 -32 -1, 32 32 128) model({"path": "progs/statue5.mdl"}) = statue5 : "Large statue of a noble king holding a sword downward." []
 @PointClass base(item) size(-60 -48 -1, 60 48 87) model({"path": "progs/statue6.mdl"}) = statue6 : "Snake statue that's connected to something." []
 @PointClass base(item) size(-16 -16 -1, 16 16 56) model({"path": "progs/statue7.mdl"}) = statue7 : "Praying angel." []
-@PointClass base(item) size(-16 -16 -1, 16 16 56) model({"path": "progs/statue8.mdl"}) = statue8 : "Griffon statue."[]
+@PointClass base(item) size(-16 -16 -1, 16 16 56) model({"path": "progs/statue8.mdl"}) = statue8 : "Griffon statue." []
 @PointClass base(item) size(-48 -48 0, 48 48 336) model({"path": "progs/statue9.mdl"}) = statue9 : "Naked venus statue" []
-@PointClass base(item) size(-64 -64 -2, 64 64 67) model({"path": "progs/statue10.mdl"}) = statue10 : "Dragon Head statue - spawnflag adds special condition"
-	[
+@PointClass base(item) size(-64 -64 -2, 64 64 67) model({"path": "progs/statue10.mdl"}) = statue10 : "Dragon Head statue - spawnflag 1 turns it into a breakable object that sets progress7 flag true mainly used to remove func_dragongate."
+	[spawnflags(Flags) = [ 1 : "breakable / progress 7 flag true" : 0 ]]
 
-	]
 //QUAKED statue10 (0 1 0) (-80 -52 -2) (58 42 67)  (-48 -48 -2, 48 48 67)
 
 @PointClass base(item) size(-6 -6 -40, 6 6 38) model({"path": "progs/sword.mdl"}) = sword : "sword" []
