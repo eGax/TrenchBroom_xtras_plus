@@ -1,0 +1,445 @@
+
+//
+// RenRacer.fgd
+// for TrenchBroom 2023.1 above with Ericw-tools.
+//
+// Last edits 202306162350 - xaGe
+
+// worldspawn
+
+@SolidClass = worldspawn : "World entity"
+[
+	worldtype(choices) : "Ambience" : 0 = [0 : "Medieval" 1 : "Metal (runic)" 2 : "Base"]
+	_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of sunlight on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"																									
+	_bounce(integer) : "...enable bounce lighting." : 0 : "1 enables bounce lighting, disabled by default 0"																									
+	_bouncecolorscale(integer) : "...bounce lighting to use texture colors from the map." : 0 : "Weight for bounce lighting to use texture colors from the map: 0=ignore map textures (default), 1=multiply bounce light color by texture color."																									
+	_bouncescale(float) : "...brightness scale of bounce lighting." : "1" : "Scales brightness of bounce lighting, defaults to 1"																									
+	_bouncestyled(integer) : "...makes styled lights bounce." : 0 : "Set to 1 makes styled lights bounce (e.g. flickering or switchable lights), default is 0, they do not bounce."																									
+	_dirt(integer) : "Dirt mapping (AO)" : -1 : "1 enables dirtmapping (ambient occlusion) on all lights, borrowed from q3map2. This adds shadows to corners and crevices. You can override the global setting for specific lights with the _dirt light entity key or _sunlight_dirt, _sunlight2_dirt, and _minlight_dirt worldspawn keys. Default is no dirtmapping (-1)"																									
+	_dirtdepth(integer) : "Dirt depth" : 128 : "Maximum depth of occlusion checking for dirtmapping, default 128."																									
+	_dirtgain(integer) : "Dirt gain" : 1 : "Exponent used in dirt calculation, default 1. Lower values (e.g. 0.5) make the shadows darker and stretch further away from corners"																									
+	_dirtmode(integer) : "Dirt mode" : 0 : "Choose between ordered (0, default) and randomized (1) dirtmapping."																									
+	_dirtscale(integer) : "Dirt scale" : 1 : "Scale factor used in dirt calculations, default 1. Lower values (e.g. 0.5) make the dirt fainter, 2.0 would create much darker shadows"																									
+	_dist(integer) : "Global light scale" : 1 : "Scales the fade distance of all lights by a factor of n. If n is more than 1 lights fade more quickly with distance and if n is less than 1, lights fade more slowly with distance and light reaches further"																									
+	_fog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : "fog here"																									
+	_gamma(integer) : "Lightmap gamma" : 1 : "Adjust brightness of final lightmap. Default 1, >1 is brighter, <1 is darker"																									
+	_minlight_dirt(integer) : "Minlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on minlight, -1 to disable. Default is to use the value of '_dirt'"																									
+	_range(float) : "Global light range" : "0.5" : "Scales the brightness range of all lights without affecting their fade discance. Values of n more than 0.5 makes lights brighter and n less than 0.5 makes lights less bright. The same effect can be achieved on individual lights by adjusting both the 'light' and 'wait' attributes"																									
+	_sky(string) : "Name" : "castle_" : "Name of a skybox to load."																									
+	_skyaxis(integer) : " " : 1 : ""																									
+	_skyrotate(integer) : " " : 22 : ""																									
+	_sun_mangle(string) : "Sun mangle (Yaw pitch roll)" : "0 -90 0" : "Specifies the direction of sunlight using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Default is straight down (0 -90 0)"																									
+	_sunlight_color(color255) : "Sunlight color R G B" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the sunlight. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light (255 255 255)"																									
+	_sunlight_dirt(integer) : "Sunlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on sunlight, -1 to disable (making it illuminate the dirtmapping shadows). Default is to use the value of '_dirt'"																									
+	_sunlight_penumbra(integer) : "Sunlight penumbra in degrees" : 0 : "Specifies the penumbra width, in degrees, of sunlight. Useful values are 3-4 for a gentle soft edge, or 10-20+ for more diffuse sunlight. Default is 0"																									
+	_sunlight(integer) : "Sunlight" : 0 : "Set the brightness of the sunlight coming from an unseen sun in the sky. Sky brushes (or more accurately bsp leafs with sky contents) will emit sunlight at an angle specified by the _sun_mangle key. Default 0"																									
+	_sunlight2_color(color255) : "Sunlight 2 color R G B" : "255 255 255" : "Specifies the colour of _sunlight2, same format as _sunlight_color. Default is white light (255 255 255)"																									
+	_sunlight2_dirt(integer) : "Sublight 2 dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on sunlight2, -1 to disable. Default is to use the value of '_dirt'"																									
+	_sunlight2(integer) : "Sunlight 2 brightness" : 0 : "Set the brightness of a large dome of lights positioned around the map (16K unit radius). Useful for simulating higly diffused light (e.g. cloudy skies) in outdoor areas. Default 0"																									
+	_sunlight3_color(color255) : "Sunlight 3 color R G B" : "255 255 255" : "Specifies the colour of _sunlight3, same format as _sunlight_color. Default is white light (255 255 255)"																									
+	_sunlight3(integer) : "Sunlight 3 brightness" : 0 : "Same as _sunlight2 but creates lights on the bottom hemisphere. Default 0"																									
+	light(integer) : "Ambient light" : 0 : "Set a global minimum light level of 'n' across the whole map. This is an easy way to eliminate completely dark areas of the level, however you may lose some contrast as a result, so use with care. Default 0"																									
+	message(string) : "Level name or any text to display to player on entering the world."																									
+	sounds(integer) : "CD track to play" : 0
+	// liquid alpha brush settings
+	_lavaalpha(float) : "lava transparency" : "1.0" : ""																									
+	_skyalpha(float) : "sky transparency" : "1.0" : ""																									
+	_slimealpha(float) : "slime transparency" : "1.0" : ""																									
+	_telealpha(float) : "teleport transparency" : "1.0" : ""																									
+	_wateralpha(float) : "water transparency" : "1.0" : ""
+]
+
+// base marker definitions
+
+@baseclass = Angle [ angle(integer) : "Direction" ]
+
+@baseclass = Appearflags [
+	spawnflags(Flags) =
+	[
+		256 : "Not on Easy" : 0
+		512 : "Not on Normal" : 0
+		1024 : "Not on Hard" : 0
+		2048 : "Not in Deathmatch" : 0
+	]
+]
+
+@baseclass = Targetname [ targetname(target_source) : "Name" ]
+@baseclass = Target [
+	target(target_destination) : "Target"
+	killtarget(target_destination) : "Killtarget"
+]
+
+@BaseClass = bmods
+	[
+// From light tool:
+	_bounce(choices) : "...enable bounce lighting." : 0 : "1 enables bounce lighting, disabled by default 0" = [0: "No" 1: "Yes"]
+	_dirt(choices) : "Dirt mapping (override)" : 0 : "For brush models, -1 prevents dirtmapping on the brush model. Useful it the bmodel touches or sticks into the world, and you want to those ares from turning black. Default 0" = [0: "No" 1: "Yes" -1: "Prevent dirtmapping brush model"]
+	_lightignore(choices) : "1 makes a model receive minlight only, ignoring all lights / sunlight. Could be useful on rotators / trains." = [ 0: "No" 1: "Yes" ]
+	_minlight_color(color255) : "Min light color R G B / default = off / WHITE" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the minlight. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light (255 255 255)"
+	_minlight_exclude(string) : "Faces with the given texture are excluded from receiving minlight on this brush model." : "texname"
+	_minlight(float) : "Set minimum light level to brush model..." : "0" : "Set the minimum light level for the whole brush model. Default none."
+	_phong_angle_concave(choices) : "Optional key for setting a different angle threshold for concave joints. A pair of faces will either use '_phong_angle' or '_phong_angle_concave' as the smoothing threshold, depending on whether the joint between the faces is concave or not. '_phong_angle(_concave)' is the maximum angle (in degrees) between the face normals that will still cause the pair of faces to be smoothed. The minimum setting for '_phong_angle_concave' is 1, this should make all concave joints non-smoothed (unless they’re less than 1 degree apart, almost a flat plane.) If it’s 0 or unset, the same value as '_phong_angle' is used." : 0 = [ 0: "No" 1: "Yes" ]
+	_phong_angle(float) : "Phong shading angle" : "89" : "Enables phong shading on faces of this model with a custom angle. Adjacent faces with normals this many degrees apart (or less) will be smoothed. Consider setting '_anglescale' to '1' on lights or worldspawn to make the effect of phong shading more visible. Use the '-phongdebug' command-line flag to save the interpolated normals to the lightmap for previewing (use 'r_lightmap 1' or 'gl_lightmaps 1' in supported engines to preview.)"
+	_phong(choices) : "Apply Phong shading" : 0 = [ 0: "No" 1: "Yes" ]
+	_shadow(choices) : "If set to 1, this model will cast shadows on other models and itself (i.e. '_shadow' implies '_shadowself'). Note that this doesn't magically give Quake dynamic lighting powers, so the shadows will not move if the model moves. Set to -1 on func_detail/func_group to prevent them from casting shadows. Default 0." : 0 = [0: "No" 1: "Yes" -1: "Prevent func_detail or groups from casting shadows"]
+	_shadowself(choices) : "If n is 1, this model will cast shadows on itself if one part of the model blocks the light from another model surface. This can be a better compromise for moving models than full shadowing. Default 0." : 0 = [ 0: "No" 1: "Yes" ]
+	_shadowworldonly(choices) : "If n is 1, this model will cast shadows on the world only (not other bmodels)." : 0 = [ 0: "No" 1: "Yes" ]
+	_switchableshadow(choices) : "If n is 1, this model casts a shadow that can be switched on/off using QuakeC. To make this work, a lightstyle is automatically assigned and stored in a key called “switchshadstyle”, which the QuakeC will need to read and call the “lightstyle()” builtin with “a” or “m” to switch the shadow on or off. Entities sharing the same targetname, and with “_switchableshadow” set to 1, will share the same lightstyle.
+	
+	These models are only able to block style 0 light (i.e., non-flickering or switchable lights). Flickering or switchable lights will shine through the switchable shadow casters, regardless of whether the shadow is off or on." : 0 = [ 0: "No" 1: "Yes" ]
+// From qbsp:
+	_lmscale(float) : "Generates an LMSHIFT bspx lump for use by a light util. Note that both scaled and unscaled lighting will normally be used."	
+	_mirrorinside(choices) : "Save mirrored inside faces for bmodels, so when the player view is inside the bmodel, they will still see the faces. (e.g. for func_water, or func_illusionary)" : 0 = [ 0 : "Disabled" 1 : "Mirrored" ]
+	_noclipfaces(choices) : "1 to keep faces of the bmodel, useful for decals. default 0." : 0 = [ 0: "No" 1: "Yes" ]
+]
+
+@baseclass base(Appearflags) size(-16 -16 -24, 16 16 32)
+	color(0 255 0) model({ "path": ":progs/hotrod.mdl","skin":"0"}) = PlayerClass []
+
+@PointClass base(PlayerClass) = info_player_start : "Player start" []
+@PointClass base(PlayerClass) model({ "path": ":progs/hotrod.mdl","skin":"2"}) = info_player_coop : "Player cooperative start" []
+@PointClass base(PlayerClass) model({ "path": ":progs/hotrod.mdl","skin":"1"}) = info_player_deathmatch : "Deathmatch start" []
+@PointClass base(PlayerClass) = testplayerstart : "Testing player start" []
+@PointClass base(info_player_start) = racer_spawnpoint : "Player start" []
+
+@PointClass color(200 150 150) = info_null : "info_null (spotlight target)"
+[
+	targetname(target_source) : "Name"
+]
+
+@PointClass base(Appearflags, Target, Targetname) color(200 150 150) = info_notnull : "Wildcard entity" // I love you
+[
+	use(string) : "self.use"
+	think(string) : "self.think"
+	nextthink(integer) : "nextthink"
+	noise(string) : "noise"
+	touch(string) : "self.touch"
+]
+@PointClass base(Appearflags) = info_intermission : "Intermission camera"
+[
+	mangle(string) : "Camera angle (Pitch Yaw Roll)"
+]
+
+//
+// items
+//
+@baseclass base(Appearflags, Target, Targetname) = Item
+[
+	message(string) : "Message"
+	target(string) : "Target"
+	killtarget(string) : "Killtarget"
+	delay(integer) : "Delay"
+]
+@baseclass size(0 0 0, 32 32 56) color(80 0 200) base(Item) = Ammo
+[
+	spawnflags(flags) =
+	[
+		1 : "Large box" : 0
+	]
+]
+
+
+// lights
+@BaseClass size(16 16 16) color(200 255 255) model({{
+spawnflags == 1 -> 	{"path": "tb/ent-bulb.mdl", "scale":"0.8", "skin":"1"},
+					{"path": "tb/ent-bulb.mdl", "scale":"0.8"}
+}}) = Lit  : "Hi, I am a light source." [
+light(integer) : "Brightness" : 300 : "Set the light intensity. Negative values are also allowed and will cause the entity to subtract light cast by other entities. Default 300"
+_color(color255) : "Light color" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the light. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light ('255 255 255')"
+wait(float) : "Fade distance multiplier" : "1" : "Scale the fade distance of the light by 'n'. Values of n more than 1 make the light fade more quickly with distance, and values less than 1 make the light fade more slowly (and thus reach further). Default 1"
+delay(choices) : "Attenuation" : 0 : "Select an attenuation formula for the light: 0 = Linear attenuation (default). 1 = 1/x attenuation. 2 = 1/(x^2) attenuation. 3 = No attenuation (same brightness at any distance). 4 = 'local minlight' - No attenuation and like minlight, it won't raise the lighting above it's light value. Unlike minlight, it will only affect surfaces within line of sight of the entity. 5 = 1/(x^2) attenuation, but slightly more attenuated and without the extra bright effect that 'delay 2' has near the source"  =
+[
+	0 : "Linear falloff (Default)"
+	1 : "Inverse distance falloff"
+	2 : "Inverse distance squared"
+	3 : "No falloff"
+	4 : "Local minlight"
+	5 : "Inverse distance 2"
+	]
+mangle(string) : "Spotlight direction" :  : "Turns the light into a spotlight and specifies the direction of light using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Often easier than the 'target' method"
+angle(integer) : "Spotlight cone angle" :  : "Specifies the angle in degrees for a spotlight cone. Default 40"
+style(choices) : "Appearance" : 0 =
+[
+	0 : "Normal"
+	1 : "Flicker A"
+	2 : "Slow, strong pulse"
+	3 : "Candle A"
+	4 : "Fast strobe"
+	5 : "Gentle pulse"
+	6 : "Flicker B"
+	7 : "Candle B"
+	8 : "Candle C"
+	9 : "Slow strobe"
+	10: "Fluorescent flicker"
+	11: "Slow pulse, noblack"
+]
+spawnflags(Flags) = [ 1 : "Initially dark" : 0 ]
+_softangle(integer) : "Spotlight soft angle" : 0 : "Specifies the angle in degrees for an inner spotlight cone (must be less than the 'angle' cone. Creates a softer transition between the full brightness of the inner cone to the edge of the outer cone. Default 0 (disabled)"
+_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of light on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"
+_dirtscale(integer) : "Dirt scale (override)" :  : "Override the global '_dirtscale' or '_dirtgain' settings to change how this light is affected by dirtmapping (ambient occlusion). See descriptions of these keys in the worldspawn section"
+_dirt(choices) : "Light dirtmapping" : 0 =
+[
+   -1 : "Disable dirtmapping"
+	0 : "Inherit from worldspawn _dirt"
+	1 : "Dirtmapping enabled"
+]
+_deviance(integer) : "Deviance" :  : "Split up the light into a sphere of randomly positioned lights within radius 'n' (in world units). Useful to give shadows a wider penumbra. '_samples' specifies the number of lights in the sphere. The 'light' value is automatically scaled down for most lighting formulas (except linear and non-additive minlight) to attempt to keep the brightness equal. Default is 0, do not split up lights"
+_samples(integer) : "No. of Deviance lights" :  : "Number of lights to use for '_deviance'. Default 16 (only used if '_deviance' is set)"
+_surface(string) : "Surface light texture name" :  : "Makes surfaces with the given texture name emit light, by using this light as a template which is copied across those surfaces. Lights are spaced about 128 units (though possibly closer due to bsp splitting) apart and positioned 2 units above the surfaces"
+_surface_offset(integer) : "Surface light offset" :  : "Controls the offset lights are placed above surfaces for '_surface'. Default 2"
+_surface_spotlight(choices) : "Surface light spotlight" : 0 =
+[
+	0 : "Not a spotlight"
+	1 : "Spotlight"
+]
+_project_texture(string) : "Name of texture being projected" :  : "Specifies that a light should project this texture. The texture must be used in the map somewhere"
+_project_mangle(string) : "Angle of projected texture" :  : "Specifies the yaw/pitch/roll angles for a texture projection (overriding mangle)"
+_project_fov(integer) : "fov of projected texture" :  : "Specifies the fov angle for a texture projection. Default 90"
+_bouncestyled(integer) : "Bounce styled light?" :  : "Set this to '1' to enable this styled light to bounce if you are using bounce lighting in your map"
+_sun(float) : "Setting this to 1 turns this light into a sun." : "0" : "Set to 1 to make this light a sun, as an alternative to using the sunlight worldspawn keys. If the light targets an info_null entity, the direction towards that entity sets sun direction. The light itself is disabled, so it can be placed anywhere in the map."
+]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Lit, Target, Targetname) model({{
+spawnflags == "1" -> {"path":"tb/ent-bulb.mdl", "skin":"1"},
+    _sun == 1 -> 	 {"path":"tb/sun.png"},
+                     {"path":"tb/ent-bulb.mdl", "skin":"0"}
+}}) = light : "An invisible light source
+    If spawnflag key value is empty use a skin 0 (white) start light on by default, otherwise use skin 1 (black), start off."
+    [spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Lit, Target, Targetname) model({{
+spawnflags == "1" -> {"path":"tb/ent-bulb.mdl", "skin":"1"},
+                     {"path":"tb/ent-bulb.mdl", "skin":"2"}
+}}) = light_fluoro : "Fluorescent light
+    If spawnflag key value is empty use a skin 0 (white) start light on by default, otherwise use skin 1 (black), start off."
+    [spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Lit, Target, Targetname) model({{
+spawnflags == "1" -> {"path":"tb/ent-bulb.mdl", "skin":"1"},
+                     {"path":"tb/ent-bulb.mdl", "skin":"3"}
+}}) = light_fluorospark : "Sparking fluorescent light
+    If spawnflag key value is empty use a skin 0 (white) start light on by default, otherwise use skin 1 (black), start off."
+    [spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Appearflags, Lit, Target, Targetname) model({{
+spawnflags == "1" -> {"path":"tb/s_light.spr", "skin":"1"},
+					 {"path":"progs/s_light.spr", "skin":"0"}
+}}) = light_globe : "Globe light
+	If spawnflag key value is empty use a skin 0 (white) start light on by default, otherwise use skin 1 (black), start off."
+	[spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+	
+@PointClass size(-8 -8 -12, 8 8 20) base(Appearflags, Lit, Target, Targetname) model({ "path": ":progs/flame2.mdl" }) =
+	light_flame_large_yellow : "Large yellow flame"
+	[spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-4 -4 -12, 4 4 20) base(Appearflags, Lit, Target, Targetname) model({ "path": ":progs/flame2.mdl" }) =
+	light_flame_small_yellow : "Small yellow flame"
+	[spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-4 -4 -12, 4 4 20) base(Appearflags, Lit, Target, Targetname) model({ "path": ":progs/flame2.mdl" }) =
+	light_flame_small_white : "Small white flame" [spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
+
+@PointClass size(-4 -4 -12, 4 4 20) base(Appearflags, Lit, Target, Targetname) model({ "path": ":progs/flame.mdl" }) =
+	light_torch_small_walltorch : "Small walltorch" []
+
+
+// Specials
+@SolidClass base(Appearflags, bmods) = func_detail : "Group of brushes for certain compilers" []
+@SolidClass base(Appearflags, bmods) = func_detail_illusionary : "func_detail variant with no collision (players / monsters / gunfire) and doesn't split world faces." []
+@SolidClass base(Appearflags, bmods) = func_detail_wall : "func_detail variant that doesn't split world faces." []
+@SolidClass base(Appearflags, bmods) = func_group : "Group of brushes for in-editor use" []
+@SolidClass base(Appearflags, bmods) = func_illusionary : "Static nonsolid model"  []
+@SolidClass base(Appearflags, Targetname, bmods) = func_wall : "Wall, starts animation when triggered (if supporting texture)" []
+
+@baseclass base(Appearflags) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": "progs/repair.mdl" }) = item_health []
+
+
+
+
+
+// Goldcup
+
+// rally_cone - setmodel (self, "progs/cone.mdl"); setsize (self, '-2 -2 -3', '2 2 3');
+// rally_marker - setmodel(self, "progs/marker.mdl"); setsize(self, '-60 -60 -13', '60 60 0');
+// rally_startfinish - setsize(self, '-128 -128 -24', '128 128 16');
+// ??? - rally_startfinish_brush
+// rally_startfinish_flag - setsize(self, '0 0 0', '0 0 2'); progs/finish.mdl
+// rally_baracade - progs/baracade.mdl - setsize (self, '-4 -4 -5', '4 4 5');
+
+
+@PointClass base(Targetname) size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = bot_waypoint : "Inivisible in game, set in map for bot cars to follow." []
+@PointClass base() size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = rally_cone : "Orange cone" []
+@PointClass base() size(-60 -60 -13, 60 60 0) model({ "path": ":progs/marker.mdl" }) = rally_marker : "marker" []
+@PointClass base() size(-4 -4 -5, 4 4 5) model({ "path": ":progs/barricade.mdl" }) = rally_baracade : "baracade" []
+@PointClass base() size(-128 -128 -24, 128 128 16) model({ "path": ":progs/finish.mdl" }) = rally_startfinish : "Rally start/finish flag. There seems to be 2 of these as shown in Map2" []
+@PointClass base() size(-128 -128 -24, 128 128 16) model({ "path": ":progs/finish.mdl" }) = rally_startfinish_flag : "Rally start/finish flag" []
+@SolidClass base() = rally_startfinish_brush : "Inivisible, key to cash and prizes!!!" []
+//racer_spawnpoint
+
+
+@baseclass = Targetname [ targetname(target_source) : "Name" ]
+@baseclass = Target [
+	target(target_destination) : "Target"
+	killtarget(target_destination) : "Killtarget"
+]
+
+// Notes for devs:
+// value_name(value type) : Tooltip : example value : "Info about this entity"
+
+@BaseClass = targetname [ targetname(target_source) : "name" ]
+
+@BaseClass = phys_particle_target
+	[phys_particle_target(target_destination) : "phys_particle_target"]
+
+@BaseClass = phys_static_target [phys_static_target(target_destination) : "phys_static_target"]
+
+// func_vehicle_builtins example
+//@PointClass color(255 0 0) size(-16 -16 -24, 16 16 8) model({{
+//	netname == "RodBlue" -> 	{"path":"progs/hotrod.mdl","skin":0},
+//	netname == "RodRed" -> 		{"path":"progs/hotrod.mdl","skin":1},
+//	netname == "RodGreen" ->	{"path":"progs/hotrod.mdl","skin":2},
+//	netname == "RodYellow" ->	{"path":"progs/hotrod.mdl","skin":3},
+//	netname == "RodBlack" ->	{"path":"progs/hotrod.mdl","skin":4},
+//	netname == "RodPink" ->		{"path":"progs/hotrod.mdl","skin":5},				
+//                           "progs/hotrod.mdl"
+//	}}) = func_vehicle_builtins : "Spawn a car type"
+//	[
+// 	netname(choices) : "Vehicle type"  =
+//	[
+//		"RodBlue" : "RodRed"
+//		"RodRed" : "RodRed"
+//		"RodGreen" : "RodGreen"
+//		"RodYellow" : "RodYellow"
+//		"RodBlack" : "RodBlack"
+//		"RodPink" : "RodPink"
+//	]]   
+
+// func_vehicle_wheel
+// func_vehicle
+// func_vehicle_particle
+// func_vehicle_static
+
+
+
+// Pick your vehicle body
+
+@PointClass base(Targetname) color(255 0 0) size(-16 -16 -24, 16 16 8) model({{
+netname == "frontleft" -> 	{"path":"progs/HotRod_body.mdl"},
+netname == "frontright" -> 	{"path":"progs/HotRod_body.mdl"},
+netname == "backleft" ->	{"path":"progs/HotRod_body.mdl"},
+netname == "backright" ->	{"path":"progs/HotRod_body.mdl"},
+						 "progs/HotRod_body.mdl"
+}}) = func_vehicle_static : "Pick a vehicle body..."
+[
+ netname(choices) : "Vehicle type" : "chassis" =
+[
+	"chassis" : "chassis"
+	"chassis2-doesn't exist/for example" : "chassis"
+	"chassis3-doesn't exist/for example" : "chassis"
+	"chassis4-doesn't exist/for example" : "chassis"
+]]
+
+@SolidClass base(phys_particle_target, phys_static_target) color(255 0 0) size(-16 -16 -24, 16 16 8) model({"path":"progs/hotrod.mdl","skin":0}) = func_vehicle : "This is the placement entity for your car part setups."[]
+
+// Pick your wheel
+
+@PointClass base(Targetname) color(1 0 0) size(-8 -8 -8, 8 8 8) model({{ model != Null -> model, {"path":"progs/HotRod_wheel_rear_L.mdl"} }}) = phys_wheel :
+"Wheels are useful for vehicles! They're a combo of a particle and a static. Make four of these, with correct netnames and targetnames.
+
+angle - Base-pose angle for this wheel in the physics object.
+
+model - The model to be loaded for visualization.
+
+netname - Useful names are frontleft, frontright, backleft, backright.
+
+part_mass - Mass multiplier of this wheel, affects center of mass of entire object, mass of 0 makes wheel stick in mid-air, good default '1'.
+
+physobj_bounce - '1' means no bounce, '2' means perfect reflection-bounce, good default '1.025'.
+
+physobj_buoyancy - Gravity multiplier when under-water, good default '-0.75'.
+
+physobj_friction_air - Directional air friction.
+
+physobj_friction_ground - Directional ground friction, higher value on y than x is what allows steering of vehicles. z is used for damping the spring! good default '0.225 3.3 5'.
+
+physobj_friction_water - Directional water friction, good default '2 2 2'.
+
+physobj_spring_force - X and Y are spring forces based on distance to surface, z is unused, good default '2 4 0'.
+
+physobj_spring_length - Length of spring for this wheel, good default 12.
+
+physobj_stepup - Quake-style step-up in stairs. relative_size already gives some step-up inherently, but if relative_size is 0 the quake default would be '18'.
+
+physobj_stiction - Half-assed attempt at making physics objects not slide infinitely on slopes, good default '10'.
+
+relative_size - Radius of wheel, good default '14'.
+
+targetname - Must be defined, used by the physics object to find the wheel."
+	[
+    //angle' base-pose angle for this wheel in the physics object	
+	model(string) : "Pick a wheel model, bsp or mdl to be one of your wheels..." : "progs/HotRod_wheel_rear_L.mdl" : "bsp or mdl to be one of your wheels, ie: progs/wheel.mdl"
+	netname(choices) : "Wheel position"  =
+	[
+		"frontleft" : "frontleft"
+		"frontright" : "frontright"
+		"backleft" : "backleft"
+		"backright" : "backright"
+	]
+    part_mass(float) : "..heavy stuff man." : "1" : "mass multiplier of this wheel, affects center of mass of entire object, mass of 0 makes wheel stick in mid-air, good default 1"
+    physobj_bounce(float) : "..bumbles bounce!" : "1.025" : "1 means no bounce, 2 means perfect reflection-bounce, a good default 1.025"
+    physobj_buoyancy(float) : "..does it float?" : "-0.75" : "Gravity multiplier when under-water, good default -0.75"
+    physobj_friction_air(string) : "..air friction" : "" : "Directional air friction"
+    physobj_friction_ground(string) : "..sticky feets" : "0.225 3.3 5" :"directional ground friction, higher value on y than x is what allows steering of vehicles. z is used for damping the spring! good default '0.225 3.3 5'"
+    physobj_friction_water(string) : "..water friction" : "2 2 2" : "Directional water friction, good default '2 2 2'"
+    physobj_spring_force(string) : "..spring force" : "2 4 0" : "X and Y are spring forces based on distance to surface, Z is unused, good default '2 4 0'"
+    physobj_spring_length(float) : "..spring length" : "12" : "Length of spring for this wheel, good default 12"
+    physobj_stepup(float) : "..stair stepper" : "18" : "Quake-style step-up in stairs. Relative_size already gives some step-up inherently, but if relative_size is 0 the quake default would be 18"
+    physobj_stiction(float) : "..slope slide control" : "10" : "Half-assed attempt at making physics objects not slide infinitely on slopes, good default 10"
+    relative_size(float) : "..radius matters" : "14" : "The radius of wheel, a good default 14"
+    //targetname' must be defined, used by the physics object to find the wheel
+	]
+
+
+
+
+
+
+
+
+
+	// FTE
+@PointClass base() size(16 16 16) color(255 128 0) model({{model != Null -> model,{"path":"tb/questionmarkred.png","scale":".05"} }}) = misc_model_broke : "A point entity for displaying models. A frame range can be given to animate the model.
+	model: The model to display. Can be of type mdl, bsp, or spr.
+	skin: Which skin if the model to display(can be blank)
+	frame: Single frame to display. Can also be used to offset the animation.
+	first_frame: The starting frame of the animation.
+	last_frame: The last frame of the animation.
+	speed: The frames per second of animation. Divide 1 by the fps for this value.
+	alpha: How visible is the model.
+	angles: pitch roll yaw (up/down, angle, tilt left/right)
+	NOTE: set angle value to 0 if using angles key to rotate models"
+	[
+		model(string)   :   "Model Selection (ex subdirectory/model.mdl)"
+		skin(integer)   :   "Index # of desired skin to show (default = 0)" : 0
+		frame(integer)  :   "Frame # to show"
+		first_frame(integer)    :   "The starting frame # of the animation"
+		last_frame(integer)     :   "The last frame # of the animation"
+		speed(integer)  :   "Speed of animation (default = 10)" :   10
+		alpha(integer) : "How visible is the model?"
+		angles(string) : "pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
+	]
+
+@PointClass base() size(8 8 8) model({{
+model != NUll ->	{"path":model,"skin":skin,"frame":frame},
+			{"path":"tb/questionmarkred.png","scale":"0.5 0.5 0.5"}
+}}) = misc_mdl : "wth"
+[
+		model(string)   :   "Model Selection (ex subdirectory/model.mdl)"
+		skin(integer)   :   "Index # of desired skin to show (default = 0)" : 0
+		frame(integer)  :   "Frame # to show"
+		first_frame(integer)    :   "The starting frame # of the animation"
+		last_frame(integer)     :   "The last frame # of the animation"
+		speed(integer)  :   "Speed of animation (default = 10)" :   10
+		alpha(integer) : "How visible is the model?"
+		angles(string) : "pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
+]
