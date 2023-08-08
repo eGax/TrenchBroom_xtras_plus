@@ -14,3 +14,11 @@ These won't work with TrenchBroom 2023.1 release version or previous builds and 
 - [The Ascension of Vigil](https://github.com/RennyC4/TAoV)
 - [RenRacer ᴬᴷᴬ RageRacer](https://github.com/RennyC4/RenRacer)
 
+### Help & Stuff
+TrenchBroom is more akind to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
+Learning a new program, a workflow takes time and some patience, and these tutorials are very Quake centric videos, but you can look beyond that these go into detail how to get things done in 
+TrenchBroom. Dumptruck's stuff is the tried and true recommendation to get started working with TB. Markie's SlipSeer videos go a bit beyond and show you a few more advanced things that can be done. Both worth watching.
+
+- DumpTrucks : https://www.youtube.com/playlist?list=PLgDKRPte5Y0AZ_K_PZbWbgBAEt5xf74aE
+- Markie's SlipSeer tutorials : https://www.youtube.com/playlist?list=PLdy0pXXA5D0_bt0oe9OcRuWPqrdyNX-KY
+
