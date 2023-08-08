@@ -10,6 +10,7 @@ These won't work with TrenchBroom 2023.1 release version or previous builds and 
 - [MarbleBlast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/main/games_wip/MarbleBlast)
 
 #### Coming in future commits :
+- [GravityBone](https://store.steampowered.com/app/974090/Gravity_Bone/)
 - [The Ascension of Vigil](https://github.com/RennyC4/TAoV)
 - [RenRacer ᴬᴷᴬ RageRacer](https://github.com/RennyC4/RenRacer)
 
