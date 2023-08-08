@@ -1,6 +1,6 @@
 // Torque / Marble Blast Ultra game definition file '.fgd'
 // For use with TrenchBroom devbuilds 2023.1 and later.
-// 20230808-0330 HumanGamer & xaGe
+// 20230808-1600 HumanGamer & xaGe
 
 // This very much WIP
 
@@ -136,10 +136,9 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
 @PointClass base(Item) model({"path":"models/bumpers/pball_round.fbx","scale":32}) = RoundBumper : "" []
 @PointClass base(Item) model({"path":"models/hazards/ductfan.fbx","scale":32}) = DuctFan : "" []
 @PointClass base(Item) model({"path":"models/hazards/trapdoor.fbx","scale":32}) = TrapDoor : "" []
-@PointClass base(Item) model({"path":"models/pads/startarea.fbx","scale":32}) = StartPad : "" []
-@PointClass base(Item) model({"path":"models/pads/endarea.fbx","scale":32}) = EndPad : "" []
+@PointClass base(Item) size(-48 -48 0, 48 48 3) model({"path":"models/pads/startarea.fbx","scale":32}) = StartPad : "" []
+@PointClass base(Item) size(-48 -48 0, 48 48 3) model({"path":"models/pads/endarea.fbx","scale":32}) = EndPad : "" []
 @SolidClass base(Item) = InBoundsTrigger : "Leave this area and your are OUT!" []
-
 @PointClass base(Item) model({"path":"models/pads/checkpad.fbx","scale":32}) = checkPoint : "CheckPoint." []
 @SolidClass base(Item) = checkPointTrigger : "The bounding hit box brush that triggers a check point. Lay it around your cPS if used." [
    sequence(integer) : "" : 0
