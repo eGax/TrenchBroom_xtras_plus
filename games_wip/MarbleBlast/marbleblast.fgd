@@ -77,21 +77,6 @@
 	trigger7_name(string) : "Trigger 7" : ""
 ]
 
-@SolidClass = Force_Field : "Force Field"
-[
-	name(string)    : "Name" : "MustChange"
-   color(color255) : "Field color" : "125 216 232"
-	trigger0_name(string) : "Trigger 0" : ""
-	trigger1_name(string) : "Trigger 1" : ""
-	trigger2_name(string) : "Trigger 2" : ""
-	trigger3_name(string) : "Trigger 3" : ""
-	trigger4_name(string) : "Trigger 4" : ""
-	trigger5_name(string) : "Trigger 5" : ""
-	trigger6_name(string) : "Trigger 6" : ""
-	trigger7_name(string) : "Trigger 7" : ""
-]
-
-
 // Pathing
 
 @PointClass = path_node : "Path Node"
