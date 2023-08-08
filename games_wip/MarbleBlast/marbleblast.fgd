@@ -145,12 +145,12 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
    sequence(integer) : "" : 0
 ]
 
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_3.fbx","scale":32}) = glass_3shape : "" []
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_6.fbx","scale":32}) = glass_6shape : "" []
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_9.fbx","scale":32}) = glass_9shape : "" []
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_12.fbx","scale":32}) = glass_12shape : "" []
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_15.fbx","scale":32}) = glass_15shape : "" []
-@PointClass base(StaticShape)  model({"path":"models/structures/glass_18.fbx","scale":32}) = glass_18shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_3.fbx","scale":32}) = glass_3shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_6.fbx","scale":32}) = glass_6shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_9.fbx","scale":32}) = glass_9shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_12.fbx","scale":32}) = glass_12shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_15.fbx","scale":32}) = glass_15shape : "" []
+@PointClass base(StaticShape) model({"path":"models/structures/glass_18.fbx","scale":32}) = glass_18shape : "" []
 @PointClass base() model() = SpawnSphereMarker : ""
    [
    angles(string) : "X Y Z angles of item" : "0 0 0"
