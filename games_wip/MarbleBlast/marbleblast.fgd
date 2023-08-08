@@ -1,0 +1,157 @@
+// Torque / Marble Blast Ultra / OpenMBU game definition file '.fgd'
+// For use with TrenchBroom devbuilds 2023.1+ and later.
+// 20230808-0230 HumanGamer & xaGe
+
+// This very much WIP
+
+// worldspawn
+
+@SolidClass = worldspawn : "World entity"
+[
+   ambient_color(color255) : "Ambient color" : "0 0 0"
+   detail_number(integer) : "Shape's detail index" : 0
+   emergency_ambient_color(color255) : "Emergency ambient color" : "0 0 0"
+   geometry_scale(integer) : "Geometry scale" : 32
+   light_geometry_scale(integer) : "Lighting scale (must be a power of 2)" : 32
+   min_pixels(integer) : "Minimum pixels for detail" : 250
+]
+
+@SolidClass = sgLightingScaleEntity : "Synapse Gaming Lighting Scale Entity"
+[
+   light_geometry_scale(string) : "Lighting scale (must be a power of 2)" : "32.0"
+   self_illumination_color(color255) : "Self-Illumination Color" : "0 0 0"
+]
+
+// baseclasses to be used by PointClasses
+
+@baseclass = Targetname [ name(target_source) : "Name" ]
+@baseclass = Target [ target(target_destination) : "Target" ]
+@baseclass = LightAnimFlags [ spawnflags(Flags) = 
+   [  1 : "Auto start" 	      : 1
+		2 : "Loop to end frame" : 1
+      4 : "Random frame"      : 0 ]]
+@baseclass = LightAnimSpeed
+[
+   speed(choices) : "Speed" : 2 =
+   [
+      0: "Very slow"
+      1: "Slow"
+      2: "Normal"
+      3: "Fast"
+      4: "Very fast"
+   ]
+]
+
+// baseclasses for MBU.
+
+@baseclass = Angles [ angles(string) : "X Y Z angles of item, example 0 0 180 makes it upside down" : "0 0 0"]
+@baseclass base(Angles) = Item
+[
+   static(choices) : "Yes 1 or No 0 (default 1)" : 1 = [ 0: "No" 1: "Yes" ]
+   rotate(choices) : "Yes 1 or No 0 (default 1)" : 1 = [ 0: "No" 1: "Yes" ]
+]
+   
+@baseclass base(Angles) = StaticShape []
+
+// Triggers
+
+@SolidClass = trigger : "Trigger Entity"
+[
+	name(string) : "Trigger Name" : "MustChange"
+]
+
+
+// Doors, elevators, etc...
+
+@SolidClass = Door_Elevator : "Door or Elevator"
+[
+	name(string) : "Name" : "MustChange"
+	path_name(string) : "Path subscription" : ""
+	trigger0_name(string) : "Trigger 0" : ""
+	trigger1_name(string) : "Trigger 1" : ""
+	trigger2_name(string) : "Trigger 2" : ""
+	trigger3_name(string) : "Trigger 3" : ""
+	trigger4_name(string) : "Trigger 4" : ""
+	trigger5_name(string) : "Trigger 5" : ""
+	trigger6_name(string) : "Trigger 6" : ""
+	trigger7_name(string) : "Trigger 7" : ""
+]
+
+@SolidClass = Force_Field : "Force Field"
+[
+	name(string)    : "Name" : "MustChange"
+   color(color255) : "Field color" : "125 216 232"
+	trigger0_name(string) : "Trigger 0" : ""
+	trigger1_name(string) : "Trigger 1" : ""
+	trigger2_name(string) : "Trigger 2" : ""
+	trigger3_name(string) : "Trigger 3" : ""
+	trigger4_name(string) : "Trigger 4" : ""
+	trigger5_name(string) : "Trigger 5" : ""
+	trigger6_name(string) : "Trigger 6" : ""
+	trigger7_name(string) : "Trigger 7" : ""
+]
+
+
+// Pathing
+
+@PointClass = path_node : "Path Node"
+[
+   name(target_source) : "Name"
+   next_node(target_destination) : "Next Node"
+   next_time(integer) : "MS to next node" : 1000
+]
+
+// MarbleBlast entities
+
+@PointClass base(Item) model({{
+gemDataBlock == "GemItem" -> 	{"path":"models/items/gem.fbx","scale":32},
+gemDataBlock == "GemItem_2pts" -> 	{"path":"models/items/gemitem_2pts.fbx","scale":32},
+gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scale":32},
+                              {"path":"models/items/gem.fbx","scale":32}
+                                     
+      }}) = GemSpawnSphereMarker :
+   "Gems, wonderful gems! 0 red for 1 point, 1 is yellow for 2 points, and 2 is for blue, giving the player 5 points.
+   
+   0 : Gem red 1 point
+   1 : Gem yellow 2 points
+   2 : Gem blue 5 points"
+      [
+         gemDataBlock(choices) : "Gem selection" : 0 =
+      [
+         "GemItem" : "Gem red 1 point"
+         "GemItem_2pts" : "Gem yellow 2 points"
+         "GemItem_5pts" : "Gem blue 5 points"
+      ]
+      game_class(string) : "SpawnSphere" : "SpawnSphere"
+   ]
+@PointClass base(Item) model({"path":"models/items/gem.fbx","scale":32}) = GemItem : "single player gem" [] 	
+@PointClass base(Item) model({"path":"models/items/superjump.fbx","scale":32}) = SuperJumpItem : "" []
+@PointClass base(Item) model({"path":"models/items/superspeed.fbx","scale":32}) = SuperSpeedItem : "" []
+@PointClass base(Item) model({"path":"models/images/helicopter.fbx","scale":32}) = HelicopterItem : "" []
+@PointClass base(Item) model({"path":"models/items/antigravity.fbx","scale":32}) = AntiGravityItem : "" []
+@PointClass base(Item) model({"path":"models/images/blast.fbx","scale":32}) = BlastItem : "" []
+@PointClass base(Item) model({"path":"models/images/grow.fbx","scale":32}) = MegaMarbleItem : "" []
+@PointClass base(Item) model({"path":"models/items/egg.fbx","scale":32}) = EasterEggItem : "" []
+@PointClass base(Item) model({"path":"models/items/timetravel.fbx","scale":32}) = TimeTravelItem : "" []
+@PointClass base(Item) model({"path":"models/bumpers/pball_round.fbx","scale":32}) = RoundBumper : "" []
+@PointClass base(Item) model({"path":"models/hazards/ductfan.fbx","scale":32}) = DuctFan : "" []
+@PointClass base(Item) model({"path":"models/hazards/trapdoor.fbx","scale":32}) = TrapDoor : "" []
+@PointClass base(Item) model({"path":"models/pads/startarea.fbx","scale":32}) = StartPad : "" []
+@PointClass base(Item) model({"path":"models/pads/endarea.fbx","scale":32}) = EndPad : "" []
+@SolidClass base(Item) = InBoundsTrigger : "Leave this area and your are OUT!" []
+
+@PointClass base(Item) model({"path":"models/pads/checkpad.fbx","scale":32}) = checkPoint : "CheckPoint." []
+@SolidClass base(Item) = checkPointTrigger : "The bounding hit box brush that triggers a check point. Lay it around your cPS if used." [
+   sequence(integer) : "" : 0
+]
+
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_3.fbx","scale":32}) = glass_3shape : "" []
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_6.fbx","scale":32}) = glass_6shape : "" []
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_9.fbx","scale":32}) = glass_9shape : "" []
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_12.fbx","scale":32}) = glass_12shape : "" []
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_15.fbx","scale":32}) = glass_15shape : "" []
+@PointClass base(StaticShape)  model({"path":"models/structures/glass_18.fbx","scale":32}) = glass_18shape : "" []
+@PointClass base() model() = SpawnSphereMarker : ""
+   [
+   angles(string) : "X Y Z angles of item" : "0 0 0"
+   ]
