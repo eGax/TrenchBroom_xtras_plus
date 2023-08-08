@@ -7,4 +7,4 @@ For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can buil
 
 Committed game profile so far :
 
-MarbleBlast
+[MarbleBlast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/main/games_wip/MarbleBlast)
