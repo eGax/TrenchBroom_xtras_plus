@@ -1,8 +1,0 @@
-@PointClass model({"path":"tb/tree1_y_offset_000.spr", "scale":scale}) = qreate_tree_y_off_000 : "Tree sprite Y-axis offset 000"[]
-@PointClass model({"path":"tb/tree1_y_offset_016.spr", "scale":scale}) = qreate_tree_y_off_016 : "Tree sprite Y-axis offset 016"[]
-@PointClass model({"path":"tb/tree1_y_offset_048.spr", "scale":scale}) = qreate_tree_y_off_048 : "Tree sprite Y-axis offset 048"[]
-@PointClass model({"path":"tb/tree1_y_offset_064.spr", "scale":scale}) = qreate_tree_y_off_064 : "Tree sprite Y-axis offset 064"[]
-@PointClass model({"path":"tb/tree1_y_offset_128.spr", "scale":scale}) = qreate_tree_y_off_128 : "Tree sprite Y-axis offset 128"[]
-@PointClass model({"path":"tb/tree1_y_offset_256.spr", "scale":scale}) = qreate_tree_y_off_256 : "Tree sprite Y-axis offset 256"[]
-@PointClass model({"path":"tb/tree1_y_offset_384.spr", "scale":scale}) = qreate_tree_y_off_384 : "Tree sprite Y-axis offset 384"[]
-@PointClass model({"path":"tb/tree1_y_offset_512.spr", "scale":scale}) = qreate_tree_y_off_512 : "Tree sprite Y-axis offset 512"[]
