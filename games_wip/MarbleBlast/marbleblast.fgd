@@ -1,6 +1,6 @@
 // Torque / Marble Blast Ultra game definition file '.fgd'
 // For use with TrenchBroom devbuilds 2023.1 and later.
-// 20230808-1600 HumanGamer & xaGe
+// 20230809-0900 HumanGamer & xaGe
 
 // This very much WIP
 
@@ -49,9 +49,29 @@
 [
    static(choices) : "Yes 1 or No 0 (default 1)" : 1 = [ 0: "No" 1: "Yes" ]
    rotate(choices) : "Yes 1 or No 0 (default 1)" : 1 = [ 0: "No" 1: "Yes" ]
+   game_class(string) : "Game Class" : "Item"
 ]
    
-@baseclass base(Angles) = StaticShape []
+@baseclass base(Angles) = StaticShape
+[
+  game_class(string) : "Game Class" : "StaticShape"
+]
+
+@baseclass base(Angles) = InteriorInstance
+[
+  game_class(string) : "Game Class" : "InteriorInstance"
+  interiorFile(string) : "Interior File" : ""
+]
+
+@baseclass base(Angles) = SpawnSphere
+[
+  game_class(string) : "Game Class" : "SpawnSphere"
+]
+
+@baseclass base(Item) = GemSpawnSphere
+[
+  game_class(string) : "Game Class" : "SpawnSphere"
+]
 
 // Triggers
 
@@ -88,7 +108,7 @@
 
 // MarbleBlast entities
 
-@PointClass base(Item) model({{
+@PointClass base(GemSpawnSphere) model({{
 gemDataBlock == "GemItem" -> 	{"path":"models/items/gem.fbx","scale":32},
 gemDataBlock == "GemItem_2pts" -> 	{"path":"models/items/gemitem_2pts.fbx","scale":32},
 gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scale":32},
@@ -109,6 +129,47 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
       ]
       game_class(string) : "SpawnSphere" : "SpawnSphere"
    ]
+   
+@PointClass base(InteriorInstance) model({{
+  interiorFile == "~/data/missions/parts/arch_2_corner.dif" -> {"path" : "models/interiors/arch_2_corner.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_2_normal.dif" -> {"path" : "models/interiors/arch_2_normal.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_3_corner.dif" -> {"path" : "models/interiors/arch_3_corner.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_3_normal.dif" -> {"path" : "models/interiors/arch_3_normal.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_4_corner.dif" -> {"path" : "models/interiors/arch_4_corner.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_4_normal.dif" -> {"path" : "models/interiors/arch_4_normal.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_8_corner.dif" -> {"path" : "models/interiors/arch_8_corner.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/arch_8_normal.dif" -> {"path" : "models/interiors/arch_8_normal.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/intermediate_gentleslope.dif" -> {"path" : "models/interiors/intermediate_gentleslope.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/intermediate_tight_curve.dif" -> {"path" : "models/interiors/intermediate_tight_curve.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/intermediate_wide_curve.dif" -> {"path" : "models/interiors/intermediate_wide_curve.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/royale_climb.dif" -> {"path" : "models/interiors/royale_climb.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/royale_corner1.dif" -> {"path" : "models/interiors/royale_corner1.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/royale_corner2.dif" -> {"path" : "models/interiors/royale_corner2.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/royale_pipe.dif" -> {"path" : "models/interiors/royale_pipe.fbx","scale":32},
+  interiorFile == "~/data/missions/parts/vertical_support.dif" -> {"path" : "models/interiors/vertical_support.fbx","scale":32}
+}}) = interior : "Interior object"
+[
+   interiorFile(choices) : "Interior selection" : 0 =
+    [
+       "~/data/missions/parts/arch_2_corner.dif" : "arch_2_corner.dif"
+       "~/data/missions/parts/arch_2_normal.dif" : "arch_2_normal.dif"
+       "~/data/missions/parts/arch_3_corner.dif" : "arch_3_corner.dif"
+       "~/data/missions/parts/arch_3_normal.dif" : "arch_3_normal.dif"
+       "~/data/missions/parts/arch_4_corner.dif" : "arch_4_corner.dif"
+       "~/data/missions/parts/arch_4_normal.dif" : "arch_4_normal.dif"
+       "~/data/missions/parts/arch_8_corner.dif" : "arch_8_corner.dif"
+       "~/data/missions/parts/arch_8_normal.dif" : "arch_8_normal.dif"
+       "~/data/missions/parts/intermediate_gentleslope.dif" : "intermediate_gentleslope.dif"
+       "~/data/missions/parts/intermediate_tight_curve.dif" : "intermediate_tight_curve.dif"
+       "~/data/missions/parts/intermediate_wide_curve.dif" : "intermediate_wide_curve.dif"
+       "~/data/missions/parts/royale_climb.dif" : "royale_climb.dif"
+       "~/data/missions/parts/royale_corner1.dif" : "royale_corner1.dif"
+       "~/data/missions/parts/royale_corner2.dif" : "royale_corner2.dif"
+       "~/data/missions/parts/royale_pipe.dif" : "royale_pipe.dif"
+       "~/data/missions/parts/vertical_support.dif" : "vertical_support.dif"
+    ]
+]
+
 @PointClass base(Item) model({"path":"models/items/gem.fbx","scale":32}) = GemItem : "single player gem" [] 	
 @PointClass base(Item) model({"path":"models/items/superjump.fbx","scale":32}) = SuperJumpItem : "" []
 @PointClass base(Item) model({"path":"models/items/superspeed.fbx","scale":32}) = SuperSpeedItem : "" []
@@ -118,14 +179,15 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
 @PointClass base(Item) model({"path":"models/images/grow.fbx","scale":32}) = MegaMarbleItem : "" []
 @PointClass base(Item) model({"path":"models/items/egg.fbx","scale":32}) = EasterEggItem : "" []
 @PointClass base(Item) model({"path":"models/items/timetravel.fbx","scale":32}) = TimeTravelItem : "" []
-@PointClass base(Item) model({"path":"models/bumpers/pball_round.fbx","scale":32}) = RoundBumper : "" []
-@PointClass base(Item) model({"path":"models/hazards/ductfan.fbx","scale":32}) = DuctFan : "" []
-@PointClass base(Item) model({"path":"models/hazards/trapdoor.fbx","scale":32}) = TrapDoor : "" []
-@PointClass base(Item) size(-48 -48 0, 48 48 3) model({"path":"models/pads/startarea.fbx","scale":32}) = StartPad : "" []
-@PointClass base(Item) size(-48 -48 0, 48 48 3) model({"path":"models/pads/endarea.fbx","scale":32}) = EndPad : "" []
-@SolidClass base(Item) = InBoundsTrigger : "Leave this area and your are OUT!" []
-@PointClass base(Item) model({"path":"models/pads/checkpad.fbx","scale":32}) = checkPoint : "CheckPoint." []
-@SolidClass base(Item) = checkPointTrigger : "The bounding hit box brush that triggers a check point. Lay it around your cPS if used." [
+@PointClass base(StaticShape) size(-12 -12 -0, 12 12 24) model({"path":"models/bumpers/pball_round.fbx","scale":32}) = RoundBumper : "" []
+@PointClass base(StaticShape) size(48 48 48) model({"path":"models/hazards/ductfan.fbx","scale":32}) = DuctFan : "" []
+@PointClass base(StaticShape) model({"path":"models/hazards/trapdoor.fbx","scale":32}) = TrapDoor : "" []
+@PointClass base(StaticShape) size(-48 -48 0, 48 48 3) model({"path":"models/pads/startarea.fbx","scale":32}) = StartPad : "" []
+@PointClass base(StaticShape) size(-48 -48 0, 48 48 3) model({"path":"models/pads/endarea.fbx","scale":32}) = EndPad : "" []
+@SolidClass base(Angles) = InBoundsTrigger : "Leave this area and your are OUT!" []
+
+@PointClass base(StaticShape) model({"path":"models/pads/checkpad.fbx","scale":32}) = checkPoint : "CheckPoint." []
+@SolidClass base(Angles) = checkPointTrigger : "The bounding hit box brush that triggers a check point. Lay it around your cPS if used." [
    sequence(integer) : "" : 0
 ]
 
@@ -135,11 +197,11 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
 @PointClass base(StaticShape) model({"path":"models/structures/glass_12.fbx","scale":32}) = glass_12shape : "" []
 @PointClass base(StaticShape) model({"path":"models/structures/glass_15.fbx","scale":32}) = glass_15shape : "" []
 @PointClass base(StaticShape) model({"path":"models/structures/glass_18.fbx","scale":32}) = glass_18shape : "" []
-@PointClass base() model() = SpawnSphereMarker : ""
-   [
-   angles(string) : "X Y Z angles of item" : "0 0 0"
-   ]
+@PointClass base(SpawnSphere) = SpawnSphereMarker : "¯\_(ツ)_/¯" []
 
 @PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCaution : "Caution!" []
 @PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCautionCaution : "Caution!" []
 @PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_danger.fbx","scale":32}) = SignCautionDanger : "Danger!" []
+@PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_up.fbx","scale":32}) = ArrowUp : "" []
+@PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_down.fbx","scale":32}) = ArrowDown : "" []
+@PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_side.fbx","scale":32}) = ArrowSide : "" []
