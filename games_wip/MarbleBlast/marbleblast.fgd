@@ -1,6 +1,6 @@
 // Torque / Marble Blast Ultra game definition file '.fgd'
 // For use with TrenchBroom devbuilds 2023.1 and later.
-// 20230809-0900 HumanGamer & xaGe
+// 20230810-0900 HumanGamer & xaGe
 
 // This very much WIP
 
@@ -199,9 +199,9 @@ gemDataBlock == "GemItem_5pts" -> 	{"path":"models/items/gemitem_5pts.fbx","scal
 @PointClass base(StaticShape) model({"path":"models/structures/glass_18.fbx","scale":32}) = glass_18shape : "" []
 @PointClass base(SpawnSphere) = SpawnSphereMarker : "¯\_(ツ)_/¯" []
 
-@PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCaution : "Caution!" []
-@PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCautionCaution : "Caution!" []
-@PointClass base(StaticShape)  model({"path":"models/signs/cautionsign_danger.fbx","scale":32}) = SignCautionDanger : "Danger!" []
+@PointClass base(StaticShape)  size(-12 -16 -40, 18 16 24) model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCaution : "Caution!" []
+@PointClass base(StaticShape)  size(-12 -16 -40, 18 16 24) model({"path":"models/signs/cautionsign_caution.fbx","scale":32}) = SignCautionCaution : "Caution!" []
+@PointClass base(StaticShape)  size(-12 -16 -40, 18 16 24) model({"path":"models/signs/cautionsign_danger.fbx","scale":32}) = SignCautionDanger : "Danger!" []
 @PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_up.fbx","scale":32}) = ArrowUp : "" []
 @PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_down.fbx","scale":32}) = ArrowDown : "" []
 @PointClass base(StaticShape)  model({"path":"models/signs/arrowsign_side.fbx","scale":32}) = ArrowSide : "" []
