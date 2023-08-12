@@ -7,12 +7,13 @@ These won't work with TrenchBroom 2023.1 release version or previous builds and 
 
 #### Committed game profile so far :
 
-- [MarbleBlast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/main/games_wip/MarbleBlast)
+<img src="/games_wip/MarbleBlast/Icon.png"  width="16" height="16"> [MarbleBlast](/games_wip/MarbleBlast/)<br>
+<img src="/games_wip/Quake2/Icon.png"  width="16" height="16"> [Quake II RE-RELEASE](/games_wip/Quake2/)<br>
 
 #### Coming in future commits :
-- [GravityBone](https://store.steampowered.com/app/974090/Gravity_Bone/)
-- [The Ascension of Vigil](https://github.com/RennyC4/TAoV)
-- [RenRacer ᴬᴷᴬ RageRacer](https://github.com/RennyC4/RenRacer)
+<img src="/games_wip/GravityBone/Icon.png"  width="16" height="16"> [GravityBone](/games_wip/GravityBone/)<br>
+<img src="/games_wip/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](/games_wip/TAoV/)<br>
+<img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer ᴬᴷᴬ RageRacer](/games_wip/RenRacer/)<br>
 
 ### Help & Stuff
 TrenchBroom is more akind to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
