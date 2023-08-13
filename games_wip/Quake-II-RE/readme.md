@@ -4,7 +4,7 @@ Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.c
 
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/02739981-f69f-48fb-b135-9bfd9f66c81e" alt="drawing" width="240"/><br>
 
-This was orignally meant to be a drop in replacement for the one that comes with TrenchBroom, but after with talking with Paril due to changes in Q2 and the addons, that would make this impossible to work for Q2 & Q2RE.I choose to keep it seperate for now. You are free to make this work for you how ever you want. Gameconfig text file configs are surprisingly easy once you start looking the ones that come with TrenchBroom. I haven't ported all my custom changes from my setup to this one, but its my plan in the future.
+This was orignally meant to be a drop in replacement for the one that comes with TrenchBroom, but after with talking with Paril due to changes in Q2 and the addons, that would make this impossible to work for Q2 & Q2RE. I choose to keep it seperate for now. You are free to make this work for you how ever you want. Gameconfig text file configs are surprisingly easy once you start looking the ones that come with TrenchBroom. I haven't ported all my custom changes from my setup to this one, but its my plan in the future.
 
 ## Installing
 
@@ -31,4 +31,4 @@ Once that is done you are ready to map. There is no longer a need to manually ad
 
 ## Misc notes, troubleshooting, etc.
 
-Depending on where you installed this add on sometimes when TrenchBroom 1st saves it's settings it can crash right after due to not being able to create the game dir in `~/.TrenchBroom/games/` under Linux or `%appdata%\TrenchBroom\games\` in Windows. This is especially for Windows users, but can happen to Linux users after install on the 1st time you add another tool path, Tool UI setup, engine config, etc to that game.
+Depending on where you installed this add on sometimes when TrenchBroom 1st saves it's settings it can crash right after due to not being able to create the game dir in `~/.TrenchBroom/games/` under Linux or `%appdata%\TrenchBroom\games\` in Windows. This is especially for Windows users, but can happen to Linux users after install on the 1st time you add another tool path, Tool UI setup, engine config, etc to that game. You can just create the dir yourself if needed and that fixes it 99.99% of the time.
