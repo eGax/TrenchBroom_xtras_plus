@@ -8,7 +8,7 @@ These won't work with TrenchBroom 2023.1 release version or previous builds and 
 #### Committed game profile so far :
 
 <img src="/games_wip/MarbleBlast/Icon.png"  width="16" height="16"> [MarbleBlast](/games_wip/MarbleBlast/)<br>
-<img src="/games_wip/Quake-II-RE/Icon.png"  width="16" height="16"> [Quake II RE-RELEASE](/games_wip/Quake2/)<br>
+<img src="/games_wip/Quake-II-RE/Icon.png"  width="16" height="16"> [Quake II RE-RELEASE](/games_wip/Quake-II-RE/)<br>
 
 #### Coming in future commits :
 <img src="/games_wip/GravityBone/Icon.png"  width="16" height="16"> [GravityBone](/games_wip/GravityBone/)<br>
