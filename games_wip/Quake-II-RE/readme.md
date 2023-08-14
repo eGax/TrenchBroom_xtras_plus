@@ -15,7 +15,7 @@ I've named the game add-on and user data dir the same, best place to install the
 In windows copy the `Quake-II-RE` and all its contents to `%appdata%\TrenchBroom\games\` and it would look something similar to:<br>
 <br>
 ![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/e47a31ae-fe5b-456f-ad7a-4d299f7208ca)
-<br>[*] See `Troubleshooting` if you install this in some other dir and TB crshaes.
+<br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and TB crshaes.
 ## Setup
 From the toolbar go to View--> Preferences... or open with kb shortcut [Ctrl]+[Shift]+[,]
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/fd8816ae-cd4a-4bef-a8d0-c19738b90cb7" width="420"/><br>
