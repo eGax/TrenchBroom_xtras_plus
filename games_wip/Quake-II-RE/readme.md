@@ -35,6 +35,15 @@ Once that is done you are ready to map. There is no longer a need to manually ad
 
 ## Compiling  
 
+From Paril's command line compile setups used on Q2RE retail maps.
+
+For BSP: `qbsp -gamedir ../../ -nostat -nopercent -q2bsp %*`
+
+For LIGHT: (fast) `light -gamedir ../../ -nostat -dirt -world_units_per_luxel 24 -wrnormals -novanilla -lightgrid -lightgrid_dist 64 64 64 %*`<br>
+
+For LIGHT: (full) `light -emissivequality high -gamedir ../../ -path ../../baseq2/ -nostat -dirt -extra4 -world_units_per_luxel 8 -wrnormals -novanilla -lightgrid -lightgrid_dist 32 32 32 %*`<br>
+
+_These are what the final maps were compiled with._
 
 
 ## Troubleshooting.
