@@ -35,7 +35,7 @@ Once that is done you are ready to map. There is no longer a need to manually ad
 
 ## Compiling  
 
-From Paril's command line compile setups used on Q2RE retail maps.
+From Paril's compile setups used on Q2RE retail maps for compiling from the command line or a terminal:
 
 For BSP: `qbsp -gamedir ../../ -nostat -nopercent -q2bsp %*`
 
