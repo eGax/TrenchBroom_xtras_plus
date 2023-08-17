@@ -33,6 +33,10 @@ Once that is done you are ready to map. There is no longer a need to manually ad
 
 -Q2RE supports 8BIT WAL & RGB TGA images for brush textures. The addon has PNG enable for editor ONLY images, IE nothing to do with Quake 2 at all.
 
+## Compiling  
+
+
+
 ## Troubleshooting.
 
 Depending on where you installed this add on sometimes when TrenchBroom 1st saves it's settings it can crash right after due to not being able to create the game dir in `~/.TrenchBroom/games/` under Linux or `%appdata%\TrenchBroom\games\` in Windows. This is especially for Windows users, but can happen to Linux users after install on the 1st time you add another tool path, Tool UI setup, engine config, etc to that game. You can just create the dir yourself if needed and that fixes it 99.99% of the time.
