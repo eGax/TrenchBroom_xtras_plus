@@ -47,6 +47,15 @@ _These are what the final maps were compiled with._ These are what the final map
 
 Those are specific to Paril's setup on his PC and won't work for everyone (likely no one), without modification.
 
+### Here is my current interpretation of this in TrenchBroom form parms:
+
+BSP:         `-nostat -nopercent -q2bsp ${MAP_BASE_NAME}`<br>
+VIS:         `${MAP_BASE_NAME}`<br>
+LIGHT FAST:  `-gamedir ${MODS[-1]} -nostat -dirt -world_units_per_luxel 24 -wrnormals -novanilla -lightgrid -lightgrid_dist 64 64 64 ${MAP_BASE_NAME}`<br>
+LIGHT FULL: `-emissivequality high -gamedir ${MODS[-1]} -nostat -dirt -extra4 -world_units_per_luxel 8 -wrnormals -novanilla -lightgrid -lightgrid_dist 32 32 32 ${MAP_BASE_NAME}`<br>
+COPY FILES:<br>
+    Source DIR: `${MAP_DIR_PATH}/${MAP_BASE_NAME}.bsp`<br>
+    Target DIR:  `${GAME_DIR_PATH}/${MODS[-1]}/maps`<br>
 
 ## Troubleshooting.
 
