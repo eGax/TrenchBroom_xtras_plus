@@ -49,13 +49,18 @@ Those are specific to Paril's setup on his PC and won't work for everyone (likel
 
 ### Here is my current interpretation of this in TrenchBroom form parms:
 
-BSP:         `-nostat -nopercent -q2bsp ${MAP_BASE_NAME}`<br>
-VIS:         `${MAP_BASE_NAME}`<br>
-LIGHT FAST:  `-gamedir ${MODS[-1]} -nostat -dirt -world_units_per_luxel 24 -wrnormals -lightgrid -lightgrid_dist 64 64 64 ${MAP_BASE_NAME}`<br>
-LIGHT FULL: `-emissivequality high -gamedir ${MODS[-1]} -nostat -dirt -extra4 -world_units_per_luxel 8 -wrnormals -lightgrid -lightgrid_dist 32 32 32 ${MAP_BASE_NAME}`<br>
+BSP: `-nostat -nopercent -q2bsp ${MAP_BASE_NAME}`<br>
+
+VIS: `${MAP_BASE_NAME}`<br>
+
+***You only use ONE light setup at a time ^_^ NOT BOTH. FAST for testng, FULL for release***<br>
+LIGHT FAST:<br>
+`-gamedir ${MODS[-1]} -nostat -dirt -world_units_per_luxel 24 -wrnormals -lightgrid -lightgrid_dist 64 64 64 ${MAP_BASE_NAME}`<br>
+LIGHT FULL:<br>
+`-emissivequality high -gamedir ${MODS[-1]} -nostat -dirt -extra4 -world_units_per_luxel 8 -wrnormals -lightgrid -lightgrid_dist 32 32 32 ${MAP_BASE_NAME}`<br><br>
 COPY FILES: _To be used only if your map is stored outside the game dir to move into it after compile._ <br>
-    Source DIR: `${MAP_DIR_PATH}/${MAP_BASE_NAME}.bsp`<br>
-    Target DIR:  `${GAME_DIR_PATH}/${MODS[-1]}/maps`<br>
+    Source DIR: `${MAP_DIR_PATH}/${MAP_BASE_NAME}.bsp`<br><br>
+    Target DIR:  `${GAME_DIR_PATH}/${MODS[-1]}/maps`<br><br>
 
 ***IF you are targeting only Q2RE then you could add the `-novanilla` to your light parms to remove the vanilla-compatible lightmap and reduce file size. Keep in mind this will make your bsp not run on vanilla Quake 2 engines.***<br>
 
