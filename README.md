@@ -9,6 +9,8 @@ These won't work with TrenchBroom 2023.1 release version or previous builds and 
 
 <img src="/games_wip/MarbleBlast/Icon.png"  width="16" height="16"> [MarbleBlast](/games_wip/MarbleBlast/)<br>
 <img src="/games_wip/Quake-II-RE/Icon.png"  width="16" height="16"> [Quake II RE-RELEASE](/games_wip/Quake-II-RE/)<br>
+<img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
+
 
 #### Coming in future commits :
 <img src="/games_wip/GravityBone/Icon.png"  width="16" height="16"> [GravityBone](/games_wip/GravityBone/)<br>
