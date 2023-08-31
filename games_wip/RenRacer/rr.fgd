@@ -1,0 +1,175 @@
+
+//
+// rr.fgd - For RenRacer
+
+// TrenchBroom 2023devbuilds above with Ericw-tools.
+//
+// Last edits 202308240226
+
+
+
+// worldspawn
+
+@SolidClass = worldspawn : "World entity"
+[
+	_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of sunlight on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"																									
+	_bounce(integer) : "...enable bounce lighting." : 0 : "1 enables bounce lighting, disabled by default 0"																									
+	_bouncecolorscale(integer) : "...bounce lighting to use texture colors from the map." : 0 : "Weight for bounce lighting to use texture colors from the map: 0=ignore map textures (default), 1=multiply bounce light color by texture color."																									
+	_bouncescale(float) : "...brightness scale of bounce lighting." : "1" : "Scales brightness of bounce lighting, defaults to 1"																									
+	_bouncestyled(integer) : "...makes styled lights bounce." : 0 : "Set to 1 makes styled lights bounce (e.g. flickering or switchable lights), default is 0, they do not bounce."																									
+	_dirt(integer) : "Dirt mapping (AO)" : -1 : "1 enables dirtmapping (ambient occlusion) on all lights, borrowed from q3map2. This adds shadows to corners and crevices. You can override the global setting for specific lights with the _dirt light entity key or _sunlight_dirt, _sunlight2_dirt, and _minlight_dirt worldspawn keys. Default is no dirtmapping (-1)"																									
+	_dirtdepth(integer) : "Dirt depth" : 128 : "Maximum depth of occlusion checking for dirtmapping, default 128."																									
+	_dirtgain(integer) : "Dirt gain" : 1 : "Exponent used in dirt calculation, default 1. Lower values (e.g. 0.5) make the shadows darker and stretch further away from corners"																									
+	_dirtmode(integer) : "Dirt mode" : 0 : "Choose between ordered (0, default) and randomized (1) dirtmapping."																									
+	_dirtscale(integer) : "Dirt scale" : 1 : "Scale factor used in dirt calculations, default 1. Lower values (e.g. 0.5) make the dirt fainter, 2.0 would create much darker shadows"																									
+	_dist(integer) : "Global light scale" : 1 : "Scales the fade distance of all lights by a factor of n. If n is more than 1 lights fade more quickly with distance and if n is less than 1, lights fade more slowly with distance and light reaches further"																									
+	_fog(string) : "<density> <red> <green> <blue> <alpha> <depthbias>" : "0.125 0.0 0.0 0.0 0.0 0.0" : "fog here"																									
+	_gamma(integer) : "Lightmap gamma" : 1 : "Adjust brightness of final lightmap. Default 1, >1 is brighter, <1 is darker"																									
+	_minlight_dirt(integer) : "Minlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on minlight, -1 to disable. Default is to use the value of '_dirt'"																									
+	_range(float) : "Global light range" : "0.5" : "Scales the brightness range of all lights without affecting their fade discance. Values of n more than 0.5 makes lights brighter and n less than 0.5 makes lights less bright. The same effect can be achieved on individual lights by adjusting both the 'light' and 'wait' attributes"																									
+	_sky(string) : "Name" : "castle_" : "Name of a skybox to load."																									
+	_skyaxis(integer) : " " : 1 : ""																									
+	_skyrotate(integer) : " " : 22 : ""																									
+	_sun_mangle(string) : "Sun mangle (Yaw pitch roll)" : "0 -90 0" : "Specifies the direction of sunlight using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Default is straight down (0 -90 0)"																									
+	_sunlight_color(color255) : "Sunlight color R G B" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the sunlight. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light (255 255 255)"																									
+	_sunlight_dirt(integer) : "Sunlight dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on sunlight, -1 to disable (making it illuminate the dirtmapping shadows). Default is to use the value of '_dirt'"																									
+	_sunlight_penumbra(integer) : "Sunlight penumbra in degrees" : 0 : "Specifies the penumbra width, in degrees, of sunlight. Useful values are 3-4 for a gentle soft edge, or 10-20+ for more diffuse sunlight. Default is 0"																									
+	_sunlight(integer) : "Sunlight" : 0 : "Set the brightness of the sunlight coming from an unseen sun in the sky. Sky brushes (or more accurately bsp leafs with sky contents) will emit sunlight at an angle specified by the _sun_mangle key. Default 0"																									
+	_sunlight2_color(color255) : "Sunlight 2 color R G B" : "255 255 255" : "Specifies the colour of _sunlight2, same format as _sunlight_color. Default is white light (255 255 255)"																									
+	_sunlight2_dirt(integer) : "Sublight 2 dirt" : -1 : "1 enables dirtmapping (ambient occlusion) on sunlight2, -1 to disable. Default is to use the value of '_dirt'"																									
+	_sunlight2(integer) : "Sunlight 2 brightness" : 0 : "Set the brightness of a large dome of lights positioned around the map (16K unit radius). Useful for simulating higly diffused light (e.g. cloudy skies) in outdoor areas. Default 0"																									
+	_sunlight3_color(color255) : "Sunlight 3 color R G B" : "255 255 255" : "Specifies the colour of _sunlight3, same format as _sunlight_color. Default is white light (255 255 255)"																									
+	_sunlight3(integer) : "Sunlight 3 brightness" : 0 : "Same as _sunlight2 but creates lights on the bottom hemisphere. Default 0"																									
+	light(integer) : "Ambient light" : 0 : "Set a global minimum light level of 'n' across the whole map. This is an easy way to eliminate completely dark areas of the level, however you may lose some contrast as a result, so use with care. Default 0"																									
+	message(string) : "Level name or any text to display to player on entering the world."																									
+	sounds(integer) : "CD track to play" : 0
+	// liquid alpha brush settings
+	_lavaalpha(float) : "lava transparency" : "1.0" : ""																									
+	_skyalpha(float) : "sky transparency" : "1.0" : ""																									
+	_slimealpha(float) : "slime transparency" : "1.0" : ""																									
+	_telealpha(float) : "teleport transparency" : "1.0" : ""																									
+	_wateralpha(float) : "water transparency" : "1.0" : ""
+]
+
+// Notes for devs:
+// value_name(value type) : Tooltip : example value : "Info about this entity"
+
+// base marker definitions
+
+@baseclass = Targetname [ targetname(target_source) : "Name" ]
+@baseclass = Target [
+	target(target_destination) : "Target"
+	killtarget(target_destination) : "Killtarget"
+]
+
+@baseclass base() size(-32 -32 -28, 32 32 32) color(0 255 0) model({ "path": ":tb/progs/hotrod.mdl"}) = PlayerClass []
+@PointClass base(PlayerClass) model({ "path": ":tb/progs/hotrod.mdl","skin":"1"}) = dm_spawnpoint : "Deathmatch start" []
+@PointClass base(PlayerClass) model({ "path": ":tb/progs/hotrod.mdl","skin":"2"}) = testplayerstart : "Testing player start" []
+@PointClass base(PlayerClass) = racer_spawnpoint : "Player start" []
+@PointClass base(PlayerClass, Targetname) = info_teleport_destination : "Teleporter destination" []
+
+@PointClass base() model({"path":"tb/camera.png","scale":".3"}) = info_intermission : "Intermission camera" [ mangle(string) : "Camera angle (Pitch Yaw Roll)" ]
+
+// Ericw-tool brush specials start //
+@SolidClass base() = func_detail : "Group of brushes for certain compilers" []
+@SolidClass base() = func_detail_illusionary : "func_detail variant with no collision (players / monsters / gunfire) and doesn't split world faces." []
+@SolidClass base() = func_detail_wall : "func_detail variant that doesn't split world faces." []
+@SolidClass base() = func_group : "Group of brushes for in-editor use" []
+@SolidClass base() = func_illusionary : "Static nonsolid model"  []
+// Ericw-tool specials end //
+
+@SolidClass base(Targetname) = func_wall : "A Wall of grouped brush(s)" []
+
+@PointClass base(Targetname) size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = bot_waypoint : "Inivisible in game, set in map for bot cars to follow." []
+@PointClass base() size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = rally_cone : "Orange cone" []
+@PointClass base() size(-60 -60 -13, 60 60 0) model({ "path": ":progs/marker.mdl" }) = rally_marker : "marker" []
+@PointClass base() size(-4 -4 -5, 4 4 5) model({ "path": ":progs/barricade.mdl" }) = rally_barricade : "barricade" []
+@PointClass base() size(-128 -128 -24, 128 128 16) model({ "path": ":progs/finish.mdl" }) = rally_startfinish : "Rally start/finish flag. There seems to be 2 of these as shown in Map2" []
+@PointClass base() size(-128 -128 -24, 128 128 16) model({ "path": ":progs/finish.mdl" }) = rally_startfinish_flag : "Rally start/finish flag" []
+@SolidClass base() = rally_startfinish_brush : "Inivisible, key to cash and prizes!!!" []
+
+//Point ents
+@PointClass color(200 150 150) model({"path":"tb/null.png","scale":".2"}) = info_null : "info_null (spotlight target)"
+[ targetname(target_source) : "Name" ]
+
+// FTE / RR entity start //
+
+@PointClass base() size(16 16 16) model({{
+model != NUll -> {"path":model,"skin":skin,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.5 0.5 0.5"}
+}}) = misc_model : "A point entity for displaying models or sprites. A frame range can be given to animate the model.
+
+ - model : The model to display. Can be of type mdl, bsp, or spr.
+ - skin : Which skin if the model to display(can be blank, will use default)
+ - alpha : How visible is the model.
+ - angles : Pitch roll yaw (up/down, angle, tilt left/right)
+ - scale : Scale of model, default = 1.0 (100%). No need to set this unless you desire to scale. This can be one value (1.0) for all axis or 3 seperately (1.0 1.0 1.0).((scale shown in TB w/ RR addon only))
+ - frame : Single frame to display. Can also be used to offset the animation.
+ - speed : If using animated entity then this sets frames per second of animation. Divide 1 by the fps for this value.
+ - first_frame : The starting frame of the animation.
+ - last_frame : The last frame of the animation.
+
+*** NOTE: set angle value to 0 if using angles key to rotate models ***"
+[
+	model(string)   :	"Model Selection (ex subdirectory/model.mdl)"
+	skin(integer)   :   "Index # of desired skin to show (default = 0)" : 0
+	alpha(integer)	:	"How visible is the model?"
+	angles(string)	:	"pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
+	scale(string)	:	"scale of model default = 1.0 = 100%" : "1.0" : "This can be single axis or all 3, 1.0 or 1.0 1.0 1.0"
+	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
+	speed(integer)	:   "Speed of animation (default = 10)" :   10
+	first_frame(integer)	:	"The starting frame # of the animation"
+	last_frame(integer)		:	"The last frame # of the animation"
+]
+
+// FTE / RR entity end //
+
+// RR pickup entities //
+
+@PointClass base() size(-6 -6 -9, 6 6 9) model({"path":"progs/bsp/spdboost.bsp"}) = speedboost : "Lets hope this gets changed to a brush entity for easy creation in your own maps."
+	[
+	speed(integer) :	"How fast to boost..." : 5000 : "default 5000"
+	speedboost_finished(integer) : "How long to boost..." : 1 : ""
+	]
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_frckt.spr" }) = item_firerocket : "Fire!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/frzsmk.spr" }) = item_freeze : "Give them the cold shoulder & everything else!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_hrckt.spr" }) = item_homingrocket : "Homing!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_napalm.spr" }) = item_napalm : "Burn'm baby!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_prckt.spr" }) = item_powerrocket : "Power!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_remote.spr" }) = item_remote : "Remote detonate your enemies!!" []
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_rico.spr" }) = item_ricochet : "Ricochet your big black balls around!!" []
+
+@PointClass base() size(32 32 32) model({ "path": ":progs/item_health.spr" }) = item_health : "Repair thy self!!" []
+
+// RR brush entities start	
+
+@SolidClass base(Target, Targetname) = trigger_teleport : "Trigger: Teleporter" [ spawnflags(Flags) = [ 1 : "Silent but deadly" : 0 ]]
+
+@SolidClass base(Target, Targetname) = func_breakable : "Make your brushes be able to explode!!"
+[
+	cnt(integer)	: "how many scenery objects to throw (default 3)" : 3
+	cnt2(integer)	: "scale of objects" :: "How big do you like your chunks"
+	health(integer) : "How much will it take to break this"
+	spawnflags(flags) = 
+	[
+		0	: "(default): nothing" : 0
+		1	: "explode into wooden chunks"
+		2	: "explode into rock chunks"
+		4	: "explode into metal chunks"
+		8	: "explode into glass chunks"
+		16	: "spawn explosion"
+		32	: "die on touch"
+	]
+
+frags(choices)	: "what item to spawn into" : 0 =
+    [
+		1	: "fire rocket"
+    	2	: "homing rocket"
+    	3	: "power rocket"
+    	4	: "napalm"
+    	5	: "ricochet"
+    	6	: "remote bomb"
+    	7	: "freeze"
+    	8	: "health"
+]]
+
+// RR brush entities end
