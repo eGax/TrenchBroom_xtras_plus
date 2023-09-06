@@ -1,4 +1,4 @@
-# <img src="/games_wip/Quake-II-RE/Icon.png" width="24" height="24"> [Quake II RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
+# <img src="/games_wip/Quake2RE/Icon.png" width="24" height="24"> [Quake II RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
 
 Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax and file version to be _only_ compatible with recent TrenchBroom Dev builds from recent commits. They can be usually found in TB's action builds, like this last one [here](https://github.com/TrenchBroom/TrenchBroom/actions/runs/5419925551). You need to be signed in to see them for download.<br>
 
@@ -8,11 +8,11 @@ This was orignally meant to be a drop in replacement for the one that comes with
 
 ## Installing
 
-I've named the game add-on and user data dir the same, best place to install the add-on is in the user date saving location. Copy folder `Quake-II-RE` and all its contents to  `~/.TrenchBroom/games/` for Linux, looking like:<br>
+I've named the game add-on and user data dir the same, best place to install the add-on is in the user date saving location. Copy folder `Quake2RE` and all its contents to  `~/.TrenchBroom/games/` for Linux, looking like:<br>
 <br>
 ![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/ae062074-1c82-4efe-b3e4-c9e63041b125)
 
-In windows copy the `Quake-II-RE` and all its contents to `%appdata%\TrenchBroom\games\` and it would look something similar to:<br>
+In windows copy the `Quake2RE` and all its contents to `%appdata%\TrenchBroom\games\` and it would look something similar to:<br>
 <br>
 ![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/e47a31ae-fe5b-456f-ad7a-4d299f7208ca)
 <br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and TB crshaes.
