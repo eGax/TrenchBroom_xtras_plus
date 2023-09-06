@@ -24,8 +24,7 @@ Pick you Quake II RE-RELEASE dir, not base Quake 2. For most people it would be 
 
 I've added slots for map compile tools which are totally optional. If you add your compile executables there they will(should) be available from the Tool UI as `${bsp}`, `${vis}`, and `${light}` respectively.
 
-
-![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/24ae8353-9c2d-40fd-bdf4-4f93693525fd)
+![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/6878112a-0511-48b6-b779-3a428b410849)
 
 Once that is done you are ready to map. There is no longer a need to manually add your Q2 texture directories in recent commits, it happens automagically based off your set game or mod dir.
 
