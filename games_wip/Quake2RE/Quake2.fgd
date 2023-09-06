@@ -1081,14 +1081,8 @@ monster_gekk : "Gekk"
     ]
 ]
 
-@PointClass base(target_crosslevel_trigger) color(128 128 128) size(-8 -8 -8, 8 8 8) = target_crossunit_trigger : "Cross-unit trigger"
-[
-]
-
-@PointClass base(target_crosslevel_target) color(128 128 128) size(-8 -8 -8, 8 8 8) = target_crossunit_target : "Cross-unit target"
-[
-]
-
+@PointClass base(target_crosslevel_trigger) color(128 128 128) size(-8 -8 -8, 8 8 8) = target_crossunit_trigger : "Cross-unit trigger" []
+@PointClass base(target_crosslevel_target) color(128 128 128) size(-8 -8 -8, 8 8 8) = target_crossunit_target : "Cross-unit target" []
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_earthquake : "Level wide earthquake"
 [
     spawnflags(Flags) =
@@ -1380,10 +1374,7 @@ monster_gekk : "Gekk"
     maxyaw(float) : "Maximum yaw angle" : "360"
 ]
 
-@SolidClass base(EditorFlags, EWT_base_BModel, Teamable) color(128 255 128) = turret_base : "Turret base"
-[
-]
-
+@SolidClass base(EditorFlags, EWT_base_BModel, Teamable) color(128 255 128) = turret_base : "Turret base" []
 @PointClass base(EditorFlags) color(128 255 128) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/infantry/tris.md2"}) = turret_driver : "Turret driver"   [   target(target_destination) : "Target (turret_breach)"   ]
 
 // Expansions
@@ -1491,34 +1482,13 @@ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare02.tga"}
     fade_end_dist(integer) : "Distance in units that fade ends, should be greater than fade_start_dist" : 384
 ]
 
-@PointClass base(EditorFlags) size(16 16 16) model({{ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare.png"}}}) = misc_flare : "(N64) Light Flare"
-[
-    spawnflags(Flags) =
-    [
-        1 : "Red rim" : 0
-        2 : "Green rim" : 0
-        4 : "Blue rim" : 0
-        8 : "Fixed rotation" : 0
-    ]
-    image(string) : "image" : "sprites/flare_01.tga" : "The path to a custom flare image to use instead of the default"
-    radius(float) : "1.0" : "Scale multiplier"
-    rgba(color255) : "Color" : "255 255 255 255" : "Flare color"
-    fade_start_dist(integer) : "Distance in units that fade begins, should be smaller than fade_end_dist" : 96
-    fade_end_dist(integer) : "Distance in units that fade ends, should be greater than fade_start_dist" : 384
-]
-
 @PointClass base(EditorFlags, Targetable) = target_camera : "(N64) Camera"
 [
     speed(float) : "Speed" : "75"
 ]
 
-@PointClass base(EditorFlags, Targetable) = info_landmark : "Landmark - connect one level to another with a seamless transition"
-[
-]
-
-@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/shambler/tris.md2" }) = monster_shambler : "Shambler"
-[
-]
+@PointClass base(EditorFlags, Targetable) = info_landmark : "Landmark - connect one level to another with a seamless transition" []
+@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/shambler/tris.md2" }) = monster_shambler : "Shambler" []
 
 @SolidClass base(EditorFlags) = trigger_flashlight : "Enable/Disable Flashlight"
 [
@@ -1535,14 +1505,8 @@ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare02.tga"}
     angles(string) : "pitch yaw roll" : "Player traveling this direction will enable light, against it will disable."
 ]
 
-@PointClass base(EditorFlags) = misc_lavaball : "(N64) Lavaball"
-[
-]
-
-@PointClass base(EditorFlags) = misc_hologram : "(N64) Ship Hologram"
-[
-]
-
+@PointClass base(EditorFlags) = misc_lavaball : "(N64) Lavaball" []
+@PointClass base(EditorFlags) = misc_hologram : "(N64) Ship Hologram" []
 @SolidClass base(EditorFlags) = trigger_fog : "Fog Transitions"
 [
     spawnflags(Flags) =
