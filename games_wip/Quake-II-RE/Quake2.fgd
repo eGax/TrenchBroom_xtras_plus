@@ -1473,22 +1473,22 @@ monster_gekk : "Gekk"
     dmg(float) : "Damage" : "2"
 ]
 
-@SolidClass base(EditorFlags, Targetable, EWT_base_BModel) color(0 128 204) = func_plat2 : "Callable Platform"
+@PointClass base(EditorFlags) size(16 16 16) model({{
+model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare.png"}
+}}) = misc_flare : "(N64) Light Flare"
 [
     spawnflags(Flags) =
     [
-        1 : "Plat Low Trigger" : 0
-        2 : "Toggle" : 0
-        4 : "Top" : 0
-		8 : "Start Enabled" : 0
-        32 : "Box Lift" : 0
+        1 : "Red rim" : 0
+        2 : "Green rim" : 0
+        4 : "Blue rim" : 0
+        8 : "Fixed rotation" : 0
     ]
-    speed(float) : "Speed" : "200"
-    accel(float) : "Acceleration" : "50"
-    decel(float) : "Acceleration" : "50"
-    lip(float) : "Lip remaining after move" : "0"
-    height(float) : "Movement distance"
-    dmg(float) : "Damage" : "2"
+    image(string) : "image" : "sprites/flare_01.tga" : "The path to a custom flare image to use instead of the default"
+    radius(float) : "1.0" : "Scale multiplier"
+    rgba(color255) : "Color" : "255 255 255 255" : "Flare color"
+    fade_start_dist(integer) : "Distance in units that fade begins, should be smaller than fade_end_dist" : 96
+    fade_end_dist(integer) : "Distance in units that fade ends, should be greater than fade_start_dist" : 384
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare.png"}}}) = misc_flare : "(N64) Light Flare"
