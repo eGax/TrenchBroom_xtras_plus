@@ -1491,7 +1491,7 @@ monster_gekk : "Gekk"
     dmg(float) : "Damage" : "2"
 ]
 
-@PointClass base(EditorFlags) = misc_flare : "(N64) Light Flare"
+@PointClass base(EditorFlags) size(16 16 16) model({{ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare.png"}}}) = misc_flare : "(N64) Light Flare"
 [
     spawnflags(Flags) =
     [
@@ -1500,7 +1500,7 @@ monster_gekk : "Gekk"
         4 : "Blue rim" : 0
         8 : "Fixed rotation" : 0
     ]
-    image(string) : "image" : "" : "The path to a custom flare image to use instead of the default"
+    image(string) : "image" : "sprites/flare_01.tga" : "The path to a custom flare image to use instead of the default"
     radius(float) : "1.0" : "Scale multiplier"
     rgba(color255) : "Color" : "255 255 255 255" : "Flare color"
     fade_start_dist(integer) : "Distance in units that fade begins, should be smaller than fade_end_dist" : 96
