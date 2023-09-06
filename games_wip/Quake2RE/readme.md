@@ -8,13 +8,13 @@ This was orignally meant to be a drop in replacement for the one that comes with
 
 ## Installing
 
-I've named the game add-on and user data dir the same, best place to install the add-on is in the user date saving location. Copy folder `Quake2RE` and all its contents to  `~/.TrenchBroom/games/` for Linux, looking like:<br>
+I've named the game add-on and user data dir the same, best place to install the add-on is in the user date saving location. Copy folder `Quake2RE` and all its contents to  `~/.TrenchBroom/games/` for Linux.<br>
 <br>
-![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/ae062074-1c82-4efe-b3e4-c9e63041b125)
 
-In windows copy the `Quake2RE` and all its contents to `%appdata%\TrenchBroom\games\` and it would look something similar to:<br>
+
+In windows copy the `Quake2RE` and all its contents to `%appdata%\TrenchBroom\games\`
 <br>
-![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/e47a31ae-fe5b-456f-ad7a-4d299f7208ca)
+
 <br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and TB crshaes.
 ## Setup
 From the toolbar go to View--> Preferences... or open with kb shortcut [Ctrl]+[Shift]+[,]
