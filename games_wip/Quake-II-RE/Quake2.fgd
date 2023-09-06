@@ -1474,7 +1474,7 @@ monster_gekk : "Gekk"
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
-model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare.png"}
+model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare02.tga"}
 }}) = misc_flare : "(N64) Light Flare"
 [
     spawnflags(Flags) =
