@@ -25,7 +25,7 @@
     spawnflags(Flags) =
     [
         1 : "Start Off" : 0
-		2 : "Allow in DM: 0
+		2 : "Allow in DM" : 0
     ]
     shadowlightstyletarget(target_destination) : "Light entity to pick up style ID from"
 	shadowlightresolution(integer) : "Shadow map resolution; leave blank to automatically determine from radius"
