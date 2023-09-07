@@ -1604,20 +1604,14 @@ model != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare02.tga"}
 	sounds(integer) : "Color Of Text. 0 = White, 1 = Red, 2 = Blue, 3 = Green, 4 = Yellow, 5 = Black, 6 = Cyan, 7 = Orange" : 0
 ]
 
-@PointClass base(EditorFlags, Target, Targetable) = info_nav_lock : "Flip locked flag on targeted doors"
-[
-]
-
+@PointClass base(EditorFlags, Target, Targetable) = info_nav_lock : "Flip locked flag on targeted doors" []
 
 @PointClass base(EditorFlags, Targetable, UseTargets) color(128 128 128) = trigger_health_relay : "Health relay trigger"
 [
 	speed(float) : "Percent of health that must be reached to fire"
 ]
 
-@PointClass base(EditorFlags, Targetable) = target_autosave : "Autosave"
-[
-]
-
+@PointClass base(EditorFlags, Targetable) = target_autosave : "Autosave" []
 
 @PointClass base(EditorFlags, Targetable) = target_sky : "Change sky parameters"
 [
