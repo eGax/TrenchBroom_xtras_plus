@@ -1193,7 +1193,7 @@ monster_gekk : "Gekk"
     speed(float) : "Speed"
 ]
 
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_speaker : "Sound player"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_yel.png", "scale": .08}) = target_speaker : "Sound player"
 [
     spawnflags(Flags) =
     [
@@ -1215,11 +1215,9 @@ monster_gekk : "Gekk"
 ]
 
 
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_amb4 : "Amb4 speaker"
-[
-]
+@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_amb4 : "Amb4 speaker" []
 
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_music : "Change music"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/music.png", "scale": .08}) = target_music : "Change music"
 [
     sounds(integer) : "CD Track Number" : 1
 ]
@@ -1465,7 +1463,7 @@ monster_gekk : "Gekk"
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
-image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","scale":"0.5 0.5 0.5"}
+image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","scale":".6"}
 }}) = misc_flare : "(N64) Light Flare
 
 - image: Set an image for your flare (IE sprites/flare_02.tga)
@@ -1493,7 +1491,7 @@ image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","s
 model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.5 0.5 0.5"}
 }}) = misc_model : "A point entity for displaying models or sprites.
 
- - model : The model to display. Can be of type mdl, sp2(?).
+ - model : The model to display. Can be of type mdl, sp2.
  - rgba : Which skin if the model to display (can be blank, will use default)
  - alpha : How visible is the model.
  - angles : Pitch roll yaw (up/down, angle, tilt left/right)
@@ -1504,11 +1502,15 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 [
 	model(string)   :	"Model Selection (ex subdirectory/model.mdl)"
 	rgba(integer)   :   "Index # of desired skin to show (default = 0)" : 0
-	alpha(integer)	:	"How visible is the model?"
+	alpha(float)	:	"How visible is the model?"
 	angles(string)	:	"pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
-	scale(string)	:	"scale of model default = 1.0 = 100%" : "1.0" : "This can be single axis or all 3, 1.0 or 1.0 1.0 1.0"
+	scale(float)	:	"scale of model default = 1.0 = 100%" : "1.0" : "This can be single axis or all 3, 1.0 or 1.0 1.0 1.0"
 	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
 ]
+
+@PointClass base(EditorFlags, Targetable) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
+    This can be triggered."
+[ spawnflags(Flags) = [1 : "Don't spin" : 0 ]]
 
 @PointClass base(EditorFlags, Targetable) = target_camera : "(N64) Camera"
 [
@@ -1516,7 +1518,7 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 ]
 
 @PointClass base(EditorFlags, Targetable) = info_landmark : "Landmark - connect one level to another with a seamless transition" []
-@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/shambler/tris.md2" }) = monster_shambler : "Shambler" []
+@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({"path": ":models/monsters/shambler/tris.md2"}) = monster_shambler : "Shambler" []
 
 @SolidClass base(EditorFlags) = trigger_flashlight : "Enable/Disable Flashlight"
 [
