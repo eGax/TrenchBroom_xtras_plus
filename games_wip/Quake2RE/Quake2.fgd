@@ -1217,7 +1217,7 @@ monster_gekk : "Gekk"
 
 @PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_amb4 : "Amb4 speaker" []
 
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/music.png", "scale": .08}) = target_music : "Change music"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.png", "scale": .08}) = target_music : "Change music"
 [
     sounds(integer) : "CD Track Number" : 1
 ]
