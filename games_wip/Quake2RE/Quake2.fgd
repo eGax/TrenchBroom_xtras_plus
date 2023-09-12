@@ -1506,9 +1506,16 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
 ]
 
-@PointClass base(EditorFlags, Targetable) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
-    This can be triggered."
-[ spawnflags(Flags) = [1 : "Don't spin" : 0 ]]
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
+    This can be triggered and killed if given health."
+[
+    spawnflags(Flags) =
+     [
+        1 : "Start off" : 0
+        2 : "Alarm" : 0
+     ]
+    health(integer) : "If given health it can be killed..."        
+]
 
 @PointClass base(EditorFlags, Targetable) = target_camera : "(N64) Camera"
 [
