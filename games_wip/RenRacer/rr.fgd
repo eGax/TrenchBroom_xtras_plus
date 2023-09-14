@@ -1,12 +1,9 @@
-
 //
 // rr.fgd - For RenRacer
 
-// TrenchBroom 2023devbuilds above with Ericw-tools.
+// TrenchBroom dev builds, and Ericw-tools.
 //
-// Last edits 202308240226
-
-
+// Last edits 202309140600 : Add 1 light ent
 
 // worldspawn
 
@@ -51,9 +48,6 @@
 	_wateralpha(float) : "water transparency" : "1.0" : ""
 ]
 
-// Notes for devs:
-// value_name(value type) : Tooltip : example value : "Info about this entity"
-
 // base marker definitions
 
 @baseclass = Targetname [ targetname(target_source) : "Name" ]
@@ -66,7 +60,76 @@
 @PointClass base(PlayerClass) model({ "path": ":tb/progs/hotrod.mdl","skin":"1"}) = dm_spawnpoint : "Deathmatch start" []
 @PointClass base(PlayerClass) model({ "path": ":tb/progs/hotrod.mdl","skin":"2"}) = testplayerstart : "Testing player start" []
 @PointClass base(PlayerClass) = racer_spawnpoint : "Player start" []
+@PointClass base(PlayerClass) = testplayerstart : "Testing player start" []
 @PointClass base(PlayerClass, Targetname) = info_teleport_destination : "Teleporter destination" []
+
+// lights
+@BaseClass size(16 16 16) color(200 255 255) model({{
+spawnflags == 1 -> 	{"path": "tb/bulb.mdl", "scale":"0.8", "skin":"1"},
+					{"path": "tb/bulb.mdl", "scale":"0.8"}
+}}) = Lit  : "Hi, I am a light source." [
+light(integer) : "Brightness" : 300 : "Set the light intensity. Negative values are also allowed and will cause the entity to subtract light cast by other entities. Default 300"
+_color(color255) : "Light color" : "255 255 255" : "Specify red(r), green(g) and blue(b) components for the colour of the light. RGB component values are between 0 and 255 (between 0 and 1 is also accepted). Default is white light ('255 255 255')"
+wait(float) : "Fade distance multiplier" : "1" : "Scale the fade distance of the light by 'n'. Values of n more than 1 make the light fade more quickly with distance, and values less than 1 make the light fade more slowly (and thus reach further). Default 1"
+delay(choices) : "Attenuation" : 0 : "Select an attenuation formula for the light: 0 = Linear attenuation (default). 1 = 1/x attenuation. 2 = 1/(x^2) attenuation. 3 = No attenuation (same brightness at any distance). 4 = 'local minlight' - No attenuation and like minlight, it won't raise the lighting above it's light value. Unlike minlight, it will only affect surfaces within line of sight of the entity. 5 = 1/(x^2) attenuation, but slightly more attenuated and without the extra bright effect that 'delay 2' has near the source"  =
+[
+	0 : "Linear falloff (Default)"
+	1 : "Inverse distance falloff"
+	2 : "Inverse distance squared"
+	3 : "No falloff"
+	4 : "Local minlight"
+	5 : "Inverse distance 2"
+	]
+mangle(string) : "Spotlight direction" :  : "Turns the light into a spotlight and specifies the direction of light using yaw(x), pitch(y) and roll(z) in degrees. Yaw specifies the angle around the Z-axis from 0 to 359 degrees and pitch specifies the angle from 90 (straight up) to -90 (straight down). Roll has no effect, so use any value (e.g. 0). Often easier than the 'target' method"
+angle(integer) : "Spotlight cone angle" :  : "Specifies the angle in degrees for a spotlight cone. Default 40"
+style(choices) : "Appearance" : 0 =
+[
+	0 : "Normal"
+	1 : "Flicker A"
+	2 : "Slow, strong pulse"
+	3 : "Candle A"
+	4 : "Fast strobe"
+	5 : "Gentle pulse"
+	6 : "Flicker B"
+	7 : "Candle B"
+	8 : "Candle C"
+	9 : "Slow strobe"
+	10: "Fluorescent flicker"
+	11: "Slow pulse, noblack"
+]
+spawnflags(Flags) = [ 1 : "Initially dark" : 0 ]
+_softangle(integer) : "Spotlight soft angle" : 0 : "Specifies the angle in degrees for an inner spotlight cone (must be less than the 'angle' cone. Creates a softer transition between the full brightness of the inner cone to the edge of the outer cone. Default 0 (disabled)"
+_anglescale(float) : "Light angle scale" : "0.5" : "Sets a scaling factor for how much influence the angle of incidence of light on a surface has on the brightness of the surface. n must be between 0.0 and 1.0. Smaller values mean less attenuation, with zero meaning that angle of incidence has no effect at all on the brightness. Default 0.5"
+_dirtscale(integer) : "Dirt scale (override)" :  : "Override the global '_dirtscale' or '_dirtgain' settings to change how this light is affected by dirtmapping (ambient occlusion). See descriptions of these keys in the worldspawn section"
+_dirt(choices) : "Light dirtmapping" : 0 =
+[
+   -1 : "Disable dirtmapping"
+	0 : "Inherit from worldspawn _dirt"
+	1 : "Dirtmapping enabled"
+]
+_deviance(integer) : "Deviance" :  : "Split up the light into a sphere of randomly positioned lights within radius 'n' (in world units). Useful to give shadows a wider penumbra. '_samples' specifies the number of lights in the sphere. The 'light' value is automatically scaled down for most lighting formulas (except linear and non-additive minlight) to attempt to keep the brightness equal. Default is 0, do not split up lights"
+_samples(integer) : "No. of Deviance lights" :  : "Number of lights to use for '_deviance'. Default 16 (only used if '_deviance' is set)"
+_surface(string) : "Surface light texture name" :  : "Makes surfaces with the given texture name emit light, by using this light as a template which is copied across those surfaces. Lights are spaced about 128 units (though possibly closer due to bsp splitting) apart and positioned 2 units above the surfaces"
+_surface_offset(integer) : "Surface light offset" :  : "Controls the offset lights are placed above surfaces for '_surface'. Default 2"
+_surface_spotlight(choices) : "Surface light spotlight" : 0 =
+[
+	0 : "Not a spotlight"
+	1 : "Spotlight"
+]
+_project_texture(string) : "Name of texture being projected" :  : "Specifies that a light should project this texture. The texture must be used in the map somewhere"
+_project_mangle(string) : "Angle of projected texture" :  : "Specifies the yaw/pitch/roll angles for a texture projection (overriding mangle)"
+_project_fov(integer) : "fov of projected texture" :  : "Specifies the fov angle for a texture projection. Default 90"
+_bouncestyled(integer) : "Bounce styled light?" :  : "Set this to '1' to enable this styled light to bounce if you are using bounce lighting in your map"
+_sun(float) : "Setting this to 1 turns this light into a sun." : "0" : "Set to 1 to make this light a sun, as an alternative to using the sunlight worldspawn keys. If the light targets an info_null entity, the direction towards that entity sets sun direction. The light itself is disabled, so it can be placed anywhere in the map."
+]
+
+@PointClass size(-8 -8 -8, 8 8 8) base(Lit, Target, Targetname) model({{
+spawnflags == "1" -> {"path":"tb/bulb.mdl", "skin":"1"},
+    _sun == 1 -> 	 {"path":"tb/sun.png", "scale":"0.5"},
+                     {"path":"tb/bulb.mdl", "skin":"0"}
+}}) = light : "An invisible light source
+    If spawnflag key value is empty use a skin 0 (white) start light on by default, otherwise use skin 1 (black), start off."
+    [spawnflags(Flags) = [ 1 : "Start off" : 0 ]]
 
 @PointClass base() model({"path":"tb/camera.png","scale":".3"}) = info_intermission : "Intermission camera" [ mangle(string) : "Camera angle (Pitch Yaw Roll)" ]
 
@@ -78,8 +141,6 @@
 @SolidClass base() = func_illusionary : "Static nonsolid model"  []
 // Ericw-tool specials end //
 
-@SolidClass base(Targetname) = func_wall : "A Wall of grouped brush(s)" []
-
 @PointClass base(Targetname) size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = bot_waypoint : "Inivisible in game, set in map for bot cars to follow." []
 @PointClass base() size(-6 -6 -9, 6 6 9) model({ "path": ":progs/cone.mdl" }) = rally_cone : "Orange cone" []
 @PointClass base() size(-60 -60 -13, 60 60 0) model({ "path": ":progs/marker.mdl" }) = rally_marker : "marker" []
@@ -88,6 +149,10 @@
 @PointClass base() size(-128 -128 -24, 128 128 16) model({ "path": ":progs/finish.mdl" }) = rally_startfinish_flag : "Rally start/finish flag" []
 @SolidClass base() = rally_startfinish_brush : "Inivisible, key to cash and prizes!!!" []
 
+// Notes for devs:
+// value_name(value type) : Tooltip : example value : "Info about this entity"
+
+@BaseClass = targetname [ targetname(target_source) : "name" ]
 //Point ents
 @PointClass color(200 150 150) model({"path":"tb/null.png","scale":".2"}) = info_null : "info_null (spotlight target)"
 [ targetname(target_source) : "Name" ]
