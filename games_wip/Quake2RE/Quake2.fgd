@@ -1496,7 +1496,7 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
  - alpha : How visible is the model.
  - angles : Pitch roll yaw (up/down, angle, tilt left/right)
  - scale : Scale of model, default = 1.0 (100%). No need to set this unless you desire to scale.
- - frame : Single frame to display. Can also be used to offset the animation."
+ - frame : Single frame to display."
 [
 	model(string)   :	"Model Selection (ex subdirectory/model.mdl)"
 	rgba(integer)   :   "Index # of desired skin to show (default = 0)" : 0
