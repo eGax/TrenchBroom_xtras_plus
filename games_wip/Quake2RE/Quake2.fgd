@@ -43,6 +43,45 @@
 // base marker definitions
 //
 
+// Setup Effects baseclass
+@baseclass = FX [
+effects(choices):   "FX + Effects animation settings." : 0 =
+[
+  0   :   "NONE"
+  1   :   "Rotate"
+  2   :   "Bleeding"
+  8   :   "Blaster glow + trail"
+  16  :   "Rocket glow + trail"
+  32  :   "Grenade trail"
+  64  :   "Hyperblaster glow"
+  128 :   "BFG glow"
+  256 :   "Color shell (Doesn't seem to work)"
+  512 :   "Powerscreen (Doesn't seem to work)"
+  1024   :   "automatically cycle between frames 0 and 1 at 2 hz"
+  2048   :   "automatically cycle between frames 2 and 3 at 2 hz"
+  4096   :   "automatically cycle through all frames at 2hz"
+  8192   :   "automatically cycle through all frames at 10hz"
+  16384  :   "Flies (Doesn't seem to work)"
+  32768  :   "Quad shell"
+  65536  :   "Pent shell"
+  131072 :   "Particle fountain"
+  262144  :   "Flags1"
+  524288  :   "Flag2"
+  1048576 :   "EF_IONRIPPER"
+  2097152 :   "EF_GREENGIB"	
+  4194304 :   "EF_BLUEHYPERBLASTER" 
+  8388608 :   "EF_SPINNINGLIGHTS"	
+  16777216    :   "EF_PLASMA"	
+  33554432    :   "EF_TRAP"			
+  67108864    :   "EF_TRACKER"
+  134217728   :   "EF_DOUBLE"	
+  268435456   :   "EF_SPHERETRANS"
+  536870912   :   "EF_TAGTRAIL"
+  1073741824  :   "EF_HALF_DAMAGE"	
+  2147483648  :   "EF_TRACKERTRAIL"	
+  ]
+]
+
 // EditorFlags apply to everything - all entities should inherit it.
 @baseclass = EditorFlags [
     spawnflags(Flags) =
@@ -272,8 +311,8 @@
 @PointClass base(Keys) model({ "path": ":models/items/n64/yellow_key/tris.md2" }) = key_yellow_key : "Yellow Key" []
 @PointClass base(Keys) model({ "path": ":models/items/n64/power_core/tris.md2" }) = key_power_core : "Power Core" []
 // CTF
-@PointClass base(Keys) model({ "path": ":players/male/flag1.md2" }) = item_flag_team1 : "CTF Flag (red)" []
-@PointClass base(Keys) model({ "path": ":players/male/flag2.md2" }) = item_flag_team2 : "CTF Flag (blue)" []
+@PointClass base(Keys) model({ "path": ":players/male/flag1.md2","frame":"176" }) = item_flag_team1 : "CTF Flag (red)" []
+@PointClass base(Keys) model({ "path": ":players/male/flag2.md2","frame":"176" }) = item_flag_team2 : "CTF Flag (blue)" []
 
 
 // Keep in mind when using func_areaportal that it must
@@ -532,7 +571,7 @@
 // expansion
 @PointClass base(info_notnull) = info_teleport_destination : "Teleport Destination" []
 
-@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) = light : "Light"
+@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/ent-bulb.mdl", "scale":"1.0", "skin":"0"}) = light : "Light"
 [
     spawnflags(Flags) =
     [
@@ -672,7 +711,7 @@ misc_satellite_dish : "Satellite Dish"
 // Monsters!
 //
 
-@BaseClass base(EditorFlags, Targetable, Target, Scale, Alpha) color(255 128 0) size(-16 -16 -24, 16 16 32) = Monsters
+@BaseClass base(EditorFlags, FX, Targetable, Target, Scale, Alpha) color(255 128 0) size(-16 -16 -24, 16 16 32) = Monsters
 [
     spawnflags(Flags) =
     [
@@ -1130,7 +1169,7 @@ monster_gekk : "Gekk"
 // if no color spawnflags are set, the laser color defaults to dim gray (and hard to see)
 // setting the damage to 0 makes it use the default damage of 1
 // setting the damage to a negative number will actually give health
-@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) = target_laser : "Laser"
+@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"})= target_laser : "Laser"
 [
     spawnflags(Flags) =
     [
@@ -1149,7 +1188,7 @@ monster_gekk : "Gekk"
 ]
 
 // Expansion
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_nuke : "Nuke (kill all entities)"
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.png", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"
 [
 ]
 
@@ -1488,7 +1527,7 @@ image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","s
 ]
 
 @PointClass base() size(16 16 16) model({{
-model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.5"}
+model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.06"}
 }}) = misc_model : "A point entity for displaying models or sprites.
 
  - model : The model to display. Can be of type mdl, sp2.
@@ -1498,12 +1537,47 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
  - scale : Scale of model, default = 1.0 (100%). No need to set this unless you desire to scale.
  - frame : Single frame to display."
 [
-	model(string)   :	"Model Selection (ex subdirectory/model.mdl)"
+	model(string)   :	"Model/sprite Selection (ex subdirectory/model.mdl)"
 	rgba(integer)   :   "Index # of desired skin to show (default = 0)" : 0
 	alpha(float)	:	"How visible is the model?"
 	angles(string)	:	"pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
 	scale(float)	:	"scale of model default = 1.0 = 100%" : "1.0" : "No need to set this unless you desire to scale."
 	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
+    effects(choices):   "FX + Animation settings." : 0 =
+  [
+    0   :   "NONE"
+    1   :   "Rotate"
+    2   :   "Bleeding"
+    8   :   "Blaster glow + trail"
+    16  :   "Rocket glow + trail"
+    32  :   "Grenade trail"
+    64  :   "Hyperblaster glow"
+    128 :   "BFG glow"
+    256 :   "Color shell (Doesn't seem to work)"
+    512 :   "Powerscreen (Doesn't seem to work)"
+    1024   :   "automatically cycle between frames 0 and 1 at 2 hz"
+    2048   :   "automatically cycle between frames 2 and 3 at 2 hz"
+    4096   :   "automatically cycle through all frames at 2hz"
+    8192   :   "automatically cycle through all frames at 10hz"
+    16384  :   "Flies (Doesn't seem to work)"
+    32768  :   "Quad shell"
+    65536  :   "Pent shell"
+    131072 :   "Particle fountain"
+    262144  :   "Flags1"
+    524288  :   "Flag2"
+    1048576 :   "EF_IONRIPPE"
+	2097152 :   "EF_GREENGIB"	
+    4194304 :   "EF_BLUEHYPERBLASTER" 
+    8388608 :   "EF_SPINNINGLIGHTS"	
+	16777216    :   "EF_PLASMA"	
+	33554432    :   "EF_TRAP"			
+    67108864    :   "EF_TRACKER"
+	134217728   :   "EF_DOUBLE"	
+	268435456   :   "EF_SPHERETRANS"
+	536870912   :   "EF_TAGTRAIL"
+	1073741824  :   "EF_HALF_DAMAGE"	
+	2147483648  :   "EF_TRACKERTRAIL"	
+    ]
 ]
 
 @PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
