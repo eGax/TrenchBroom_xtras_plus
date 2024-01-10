@@ -44,9 +44,8 @@
 //
 
 // Setup Effects baseclass
-@baseclass = FX [
-effects(choices):   "FX + Effects animation settings." : 0 =
-[
+@baseclass = FX [   effects(flags):   "FX + Animation settings."  :   0 =
+[   
   0   :   "NONE"
   1   :   "Rotate"
   2   :   "Bleeding"
@@ -79,8 +78,7 @@ effects(choices):   "FX + Effects animation settings." : 0 =
   536870912   :   "EF_TAGTRAIL"
   1073741824  :   "EF_HALF_DAMAGE"	
   2147483648  :   "EF_TRACKERTRAIL"	
-  ]
-]
+]]
 
 // EditorFlags apply to everything - all entities should inherit it.
 @baseclass = EditorFlags [
@@ -1526,7 +1524,7 @@ image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","s
     fade_end_dist(integer) : "Distance in units that fade ends, should be greater than fade_start_dist" : 384
 ]
 
-@PointClass base() size(16 16 16) model({{
+@PointClass base(FX) size(16 16 16) model({{
 model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.06"}
 }}) = misc_model : "A point entity for displaying models or sprites.
 
@@ -1543,41 +1541,6 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 	angles(string)	:	"pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
 	scale(float)	:	"scale of model default = 1.0 = 100%" : "1.0" : "No need to set this unless you desire to scale."
 	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
-    effects(choices):   "FX + Animation settings." : 0 =
-  [
-    0   :   "NONE"
-    1   :   "Rotate"
-    2   :   "Bleeding"
-    8   :   "Blaster glow + trail"
-    16  :   "Rocket glow + trail"
-    32  :   "Grenade trail"
-    64  :   "Hyperblaster glow"
-    128 :   "BFG glow"
-    256 :   "Color shell (Doesn't seem to work)"
-    512 :   "Powerscreen (Doesn't seem to work)"
-    1024   :   "automatically cycle between frames 0 and 1 at 2 hz"
-    2048   :   "automatically cycle between frames 2 and 3 at 2 hz"
-    4096   :   "automatically cycle through all frames at 2hz"
-    8192   :   "automatically cycle through all frames at 10hz"
-    16384  :   "Flies (Doesn't seem to work)"
-    32768  :   "Quad shell"
-    65536  :   "Pent shell"
-    131072 :   "Particle fountain"
-    262144  :   "Flags1"
-    524288  :   "Flag2"
-    1048576 :   "EF_IONRIPPE"
-	2097152 :   "EF_GREENGIB"	
-    4194304 :   "EF_BLUEHYPERBLASTER" 
-    8388608 :   "EF_SPINNINGLIGHTS"	
-	16777216    :   "EF_PLASMA"	
-	33554432    :   "EF_TRAP"			
-    67108864    :   "EF_TRACKER"
-	134217728   :   "EF_DOUBLE"	
-	268435456   :   "EF_SPHERETRANS"
-	536870912   :   "EF_TAGTRAIL"
-	1073741824  :   "EF_HALF_DAMAGE"	
-	2147483648  :   "EF_TRACKERTRAIL"	
-    ]
 ]
 
 @PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
