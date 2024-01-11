@@ -979,8 +979,7 @@ monster_gekk : "Gekk"
 ]
 
 @PointClass base(Monsters) size(-40 -40 0, 40 40 144) model({ "path": ":models/monsters/blackwidow/tris.md2" }) = monster_widow : "Black Widow (on foot)" []
-//Why is there two of these with no difference?
-//@PointClass base(Monsters) size(-70 -70 0, 70 70 144) model({ "path": ":models/monsters/blackwidow2/tris.md2" }) = monster_widow : "Black Widow (spider)" []
+@PointClass base(Monsters) size(-70 -70 0, 70 70 144) model({ "path": ":models/monsters/blackwidow2/tris.md2" }) = monster_widow2 : "Black Widow (spider)" []
 
 @PointClass base(Monsters) model({ "path": ":models/monsters/medic/tris.md2", "skin": 2 }) = monster_medic_commander : "Medic Commander"
 [
