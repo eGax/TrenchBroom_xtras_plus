@@ -44,7 +44,7 @@
 //
 
 // Setup Effects baseclass
-@baseclass = FX [   effects(flags):   "FX + Animation settings."  :   0 =
+@baseclass = FX [   effects(flags) =
 [   
   0   :   "NONE"
   1   :   "Rotate"
