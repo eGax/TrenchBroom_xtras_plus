@@ -56,7 +56,7 @@
   32  :   "Grenade trail"
   64  :   "Hyperblaster glow"
   128 :   "BFG glow"
-  256 :   "Color shell (Doesn't seem to work)"
+  256 :   "Color shell (requires a value renderfx key value.)"
   512 :   "Powerscreen (Doesn't seem to work)"
   1024   :   "automatically cycle between frames 0 and 1 at 2 hz"
   2048   :   "automatically cycle between frames 2 and 3 at 2 hz"
@@ -79,8 +79,23 @@
   268435456   :   "EF_SPHERETRANS"
   536870912   :   "EF_TAGTRAIL"
   1073741824  :   "EF_HALF_DAMAGE"	
-  2147483648  :   "EF_TRACKERTRAIL"	
-]]
+  2147483648  :   "EF_TRACKERTRAIL"
+  4294967296  :   "EF_DUALFIRE (dualfire damage color shell)"
+  8589934592  :   "EF_HOLOGRAM (N64 hologram)"
+  17179869184 :   "EF_FLASHLIGHT (project flashlight, only for players)"
+  34359738368 :   "EF_BARREL_EXPLODING"
+  68719476736 :   "EF_TELEPORTER2 (N64 teleporter)"
+  137438953472:   "EF_GRENADE_LIGHT"
+]
+	renderfx(flags) =
+	[
+        128 :   "RF_BEAM"
+        256 :   "RF_CUSTOMSKIN (skin is an index in image_precache)"
+        512 :   "RF_GLOW (pulse lighting for bonus items)"
+        1024    :   "RF_SHELL_RED"
+        2048    :   "RF_SHELL_GREEN"
+        4096    :   "RF_SHELL_BLUE"
+    ]]
 
 // EditorFlags apply to everything - all entities should inherit it.
 @baseclass = EditorFlags [
