@@ -4,7 +4,9 @@
 // Originally written by by autolycus
 // Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe.
 //
-// Last updated by xaGe 20240111
+// Updated by Paril for re-release
+//
+// Last updated by xaGe 202401102000
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
