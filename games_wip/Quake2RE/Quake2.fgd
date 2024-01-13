@@ -1516,7 +1516,7 @@ monster_gekk : "Gekk"
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
-image != NUll -> {"path":image,"scale":radius},{"path":"sprites/flare_02.tga","scale":".6"}
+image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.png","scale":".6"}
 }}) = misc_flare : "(N64) Light Flare
 
 - image: Set an image for your flare (IE sprites/flare_02.tga)
