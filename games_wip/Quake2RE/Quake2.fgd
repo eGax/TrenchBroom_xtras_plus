@@ -586,7 +586,7 @@
 // expansion
 @PointClass base(info_notnull) = info_teleport_destination : "Teleport Destination" []
 
-@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/ent-bulb.mdl", "scale":"1.0", "skin":"0"}) = light : "Light"
+@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/bulb.mdl", "scale":"1.0", "skin":"0"}) = light : "Light"
 [
     spawnflags(Flags) =
     [
