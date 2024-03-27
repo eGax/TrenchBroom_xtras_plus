@@ -1,6 +1,6 @@
 
 
-@PointClass size(-8 -8 -8, 8 8 8) color(255 128 0) base(EditorFlags, Target, Targetable) = dynamic_light : "Dynamic KEX light" [
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 0) base(EditorFlags, Target, Targetable) model({"path": "tb/bulb.mdl", "scale":"1.0", "skin":"4"}) = dynamic_light : "Dynamic KEX light" [
 	_color(color) : "Light color"
 	shadowlightradius(float) : "Sets the radius of a dynamic shadow light. Becomes a dynamic light if this is bigger than 0" : "0"
 	shadowlightintensity(float) : "Intensity scalar for the light." : "1.0"
