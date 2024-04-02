@@ -17,7 +17,7 @@ Windows users can also dropped the Quake2RE DIR into wherever they have there TB
 <p><code>C:\games\tools\TrenchBroom-Win64-v2024.2-Release\games\</code></p>
 <br>
 
-<br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and TB crashes.
+<br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and or you want to open existing Quake 2 maps in this addon.
 ## Setup
 From the toolbar go to View--> Preferences... or open with kb shortcut [Ctrl]+[Shift]+[,]
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/fd8816ae-cd4a-4bef-a8d0-c19738b90cb7" width="420"/><br>
