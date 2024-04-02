@@ -8,15 +8,13 @@ Instead of replacing the current Quake 2 addon from TB, this creates it's own ga
 
 ## Installing
 
-I've named the game add-on and user data dir the same, best place to install the add-on is in the user date saving location. Copy folder `Quake2RE` and all its contents to  `~/.TrenchBroom/games/` for Linux.<br>
-<br>
+I've named the game add-on and user data dir the same, best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
 
+For windows users copy the `Quake2RE` and all its contents to :
+<p><code>%appdata%\TrenchBroom\games\</code></p>
 
-In windows copy the `Quake2RE` and all its contents to :
-`%appdata%\TrenchBroom\games\`
-
-Windows users can also dropped the Quake2RE DIR into wherever they have there DIR. For example : 
-`C:\games\tools\TrenchBroom-Win64-v2024.2-Release\games\`
+Windows users can also dropped the Quake2RE DIR into wherever they have there TB installed. For example : 
+<p><code>C:\games\tools\TrenchBroom-Win64-v2024.2-Release\games\</code></p>
 <br>
 
 <br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and TB crashes.
@@ -66,7 +64,10 @@ COPY FILES: _To be used only if your map is stored outside the game dir to move 
     Target DIR:  `${GAME_DIR_PATH}/${MODS[-1]}/maps`<br><br>
 
 ***IF you are targeting only Q2RE then you could add the `-novanilla` to your light parms to remove the vanilla-compatible lightmap and reduce file size. Keep in mind this will make your bsp not run on vanilla Quake 2 engines.***<br>
-
+<br><br>
 ## Troubleshooting.
 
-Depending on where you installed this add on sometimes when TrenchBroom 1st saves it's settings it can crash right after due to not being able to create the game dir in `~/.TrenchBroom/games/` under Linux or `%appdata%\TrenchBroom\games\` in Windows. This is especially for Windows users, but can happen to Linux users after install on the 1st time you add another tool path, Tool UI setup, engine config, etc to that game. You can just create the dir yourself if needed and that fixes it 99.99% of the time.
+If you open a prior Quake 2 map and want to open it as a Quake2RE map, open it in a text editor and rename line # 1 from whatever it is to Quake2RE. Example, change :<br>
+`// Game: Quake 2`
+<br>TO<br>
+`// Game: Quake2RE`
