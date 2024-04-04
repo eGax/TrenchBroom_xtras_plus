@@ -1,9 +1,9 @@
 # **TrenchBroom xtras plus**
 ### My experimental game support profiles and works.
 
-These won't work with TrenchBroom 2023.1 release version or previous builds and will require a <a href="https://github.com/TrenchBroom/TrenchBroom/actions/runs/5991216319" target="_BLANK">recent dev build</a> from the most recent or close enough TrenchBroom commits to function. It has the recent bug fixes, additions, a slightly different gameconfig syntax and I would rather support 1 version of each config since it is what I use vs stale releases. You will need to be signed into your GitHub account to see the compiled build at the bottom labeled as `Artifacts` to download.
+These work only with TrenchBroom 2024.1 release version or newer dev builds to function properly.
 
-- For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can build TrenchBroom with most current commits for your system with the [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git) I co-maintain.
+- For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can install TrenchBroom current releaae with [trenchbroom-bin AUR](https://aur.archlinux.org/packages/trenchbroom-bin) I co-maintain. OR the dev build I maintain here: [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git)
 
 #### Committed game profile so far :
 
