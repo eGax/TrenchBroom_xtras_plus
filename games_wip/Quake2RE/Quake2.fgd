@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 202401102000
+// Last updated by xaGe 20240416-1600
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -256,6 +256,7 @@
 @PointClass base(Ammo) model({ "path": ":models/ammo/am_tesl/tris.md2" }) = ammo_tesla : "Teslas" []
 @PointClass base(Ammo) model({ "path": ":models/weapons/g_nuke/tris.md2" }) = ammo_nuke : "A-M Bomb (usable nuke); DM only" []
 
+@PointClass base(Weapons) model({ "path": ":models/weapons/g_blast/tris.md2" }) = weapon_blaster : "Blater pistol" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_shotg/tris.md2" }) = weapon_shotgun : "Shotgun" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_shotg2/tris.md2" }) = weapon_supershotgun : "Super shotgun" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_machn/tris.md2" }) = weapon_machinegun : "Machinegun" []
@@ -494,7 +495,7 @@
 	dmg(float) : "Crush damage" : "100"
 ]
 
-@SolidClass base(EditorFlags, Targetable, EWT_base_BModel, BmodelSounds) color(0 128 204) = func_rotating : "Rotating brush"
+@SolidClass base(EditorFlags, Targetable, EWT_base_BModel, FX) color(0 128 204) = func_rotating : "Rotating brush"
 [
     spawnflags(Flags) =
     [
@@ -513,6 +514,7 @@
     dmg(float) : "Damage when blocked" : "2"
     accel(float) : "Acceleration speed, when flag is enabled" : "1"
     decel(float) : "Deceleration speed, when flag is enabled" : "1"
+    noise(string) : "Noise to play while rotating"
 ]
 
 @PointClass base(EditorFlags, Targetable, UseTargets) color(76 25 153) size(-8 -8 -8, 8 8 8) = func_timer : "Timer"
@@ -528,7 +530,7 @@
 ]
 
 // 0219 - added "team" key
-@SolidClass base(EditorFlags, Targetable, UseTargets, Teamable, EWT_base_BModel) color(0 128 204) = func_train : "Moving platform"
+@SolidClass base(EditorFlags, Targetable, UseTargets, Teamable, EWT_base_BModel, FX) color(0 128 204) = func_train : "Moving platform"
 [
     spawnflags(Flags) =
     [
@@ -546,7 +548,7 @@
     noise(string) : "Travel noise (path/file.wav)"
 ]
 
-@SolidClass base(EditorFlags, Targetable, EWT_base_BModel) color(0 128 204) = func_wall : "Solid Wall"
+@SolidClass base(EditorFlags, Targetable, EWT_base_BModel, FX) color(0 128 204) = func_wall : "Solid Wall"
 [
     spawnflags(Flags) =
     [
@@ -558,7 +560,7 @@
     ]
 ]
 
-@SolidClass base(EditorFlags, Targetable, Teamable, EWT_base_BModel, BmodelSounds) color(0 128 204) = func_water : "Moveable water"
+@SolidClass base(EditorFlags, Targetable, Teamable, EWT_base_BModel, BmodelSounds, FX) color(0 128 204) = func_water : "Moveable water"
 [
     spawnflags(Flags) =
     [
@@ -580,7 +582,7 @@
     accel(float) : "divisor of lowest player's distance, to determine rising speed" : "20"
 ]
 
-@PointClass base(Targetable) color(128 0 0) size(-2 -2 -2, 2 2 2) = info_null : "Compiler-only target (spotlights, etc)" []
+@PointClass base(Targetable) color(128 0 0) size(-2 -2 -2, 2 2 2) = info_null : "Compiler-only target (spotlights, suns, etc)" []
 @PointClass base(EditorFlags, Targetable) color(0 128 0) size(-4 -4 -4, 4 4 4) = info_notnull : "Game target" []
 
 // expansion
@@ -661,12 +663,12 @@
 ]
 
 // set angle for gib direction, otherwise it just drops
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_arm : "arm gib, use with target_spawner" []
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/head/tris.md2" }) = misc_gib_head : "head gib, use with target_spawner" []
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_leg : "leg gib, use with target_spawner" []
+@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_arm : "arm gib, use with target_spawner" []
+@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/head/tris.md2" }) = misc_gib_head : "head gib, use with target_spawner" []
+@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_leg : "leg gib, use with target_spawner" []
 
 
-@PointClass base(EditorFlags, Targetable) color(255 128 0) size(-64 -64 0, 64 64 128)
+@PointClass base(EditorFlags, Targetable, FX) color(255 128 0) size(-64 -64 0, 64 64 128)
     model(
         {{
             spawnflags & 32 -> { "path": ":models/objects/satellite/tris.md2", "frame": 38 },
@@ -681,7 +683,7 @@ misc_satellite_dish : "Satellite Dish"
    ]
 ]
 
-@PointClass base(EditorFlags, Targetable, Target) color(255 128 0) size(-16 -16 0, 16 16 32) model({ "path": ":models/ships/strogg1/tris.md2" }) = misc_strogg_ship : "Strogg ship for flybys"
+@PointClass base(EditorFlags, Targetable, Target, FX) color(255 128 0) size(-16 -16 0, 16 16 32) model({ "path": ":models/ships/strogg1/tris.md2" }) = misc_strogg_ship : "Strogg ship for flybys"
 [
     speed(float) : "Speed" : "300"
 ]
@@ -697,12 +699,9 @@ misc_satellite_dish : "Satellite Dish"
 ]
 
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-32 -32 -24, 32 32 -16) model({ "path": ":models/objects/dmspot/tris.md2", "skin": 0 }) = misc_teleporter_dest : "Teleport Destination: To hide the teleport pads, place them units 10 units into a brush or use an info_notnull." []
-
-@PointClass base(EditorFlags) color(255 128 0) size(-176 -120 -24, 176 120 72) model({ "path": ":models/ships/bigviper/tris.md2" }) = misc_bigviper : "Large stationary Viper" []
-
+@PointClass base(EditorFlags, FX) color(255 128 0) size(-176 -120 -24, 176 120 72) model({ "path": ":models/ships/bigviper/tris.md2" }) = misc_bigviper : "Large stationary Viper" []
 @PointClass base(misc_strogg_ship) model({ "path": ":models/ships/viper/tris.md2" }) = misc_viper : "Viper for flybys" []
-
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_bomb : "Viper Bomb"
+@PointClass base(EditorFlags, Targetable, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_bomb : "Viper Bomb"
 [
     dmg(float) : "Damage"
 ]
@@ -712,7 +711,7 @@ misc_satellite_dish : "Satellite Dish"
 [
 ]
 
-@PointClass base(EditorFlags, Targetable, Target) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_missile : "Viper Missile"
+@PointClass base(EditorFlags, Targetable, Target, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_missile : "Viper Missile"
 [
     dmg(float) : "Damage" : "250"
 ]
@@ -997,14 +996,12 @@ monster_gekk : "Gekk"
 
 @PointClass base(Monsters) size(-40 -40 0, 40 40 144) model({ "path": ":models/monsters/blackwidow/tris.md2" }) = monster_widow : "Black Widow (on foot)" []
 @PointClass base(Monsters) size(-70 -70 0, 70 70 144) model({ "path": ":models/monsters/blackwidow2/tris.md2" }) = monster_widow2 : "Black Widow (spider)" []
-
 @PointClass base(Monsters) model({ "path": ":models/monsters/medic/tris.md2", "skin": 2 }) = monster_medic_commander : "Medic Commander"
 [
     reinforcements(string): "Semicolon separated list of entity classes and cost of monster to spawn" : "monster_soldier_light 1;monster_soldier 2;monster_soldier_ss 2;monster_infantry 3;monster_gunner 4;monster_medic 5;monster_gladiator 6"
     monster_slots(integer) : "How many points to spend on monster spawns. Increases by up to 2x for Hard skill" : 3
 ]
 @PointClass base(Monsters) model({ "path": ":models/monsters/flyer/tris.md2" }) = monster_kamikaze : "Flyer (kamikaze)" []
-
 @PointClass base(Monsters) size(-12 -12 -12, 12 12 12) model({ "path": ":models/monsters/turret/tris.md2" }) = monster_turret : "Turret Monster"
 [
     spawnflags(Flags) =
@@ -1027,13 +1024,11 @@ monster_gekk : "Gekk"
         2 : "Trigger Spawn" : 0
         8 : "Start On Roof" : 0
 		16 : "No Jumping" : 0
-    ]
-]
+    ]]
 
-// using a "wait" value of -1 on a path corner causes a func_train to go silent between
-// itself and the next path corner when the train is restarted. The train's sound will
-// resume as soon as it reaches a path corner with a "wait" value other than -1
-@PointClass base(EditorFlags, Targetable, UseTargets) color(128 76 0) size(-8 -8 -8, 8 8 8) = path_corner : "Path marker"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(128 76 0) size(-8 -8 -8, 8 8 8) = path_corner : "Path marker
+
+Using a 'wait' value of -1 on a path corner causes a func_train to go silent between itself and the next path corner when the train is restarted. The train's sound will resume as soon as it reaches a path corner with a 'wait' value other than -1"
 [
     spawnflags(Flags) =
     [
@@ -1055,7 +1050,7 @@ monster_gekk : "Gekk"
     ]
 ]
 
-@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_blaster : "Blaster (use angles to point it)"
+@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"}) = target_blaster : "Blaster (use angles to point it)"
 [
     spawnflags(Flags) =
     [
@@ -1066,14 +1061,9 @@ monster_gekk : "Gekk"
     speed(float) : "Speed" : "1000"
 ]
 
-// set "map" value to "mapname$playername" where playername equals
-// the targetname of a corresponding info_player_start in the
-// next map.  To play a cinematic before starting the level, the
-// "map" value should be "cinemeatic.cin+mapname$playername". Note
-// that a playername is not required if the corresponding info_player_start
-// doesn't have a targetname.  If you want this to be designated as the last
-// level of a unit, place an asterix (*) before the map name.
-@PointClass base(EditorFlags, Targetable, Target) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_changelevel : "Change level"
+@PointClass base(EditorFlags, Targetable, Target) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_changelevel : "Change level
+
+Set 'map' value to 'mapname$playername' where playername equals the targetname of a corresponding info_player_start in the next map. To play a cinematic before starting the level, the 'map' value should be 'cinemeatic.cin+mapname$playername'. Note that a playername is not required if the corresponding info_player_start doesn't have a targetname.  If you want this to be designated as the last level of a unit, place an asterix (*) before the map name."
 [
     spawnflags(Flags) =
     [
@@ -1149,7 +1139,7 @@ monster_gekk : "Gekk"
     count(float) : "Duration" : "5"
 ]
 
-@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_explosion : "Explosion"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.png", "scale": .08}) = target_explosion : "Explosion"
 [
     delay(float) : "Delay before explosion"
     dmg(float) : "Radius damage" : "0"
@@ -1174,7 +1164,7 @@ monster_gekk : "Gekk"
 [
     spawnflags(Flags) =
     [
-        1 : "Main Onjective" : 0
+        1 : "Main Objective" : 0
         2 : "Set POI on use" : 0
     ]
     message(string) : "Computer message"
@@ -1516,7 +1506,7 @@ monster_gekk : "Gekk"
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
-image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.png","scale":".6"}
+image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.png","scale":"1"}
 }}) = misc_flare : "(N64) Light Flare
 
 - image: Set an image for your flare (IE sprites/flare_02.tga)
@@ -1559,7 +1549,7 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 	frame(integer)  :	"Frame # to show" : 0 : "0 be default."
 ]
 
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
+@PointClass base(EditorFlags, FX, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
     This can be triggered and killed if given health."
 [
     spawnflags(Flags) =
@@ -1577,7 +1567,6 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 
 @PointClass base(EditorFlags, Targetable) = info_landmark : "Landmark - connect one level to another with a seamless transition" []
 @PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({"path": ":models/monsters/shambler/tris.md2"}) = monster_shambler : "Shambler" []
-
 @SolidClass base(EditorFlags) = trigger_flashlight : "Enable/Disable Flashlight"
 [
     spawnflags(Flags) =
@@ -1593,8 +1582,8 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
     angles(string) : "pitch yaw roll" : "Player traveling this direction will enable light, against it will disable."
 ]
 
-@PointClass base(EditorFlags) model({"path":":models/objects/gibs/sm_meat/tris.md2"}) = misc_lavaball : "(N64) Lavaball" []
-@PointClass base(EditorFlags) model({"path":":models/ships/strogg1/tris.md2"}) = misc_hologram : "(N64) Ship Hologram" []
+@PointClass base(EditorFlags, FX) model({"path":":models/objects/gibs/sm_meat/tris.md2"}) = misc_lavaball : "(N64) Lavaball" []
+@PointClass base(EditorFlags, FX) model({"path":":models/ships/strogg1/tris.md2"}) = misc_hologram : "(N64) Ship Hologram" []
 @SolidClass base(EditorFlags) = trigger_fog : "Fog Transitions"
 [
     spawnflags(Flags) =
@@ -1709,7 +1698,9 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
     skyautorotate(integer) : "Disable to set sky rotation manually" : 1
 ]
 
-@PointClass base(EditorFlags, Targetable) color(255 128 255) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/insane/tris.md2", "frame":209, "skin":1}) = misc_player_mannequin : "Player Mannequin"
+@PointClass base(EditorFlags, FX, Targetable) color(255 128 255) size(-16 -16 -24, 16 16 32) model({{
+model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":radius,"alpha":alpha}
+}}) = misc_player_mannequin : "Player Mannequin"
 [
   distance(integer) : "Gesture To Use When Triggered. 0 = FlipOff, 1 = Salute, 2 = Taunt, 3 = Wave, 4 = Point" : 1 
   height(integer) : "Type Of Model To Use. 1 = Female, 2 = Male, 3 = Cyborg" : 1
