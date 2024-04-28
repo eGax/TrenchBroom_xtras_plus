@@ -8,7 +8,7 @@ Instead of replacing the current Quake 2 addon from TB, this creates it's own ga
 
 ## Installing
 
-I've named the game add-on and user data dir the same, best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the [this repository zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
+I've named the game add-on and user data dir the same, best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the [repository zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
 
 For windows users copy the `Quake2RE` and all its contents to :
 <p><code>%appdata%\TrenchBroom\games\</code></p>
