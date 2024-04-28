@@ -1541,7 +1541,7 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
  - scale : Scale of model, default = 1.0 (100%). No need to set this unless you desire to scale.
  - frame : Single frame to display."
 [
-	model(string)   :	"Model/sprite Selection (ex subdirectory/model.mdl)"
+	model(string)   :	"Model/sprite Selection (ex subdirectory/model.md2)"
 	rgba(integer)   :   "Index # of desired skin to show (default = 0)" : 0
 	alpha(float)	:	"How visible is the model?"
 	angles(string)	:	"pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
