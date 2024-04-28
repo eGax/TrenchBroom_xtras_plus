@@ -24,7 +24,7 @@ From the toolbar go to View--> Preferences... or open with kb shortcut [Ctrl]+[S
 Pick you Quake 2 RE-RELEASE dir, not base Quake 2. For most people it would be something like this:
 `/SteamLibrary/steamapps/common/Quake 2/rerelease`, where ever that may be for you on your system.
 
-I've added slots for map compile tools which are totally optional. If you add your compile executables there they will(should) be available from the Tool UI as `${bsp}`, `${vis}`, and `${light}` respectively.
+I've added slots for map compile tools which are totally optional. If you add your compile executables there they will(should) be available from the Tool UI as `${bsp}`, `${vis}`, and `${light}` respectively. It is easy IMO to use these shortcuts in the Tool UI than writing the straight path to the tool each time you create new tool setup, but that is up to the user.
 
 ![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/6878112a-0511-48b6-b779-3a428b410849)
 
