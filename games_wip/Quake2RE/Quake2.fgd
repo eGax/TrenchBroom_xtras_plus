@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 20240502-19:30
+// Last updated by xaGe 20240502-1944
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -735,7 +735,7 @@ misc_satellite_dish : "Satellite Dish"
         65536 : "Spawn Dead" : 0
         131072 : "Super Step" : 0
 		262144 : "drop to ground" : 0
-        524288 : "scenic (non-combative) enemies"
+        524288 : "scenic (non-combative) enemies" : 0
     ]
     combattarget(target_destination) : "Point combat target"
     deathtarget(target_destination) : "Entity to trigger at death"
