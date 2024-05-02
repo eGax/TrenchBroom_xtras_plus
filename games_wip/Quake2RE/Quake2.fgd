@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 20240427-1100
+// Last updated by xaGe 20240502-19:30
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -30,7 +30,6 @@
     nextmap(string) : "Next map (DM only)"
     start_items(string) : "Starting items: a semi-colon delimited list of items and amounts to be given to player if they have a clear inventory."
 	achievement(string) : "If an EOU is triggered from this map, this is the achievement to give out."
-
     fog_density(float) : "density value of fog, 0-1"
     fog_color(color) : "color value of fog, 3d vector with values between 0-1 (r g b)"
     fog_sky_factor(float) : "sky factor value of fog, 0-1"
@@ -736,6 +735,7 @@ misc_satellite_dish : "Satellite Dish"
         65536 : "Spawn Dead" : 0
         131072 : "Super Step" : 0
 		262144 : "drop to ground" : 0
+        524288 : "make scenic (non-combative) enemies."
     ]
     combattarget(target_destination) : "Point combat target"
     deathtarget(target_destination) : "Entity to trigger at death"
