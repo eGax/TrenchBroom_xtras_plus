@@ -23,6 +23,7 @@
     skyrotate(string) : "Speed of rotation (degrees/second)"
     skyautorotate(integer) : "Disable to set sky rotation manually" : 1
     sounds(integer) : "CD Track Number" : 1
+    music(string) : "Music track to play, example : music/track06.ogg"
     gravity(integer) : "Gravity" : 800
     instantitems(integer) : "Instant Item Use" : 0
     message(string) : "Level name"
