@@ -160,7 +160,7 @@
 	_dirt(float) : "Dirt mapping (override)"
 	_minlight(float) : "Min light for all surface"
 	_minlight_exclude(string) : "Exclude texture from minlight"
-	_mincolor(color) : "Min light color"
+	_minlight_color(color) : "Min light color" // Changed from _mincolor doesn't work in TrenchBroom's color picker as yet...
 	_shadow(choices) : "Cast Shadows" = [
 		0 : "Do Nothing"
 		1 : "Cast shadows"
