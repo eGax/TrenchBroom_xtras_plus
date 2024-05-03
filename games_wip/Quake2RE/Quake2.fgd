@@ -249,7 +249,7 @@
 
 @PointClass base(Ammo) model({ "path": ":models/objects/ammo/tris.md2" }) = ammo_magslug : "Phalanx ammo" []
 @PointClass base(Ammo) model({ "path": ":models/ammo/am_flechette/tris.md2" }) = ammo_flechettes : "ETF Rifle ammo" []
-@PointClass base(Ammo) model({ "path": ":models/ammo/am_flechette/tris.md2" }) = ammo_nails : "ETF Rifle ammo" []
+// @PointClass base(Ammo) model({ "path": ":models/ammo/am_flechette/tris.md2" }) = ammo_nails : "ETF Rifle ammo" []
 @PointClass base(Ammo) model({ "path": ":models/ammo/am_prox/tris.md2" }) = ammo_prox : "Prox Launcher ammo" []
 @PointClass base(Ammo) model({ "path": ":models/ammo/am_disr/tris.md2" }) = ammo_disruptor : "Disruptor ammo" []
 @PointClass base(Ammo) model({ "path": ":models/weapons/g_trap/tris.md2" }) = ammo_trap : "Traps" []
@@ -269,11 +269,11 @@
 
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_chainf/tris.md2" }) = weapon_chainfist : "Chainfist" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_etf_rifle/tris.md2" }) = weapon_etf_rifle : "ETF Rifle" []
-@PointClass base(Weapons) model({ "path": ":models/weapons/g_etf_rifle/tris.md2" }) = weapon_nailgun : "ETF Rifle" []
+// @PointClass base(Weapons) model({ "path": ":models/weapons/g_etf_rifle/tris.md2" }) = weapon_nailgun : "ETF Rifle" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_plaunch/tris.md2" }) = weapon_proxlauncher : "Prox Launcher" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_boom/tris.md2" }) = weapon_boomer : "Ionripper" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_beamer/tris.md2" }) = weapon_plasmabeam : "Plasma Beam" []
-@PointClass base(Weapons) model({ "path": ":models/weapons/g_beamer/tris.md2" }) = weapon_heatbeam : "Plasma Beam" []
+// @PointClass base(Weapons) model({ "path": ":models/weapons/g_beamer/tris.md2" }) = weapon_heatbeam : "Plasma Beam" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_shotx/tris.md2" }) = weapon_phalanx : "Phalanx" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_dist/tris.md2" }) = weapon_disintegrator : "Disruptor" []
 
