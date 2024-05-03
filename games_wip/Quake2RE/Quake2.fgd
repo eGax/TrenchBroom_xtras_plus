@@ -306,7 +306,11 @@
 @PointClass base(Items) model({ "path": ":models/items/hunter/tris.md2" }) = item_sphere_hunter : "hunter sphere" []
 @PointClass base(Items) model({ "path": ":models/items/defender/tris.md2" }) = item_sphere_defender : "defender sphere" []
 @PointClass base(Items) model({ "path": ":models/items/dopple/tris.md2" }) = item_doppleganger : "Doppleganger" []
+@PointClass base(Items) model({ "path": ":models/items/legacyhead/tris.md2" }) = item_legacy_head : "+5 to max health" []
 
+// N64
+@PointClass base(Items) model({ "path": ":models/items/cloaker/tris.md2" }) = item_invisibility : "Invisibility" []
+@PointClass base(EditorFlags, Targetable) size(-32 -32 -16, 32 32 72) model({ "path": ":models/monsters/tank/tris.md2", "skin": 2 }) = monster_tank_stand : "Stationnary Tank Commander" []
 
 @PointClass base(Keys) model({ "path": ":models/items/keys/target/tris.md2" }) = key_airstrike_target : "Tank commander's head" []
 @PointClass base(Keys) model({ "path": ":models/items/keys/key/tris.md2" }) = key_blue_key : "Normal door key - blue" []
@@ -319,14 +323,17 @@
 @PointClass base(Keys) model({ "path": ":models/items/keys/pyramid/tris.md2" }) = key_pyramid : "Pyramid Key for entrance to jail3" []
 @PointClass base(Keys) model({ "path": ":models/items/keys/red_key/tris.md2" }) = key_red_key : "normal door key - red" []
 // Expansions
+
 @PointClass base(Keys) model({ "path": ":models/items/keys/green_key/tris.md2" }) = key_green_key : "normal door key - green" []
 @PointClass base(Keys) model({ "path": ":models/weapons/g_nuke/tris.md2" }) = key_nuke_container : "Antimatter Pod (nuke key part 1)" []
 @PointClass base(Keys) model({ "path": ":models/weapons/g_nuke/tris.md2" }) = key_nuke : "Antimatter Bomb (nuke key part 2)" []
 // N64
+
 @PointClass base(Keys) model({ "path": ":models/items/n64/charge/tris.md2" }) = key_explosive_charges : "Explosive Charge" []
 @PointClass base(Keys) model({ "path": ":models/items/n64/yellow_key/tris.md2" }) = key_yellow_key : "Yellow Key" []
 @PointClass base(Keys) model({ "path": ":models/items/n64/power_core/tris.md2" }) = key_power_core : "Power Core" []
 // CTF
+
 @PointClass base(Keys) model({ "path": ":players/male/flag1.md2","frame":"176" }) = item_flag_team1 : "CTF Flag (red)" []
 @PointClass base(Keys) model({ "path": ":players/male/flag2.md2","frame":"176" }) = item_flag_team2 : "CTF Flag (blue)" []
 
