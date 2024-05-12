@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 20240502-1944
+// Last updated by xaGe 20240512-0030
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -15,7 +15,6 @@
 // worldspawn
 //
 
-// 0302 - added "nextmap" key
 @SolidClass base(EWT_base_Worldspawn) = worldspawn : "World entity"
 [
     sky(string) : "Environment map name"
@@ -619,8 +618,8 @@
     ]
 ]
 
-@PointClass base(EditorFlags, Targetable, Target) color(0 255 0) size(-2 -2 -12, 2 2 12) model({ "path": ":models/objects/minelite/light1/tris.md2", "skin": 0 }) = light_mine1 : "Clean fluorescent light fixture"   []
-@PointClass base(EditorFlags, Targetable, Target) color(0 255 0) size(-2 -2 -12, 2 2 12) model({ "path": ":models/objects/minelite/light2/tris.md2", "skin": 0 }) = light_mine2 : "Dusty fluorescent light fixture"   []
+@PointClass base(EditorFlags, Targetable, Target) color(0 255 0) size(-2 -2 -12, 2 2 12) model({ "path": ":models/objects/minelite/light1/tris.md2" }) = light_mine1 : "Clean fluorescent light fixture"   []
+@PointClass base(EditorFlags, Targetable, Target) color(0 255 0) size(-2 -2 -12, 2 2 12) model({ "path": ":models/objects/minelite/light2/tris.md2" }) = light_mine2 : "Dusty fluorescent light fixture"   []
 
 @PointClass base(EditorFlags) color(255 128 0) size(-4 -4 0, 4 4 246) model({ "path": ":models/objects/banner/tris.md2" }) = misc_banner : "Flowing banner" []
 @PointClass base(EditorFlags, Targetable, Scale, Alpha) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/black/tris.md2" }) = misc_blackhole : "Blackhole" [
@@ -705,7 +704,7 @@ misc_satellite_dish : "Satellite Dish"
     ]
 ]
 
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-32 -32 -24, 32 32 -16) model({ "path": ":models/objects/dmspot/tris.md2", "skin": 0 }) = misc_teleporter_dest : "Teleport Destination: To hide the teleport pads, place them units 10 units into a brush or use an info_notnull." []
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-32 -32 -24, 32 32 -16) model({ "path": ":models/objects/dmspot/tris.md2" }) = misc_teleporter_dest : "Teleport Destination: To hide the teleport pads, place them units 10 units into a brush or use an info_notnull." []
 @PointClass base(EditorFlags, FX) color(255 128 0) size(-176 -120 -24, 176 120 72) model({ "path": ":models/ships/bigviper/tris.md2" }) = misc_bigviper : "Large stationary Viper" []
 @PointClass base(misc_strogg_ship) model({ "path": ":models/ships/viper/tris.md2" }) = misc_viper : "Viper for flybys" []
 @PointClass base(EditorFlags, Targetable, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_bomb : "Viper Bomb"
@@ -869,7 +868,7 @@ monster_mutant : "Mutant"
         8 : "No jumping" : 0
     ]
 ]
-@PointClass base(Monsters) model({ "path": ":models/monsters/soldier/tris.md2", "skin": 0 }) = monster_soldier_light : "Light Soldier"
+@PointClass base(Monsters) model({ "path": ":models/monsters/soldier/tris.md2" }) = monster_soldier_light : "Light Soldier"
 [
     spawnflags(Flags) =
     [
@@ -1266,7 +1265,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_amb4 : "Amb4 speaker" []
+@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.png", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
 
 @PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.png", "scale": .08}) = target_music : "Change music"
 [
@@ -1707,12 +1706,83 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 ]
 
 @PointClass base(EditorFlags, FX, Targetable) color(255 128 255) size(-16 -16 -24, 16 16 32) model({{
-model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":radius,"alpha":alpha}
-}}) = misc_player_mannequin : "Player Mannequin"
+    // Default
+height == "" & distance == "" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":0},
+height == "" & distance == "0" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":80},
+height == "" & distance == "1" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":90},
+height == "" & distance == "2" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":100},
+height == "" & distance == "3" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":115},
+height == "" & distance == "4" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":130},
+    // Female
+height == "1" & distance == "" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":0},
+height == "1" & distance == "0" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":80},
+height == "1" & distance == "1" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":90},
+height == "1" & distance == "2" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":100},
+height == "1" & distance == "3" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":115},
+height == "1" & distance == "4" -> 	{"path":"players/female/tris.md2", "scale":radius, "frame":130},
+    // Male
+height == "2" & distance == "" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":0},
+height == "2" & distance == "0" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":80},
+height == "2" & distance == "1" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":90},
+height == "2" & distance == "2" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":100},
+height == "2" & distance == "3" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":115},
+height == "2" & distance == "4" -> 	{"path":"players/male/tris.md2", "scale":radius, "frame":130},
+    // Borg
+height == "3" & distance == "" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":0},
+height == "3" & distance == "0" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":80},
+height == "3" & distance == "1" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":90},
+height == "3" & distance == "2" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":100},
+height == "3" & distance == "3" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":115},
+height == "3" & distance == "4" -> 	{"path":"players/cyborg/tris.md2", "scale":radius, "frame":130},
+                                     "players/female/tris.md2"
+}}) = misc_player_mannequin : " = Player Mannequin =
+
+A decoratative player entity that will stand in idle animation holding the weapon & wearing the skin you select to add to your single player maps. You can set one of 4 gesture animations that activate when triggered.
+
+-height = player model type : ( 1 : female, 2 : male, 3 : cyborg )
+-distance = gesture to trigger in game : ( 0 : flipoff, 1 : salute, 2 : taunt, 3 : wave, 4 : point )
+-radius = model scale
+-image = player skin to display in game
+-goals = weapon type its holding, choose from drop down list or enter your own"
 [
-  distance(integer) : "Gesture To Use When Triggered. 0 = FlipOff, 1 = Salute, 2 = Taunt, 3 = Wave, 4 = Point" : 1 
-  height(integer) : "Type Of Model To Use. 1 = Female, 2 = Male, 3 = Cyborg" : 1
-  radius(float) : "Scale To Use For Model"
-  goals(string) : "Name Of MD2 Player Weapon Model To Hold. EX: 'w_hyperblaster'"
-  image(string) : "Name Of PCX Player Skin To Use. EX: 'venus'"
+    height(choices) : "Set the model type." : 1 : "Uses female by default." = 
+    [
+        "1" : "female"
+        "2" : "male"
+        "3" : "cyborg"
+    ]
+    distance(choices) : "Set gesture when triggered." = 
+    [
+        0 : "Flip Off"
+        1 : "Salute"
+        2 : "Taunt"
+        3 : "Wave"
+        4 : "Point"
+    ]
+    goals(choices) : "Name Of MD2 player weapon model to hold. EX: 'w_hyperblaster'" : "w_hyperblaster" : "By default uses w_hyperblaster." =
+    [
+        "a_grenades"        : "Grenade"
+        "a_tesla"        : "Tesla"
+        "a_trap"        : "ITS a trap!"
+        "w_bfg"        : "Big Fuckin Gun"
+        "w_blaster"        : "Pew Pew (blaster)"
+        "w_chainfist"        : "Chain fister ROBOTO"
+        "w_chaingun"        : "Chaingun"
+        "w_disrupt"        : "Disintegrator"
+        "w_etfrifle"        : "EFT rifle"
+        "w_glauncher"        : "Grenade launcher"
+        "w_grapple"        : "Grapple"
+        "w_hyperblaster"        : "Hyper blaster"
+        "w_machinegun"        : "Machinegun"
+        "w_phalanx"        : "Phalanx"
+        "w_plasma"        : "Plasma beam"
+        "w_plauncher"        : "Prox mine launcher"
+        "w_railgun"        : "Railgun"
+        "w_ripper"        : "Ripper"
+        "w_rlauncher"        : "Rocket launcher"
+        "w_shotgun"        : "Shotgun"
+        "w_sshotgun"        : "Super shotgun"
+    ]
+    radius(float) : "Scale to use for player model."
+    image(string) : "Name of PCX player skin to use. EX: 'venus'"
 ]
