@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 20240512-0030
+// Last updated by xaGe 20240512-11000
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -1146,7 +1146,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     count(float) : "Duration" : "5"
 ]
 
-@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.png", "scale": .08}) = target_explosion : "Explosion"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.webp", "scale": .08}) = target_explosion : "Explosion"
 [
     delay(float) : "Delay before explosion"
     dmg(float) : "Radius damage" : "0"
@@ -1199,7 +1199,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 // Expansion
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.png", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"
 [
 ]
 
@@ -1243,7 +1243,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     speed(float) : "Speed"
 ]
 
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_yel.png", "scale": .08}) = target_speaker : "Sound player"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_yel.webp", "scale": .08}) = target_speaker : "Sound player"
 [
     spawnflags(Flags) =
     [
@@ -1265,9 +1265,9 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.png", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
+@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.webp", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
 
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.png", "scale": .08}) = target_music : "Change music"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.webp", "scale": .08}) = target_music : "Change music"
 [
     sounds(integer) : "CD Track Number" : 1
 ]
@@ -1513,7 +1513,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
-image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.png","scale":"1"}
+image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.webp","scale":"1"}
 }}) = misc_flare : "(N64) Light Flare
 
 - image: Set an image for your flare (IE sprites/flare_02.tga)
@@ -1538,7 +1538,7 @@ image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.png","scale":"1
 ]
 
 @PointClass base(FX) size(16 16 16) model({{
-model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.png","scale":"0.06"}
+model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.webp","scale":"0.06"}
 }}) = misc_model : "A point entity for displaying models or sprites.
 
  - model : The model to display. Can be of type md2, sp2.
