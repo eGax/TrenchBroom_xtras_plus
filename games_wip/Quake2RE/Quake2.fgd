@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Last updated by xaGe 20240512-11000
+// Updated since re-re by xaGe 20240513-2100
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -1569,7 +1569,10 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 
 @PointClass base(EditorFlags, Targetable) = target_camera : "(N64) Camera"
 [
+	killtarget(target_destination) : "Target to changelevel."
+    pathtarget(target_destination) : "Target to look at."
     speed(float) : "Speed" : "75"
+    target(target_destination) : "Target to move to."
 ]
 
 @PointClass base(EditorFlags, Targetable) = info_landmark : "Landmark - connect one level to another with a seamless transition" []
