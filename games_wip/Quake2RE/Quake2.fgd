@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Updated since re-re by xaGe 20240513-2100
+// Updated since re-re by xaGe 2024051-0900
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -1537,7 +1537,7 @@ image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.webp","scale":"
     fade_end_dist(integer) : "Distance in units that fade ends, should be greater than fade_start_dist" : 384
 ]
 
-@PointClass base(FX) size(16 16 16) model({{
+@PointClass base(EditorFlags, FX) size(16 16 16) model({{
 model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.webp","scale":"0.06"}
 }}) = misc_model : "A point entity for displaying models or sprites.
 
