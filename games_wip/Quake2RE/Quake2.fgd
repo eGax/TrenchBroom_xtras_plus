@@ -255,7 +255,7 @@
 @PointClass base(Ammo) model({ "path": ":models/ammo/am_tesl/tris.md2" }) = ammo_tesla : "Teslas" []
 @PointClass base(Ammo) model({ "path": ":models/weapons/g_nuke/tris.md2" }) = ammo_nuke : "A-M Bomb (usable nuke); DM only" []
 
-@PointClass base(Weapons) model({ "path": ":models/weapons/g_blast/tris.md2" }) = weapon_blaster : "Blater pistol" []
+@PointClass base(Weapons) model({ "path": ":models/weapons/g_blast/tris.md2" }) = weapon_blaster : "Blaster pistol" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_shotg/tris.md2" }) = weapon_shotgun : "Shotgun" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_shotg2/tris.md2" }) = weapon_supershotgun : "Super shotgun" []
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_machn/tris.md2" }) = weapon_machinegun : "Machinegun" []
