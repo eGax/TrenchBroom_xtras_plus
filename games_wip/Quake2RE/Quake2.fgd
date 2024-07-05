@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Updated since re-re by xaGe 2024051-0900
+// Updated since re-re by xaGe 2020705-1230
 
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
@@ -669,9 +669,9 @@
 ]
 
 // set angle for gib direction, otherwise it just drops
-@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_arm : "arm gib, use with target_spawner" []
-@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/head/tris.md2" }) = misc_gib_head : "head gib, use with target_spawner" []
-@PointClass base(EditorFlags, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_leg : "leg gib, use with target_spawner" []
+@PointClass base(Angleable, EditorFlags, FX) color(255 0 0) size(8 8 8) model({ "path": ":models/objects/gibs/arm/tris.md2" }) = misc_gib_arm : "arm gib, use with target_spawner" []
+@PointClass base(Angleable, EditorFlags, FX) color(255 0 0) size(8 8 8) model({ "path": ":models/objects/gibs/head/tris.md2" }) = misc_gib_head : "head gib, use with target_spawner" []
+@PointClass base(Angleable, EditorFlags, FX) color(255 0 0) size(8 8 8) model({ "path": ":models/objects/gibs/leg/tris.md2" }) = misc_gib_leg : "leg gib, use with target_spawner" []
 
 
 @PointClass base(EditorFlags, Targetable, FX) color(255 128 0) size(-64 -64 0, 64 64 128)
@@ -1166,8 +1166,8 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 	message(string) : "Boss name" : ""
 	target(string): "Boss" : ""
 ]
-
-@PointClass base(EditorFlags, Targetable) color(255 0 255) size(-8 -8 -8, 8 8 8) = target_help : "Computer help message"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path": "tb/autosave.webp", "scale": .06}) = target_autosave : "Autosave" []
+@PointClass base(EditorFlags, Targetable) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/questionmark.webp", "scale": .06}) = target_help : "Computer help message"
 [
     spawnflags(Flags) =
     [
@@ -1230,7 +1230,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     message(string) : "start/end light level"
 ]
 
-@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 255) size(-8 -8 -8, 8 8 8) = target_secret : "Counts a secret found"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/secret.webp", "scale": .06}) = target_secret : "Counts a secret found"
 [
     message(string) : "Message to print"
 	noise(string) : "Noise to play" : "misc/secret.wav"
@@ -1697,8 +1697,6 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
 [
 	speed(float) : "Percent of health that must be reached to fire"
 ]
-
-@PointClass base(EditorFlags, Targetable) = target_autosave : "Autosave" []
 
 @PointClass base(EditorFlags, Targetable) = target_sky : "Change sky parameters"
 [
