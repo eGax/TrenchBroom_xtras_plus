@@ -5,9 +5,8 @@
 // Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe.
 //
 // Updated by Paril for re-release
+//// Updated since re-re by xaGe 2020708-1000
 //
-// Updated since re-re by xaGe 2020705-1230
-
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd" 
 
@@ -190,7 +189,7 @@
 
 // Entity supports scale key
 @baseclass = Scale [
-	scale(float) : "Scale"
+	scale(string) : "Scale"
 ]
 
 // Includes stuff related to the kex dynamic lights
@@ -212,8 +211,8 @@
 
 @PointClass base(PlayerClass, Targetable) = info_player_intermission : "Deathmatch intermission point" []
 
-@PointClass base(PlayerClass) = info_player_team1 : "CTF Red start" []
-@PointClass base(PlayerClass) = info_player_team2 : "CTF Blue start" []
+@PointClass base(PlayerClass) color(255 0 0) = info_player_team1 : "CTF Red start" []
+@PointClass base(PlayerClass) color(0 0 255)= info_player_team2 : "CTF Blue start" []
 
 // Notes on the 'team' key: First of all, it's really only useful in DM because it creates a
 // random respawn pattern. Let's say that in one spot, you want to have the shotgun, Quad
@@ -309,7 +308,6 @@
 
 // N64
 @PointClass base(Items) model({ "path": ":models/items/cloaker/tris.md2" }) = item_invisibility : "Invisibility" []
-@PointClass base(EditorFlags, Targetable) size(-32 -32 -16, 32 32 72) model({ "path": ":models/monsters/tank/tris.md2", "skin": 2 }) = monster_tank_stand : "Stationnary Tank Commander" []
 
 @PointClass base(Keys) model({ "path": ":models/items/keys/target/tris.md2" }) = key_airstrike_target : "Tank commander's head" []
 @PointClass base(Keys) model({ "path": ":models/items/keys/key/tris.md2" }) = key_blue_key : "Normal door key - blue" []
@@ -594,7 +592,15 @@
 // expansion
 @PointClass base(info_notnull) = info_teleport_destination : "Teleport Destination" []
 
-@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/bulb.mdl", "scale":"1.0", "skin":"0"}) = light : "Light"
+@PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({{
+spawnflags == "1" -> {"path":"tb/bulb.mdl", "skin":"1"},
+_sun == 1 -> 	 {"path":"tb/sun.webp", "scale":"0.5"},
+                 {"path":"tb/bulb.mdl", "skin":"0"}
+}}) = light : "An invisible light source :
+
+By default if spawnflag key value for 'Start Off' is empty (false) use lit skin (white) start light on, otherwise when set to 1 (true), start light off (black).
+
+If you are using this light as a sun entity targeting an 'info_notnull', when '_sun' key is set to 1 (true) the light entity turns into a sun graphic to be easily distinguishable from a distance."    
 [
     spawnflags(Flags) =
     [
@@ -895,16 +901,44 @@ monster_mutant : "Mutant"
         8 : "Blind" : 0
     ]
 ]
-@PointClass base(Monsters) size(-32 -32 -16, 32 32 72) model({ "path": ":models/monsters/tank/tris.md2" }) = monster_tank : "Tank" []
-@PointClass base(Monsters) size(-32 -32 -16, 32 32 72) model({ "path": ":models/monsters/tank/tris.md2", "skin": 2 }) = monster_tank_commander : "Tank Commander"
+
+@PointClass base(EditorFlags, Scale, Targetable) size(-32 -32 -24, 32 32 80) model({{
+    scale != NULL -> {"path": ":models/monsters/tank/tris.md2", "skin": 2, "scale":scale},{"path": ":models/monsters/tank/tris.md2", "skin": 2, "scale":1.5}
+}}) = monster_tank_stand : "Stationnary Tank Commander" []
+
+@PointClass base(Monsters) size(-32 -32 -16, 32 32 72) model({{
+    spawnflags	== 65536   ->	{"path":":models/monsters/tank/tris.md2","skin":0, "scale":"1.0", "frame":"251"},    
+    spawnflags	& "65536^8"   ->	{"path":":models/monsters/tank/tris.md2","skin":0, "scale":"1.5", "frame":"251"},
+    spawnflags	&	8	->	{"path":":models/monsters/tank/tris.md2","skin":0,"scale":"1.5"},
+        					{"path":":models/monsters/tank/tris.md2","skin":0}
+}}) = monster_tank : "Tank"
 [
 	speed(float) : "homing missile speed" : "0.0"
     spawnflags(Flags) =
     [
         8 : "N64" : 0
-		16 : "Heat-Seeking Missiles" : 0
+	   16 : "Heat-Seeking Missiles" : 0
+    65536 : "Spawn dead on ground" : 0
     ]
 ]
+
+@PointClass base(Monsters) size(-32 -32 -16, 32 32 72) model({{
+    spawnflags	== 65536   ->	{"path":":models/monsters/tank/tris.md2","skin":2, "scale":"1.0", "frame":"251"},    
+    spawnflags	& "65536^8"   ->	{"path":":models/monsters/tank/tris.md2","skin":2, "scale":"1.5", "frame":"251"},
+    spawnflags	&	8	->	{"path":":models/monsters/tank/tris.md2","skin":2,"scale":"1.5"},
+        					{"path":":models/monsters/tank/tris.md2","skin":2}
+}}) = monster_tank_commander : "Tank Commander"
+[
+	speed(float) : "homing missile speed" : "0.0"
+    spawnflags(Flags) =
+    [
+        8 : "N64" : 0
+	   16 : "Heat-Seeking Missiles" : 0
+    65536 : "Spawn dead on ground" : 0
+    ]
+    scale(string) : "Scale"
+]
+
 @PointClass base(Monsters) size(-64 -64 0, 64 64 72) model({ "path": ":models/monsters/boss1/tris.md2" }) = monster_supertank : "Super Tank Boss"
 [
     spawnflags(Flags) =
@@ -1348,7 +1382,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     item(string) : "Item classname" : "key_blue_key"
 ]
 
-@SolidClass base(EditorFlags, Targetable) color(128 128 128) = trigger_monsterjump : "Makes monsters jump"
+@SolidClass base(Angleable, EditorFlags, Targetable) color(128 128 128) = trigger_monsterjump : "Makes monsters jump"
 [
     spawnflags(Flags) =
     [
@@ -1436,21 +1470,16 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 @SolidClass base(EWT_base_BModel) color(0 128 204) = func_group : "group" []
 
 // Paril: CTF
-@PointClass base(EditorFlags) color(255 128 0) size(-4 -4 0, 4 4 246) model({ "path": ":models/ctf/banner/tris.md2" }) = misc_ctf_banner : "Flowing CTF banner"
-[
-    spawnflags(Flags) =
-    [
-        1 : "Blue Team" : 0
-    ]
-]
+@PointClass base(EditorFlags) color(255 128 0) size(-4 -4 0, 4 4 246) model({{
+spawnflags == 1 -> 	{"path": "models/ctf/banner/tris.md2", "scale":"1.0", "skin":"1"},
+                    {"path": "models/ctf/banner/tris.md2", "scale":"1.0"}
+}}) = misc_ctf_banner : "Flowing CTF banner" [spawnflags(Flags) = [1 : "Blue Team" : 0]]
 
-@PointClass base(EditorFlags) color(255 128 0) size(-4 -4 0, 4 4 246) model({ "path": ":models/ctf/banner/small.md2" }) = misc_ctf_small_banner : "Smaller flowing CTF banner"
-[
-    spawnflags(Flags) =
-    [
-        1 : "Blue Team" : 0
-    ]
-]
+@PointClass base(EditorFlags) color(255 128 0) size(-4 -4 0, 4 4 123) model({{
+spawnflags == 1 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0", "skin":"1"},
+spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"}, 
+                    {"path": "models/ctf/banner/small.md2", "scale":"0.48"}
+}}) = misc_ctf_small_banner : "Smaller flowing CTF banner" [spawnflags(Flags) = [1 : "Blue Team" : 0]]
 
 // Expansions
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_killplayers : "Nuke (kill all players)" []
@@ -1511,6 +1540,24 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     height(float) : "Movement distance"
     dmg(float) : "Damage" : "2"
 ]
+
+@SolidClass base(EditorFlags, Targetable, EWT_base_BModel) color(0 128 204) = func_plat2 : "Rogue Platform"
+[
+	spawnflags(Flags) =
+	[
+		1 : "Plat low trigger" : 0
+		2 : "Plat2 toggle" : 0
+		4 : "Plat2 top" : 0
+		8 : "Plat2 trigger top" : 0
+		16 : "Plat2 trigger bottom" : 0
+        32 : "Box lift" : 0
+	]
+	speed(integer) : "Speed" : 100
+	accel(integer) : "Acceleration" : 500
+	lip(integer) : "Lip remaining after move" : 8
+	height(integer) : "Movement distance"
+]
+
 
 @PointClass base(EditorFlags) size(16 16 16) model({{
 image != NUll -> {"path":image,"scale":radius},{"path":"tb/flare.webp","scale":"1"}
