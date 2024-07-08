@@ -1,14 +1,14 @@
 # <img src="/games_wip/Quake2RE/Icon.png" width="24" height="24"> [Quake 2 RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
 
-Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax and file version to be _only_ compatible with TrenchBroom [2024.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.1) or newer builds from recent commits. 2024.1 is good, but if you like the most up to date, bug fixes, or features current dev builds of TrenchBroom can be found in TB's action builds [here](https://github.com/TrenchBroom/TrenchBroom/actions). Look for the ones tagged as `master` You need to be signed in to see the build artifacts for download from the bottom of the page.<br>
+Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax and file version to be _only_ compatible with TrenchBroom [2024.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.1) or newer builds from recent commits. 2024.1 is good.<br>
 
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/02739981-f69f-48fb-b135-9bfd9f66c81e" alt="drawing" width="240"/><br>
 
-Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it work correctly. This REPO is meant to be cloned and whatever game addon you want, copy that addon DIR over to the TB games directory. You can also grab [this repository zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) with everything you need.
+
+Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it work correctly. Look to the *TrenchBroom_xtras_plus* GitHub [releases](https://github.com/eGax/TrenchBroom_xtras_plus/releases) and grab the current Quake2RE Source code zip file release.
 
 ## Installing
 
-I've named the game add-on and user data dir the same, best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the [repository zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
+Open the **TrenchBroom_xtras_plus-2024####-Quake2RE.zip** and copy out the Quake2RE dir from the games_wip out to your TB install. To follow how TB does it the best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
 
 For windows users copy the `Quake2RE` and all its contents to :
 <p><code>%appdata%\TrenchBroom\games\</code></p>
