@@ -4,7 +4,7 @@ Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.c
 
 
 
-Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it work correctly. Look to the *TrenchBroom_xtras_plus* GitHub [releases]([https://github.com/eGax/TrenchBroom_xtras_plus/releases](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip)) and grab the current Quake2RE Branch Source code zip file release.
+Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it work correctly. Look to the *TrenchBroom_xtras_plus* Quake2RE Branch to grab the current [release](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip)) and grab the current Quake2RE Branch Source code zip file release.
 
 ## Installing
 
