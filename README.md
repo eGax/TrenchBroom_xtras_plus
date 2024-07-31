@@ -8,7 +8,7 @@ These work only with TrenchBroom 2024.1 release version or newer releases which 
 #### Committed game profile so far :
 
 <img src="/games_wip/MarbleBlast/Icon.png"  width="16" height="16"> [MarbleBlast](/games_wip/MarbleBlast/)<br>
-<img src="/games_wip/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](/games_wip/Quake2RE/)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
 <img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
 
 
