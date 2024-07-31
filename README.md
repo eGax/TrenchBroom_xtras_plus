@@ -1,4 +1,4 @@
-# <img src="/games_wip/Quake2RE/Icon.png" width="24" height="24"> [Quake 2 RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
+# <img src="/games/Quake2RE/Icon.png" width="24" height="24"> [Quake 2 RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
 
 Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax and file version to be _only_ compatible with TrenchBroom [2024.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.1) or newer builds from recent commits. 2024.1 is good.<br>
 
