@@ -1,0 +1,610 @@
+@SolidClass = worldspawn : "Every map should have exactly one worldspawn."
+[
+	music(string) : "Music" : : "Music wav file"
+	gravity(string) : "Gravity" : : "800 is default gravity"
+	message(string) : "Message" : : "Text to print during connection process"
+	ambient(string) : "Ambient" : : "Ambient light value (must use '_color')"
+	_color(color1) : "RGB color" : "1 1 0.5" : "Ambient light color (must be used with 'ambient')"
+	sun(string) : "Sun" : : "Shader to use for 'sun' image"
+	_blocksize(string) : "_blocksize" : : "q3map always splits the BSP tree along the planes X=blocksize*n and Y=_blocksize*n. Default _blocksize value is 1024. Increase the _blocksize using larger powers of 2 to reduce compile times on very large maps with low structural brush density."
+	gridsize(string) : "Gridsize" : : "granularity of the light grid created by q3map. Values of three intergers by spaces, represents number of units between grid points in X, Y and Z. Default gridsize is 128 128 256. Use larger powers of 2 to reduce BSP size and compile time on very large maps."
+	fogclip(string) : "Fogclip" : : "Uses vis to exclude stuff beyond the specified distance. q3map support varies."
+	mapcoordsmins(string) : "Mapcoordsmins" : : "Top left corner coordinate. Example -256 256."
+	mapcoordsmaxs(string) : "Mapcoordsmaxs" : : "Lower right corner coordinate. Example 256 -256. Both mapcoordsmins and mapcoordsmaxs must be set for command map and auto map to work properly."
+	spawnflags(flags) = 
+	[
+		1 : "no_gt_wolf" : 0 : "regular wolf cannot be played on this map"
+		2 : "no_stopwatch" : 0 : "stopwatch cannot be played on this map"
+		8 : "no_lms" : 0 : "lms cannot be played on this map"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 64 255) = script_multiplayer : "This is used to script multiplayer maps.  Entity not displayed in game.\n\nYou MUST have one, and one only, of these in your map for it to function correctly."[]
+@PointClass size(-18 -18 -24, 18 18 48) color(255 0 255) = info_player_deathmatch : "Potential spawning position for deathmatch games.\n\nTargets will be fired when someone spawns in on them.\n\nIf the start position is targeting an entity, the players camera will start out facing that ent (like an info_notnull)"
+[
+	nobots(string) : "Nobots" : : "will prevent bots from using this spot."
+	nohumans(string) : "Nohumans" : : "will prevent non-bots from using this spot."
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(255 0 255) = info_player_intermission : "The intermission will be viewed from this point.\n\nTarget an info_notnull for the view direction."
+[
+	spawnflags(flags) = 
+	[
+		1 : "axis" : 0 : "This intermission point will be used if Axis win the match"
+		2 : "allied" : 0 : "This intermission point will be used if Allies win the match"
+	]
+]
+@PointClass size(-4 -4 -4, 4 4 4) color(0 128 0) = info_null : "Used as a positional target for calculations in the utilities (spotlights, etc), but removed during gameplay."[]
+@PointClass size(-4 -4 -4, 4 4 4) color(0 128 0) = info_notnull : "Used as a positional target for in-game calculation, like jumppad targets.\n\ntarget_position does the same thing"[]
+@PointClass size(-32 -32 -32, 32 32 32) color(0 128 0) = info_notnull_big : "Used as a positional target for in-game calculation, like jumppad targets.\n\ntarget_position does the same thing"[]
+@SolidClass = func_group : "Used to group brushes together just for editor convenience.  They are turned into normal brushes by the utilities."[]
+@PointClass size(-8 -8 -8, 8 8 8) = light : "Non-displayed light.\n\nLights pointed at a target will be spotlights."
+[
+	light(string) : "Light" : : "overrides the default 300 intensity."
+	radius(string) : "Radius" : : "overrides the default 64 unit radius of a spotlight at the target point."
+	fade(string) : "Fade" : : "falloff/radius adjustment value. multiply the run of the slope by fade (1.0f default) (only valid for Linear lights) (wolf)"
+	_color(color1) : "RGB color" : "1 1 0.5" : "weighted RGB value of light color"
+	spawnflags(flags) = 
+	[
+		1 : "nonlinear" : 0 : "checkbox gives inverse square falloff instead of linear "
+		2 : "angle" : 0 : "adds light:surface angle calculations (only valid for Linear lights) (wolf)"
+		16 : "q3map_non" : 0 : "-DYNAMIC specifies that this light should not contribute to the world's 'light grid' and therefore will not light dynamic models in the game.(wolf)"
+		64 : "dynamic" : 0
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) = lightJunior : "Non-displayed light that only affects dynamic game models, but does not contribute to lightmaps\n\nLights pointed at a target will be spotlights."
+[
+	light(string) : "Light" : : "overrides the default 300 intensity."
+	radius(string) : "Radius" : : "overrides the default 64 unit radius of a spotlight at the target point."
+	fade(string) : "Fade" : : "falloff/radius adjustment value. multiply the run of the slope by fade (1.0f default) (only valid for Linear lights) (wolf)"
+	_color(color1) : "RGB color" : "1 1 0.5" : "weighted RGB value of light color"
+	spawnflags(flags) = 
+	[
+		1 : "nonlinear" : 0 : "checkbox gives inverse square falloff instead of linear "
+		2 : "angle" : 0 : "adds light:surface angle calculations (only valid for Linear lights) (wolf)"
+		4 : "negative_spot" : 0
+		8 : "negative_point" : 0
+	]
+]
+@SolidClass = misc_constructiblemarker : "The entity has to target the trigger_objective_info entity\n\nbelonging to the constructible.\n\nNot used any more in the game. \n\nIf used will behave like a func_static entity."
+[
+	model2(model) : "Model" : : "optional model"
+	angles(string) : "Angles" : : "angles for the model"
+	skin(string) : "Skin" : : "optional .skin file to use for the model"
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) model({"path": model, "scale": modelscale, "scale": modelscale_vec }) = misc_model : "Model that will be compiled into the map."
+[
+	model(string) : "Model" : : "arbitrary .md3 file to display"
+	modelscale(string) : "Modelscale" : : "scale multiplier (defaults to 1x)"
+	modelscale_vec(string) : "Modelscale_vec" : : "Set scale per-axis.  Overrides modelscale, so if you have both, the modelscale is ignored"
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) model({"path": model, "scale": modelscale, "scale": modelscale_vec, "frame": start}) = misc_gamemodel : "md3 placed in the game at runtime (rather than in the bsp)"
+[
+	model(string) : "Model" : : "arbitrary .md3 file to display"
+	modelscale(string) : "Modelscale" : : "scale multiplier (defaults to 1x, and scales uniformly)"
+	skin(string) : "Skin" : : ".skin file used to define shaders for model"
+	trunk(string) : "Trunk" : : "diameter of solid core (used for trace visibility and collision (not ai pathing))"
+	trunkheight(string) : "Trunkheight" : : "height of trunk"
+	frames(string) : "Frames" : : "number of animation frames"
+	start(string) : "Start" : : "frame to start on"
+	fps(string) : "Fps" : : "fps to animate with"
+	modelscale_vec(string) : "Modelscale_vec" : : "Set scale per-axis. Overrides modelscale, so if you have both, the modelscale is ignored"
+	spawnflags(flags) = 
+	[
+		1 : "orient_lod" : 0 : "the entity will yaw towards the player when the LOD switches (digibob: non-functional?)"
+		2 : "start_animate" : 0 : "the entity will spawn animating"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 0) = misc_vis_dummy : "If this entity is visible (in player's PVS) then it's target is forced to be active whether it is in the player's PVS or not.\n\nThis entity itself is never visible or transmitted to clients.\n\nFor safety, you should have each dummy only point at one entity (however, it's okay to have many dummies pointing at one entity)"[]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 0) = misc_vis_dummy_multiple : "If this entity is visible (in player's PVS) then it's target is forced to be active whether it is in the player's PVS or not.\n\nThis entity itself is never visible or transmitted to clients.\n\nThis entity was created to have multiple speakers targeting it"[]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) = shooter_mortar : "LAUNCH_FX a smoke effect will play at the origin of this entity.\n\nLobs a mortar so that it will pass through the info_notnull targeted by this entity"
+[
+	random(string) : "Random" : : "the number of degrees of deviance from the target. (1.0 default)"
+	spawnflags(flags) = 
+	[
+		1 : "smoke_fx" : 0
+		2 : "flash_fx" : 0 : "a muzzle flash effect will play at the origin of this entity."
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) = shooter_rocket : "Fires (a panzerfaust) at either the target or the current direction."
+[
+	random(string) : "Random" : : "the number of degrees of deviance from the target. (1.0 default)"
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) = shooter_grenade : "Fires at either the target or the current direction."
+[
+	random(string) : "Random" : : "is the number of degrees of deviance from the target. (1.0 default)"
+]
+@PointClass size(-4 -4 -4, 4 4 4) color(0 255 0) = corona : "Use color picker to set color or key color.  values are 0.0-1.0 for each color (rgb)."
+[
+	scale(string) : "Scale" : : "will designate a multiplier to the default size.  (so 2.0 is 2xdefault size, 0.5 is half)"
+	spawnflags(flags) = 
+	[
+		1 : "start_off" : 0 : "starts non-visible"
+	]
+]
+@PointClass size(-12 -12 -12, 12 12 12) color(0 255 0) = dlight : "Stylestring characters run at 10 cps in the game. (meaning the alphabet, at 24 characters, would take 2.4 seconds to cycle)\n\nUse color picker to set color or key color.  values are 0.0-1.0 for each color (rgb)."
+[
+	style(string) : "Style" : : "value is an int from 1-19 that contains a pre-defined 'flicker' string."
+	stylestring(string) : "Stylestring" : : "set your own 'flicker' string.  (ex. klmnmlk). NOTE: this should be all lowercase"
+	offset(string) : "Offset" : : "change the initial index in a style string.  So val of 3 in the above example would start this light at 'N'.  (used to get dlights using the same style out of sync)."
+	atten(string) : "Atten" : : "offset from the alpha values of the stylestring.  stylestring of ddeeffzz with an atten of -1 would result in ccddeeyy"
+	shader(string) : "Shader" : : "name of shader to apply"
+	sound(string) : "Sound" : : "sound to loop every cycle (this actually just plays the sound at the beginning of each cycle)"
+	styles(string) : "Styles" : : ""
+	spawnflags(flags) = 
+	[
+		1 : "forceactive" : 0 : "toggle makes sure this light stays alive in a map even if the user has r_dynamiclight set to 0."
+		2 : "startoff" : 0 : "means the dlight doesn't spawn in until ent is triggered"
+		4 : "onetime" : 0 : "when the dlight is triggered, it will play through it's cycle once, then shut down until triggered again"
+	]
+]
+@PointClass size(-16 -16 -24, 16 16 24) color(255 0 0) = misc_mg42 : "Emplaced MG42 weapon."
+[
+	harc(string) : "Harc" : : "horizonal fire arc, default 115"
+	varc(string) : "Varc" : : "vertical fire arc, default 45"
+	health(string) : "Health" : : "how much damage can it take, default 50"
+	damage(string) : "Damage" : : "determines how much the weapon will inflict if a non player uses it"
+	accuracy(string) : "Accuracy" : : "all guns are 100% accurate an entry of 0.5 would make it 50% "
+	spawnflags(flags) = 
+	[
+		1 : "high" : 0
+		2 : "notripod" : 0
+	]
+]
+@SolidClass = func_door : "sound types:\n     0 - nosound (default)\n     1 - metal\n     2 - stone\n     3 - lab\n     4 - wood\n     5 - iron/jail\n     6 - portcullis\n     7 - wood (quiet)"
+[
+	key(string) : "Key" : : "-1 for locked, key number for which key opens, 0 for open.  default '0' unless door is targeted.  (trigger_aidoor entities targeting this door do /not/ affect the key status)"
+	model2(model) : "Model" : : ".md3 model to also draw"
+	angle(string) : "Angle" : : "determines the opening direction"
+	targetname(target_source) : "Name" : : "if set, no touch field will be spawned and a remote button or trigger field activates the door."
+	speed(string) : "Speed" : : "movement speed (100 default)"
+	closespeed(string) : "Closespeed" : : "optional different movement speed for door closing"
+	wait(string) : "Wait" : : "wait before returning (3 default, -1 = never return)"
+	lip(string) : "Lip" : : "lip remaining at end of move (8 default)"
+	dmg(string) : "Dmg" : : "damage to inflict when blocked (2 default)"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+	health(string) : "Health" : : "if set, the door must be shot open"
+	team(string) : "Team" : : "team name.  other doors with same team name will open/close in syncronicity"
+	type(string) : "Type" : : "use sounds based on construction of door"
+	spawnflags(flags) = 
+	[
+		1 : "start_open" : 0 : "the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors)."
+		2 : "toggle" : 0 : "wait in both the start and end states for a trigger event."
+		4 : "crusher" : 0
+		8 : "touch" : 0
+	]
+]
+@SolidClass = func_plat : "Plats are always drawn in the extended position so they will light correctly."
+[
+	lip(string) : "Lip" : : "default 8, protrusion above rest position"
+	height(string) : "Height" : : "total height of movement, defaults to model height"
+	speed(string) : "Speed" : : "overrides default 200."
+	dmg(string) : "Dmg" : : "overrides default 2"
+	model2(model) : "Model" : : ".md3 model to also draw"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 77 0) = path_corner : "Train path corners."[]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 77 0) = path_corner_2 : "Train path corners. \n\nThis version will not contribute towards ingame entity count."[]
+@SolidClass = func_static : "A bmodel that just sits there, doing nothing.\n\nCan be used for conditional walls and models."
+[
+	model2(model) : "Model" : : ".md3 model to also draw"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+	spawnflags(flags) = 
+	[
+		1 : "start_invis" : 0 : "will start the entity as non-existant, if targeted, it will toggle existance when triggered"
+	]
+]
+@SolidClass = func_rotating : "You need to have an origin brush as part of this entity.\n\nThe center of that brush will be the point around which it is rotated.\n\nIt will rotate around the Z axis by default."
+[
+	model2(model) : "Model" : : ".md3 model to also draw"
+	speed(string) : "Speed" : : "determines how fast it moves; default value is 100."
+	dmg(string) : "Dmg" : : "damage to inflict when blocked (2 default)"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+	spawnflags(flags) = 
+	[
+		1 : "start_on" : 0 : "Initially turning upon start of map"
+		2 : "startinvis" : 0 : "Spawn triggered "
+		4 : "x_axis" : 0 : "rotate around the x-axis"
+		8 : "y_axis" : 0 : "rotate around the y-axis"
+	]
+]
+@SolidClass = func_bobbing : "Normally bobs on the Z axis"
+[
+	model2(model) : "Model" : : ".md3 model to also draw"
+	height(string) : "Height" : : "amplitude of bob (32 default)"
+	speed(string) : "Speed" : : "seconds to complete a bob cycle (4 default)"
+	phase(string) : "Phase" : : "the 0.0 to 1.0 offset in the cycle to start at"
+	dmg(string) : "Dmg" : : "damage to inflict when blocked (2 default)"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+	spawnflags(flags) = 
+	[
+		1 : "x_axis" : 0 : "bobs on the x-axis"
+		2 : "y_axis" : 0 : "bobs on the y-axis"
+	]
+]
+@SolidClass = func_pendulum : "You need to have an origin brush as part of this entity.\n\nPendulums always swing north / south on unrotated models.  Add an angles field to the model to allow rotation in other directions.\n\nPendulum frequency is a physical constant based on the length of the beam and gravity."
+[
+	model2(model) : "Model" : : ".md3 model to also draw"
+	speed(string) : "Speed" : : "the number of degrees each way the pendulum swings, (30 default)"
+	phase(string) : "Phase" : : "the 0.0 to 1.0 offset in the cycle to start at"
+	dmg(string) : "Dmg" : : "damage to inflict when blocked (2 default)"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+]
+@SolidClass = func_door_rotating : "You need to have an origin brush as part of this entity.\n\nThe center of that brush will be the point around which it is rotated. It will rotate around the Z axis by default.  You can check either the X_AXIS or Y_AXIS box to change that (only one axis allowed. If both X and Y are checked, the default of Z will be used).\n\nsound types:\n     0 - nosound (default)\n     1 - metal\n     2 - stone\n     3 - lab\n     4 - wood\n     5 - iron/jail\n     6 - portcullis\n     7 - wood (quiet)"
+[
+	key(string) : "Key" : : "-1 for locked, key number for which key opens, 0 for open.  default '0' unless door is targeted.  (trigger_aidoor entities targeting this door do /not/ affect the key status)"
+	model2(model) : "Model" : : ".md3 model to also draw"
+	degrees(string) : "Degrees" : : "determines how many degrees it will turn (90 default)"
+	speed(string) : "Speed" : : "movement speed (100 default)"
+	closespeed(string) : "Closespeed" : : "optional different movement speed for door closing"
+	time(string) : "Time" : : "how many milliseconds it will take to open 1 sec = 1000"
+	dmg(string) : "Dmg" : : "damage to inflict when blocked (2 default)"
+	color(string) : "Color" : : "constantLight color"
+	light(string) : "Light" : : "constantLight radius"
+	type(string) : "Type" : : "use sounds based on construction of door:"
+	team(string) : "Team" : : "team name.  other doors with same team name will open/close in syncronicity"
+	spawnflags(flags) = 
+	[
+		2 : "toggle" : 0
+		4 : "x_axis" : 0
+		8 : "y_axis" : 0
+		16 : "reverse" : 0
+		32 : "force" : 0 : "door opens even if blocked"
+		64 : "stayopen" : 0
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 179 51) = target_script_trigger : "must have a target\n\nwhen used it will run the trigger event relating to it's target within it's routine"
+[
+	target(target_destination) : "Target" : : "The name of the trigger"
+	scriptname(string) : "Scriptname" : : "This corrisponds to the block"
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 128 128) = target_kill : "Kills all targets when activated"[]
+@PointClass size(-6 -6 -6, 6 6 6) color(0 128 204) = target_effect : "rubble types:"
+[
+	mass(string) : "Mass" : : "defaults to 15.  This determines how much debris is emitted when it explodes.  (number of pieces)"
+	dmg(string) : "Dmg" : : "defaults to 0.  damage radius blast when triggered"
+	type(string) : "Type" : : "rubble mdel type"
+	spawnflags(flags) = 
+	[
+		1 : "tnt" : 0 : "Big explosion when triggered"
+		2 : "explode" : 0 : "explosion when triggered"
+		4 : "smoke" : 0 : "Produces smoke when triggered"
+	]
+]
+@SolidClass = func_explosive : "the default sounds are:\n  wood	- sound/world/boardbreak.wav\n  glass	- sound/world/glassbreak.wav\n  metal	- sound/world/metalbreak.wav\n  gibs	- sound/player/gibsplit1.wav\n  brick	- sound/world/brickfall.wav\n  stone	- sound/world/stonefall.wav\n\nYf you use model2, you must have an origin brush in the explosive with the center of the origin at the origin of the model\n\nIf you want an explosion, set dmg and it will do a radius explosion of that amount at the center of the bursh."
+[
+	model2(model) : "Model" : : "optional md3 to draw over the solid clip brush"
+	wait(string) : "Wait" : : "how long (in seconds) to leave the model after it's 'dead'.  '-1' leaves forever."
+	dmg(string) : "Dmg" : : "how much radius damage should be done, defaults to 0"
+	health(string) : "Health" : : "defaults to 100.  If health is set to '0' the brush will not be shootable."
+	targetname(target_source) : "Name" : : "if set, no touch field will be spawned and a remote button or trigger field triggers the explosion."
+	scriptname(string) : "Scriptname" : : "script whose death is triggered when the object is destroyed"
+	type(string) : "Type" : : "type of debris (glass, wood, metal, gibs, brick, rock, fabric) default is wood"
+	mass(string) : "Mass" : : "defaults to 75.  This determines how much debris is emitted when it explodes.  You get one large chunk per 100 of mass (up to 8) and one small chunk per 25 of mass (up to 16).  So 800 gives the most."
+	noise(string) : "Noise" : : "sound to play when triggered.  The explosive will default to a sound that matches it's 'type'.  Use the sound name nosound (case in-sensitive) if you want it silent."
+	spawnflags(flags) = 
+	[
+		1 : "start_invis" : 0 : "spawn trigger"
+		2 : "touchable" : 0 : "means automatic use on player contact."
+		4 : "useshader" : 0 : "will apply the shader used on the brush model to the debris."
+		8 : "lowgrav" : 0 : "specifies that the debris will /always/ fall slowly"
+		32 : "tank" : 0 : "Will show as a tank on a command map if linked to by a trigger_objective_info"
+	]
+]
+@SolidClass = func_invisible_user : "when activated will use its target\n\nNormally when a player 'activates' this entity, if the entity has been turned 'off' (by a scripted command) you will hear a sound to indicate that you cannot activate the user.\n\nThe sound defaults to sound/movers/invis_user_off.wav\n\ncursorhint types:"
+[
+	delay(string) : "Delay" : : "time (in seconds) before it can be used again"
+	offnoise(string) : "Offnoise" : : "specifies an alternate sound"
+	cursorhint(string) : "Cursorhint" : : "overrides the auto-location of targeted entity (list below)"
+	spawnflags(flags) = 
+	[
+		1 : "startoff" : 0 : "isn't functional till toggled"
+		4 : "no_off_noise" : 0 : "no sound will play if the invis_user is used when 'off'"
+		8 : "not_kickable" : 0 : "kicking doesn't fire, only player activating"
+	]
+]
+@PointClass size(-16 -16 0, 16 16 32) color(204 153 51) = props_chair : "shard types:"
+[
+	health(string) : "Health" : : "default 10"
+	wait(string) : "Wait" : : "default 5, how many shards to spawn ( try not to exceed 20 )"
+	shard(string) : "Shard" : : "type of shard to spawn"
+]
+@PointClass size(-8 -8 0, 8 8 16) color(153 179 179) = props_skyportal : "Allows you to place a static far away looking scene around the map."
+[
+	fov(string) : "Fov" : : "for the skybox default is 90"
+	fogcolor(string) : "Fogcolor" : : "(r g b) (values 0.0-1.0)"
+	fognear(string) : "Fognear" : : "distance from entity to start fogging"
+	fogfar(string) : "Fogfar" : : "distance from entity that fog is opaque"
+]
+@SolidClass = script_mover : "Scripted brush entity. A simplified means of moving brushes around based on events."
+[
+	modelscale(string) : "Modelscale" : : "Scale multiplier (defaults to 1, and scales uniformly)"
+	modelscale_vec(string) : "Modelscale_vec" : : "Set scale per-axis.  Overrides modelscale, so if you have both, the modelscale is ignored"
+	model2(model) : "Model" : : "optional md3 to draw over the solid clip brush"
+	scriptname(string) : "Scriptname" : : "name used for scripting purposes"
+	health(string) : "Health" : : "optionally make this entity damagable"
+	tagent(string) : "Tagent" : : "target entity a mounted gun will be attached to"
+	gun(string) : "Gun" : : "variable gun type, only other option other than default is browning"
+	spawnflags(flags) = 
+	[
+		1 : "triggerspawn" : 0 : "wont spawn until activated"
+		2 : "solid" : 0 : "non-solid unless set"
+		4 : "explosivedamageonly" : 0 : "will only take damage from explosive weapons"
+		8 : "resurectable" : 0 : "will not disappear when fully damaged"
+		16 : "compass" : 0 : "shows up on compass"
+		32 : "allied" : 0 : "only axis can damage"
+		64 : "axis" : 0 : "only allies can damage"
+		128 : "mounted_gun" : 0 : "has a mounted gun attached to it"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 255 0) = target_delay : "Fires off targets after a delay."
+[
+	wait(string) : "Wait" : : "seconds to pause before firing targets."
+	random(string) : "Random" : : "delay variance, total delay = delay +/- random seconds"
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 0 0) = target_speaker : "A global sound will play full volume throughout the level.\n\nActivator sounds will play on the player that activated the target.\n\nGlobal and activator sounds can't be combined with looping.\n\nNormal sounds play each time the target is used.\n\nLooped sounds will be toggled by use functions.\n\nMultiple identical looping sounds will just increase volume without any speed cost."
+[
+	noise(string) : "Noise" : : "wav file to play"
+	wait(string) : "Wait" : : "Seconds between auto triggerings, 0 = don't auto trigger"
+	random(string) : "Random" : : "wait variance, default is 0"
+	volume(string) : "Volume" : : "allows variance of the volume of the speaker, default is 255 (limit is 65535, but digital distortion will cut in long before then)"
+	spawnflags(flags) = 
+	[
+		1 : "looped_on" : 0
+		2 : "looped_off" : 0
+		4 : "global" : 0
+		8 : "activator" : 0
+		16 : "vis_multiple" : 0
+		32 : "no_pvs" : 0 : "- this sound will not turn off when not in the player's PVS"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 255 0) = target_fog : "color picker chooses color of fog\n\ndistance value sets the type of fog.  values > 1 are distance fog (ex. 2048), values < 1 are density fog (ex. .0002)"
+[
+	distance(string) : "Distance" : : "sets fog distance.  Use value '0' to give control back to the game (and use the fog values specified in the sky shader if present)"
+	near(string) : "Near" : : "is fog start distance when using distance fog"
+	time(string) : "Time" : : "time it takes to change fog to new value.  default time is 1 sec"
+]
+@PointClass size(-32 -32 -16, 32 32 16) color(255 0 0) = target_smoke : "A particle emmiter"
+[
+	delay(string) : "Delay" : : "this is the maximum smoke that will show up, default 100ms"
+	time(string) : "Time" : : "time before the smoke disipates, default 5000ms"
+	duration(string) : "Duration" : : "time before the smoke starts to alpha, default 2000ms"
+	start_size(string) : "Start_size" : : "default 24"
+	end_size(string) : "End_size" : : "default 96"
+	wait(string) : "Wait" : : "the rate at which it will travel up, default 50"
+	shader(string) : "Shader" : : "custom shader to use, overrides spawnflags"
+	spawnflags(flags) = 
+	[
+		1 : "black" : 0 : "black smoke"
+		2 : "white" : 0 : "white/grey smoke"
+		4 : "smokeon" : 0 : "starts on"
+		8 : "gravity" : 0 : "is affected by gravity"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 192 204) = target_rumble : "Causes clients' views to shake"
+[
+	wait(string) : "Wait" : : "time the entity will enable rumble effect, default 2"
+	pitch(string) : "Pitch" : : "value from 1 to 10 default is 5"
+	yaw(string) : "Yaw" : : "value from 1 to 10 default is 5"
+	rampup(string) : "Rampup" : : "how much time it will take to reach maximum pitch and yaw in seconds"
+	rampdown(string) : "Rampdown" : : "how long till effect ends after rampup is reached in seconds"
+	startnoise(string) : "Startnoise" : : "startingsound"
+	noise(string) : "Noise" : : "the looping sound entity is to make"
+	endnoise(string) : "Endnoise" : : "endsound"
+	duration(string) : "Duration" : : "the amount of time the effect is to last ei 1.0 sec 3.6 sec"
+	spawnflags(flags) = 
+	[
+		1 : "startoff" : 0
+	]
+]
+@PointClass size(-18 -18 -24, 18 18 48) color(255 0 0) = team_CTF_redspawn : "potential spawning position for axis team in wolfdm games.  \n\nThis allows spawnpoints to advance across the battlefield as new ones are \n\nplaced and/or activated. If target is set, point spawnpoint toward target activation"
+[
+	spawnflags(flags) = 
+	[
+		1 : "invulnerabe" : 0 : "player is invulnerable for 3 seconds after spawning"
+		2 : "startactive" : 0 : "this spawn is active at map start"
+	]
+]
+@PointClass size(-18 -18 -24, 18 18 48) color(0 0 255) = team_CTF_bluespawn : "potential spawning position for allied team in wolfdm games.  \n\nThis allows spawnpoints to advance across the battlefield as new ones are \n\nplaced and/or activated. If target is set, point spawnpoint toward target activation"
+[
+	spawnflags(flags) = 
+	[
+		1 : "invulnerabe" : 0 : "player is invulnerable for 3 seconds after spawning"
+		2 : "startactive" : 0 : "this spawn is active at map start"
+	]
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(255 0 0) = team_CTF_redflag : "Used for dual objectives in ET."
+[
+	model(model) : "Model" : : "Set model to display in game"
+	message(string) : "Message" : : "Name of object in game (ex: the Radar Parts)"
+	scriptname(string) : "Scriptname" : : "name used for scripting purposes"
+]
+@PointClass size(-16 -16 -16, 16 16 16) color(0 0 255) = team_CTF_blueflag : "Used for dual objectives in ET."
+[
+	model(model) : "Model" : : "Set model to display in game"
+	message(string) : "Message" : : "Name of object in game (ex: the Radar parts)"
+	scriptname(string) : "Scriptname" : : "name used for scripting purposes"
+]
+@PointClass size(-16 -16 -24, 16 16 32) color(255 255 77) = team_WOLF_objective : "marker for objective\n\nThis marker will be used for computing effective radius for \n\ndynamite damage, as well as generating a list of objectives\n\nthat players can elect to spawn near to in the limbo spawn\n\nscreen."
+[
+	description(string) : "Description" : : "short text key for objective name that will appear in objective selection in limbo UI."
+	spawnflags(flags) = 
+	[
+		1 : "default_axis" : 0 : "This spawn region belongs to the Axis at the start of the map"
+		2 : "default_allies" : 0 : "This spawn region belongs to the Alles at the start of the map"
+	]
+]
+@SolidClass = trigger_multiple : "Variable sized repeatable trigger.  Must be targeted at one or more entities.\n\nso, the basic time between firing is a random time between"
+[
+	wait(string) : "Wait" : : "Seconds between triggerings, 0.5 default, -1 = one time only."
+	random(string) : "Random" : : "wait variance, default is 0"
+	spawnflags(flags) = 
+	[
+		1 : "axis_only" : 0 : "only axis may trigger this"
+		2 : "allied_only" : 0 : "only allies may trigger this"
+		16 : "soldier_only" : 0 : "only soldiers may trigger this"
+		32 : "fieldops_only" : 0 : "only fieldops may trigger this"
+		64 : "medic_only" : 0 : "only medics may trigger this"
+		128 : "engineer_only" : 0 : "only engineers may trigger this"
+		256 : "covertops_only" : 0 : "only covertops may trigger this"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 128 128) = trigger_always : "A trigger which fires at map start, redundant through script usage."[]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 128 128) = target_push : "Pushes the activator in the direction.of angle, or towards a target apex."
+[
+	speed(string) : "Speed" : : "defaults to 1000"
+	spawnflags(flags) = 
+	[
+		1 : "bouncepad" : 0 : "play bounce noise instead of windfly"
+	]
+]
+@SolidClass = trigger_hurt : "Any entity that touches this will be hurt.\n\nIt does dmg points of damage each server frame\n\nTargeting the trigger will toggle its on / off state.\n\nThe entity must be used first before it will count down its life "
+[
+	dmg(string) : "Dmg" : : "default 5"
+	life(string) : "Life" : : "time this brush will exist if value is 0 will live for ever i.e. 0.5sec 2sec default 0"
+	spawnflags(flags) = 
+	[
+		1 : "start_off" : 0
+		4 : "silent" : 0 : "supresses playing the sound"
+		8 : "no_protection" : 0 : "*nothing* stops the damage"
+		16 : "slow" : 0 : "changes the damage rate to once per second"
+		32 : "once" : 0
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(77 26 153) = func_timer : "This should be renamed trigger_timer...\n\nRepeatedly fires its targets.\n\nCan be turned on or off by using.\n\nSo, the basic time between firing is a random time between (wait - random) and (wait + random)"
+[
+	wait(string) : "Wait" : : "base time between triggering all targets, default is 1"
+	random(string) : "Random" : : "wait variance, default is 0"
+	spawnflags(flags) = 
+	[
+		1 : "start_on" : 0 : "starts enabled"
+	]
+]
+@SolidClass = trigger_once : "Must be targeted at one or more entities.\n\nOnce triggered, this entity is destroyed"
+[
+	spawnflags(flags) = 
+	[
+		1 : "axis_only" : 0 : "only axis may trigger this"
+		2 : "allied_only" : 0 : "only allies may trigger this"
+		16 : "soldier_only" : 0 : "only soldiers may trigger this"
+		32 : "fieldops_only" : 0 : "only fieldops may trigger this"
+		64 : "medic_only" : 0 : "only medics may trigger this"
+		128 : "engineer_only" : 0 : "only engineers may trigger this"
+		256 : "covertops_only" : 0 : "only covertops may trigger this"
+	]
+]
+@SolidClass = trigger_objective_info : "Players in this field will see a message saying that they are near an objective.\n\nAlso, if targeting a dynamitable objective, the dynamite must be armed inside\n\nof the trigger to blow up the objective."
+[
+	customimage(string) : "Customimage" : : "image used on the commandmap, overrides the team-individual ones"
+	customaxisimage(string) : "Customaxisimage" : : "image to show axis players on the commandmap"
+	customalliesimage(string) : "Customalliesimage" : : "image to show allied players on the commandmap"
+	track(string) : "Track" : : "Mandatory, this text will be appended to You are near "
+	target(target_destination) : "Target" : : "You may target dynamitable objectives"
+	score(string) : "Score" : : "If targeting a dynamitable objective, give this score when blown."
+	shortname(string) : "Shortname" : : "Name to display on the command map"
+	spawnflags(flags) = 
+	[
+		1 : "axis_objective" : 0 : "Set if targeting an objective owned by AXIS, then only allied dynamite will blow it up."
+		2 : "allied_objective" : 0 : "Set if targeting an objective owned by ALLIES, then only axis dynamite will blow it up."
+		8 : "tank" : 0 : "Will use a tank icon on the command map"
+		16 : "is_objective" : 0 : "Will use a standard objective icon on the command map"
+		32 : "is_healthammocabinet" : 0 : "Will use a healthammo cabinet icon on the command map"
+		64 : "is_commandpost" : 0 : "Will use a command post icon on the command map"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 255 0) = info_train_spline_main : "Defines a main point for a spline curve."
+[
+	targetname(target_source) : "Name" : : "name of this point"
+	target(target_destination) : "Target" : : "target spline point"
+	control(string) : "Control" : : "sets a control point for this spline"
+	controlX(string) : "ControlX" : : "(where X is a number greater than or equal to 2) sets additional control points"
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(255 128 255) = info_train_spline_control : "Defines a control point for a spline curve."
+[
+]
+@SolidClass = func_constructible : "A constructible object that functions as target for engineers."
+[
+	track(string) : "Track" : : "functions as a group name. All entities with the same 'track' as the func_constructible will be constructed at the same time."
+	constages(string) : "Constages" : : "list of target func_brushmodel entities (up to 3) that make up the construction stages (example: stage1;stage2;)"
+	desstages(string) : "Desstages" : : "list of target func_brushmodel entities (up to 3) that make up the destruction stages (example: desstage1;desstage2;)"
+	spawnflags(flags) = 
+	[
+		1 : "start_built" : 0 : "building starts built"
+		2 : "invulnerable" : 0 : "building can't be destroyed"
+		4 : "axis_constructible" : 0 : "building is constructible by axis"
+		8 : "allied_constructible" : 0 : "building is constructible by allies"
+	]
+]
+@SolidClass = func_brushmodel : "A brushmodel that gets deleted on the fourth frame. We use this to hijack it's brushmodel in func_constructible\n\nentities that are based around staged construction."
+[
+]
+@SolidClass = trigger_flagonly_multiple : "Player must be carrying the proper flag for it to trigger.\n\nIt will call the death function in the object's script."
+[
+	scriptName(string) : "ScriptName" : : "The object name in the script file"
+	spawnflags(flags) = 
+	[
+		1 : "red_flag" : 0 : "only trigger if player is carrying red flag"
+		2 : "blue_flag" : 0 : "only trigger if player is carrying blue flag"
+	]
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(0 128 204) = misc_beam : "When on, displays a electric beam from target to target2.\n\nUsed by the cranes in railgun."
+[
+	target(target_destination) : "Target" : : "start of beam"
+	message(string) : "Message" : : "end of beam"
+	shader(string) : "Shader" : : "the shader"
+]
+@PointClass size(-32 -32 -32, 32 32 32) color(0 128 204) = target_explosion : "debris types:"
+[
+	type(string) : "Type" : : "type of debris"
+	spawnflags(flags) = 
+	[
+		1 : "lowgrav" : 0 : "the explosive debris will move with low gravity"
+	]
+]
+@SolidClass = trigger_heal : "Any entity that touches this will be healed at a specified rate up to a specified maximum."
+[
+	healrate(string) : "Healrate" : : "rate of healing per second, default 5 (whole numbers only)"
+	healtotal(string) : "Healtotal" : : "the maximum of healing this trigger can do. if <= 0, it's unlimited. default 0 (whole numbers only)"
+	target(target_destination) : "Target" : : "cabinet that this entity is linked to"
+]
+@SolidClass = trigger_ammo : "Any entity that touches this will get additional ammo a specified rate up to a specified maximum."
+[
+	ammorate(string) : "Ammorate" : : "rate of ammo clips per second. default 1. (whole number only)"
+	ammototal(string) : "Ammototal" : : "the maximum clips of ammo this trigger can add. if <= 0, it's unlimited. default 0 (whole numbers only)"
+	target(target_destination) : "Target" : : "cabinet that this entity is linked to"
+]
+@PointClass size(-20 -20 0, 20 20 60) color(128 128 128) model("models/mapobjects/supplystands/stand_health.md3") = misc_cabinet_health : "Entity to link trigger_heal entity to, for visual display"
+[
+]
+@PointClass size(-20 -20 0, 20 20 60) color(128 128 128) model("models/mapobjects/supplystands/stand_ammo.md3") = misc_cabinet_supply : "Entity to link trigger_ammo entity to, for visual display"
+[
+]
+@SolidClass = func_debris : "Target at an entity for direction of travel\n\nThis entity MUST have a targetname"
+[
+	speed(string) : "Speed" : : "modifies how fast the debris starts at default 800"
+]
+@SolidClass = _decal : "Compiler-only entity that specifies a decal to be projected. Should contain 1 or more patch meshes (curves) and target an info_null entity. The distance between the center of the _decal entity and the target is the axis and distance of projection."
+[
+	target(target_destination) : "Target" : : "the name of the entity targetted at for projection"
+]
+@PointClass size(-8 -8 -8, 8 8 8) color(128 0 0) = info_limbo_camera : "DEFAULT is all modes NOT including LMS mode.\n\nTarget an info_null entity EXCEPT for cameras overlooking SPAWNS (which target the yellow blob)."
+[
+	objective(string) : "Objective" : : "a number starting from 1 possibly going anywhere up to 8, but maybe more later. (only required for objectives, not spawns)"
+	spawnflags(flags) = 
+	[
+		1 : "lms_only" : 0 : "is used for limbo cameras that only appear in LMS mode."
+		2 : "all_modes" : 0 : "is used for limbo cameras that appear in all modes including LMS."
+	]
+]
+@PointClass size(-16 -16 0, 16 16 16) color(0 217 217) = misc_commandmap_marker : "Has to be targetted by a trigger_objective_info to work.\n\nCommand map marker entity. When set to state default it shows, any other state and it isn't visible."
+[
+	spawnflags(flags) = 
+	[
+		1 : "only_axis" : 0 : "only shows for axis players"
+		2 : "only_allied" : 0 : "only shows for allied players"
+	]
+]
