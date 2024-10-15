@@ -1,1 +1,1 @@
-Beginning to add support for WolfET via GameConfig addon WIP
+Beginning to add support for WolfET / ET:Legacy via GameConfig addon WIP
