@@ -13,14 +13,13 @@ These work only with TrenchBroom 2024.1 release version or newer releases which 
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/WolfET/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
 
 
-
 #### Coming in future commits :
 
 <img src="/games_wip/GravityBone/Icon.png"  width="16" height="16"> [GravityBone](/games_wip/GravityBone/)<br>
 <img src="/games_wip/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](/games_wip/TAoV/)<br>
 <br>
 ### How-to-Install
-You can either grab individual files, but everything is needed inside of the game profile dir to work properly. You can grab the full [zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) and just copy the game profile folder you want out into your `TrenchBroom/games` dir.
+You can either grab individual files, but everything is needed inside of the game profile dir to work properly. You can grab the full [zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) currently to get MarbleBlast & RenRacer and just copy the game profile folder you want out into your `TrenchBroom/games` dir. The rest are in their individual branches were you can download them zipped, from git, or individual files.
 
 ### Help & Stuff
 TrenchBroom is more akin to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
