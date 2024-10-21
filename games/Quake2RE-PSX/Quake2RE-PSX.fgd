@@ -14,7 +14,12 @@
 // worldspawn
 //
 
-@SolidClass base(EWT_base_Worldspawn) = worldspawn : "World entity"
+@SolidClass base(EWT_base_Worldspawn) = worldspawn : "World entity
+
+New flags:
+- physics_flags_sp: Physics flags for Single Player (PSX)
+- physics_flags_mp: Physics flags for Multi Player (PSX)
+"
 [
     sky(string) : "Environment map name"
     skyaxis(vector) : "Vector axis for rotating sky"
@@ -37,6 +42,18 @@
     heightfog_end_color(color) : "end color of heightfog, 3d vector with values between 0-1 (r g b)"
     heightfog_start_dist(float) : "start distance value of heightfog, in world units"
     heightfog_end_dist(float) : "start distance value of heightfog, in world units"
+    physics_flags_sp(flags) =
+    [
+        1 : "1: N64 movement (exclusive with PSX)" : 0
+        2 : "2: PSX movement (exclusive with N64)" : 0
+        4 : "4: PSX scale (use 0.875 map scale)" : 0
+    ]
+    physics_flags_mp(flags) =
+    [
+        1 : "1: N64 movement (exclusive with PSX)" : 0
+        2 : "2: PSX movement (exclusive with N64)" : 0
+        4 : "4: PSX scale (use 0.875 map scale)" : 0
+    ]
 ]
 
 //
@@ -414,7 +431,11 @@
     ]
 ]
 
-@SolidClass base(Angleable, EditorFlags, Targetable, UseTargets, EWT_base_BModel, BmodelSounds) color(0 128 204) = func_door_rotating : "Rotating Door"
+@SolidClass base(Angleable, EditorFlags, Targetable, UseTargets, EWT_base_BModel, BmodelSounds) color(0 128 204) = func_door_rotating : "Rotating Door
+
+New spawnflags:
+- 262144 : No collision (PSX) -> Disables collision on the door.
+"
 [
     spawnflags(Flags) =
     [
@@ -428,6 +449,7 @@
         128 : "Y Axis" : 0
         65536 : "Inactive (must be triggered)" : 0
         131072 : "Safe Open (opens opposite dir. if activator facing 'angles')" : 0
+        262144 : "No collision (PSX)" : 0
     ]
     team(string) : "Team"
     distance(float) : "Degrees of rotation" : "90"
@@ -552,7 +574,11 @@
     noise(string) : "Travel noise (path/file.wav)"
 ]
 
-@SolidClass base(EditorFlags, Targetable, EWT_base_BModel, FX) color(0 128 204) = func_wall : "Solid Wall"
+@SolidClass base(EditorFlags, Targetable, EWT_base_BModel, FX) color(0 128 204) = func_wall : "Solid Wall
+
+New spawnflags:
+- 32: Safe appear (PSX) -> When the wall is toggled on, point entities with partial collision will be pushed away. If the entity is completely inside the brush it will be gibbed.
+"
 [
     spawnflags(Flags) =
     [
@@ -561,6 +587,7 @@
         4 : "Start On" : 0
         8 : "Animated" : 0
         16 : "Animated Fast" : 0
+        32 : "Safe appear (PSX)" : 0
     ]
 ]
 
@@ -667,11 +694,19 @@ If you are using this light as a sun entity targeting an 'info_notnull', when '_
 @PointClass base(EditorFlags) color(255 128 0) size(-32 -32 0, 32 32 32) model({ "path": ":models/monsters/bitch/tris.md2", "frame":208}) = misc_easterchick : "Chick #1 sitting: Place her near misc_eastertank." []
 @PointClass base(EditorFlags) color(255 128 0) size(-32 -32 0, 32 32 32) model({ "path": ":models/monsters/bitch/tris.md2", "frame":248}) = misc_easterchick2 : "Chick #2 sitting w/ different pose. Can be placed close to misc_eastertank's for full effect." []
 
-@PointClass base(EditorFlags) color(0 128 204) size(-16 -16 0, 16 16 40) model({ "path": ":models/objects/barrels/tris.md2" }) = misc_explobox : "Large exploding box"
+@PointClass base(EditorFlags) color(0 128 204) size(-16 -16 0, 16 16 40) model({ "path": ":models/objects/barrels/tris.md2" }) = misc_explobox : "Large exploding box
+
+New spawnflags:
+- 1 : No move (PSX) -> Barrel is static.
+"
 [
     mass(float) : "Mass" : "100"
     health(float) : "Health" : "80"
     dmg(float) : "Damage" : "150"
+    spawnflags(Flags) =
+    [
+        1 : "No move (PSX)" : 0
+    ]
 ]
 
 // set angle for gib direction, otherwise it just drops
@@ -746,8 +781,9 @@ misc_satellite_dish : "Satellite Dish"
         4 : "Ambush Override (don't use)" : 0
         65536 : "Spawn Dead" : 0
         131072 : "Super Step" : 0
-        262144 : "drop to ground" : 0
-        524288 : "scenic (non-combative) enemies" : 0
+        262144 : "Drop to ground" : 0
+        524288 : "Scenic (non-combative) enemies" : 0
+        1048576 : "No idle doors (PSX)" : 0
     ]
     combattarget(target_destination) : "Point combat target"
     deathtarget(target_destination) : "Entity to trigger at death"
@@ -1214,7 +1250,11 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 // if no color spawnflags are set, the laser color defaults to dim gray (and hard to see)
 // setting the damage to 0 makes it use the default damage of 1
 // setting the damage to a negative number will actually give health
-@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"})= target_laser : "Laser"
+@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"})= target_laser : "Laser
+
+New spawnflags:
+- 262144 : No protection (PSX) -> Laser will damage even those with invulnerability. Set to avoid softlocks.
+"
 [
     spawnflags(Flags) =
     [
@@ -1227,6 +1267,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
         64 : "Fat" : 0
         128 : "Stop on windows" : 0
         65536 : "Lightning" : 0
+        262144 : "No protection (PSX)" : 0
     ]
     dmg(float) : "Damage"
     rgba(integer) : "Laser colors; four palette indices separated by spaces"
@@ -1361,7 +1402,10 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 
 @PointClass base(EditorFlags, Targetable, Target) color(76 25 153) = trigger_elevator : "Elevator trigger; note that whoever targets this must have a pathtarget set" []
 
-@SolidClass base(EditorFlags, Targetable) color(128 128 128) = trigger_hurt : "Hurts on touch"
+@SolidClass base(EditorFlags, Targetable) color(128 128 128) = trigger_hurt : "Hurts on touch
+
+New spawnflags:
+- 16: Passive (PSX) -> When set, the trigger_hurt now passively searches for objects to damage instead of reacting to being touched by entities. This allows the trigger_hurt to damage multiple entities that meet its criteria every frame instead of damaging only one at a time."
 [
     spawnflags(Flags) =
     [
@@ -1369,7 +1413,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
         2 : "Toggle" : 0
         4 : "Silent" : 0
         8 : "No Protection" : 0
-        16 : "Slow hurt" : 0
+        16 : "Passive (PSX)" : 0
         32 : "No Players" : 0
         64 : "No Monsters" : 0
         128 : "Clipped (must touch brushes, not just aabb)" : 0
@@ -1377,9 +1421,16 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     dmg(float) : "Damage" : "5"
 ]
 
-@PointClass base(EditorFlags, Targetable, UseTargets) color(128 128 128) size(-8 -8 -8, 8 8 8) = trigger_key : "Triggers with key"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(128 128 128) size(-8 -8 -8, 8 8 8) = trigger_key : "Triggers with key
+
+New spawnflags:
+- 1 : Become relay (PSX) -> When set, a trigger_key that is successfully engaged will turn into a relay when it is fired instead of becoming unusable; this can simplify certain key setups."
 [
     item(string) : "Item classname" : "key_blue_key"
+    spawnflags(Flags) =
+    [
+        1 : "Become relay (PSX)" : 0
+    ]
 ]
 
 @SolidClass base(Angleable, EditorFlags, Targetable) color(128 128 128) = trigger_monsterjump : "Makes monsters jump"
@@ -1420,7 +1471,10 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     wait(float) : "Seconds between triggers" : "0"
 ]
 
-@SolidClass base(EditorFlags) color(128 128 128) = trigger_push : "Push trigger"
+@SolidClass base(EditorFlags) color(128 128 128) = trigger_push : "Push trigger
+
+New spawnflags:
+- 32 : Additive (PSX) -> When set, the trigger_push will additively push objects and temporarily give them zero gravity."
 [
     spawnflags(Flags) =
     [
@@ -1429,6 +1483,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
         4 : "Silent" : 0
         8 : "Start Off" : 0
         16 : "Clipped (must exactly touch brushes, not just aabb)" : 0
+        32 : "Additive (PSX)" : 0
     ]
     speed(float) : "Speed of push" : "1000"
     wait(float) : "Time to wait between pushes" : "10"
@@ -1514,6 +1569,8 @@ spawnflags == 0 ->  {"path": "models/ctf/banner/small.md2", "scale":"1.0"},
         8 : "Start On" : 0
     ]
 ]
+
+@SolidClass base(EditorFlags) color(128 128 128) = trigger_safe_fall : "When players touch this entity and they are currently in the air, their next fall damage will always be zero." []
 
 @SolidClass base(func_door_secret) color(0 128 204) = func_door_secret2 : "Secret Door (Rogue)" []
 
@@ -1601,6 +1658,11 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
     angles(string)  :   "pitch roll yaw" : "0 0 0" : "up/down, angle, tilt left/right"
     scale(float)    :   "scale of model default = 1.0 = 100%" : "1.0" : "No need to set this unless you desire to scale."
     frame(integer)  :   "Frame # to show" : 0 : "0 be default."
+    spawnflags(flags) =
+    [
+        1 : "Toggle (PSX)" : 0
+        2 : "Start on (PSX)" : 0
+    ]
 ]
 
 @PointClass base(EditorFlags, FX, Targetable) size(-8 -8 -8, 8 8 8) model({"path":":models/objects/light/tris.md2"}) = rotating_light : "An off center spinning light fixture.
@@ -1707,7 +1769,16 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
     wait(float) : "1.0" : "Time in seconds for auto-fire triggers to check bounds"
 ]
 
-@PointClass base(Monsters) size(-96 -96 -66, 96 96 62) model({ "path": ":models/monsters/guardian/tris.md2" }) = monster_guardian : "Guardian (PSX)" []
+
+
+@PointClass base(Monsters) size(-96 -96 -66, 96 96 62) model({ "path": ":models/monsters/guardian/tris.md2" }) = monster_guardian : "Guardian (PSX)
+
+spawnlag [8 : Sleepy (PSX)] - Causes the Guardian to spawn asleep." [
+    spawnflags(Flags) =
+    [
+        8 : "Sleepy (PSX)" : 0
+    ]
+]
 @PointClass base(Monsters) size(-48 -48 -20, 48 48 48) model({ "path": ":models/monsters/arachnid/tris.md2" }) = monster_arachnid : "Arachnid (PSX)" []
 
 @PointClass base(EditorFlags, Targetable, Teamable) color(255 0 0) size(-4 -4 -4, 4 4 4) = target_poi : "Compass POI"
@@ -1732,7 +1803,6 @@ model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":a
         2 : "Trigger Once" : 0
         4 : "Remove On Trigger" : 0
     ]
-
     angle(float) : "Direction. -3 = Track Player. -2 = Down, -1 = Up, 0 - 360 = Yaw" : "-3"
     radius(float) : "Text Size" : "0.2"
     sounds(integer) : "Color Of Text. 0 = White, 1 = Red, 2 = Blue, 3 = Green, 4 = Yellow, 5 = Black, 6 = Cyan, 7 = Orange" : 0
