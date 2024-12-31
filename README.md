@@ -1,8 +1,6 @@
 # <img src="/games/Quake2RE/Icon.png" width="24" height="24"> [Quake 2 RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
 
-Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax and file version to be _only_ compatible with TrenchBroom [2024.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.1) or newer builds from recent commits. 2024.1 is good.<br>
-
-
+Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax to version 9, making it be _only_ compatible with TrenchBroom [2024.2](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.2) or newer builds from recent commits.<br>
 
 Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it look & work correctly. 
 
@@ -21,20 +19,22 @@ Windows users can also dropped the Quake2RE DIR into wherever they have there TB
 
 <br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and or you want to open existing Quake 2 maps in this addon.
 ## Setup
-From the toolbar go to View--> Preferences... or open with kb shortcut [Ctrl]+[Shift]+[,]
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/fd8816ae-cd4a-4bef-a8d0-c19738b90cb7" width="420"/><br>
+From TrenchBroom's main window you can go to the toolbar to select **View--> Preferences**, or use the kb shortcut [Ctrl]+[Shift]+[,], or from TrenchBroom's startup window press [New map...] then [Open Preferences...] button to enter preferences.
+
+![image](https://github.com/user-attachments/assets/c9c18ad7-c087-48d3-8975-4af3ff971a02)
+
 Pick you Quake 2 RE-RELEASE dir, not base Quake 2. For most people it would be something like this:
 `/SteamLibrary/steamapps/common/Quake 2/rerelease`, where ever that may be for you on your system.
 
-I've added slots for map compile tools which are totally optional. If you add your compile executables there they will(should) be available from the Tool UI as `${bsp}`, `${vis}`, and `${light}` respectively. It is easy IMO to use these shortcuts in the Tool UI than writing the straight path to the tool each time you create new tool setup, but that is up to the user.
+I've added path options for map compiling tools which makes setting up compiler setups in TB easier. If you add your compile executables there they will(should) be available from the Compile Tool UI as `${bsp}`, `${vis}`, and `${light}` respectively. It is easy IMO to use these shortcuts in the Tool UI than writing the straight path to the tool each time you create new tool setup, but that is up to the user.
 
-![image](https://github.com/eGax/TrenchBroom_xtras_plus/assets/9817245/6878112a-0511-48b6-b779-3a428b410849)
+![image](https://github.com/user-attachments/assets/63024276-7c12-4fb4-bfca-9c31ac0a9cc5)
 
 Once that is done you are ready to map. There is no longer a need to manually add your Q2 texture directories in recent commits, it happens automagically based off your set game or mod dir.
 
 ## Notes
 
--Q2RE supports 8BIT WAL & RGB TGA images for brush textures. The addon has PNG images enabled for editor ONLY images, IE Quake 2 rerelease doesn't support PNG map textures.
+-Q2RE supports 8BIT WAL & RGB TGA images for brush textures. The addon has WEBP images enabled for editor ONLY images, IE Quake 2 rerelease doesn't support WEBP map textures.
 
 ## Compiling  
 
