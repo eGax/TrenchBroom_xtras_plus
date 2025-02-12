@@ -1,9 +1,9 @@
 # **TrenchBroom xtras plus**
 ### My experimental game support profiles and works.
 
-These work only with TrenchBroom 2024.1 release version or newer releases which can include dev builds to function properly.
+These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2024.2 or newer releases to function as intended.
 
-- For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can install TrenchBroom current releaae with [trenchbroom-bin AUR](https://aur.archlinux.org/packages/trenchbroom-bin) I co-maintain. OR the dev build I maintain here: [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git)
+- For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can install TrenchBroom current release with [trenchbroom-bin AUR](https://aur.archlinux.org/packages/trenchbroom-bin) I co-maintain. OR the dev build I maintain here: [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git)
 
 #### Committed game profile so far :
 
@@ -11,7 +11,8 @@ These work only with TrenchBroom 2024.1 release version or newer releases which 
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
 <img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/WolfET/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
-
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 
 #### Coming in future commits :
 
