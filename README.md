@@ -7,7 +7,6 @@ These are written for TB GameConfig syntax version 9, meant to be used with Tren
 
 #### Committed game profile so far :
 
-<img src="/games_wip/MarbleBlast/Icon.png"  width="16" height="16"> [MarbleBlast](/games_wip/MarbleBlast/)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
 <img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/WolfET/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
