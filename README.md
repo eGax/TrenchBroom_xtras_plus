@@ -1,14 +1,17 @@
 # **TrenchBroom xtras plus**
 ### My experimental game support profiles and works.
 
-These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2024.2 or newer releases to function as intended.
+These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2024.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
 
-- For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can install TrenchBroom current release with [trenchbroom-bin AUR](https://aur.archlinux.org/packages/trenchbroom-bin) I co-maintain. OR the dev build I maintain here: [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git)
+FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
 
-#### Committed game profile so far :
+#### Committed game profile so far being grouping into different branches :
 
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
-<img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
+Quake2RE :<br>
+    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
+RenegadeC :<br>
+    <img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
+    <img src="/games_wip/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](/games_wip/TAoV/)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/WolfET/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
