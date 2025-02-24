@@ -5,14 +5,14 @@ These are written for TB GameConfig syntax version 9, meant to be used with Tren
 
 FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
 
-#### Committed game profile so far being grouping into different branches :
+#### Committed game profile so far as grouped into different branches :
 
 Quake2RE :<br>
     <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
 RenegadeC :<br>
-    <img src="/games_wip/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games_wip/RenRacer/)<br>
-    <img src="/games_wip/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](/games_wip/TAoV/)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/WolfET/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
+    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/)<br>
+    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/)<br>
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [Wolf](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)<br>
