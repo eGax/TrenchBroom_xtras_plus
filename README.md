@@ -14,17 +14,17 @@ Quake2RE : &nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive
 <hr>
 
 RenegadeC : &nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/RenegadeC.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; [Ren Racer](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/games/RenRacer/) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/games/TAoV/)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; [Ren Racer](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/)<br>
 
 <hr>
 
-WolF  : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf)<br>
+WolF  : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Wolf.zip">download branch</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf/)<br>
 
 <hr>
 
-Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
+Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip">download branch</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)
 
