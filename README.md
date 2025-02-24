@@ -8,14 +8,17 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 #### Committed game profile so far as grouped into different branches :
 
 Quake2RE :<br>
-    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
 RenegadeC :<br>
-    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/)<br>
-    <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [Wolf](https://github.com/eGax/TrenchBroom_xtras_plus/tree/WolfET)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/)<br>
+WolF  :<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [Wolf](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf)<br>
+Jedi :<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+HalfLife :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)<br>
 
 ### How-to-Install
 You can either grab individual files, but everything is needed inside of the game profile dir to work properly. You can grab the MarbleBlast & REnRacer game profiles here [zip](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/main.zip) currently to get both, then just copy the game profile folders you want out into your `TrenchBroom/games` dir. The rest are in their individual branches were you can download them zipped, from git, or individual files. Here are links to download them directly zipped. [Quake2RE](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip), [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/WolfET.zip), and [both Jedi games](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip) in same branch download.
