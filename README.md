@@ -8,21 +8,24 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 #### Committed game profile so far as grouped into different branches :
 <hr>
 Quake2RE : &nbsp; <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> &nbsp; <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE">Quake 2 RE-release</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> &nbsp; <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE">Quake 2 RE-release</a>
+
 <hr>
-RenegadeC : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/>RenRacer</a><br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/>Ascension of Vigil</a><br>
+
+RenegadeC : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/RenegadeC.zip">download branch</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; [Ren Racer](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/games/RenRacer/) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/games/TAoV/)<br>
+
 <hr>
 
 <br>WolF  : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
 
 <img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf)<br>
-
 <br>Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
 
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 
 <br>HalfLife :<br>
 
