@@ -7,8 +7,7 @@ These are written for TB GameConfig syntax version 9, meant to be used with Tren
 - For my Arch Linux and Arch based, Manjaro, etc based distro fellows you can install TrenchBroom current release with [trenchbroom-bin AUR](https://aur.archlinux.org/packages/trenchbroom-bin) I co-maintain. OR the dev build I maintain here: [trenchbroom-git AUR](https://aur.archlinux.org/packages/trenchbroom-git)
 
 #### Committed game profile so far :
-
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> [Quake 2 RE-release](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE)<br>
+<br>
 <img src="/games/RenRacer/Icon.png"  width="16" height="16"> [RenRacer](/games/RenRacer/)<br>
 
 #### Coming in future commits :
