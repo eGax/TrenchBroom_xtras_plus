@@ -35,6 +35,20 @@ HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
+Best to install add-ons in the user TB data saving location.
+
+**Linux** users should copy the folder Quake2RE from the and all its contents to your TB Home dir game data :
+
+### `~/.TrenchBroom/games/`
+
+For windows users copy them to :
+
+### `%appdata%\TrenchBroom\games\`
+
+Windows users can also dropped them into wherever they have there TB installed. For example :
+
+### `C:\games\tools\TrenchBroom-Win64-v2025.1-Release\games\`
+
 
 ### Help & Stuff
 TrenchBroom is more akin to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
