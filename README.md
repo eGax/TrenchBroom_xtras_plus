@@ -30,11 +30,11 @@ Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/head
 
 <hr>
 
-HalfLife :<br>
+HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)<br>
 
 ### How-to-Install
-You can either grab individual files, but everything is needed inside of the game profile dir to work properly. You can grab the ip) currently to get both, then just copy the game profile folders you want out into your `TrenchBroom/games` dir. The rest are in their individual branches were you can download them zipped, from git, or individual files. Here are links to download them directly zipped. [Quake2RE](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip), [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/WolfET.zip), and [both Jedi games](https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip) in same branch download.
+You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
 
 ### Help & Stuff
 TrenchBroom is more akin to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
