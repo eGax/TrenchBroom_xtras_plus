@@ -45,12 +45,9 @@ For windows users copy them to :
 
 ### `%appdata%\TrenchBroom\games\`
 
-Windows users can also dropped them into wherever they have there TB installed. For example :
+<br>
 
-### `C:\games\tools\TrenchBroom-Win64-v2025.1-Release\games\`
-
-
-### Help & Stuff
+## Help & Stuff
 TrenchBroom is more akin to Blender IMO then say something like [Quark](https://quark.sourceforge.io/), [WorldCraft](https://web.archive.org/web/20060530014852/http://hosted.planetquake.gamespy.com/worldcraft/index2.shtm), or [BSP](https://www.bspquakeeditor.com/index.php).
 Learning a new program, a workflow takes time and some patience, and these tutorials are very Quake centric videos, but you can look beyond that these go into detail how to get things done in 
 TrenchBroom. Dumptruck's stuff is the tried and true recommendation to get started working with TB. Markie's SlipSeer videos go a bit beyond and show you a few more advanced things that can be done. Both worth watching.
