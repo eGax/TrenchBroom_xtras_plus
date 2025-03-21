@@ -7,6 +7,10 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 
 #### Committed game profile so far as grouped into different branches :<br><br>
 
+Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="16" height="16"> [Daikatana](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
+
+<hr>
 
 HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
