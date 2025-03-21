@@ -12,7 +12,7 @@ Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs
 
 <hr>
 
-This is meant to be used with the <a href="https://github.com/maraakate/daikatana">Unofficial Daikatana v1.3 Patch</a> or newer. It brings Linux, Mac, and improved Windows engine ports, fixed up maps, and game code. You can read about it and grab it from their github.
+This a is a working WIP and meant to be used with the <a href="https://github.com/maraakate/daikatana">Unofficial Daikatana v1.3 Patch</a> or newer. It brings Linux, Mac, and improved Windows engine ports, fixed up maps, and game code. You can read about it and grab it from their github.
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
