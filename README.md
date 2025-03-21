@@ -1,43 +1,18 @@
-# **TrenchBroom xtras plus**
+# **TrenchBroom xtras plus: Daikatana**
 ### My experimental game support profiles and works.
 
-These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2024.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
+These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
 
 FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
 
-#### Committed game profile so far as grouped into different branches :<br><br>
+#### This is my committed game profile for Daikatana with improvements to the FGDs and GameConfig.cfg :<br><br>
 
 Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="16" height="16"> [Daikatana](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
 
 <hr>
 
-HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
-
-<hr>
-
-Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)
-
-<hr>
-
-Quake2RE : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/">Quake 2 RE-release</a>
-
-<hr>
-
-RenegadeC : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/RenegadeC.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; [Ren Racer](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/)<br>
-
-<hr>
-
-WolF : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Wolf.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf/)<br>
-
-
+This is meant to be used with the <a href="https://github.com/maraakate/daikatana">Unofficial Daikatana v1.3 Patch</a> or newer. It brings Linux, Mac, and improved Windows engine ports, fixed up maps, and game code. You can read about it and grab it from their github.
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
