@@ -18,7 +18,7 @@ This is meant to be used with the <a href="https://github.com/maraakate/daikatan
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
 Best to install add-ons in the user TB data saving location.
 
-**Linux** users should copy the folder Quake2RE from the and all its contents to your TB Home dir game data :
+**Linux** users should copy the folder Daikatana from the zip and all its contents to your TB Home dir game data :
 
 ### `~/.TrenchBroom/games/`
 
