@@ -1,0 +1,7 @@
+//
+// Daikatana game definition file (.fgd)
+// Episode 1 entities for TrenchBroom 2025.2 or newer
+//
+
+@include "Common.fgd"
+@include "EP1.fgd"
