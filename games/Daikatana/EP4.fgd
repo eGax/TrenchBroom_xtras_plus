@@ -1,13 +1,12 @@
 //
 // Daikatana game definition file (.fgd)
 // Episode 4 entities
-// for Trenchbroom
-// last update: 6 Oct, 2018
-// Version: 1
-//
+// for TrenchBroom
+
 // written by Dekonega <dekonega(at)windowslive.com>
 // email me with improvements and suggestions
-//
+
+// Edits & additions by xaGe 202503220300
 
 //
 // Items (Episode 4)
@@ -23,10 +22,10 @@
 @PointClass base(Appearflags) color(0 0.5 0.8) size(-16 -16 -24, 16 16 8) model({ "path": "models/e4/a_bottle.dkm" }) = item_bottle : "Bottle for e4m1 explosives." []
 @PointClass base(Appearflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e4/a_envsuit.dkm" }) = item_envirosuit : "60 seconds of air and protection from harmful liquids." []
 
-
 //
 // Monsters (Episode 4)
 //
+
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 32) model({ "path": "models/e4/m_kage.dkm" }) = monster_kage : "Kage Mishima" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -8, 16 16 16) model({ "path": "models/e4/m_shark.dkm" }) = monster_shark : "Shark" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 32) model({ "path": "models/e4/m_rocketmp.dkm" }) = monster_rocketmp : "Rocket MP" []
@@ -42,29 +41,119 @@
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 40) model({ "path": "models/e4/m_bpris.dkm" }) = monster_blackprisoner : "Black prisoner" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-8 -8 -16, 8 8 8) model({ "path": "models/e4/m_piperat.dkm" }) = monster_piperat : "Pipe rat - I broke you!" []
 
-
 //
 // Decorations (Episode 4)
 //
-@PointClass base(Appearflags, DecorationFlags) color(1 0 0) size(-8 -8 -32, 8 8 32) model({ "path":model, "frame":frame, "scale":scale }) = deco_e4 : "Episode 4 decoration"
+
+@PointClass base(Appearflags, DecorationFlags) color(1 0 0) size(-8 -8 -32, 8 8 32) model({{
+model => "1stwheel" ->  {"path":"models/e4/d4_wheel.dkm", "scale":scale, "frame":frame},
+model => "banner1" ->   {"path":"models/e4/d4_banner.dkm", "scale":scale, "frame":frame},
+model => "barrel1" ->   {"path":"models/e4/d4_brl1.dkm", "scale":scale, "frame":frame},
+model => "barrel2" ->   {"path":"models/e4/d4_brl2.dkm", "scale":scale, "frame":frame},
+model => "barrel3" ->   {"path":"models/e4/d4_brl3.dkm", "scale":scale, "frame":frame},
+model => "bonsai1" ->   {"path":"models/e4/d4_bon.dkm", "scale":scale, "frame":frame},
+model => "bonsai2" ->   {"path":"models/e4/d4_bon2.dkm", "scale":scale, "frame":frame},
+model => "bonsai3" ->   {"path":"models/e4/d4_bon3.dkm", "scale":scale, "frame":frame},
+model => "bottle" ->    {"path":"models/e4/d4_bottle.dkm", "scale":scale, "frame":frame},
+model => "bush1" ->     {"path":"models/e4/d4_bush1.dkm", "scale":scale, "frame":frame},
+model => "d4_afish" ->  {"path":"models/e4/d4_afish.dkm", "scale":scale, "frame":frame},
+model => "d4_bot1" ->   {"path":"models/e4/d4_bot1.dkm", "scale":scale, "frame":frame},
+model => "d4_bot2" ->   {"path":"models/e4/d4_bot2.dkm", "scale":scale, "frame":frame},
+model => "d4_bread" ->  {"path":"models/e4/d4_bread.dkm", "scale":scale, "frame":frame},
+model => "d4_cof" ->    {"path":"models/e4/d4_cof.dkm", "scale":scale, "frame":frame},
+model => "d4_cup" ->    {"path":"models/e4/d4_cup.dkm", "scale":scale, "frame":frame},
+model => "d4_gull" ->   {"path":"models/e4/d4_gull.dkm", "scale":scale, "frame":frame},
+model => "d4_rat" ->    {"path":"models/e4/d4_rat.dkm", "scale":scale, "frame":frame},
+model => "daikatana" -> {"path":"models/e4/d4_daikatana.dkm", "scale":scale, "frame":frame},
+model => "demon" ->     {"path":"models/e4/d4_demon.dkm", "scale":scale, "frame":frame},
+model => "goldencup" -> {"path":"models/e4/d4_gcup.dkm", "scale":scale, "frame":frame},
+model => "ironbox" ->   {"path":"models/e4/d4_iron.dkm", "scale":scale, "frame":frame},
+model => "japplant1" -> {"path":"models/e4/d4_jppl1.dkm", "scale":scale, "frame":frame},
+model => "japplant2" -> {"path":"models/e4/d4_jppl2.dkm", "scale":scale, "frame":frame},
+model => "jappot1" ->   {"path":"models/e4/d4_jppt1.dkm", "scale":scale, "frame":frame},
+model => "jappot2" ->   {"path":"models/e4/d4_jppt2.dkm", "scale":scale, "frame":frame},
+model => "kendorack" -> {"path":"models/e4/d4_kendo.dkm", "scale":scale, "frame":frame},
+model => "lantern" ->   {"path":"models/e4/d4_lant.dkm", "scale":scale, "frame":frame},
+model => "logs" ->      {"path":"models/e4/d4_log.dkm", "scale":scale, "frame":frame},
+model => "pipeend" ->   {"path":"models/e4/d4_pipe1.dkm", "scale":scale, "frame":frame},
+model => "pipend2" ->   {"path":"models/e4/d4_pipe2.dkm", "scale":scale, "frame":frame},
+model => "pot1" ->      {"path":"models/e4/d4_pan1.dkm", "scale":scale, "frame":frame},
+model => "pot3" ->      {"path":"models/e4/d4_pan2.dkm", "scale":scale, "frame":frame},
+model => "pracswo" ->   {"path":"models/e4/d4_sword.dkm", "scale":scale, "frame":frame},
+model => "rock1" ->     {"path":"models/e4/d4_rock1.dkm", "scale":scale, "frame":frame},
+model => "samarmor" ->  {"path":"models/e4/d4_armor.dkm", "scale":scale, "frame":frame},
+model => "shitzu" ->    {"path":"models/e4/d4_fu.dkm", "scale":scale, "frame":frame},
+model => "sodacan" ->   {"path":"models/e4/d4_soda.dkm", "scale":scale, "frame":frame},
+model => "Tosh" ->      {"path":"models/e4/Toshiro_ebihara_low.dkm", "scale":scale, "frame":frame},
+model => "trashcan" ->  {"path":"models/e4/d4_trashcan.dkm", "scale":scale, "frame":frame},
+model => "tray" ->      {"path":"models/e4/d4_tray.dkm", "scale":scale, "frame":frame},
+model => "wires1" ->    {"path":"models/e4/d4_wires1.dkm", "scale":scale, "frame":frame},
+                        {"path":"tb/questionmarkred.webp", "scale": 0.064}	
+}}) = deco_e4 : "Episode 4 decoration"
 [
-	damage(integer): "damage applied when exploding. Default is 15." : 15
-	scale(float): "Scale of deco. Default 1.0." : "1.0"
-	model(string): "choose model # -- see list."
-	mass(float): "*optional* - including this overrides the mass value in decoinfo.txt" 
-	frame(integer): "allows you to specify the starting frame for the model."
-	animseq(integer): "allows you to specify an animation sequence for the model"
-	x_speed(integer): "speed to rotate along x axis in degrees per second"
-	y_speed(integer): "speed to rotate along y axis in degrees per second"
-	z_speed(integer): "speed to rotate along z axis in degrees per second"
-	alpha(float): "range 0.0-1.0. Only used if TRANSLUCENT is flagged"
-	spawnname(string): "classname of entity to throw out upon death"
-    movetype(string): "none, toss, bounce, float, overrides value in e1decoinfo.csv" : "none"
+	model(choices) : "model type" : "Type model name or pick from the choices below" =
+	[
+	"1stwheel"	:"1stwheel"
+	"banner1"	:"banner1"
+	"barrel1"	:"barrel1"
+	"barrel2"	:"barrel2"
+	"barrel3"	:"barrel3"
+	"bonsai1"	:"bonsai1"
+	"bonsai2"	:"bonsai2"
+	"bonsai3"	:"bonsai3"
+	"bottle"	:"bottle"
+	"bush1"		:"bush1"
+	"d4_afish"	:"d4_afish"
+	"d4_bot1"	:"d4_bot1"
+	"d4_bot2"	:"d4_bot2"
+	"d4_bread"	:"d4_bread"
+	"d4_cof"	:"d4_cof"
+	"d4_cup"	:"d4_cup"
+	"d4_gull"	:"d4_gull"
+	"d4_rat"	:"d4_rat"
+	"daikatana"	:"daikatana"
+	"demon"		:"demon"
+	"goldencup"	:"goldencup"
+	"ironbox"	:"ironbox"
+	"japplant1"	:"japplant1"
+	"japplant2"	:"japplant2"
+	"jappot1"	:"jappot1"
+	"jappot2"	:"jappot2"
+	"kendorack"	:"kendorack"
+	"lantern"	:"lantern"
+	"logs"		:"fire logs w/ hot coals."
+	"pipeend"	:"pipeend"
+	"pipend2"	:"pipend2"
+	"pot1"		:"pot1"
+	"pot3"		:"pot3"
+	"pracswo"	:"pracswo"
+	"rock1"		:"rock1"
+	"samarmor"	:"samarmor"
+	"shitzu"	:"shitzu"
+	"sodacan"	:"sodacan"
+	"Tosh"		:"Tosh"
+	"trashcan"	:"trashcan"
+	"tray"		:"tray"
+	"wires1"	:"wires1"
+	]
+	
+damage(integer): "damage applied when exploding. Default is 15." : 15
+scale(float): "Scale of deco. Default 1.0." : "1.0"
+mass(float): "*optional* - including this overrides the mass value in decoinfo.txt" 
+frame(integer): "allows you to specify the starting frame for the model."
+animseq(integer): "allows you to specify an animation sequence for the model"
+x_speed(integer): "speed to rotate along x axis in degrees per second"
+y_speed(integer): "speed to rotate along y axis in degrees per second"
+z_speed(integer): "speed to rotate along z axis in degrees per second"
+alpha(float): "range 0.0-1.0. Only used if TRANSLUCENT is flagged"
+spawnname(string): "classname of entity to throw out upon death"
+movetype(string): "none, toss, bounce, float, overrides value in e1decoinfo.csv" : "none"
 ]
 
 //
 // Weapons (Episode 4)
 //
+
 @PointClass base(Weapons) model({ "path": ":models/e4/a_glock.dkm" }) = weapon_glock : "Glock - Glock Pistol of Love"[]
 @PointClass base(Weapons) model({ "path": ":models/e4/a_slugger.dkm" }) = weapon_slugger : "Slugger" []
 @PointClass base(Weapons) model({ "path": ":models/e4/a_kcore.dkm" }) = weapon_kineticore : "Kineticore" []
@@ -75,6 +164,7 @@
 //
 // Ammo (Episode 4)
 //
+
 @PointClass base(Ammo) model({ "path": ":models/e4/wa_glock.dkm" }) = ammo_bullets : "A loaded magazine for the glock." []
 @PointClass base(Ammo) model({ "path": ":models/e4/wa_rip.dkm" }) = ammo_slugger : "15 slugs." []
 @PointClass base(Ammo) model({ "path": ":models/e4/wa_rip2.dkm" }) = ammo_cordite : "4 cordite grenades." []
