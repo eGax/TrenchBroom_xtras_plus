@@ -1,17 +1,17 @@
 //
 // Daikatana game definition file (.fgd)
 // Episode 3 entities
-// for Trenchbroom
-// last update: 6 Oct, 2018
-// Version: 1
-//
+// for TrenchBroom
+
 // written by Dekonega <dekonega(at)windowslive.com>
 // email me with improvements and suggestions
-//
+
+// Edits & additions by xaGe 202503220100
 
 //
 // Items (Episode 3)
 //
+
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e3/a3_ar2.dkm" }) = item_black_adamant_armor : "Black adamant armor" []
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e3/a3_ar1.dkm" }) = item_chainmail_armor : "Chainmail armor" []
 @PointClass base(Appearflags, KeyFlags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e3/a_tri.dkm" }) = item_trigon_keystone : "Trigon keystone" []
@@ -33,10 +33,10 @@
 @PointClass base(Appearflags, PurifierShard) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e3/purifier_2.dkm" }) = item_purifier_shard2_1 : "Purifier shard 2.1" []
 @PointClass base(Appearflags, PurifierShard) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e3/purifier_1.dkm" }) = item_purifier_shard1 : "Purifier shard 1" []
 
-
 //
 // Monsters (Episode 3)
 //
+
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 36) model({ "path": "models/e3/m_wyndrax.dkm" }) = monster_wyndrax : "Wyndrax" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-20 -20 -24, 20 20 40) model({ "path": "models/e3/m_stavros.dkm" }) = monster_stavros : "Stavros" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-20 -20 -24, 20 20 36) model({ "path": "models/e3/m_nharre.dkm" }) = monster_nharre : "Nharre" []
@@ -52,7 +52,7 @@
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 32) model({ "path": "models/e3/m_buboid.dkm" }) = monster_buboid : "Buboid" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-12 -12 -8, 12 12 8) model({ "path": "models/e3/m_rotworm.dkm" }) = monster_rotworm : "Rotworm" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -16, 16 16 8) model({ "path": "models/e3/m_prat.dkm" }) = monster_plague_rat : "Plague Rat - I broke you!" []
-@PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-8 -8 -8, 8 8 8) model({ "path": "skins/e_flare1.tga", "scale":scale }) = monster_wisp : "Wisp"
+@PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-8 -8 -8, 8 8 8) model({ "path": "skins/e_flare1.tga",  "scale":scale }) = monster_wisp : "Wisp"
 [
 	count(integer): "Number of wisps(Max=10)"
 	distance(integer): "How far the wisps will fly from point of placement(Max=200)"
@@ -62,28 +62,137 @@
 	alpha_level(integer): "Initial Setting for Alpha blending change(1-100%)"
 ]
 
-
 //
 // Decorations (Episode 3)
 //
 
 @PointClass base(Appearflags, DecorationFlags) color(1 0 0) size(-8 -8 -32, 8 8 32) model({{
-model == "cart" ->	{"path":"models/e3/d3_cart.dkm"},
-model == "barrel" ->		{"path":"models/e3/d3_barrel.dkm"},
-model == "fireshelf" ->		{"path":"models/e3/d3_fireshelf.dkm"},	
-model == "flamhold" ->		{"path":"models/e3/d3_flamehold.dkm"},
-						"models/e3/d3_barrel.dkm"
+model => "alter" -> {"path":"models/e3/d3_alter.dkm", "scale":scale, "frame":frame},
+model => "axe" -> {"path":"models/e3/d3_axe.dkm", "scale":scale, "frame":frame},
+model => "barfloat" -> {"path":"models/e3/d3_barfloat.dkm", "scale":scale, "frame":frame},
+model => "barrel" -> {"path":"models/e3/d3_barrel.dkm", "scale":scale, "frame":frame},
+model => "bed1" -> {"path":"models/e3/d3_bed1.dkm", "scale":scale, "frame":frame},
+model => "bone" -> {"path":"models/e3/d3_bone.dkm", "scale":scale, "frame":frame},
+model => "brazier" -> {"path":"models/e3/d3_brazier.dkm", "scale":scale, "frame":frame},
+model => "bubcorp1" -> {"path":"models/e3/d3_bubcorpse.dkm", "scale":scale, "frame":frame},
+model => "bubcorp2" -> {"path":"models/e3/d3_bubc2.dkm", "scale":scale, "frame":frame},
+model => "bubcorp3" -> {"path":"models/e3/d3_bubc3.dkm", "scale":scale, "frame":frame},
+model => "bubskull" -> {"path":"models/e3/d3_bubskull.dkm", "scale":scale, "frame":frame},
+model => "bubspine" -> {"path":"models/e3/d3_bubspine.dkm", "scale":scale, "frame":frame},
+model => "candle" -> {"path":"models/e3/d3_candle.dkm", "scale":scale, "frame":frame},
+model => "cart" -> {"path":"models/e3/d3_cart.dkm", "scale":scale, "frame":frame},
+model => "chair2" -> {"path":"models/e3/d3_chair2.dkm", "scale":scale, "frame":frame},
+model => "corpse" -> {"path":"models/e3/d3_corps.dkm", "scale":scale, "frame":frame},
+model => "croc" -> {"path":"models/e3/m_croco.dkm", "scale":scale, "frame":frame},
+model => "cross" -> {"path":"models/e3/e3_cross.dkm", "scale":scale, "frame":frame},
+model => "crow" -> {"path":"models/e3/d3_crow.dkm", "scale":scale, "frame":frame},
+model => "crowscage" -> {"path":"models/e3/d3_crowscage.dkm", "scale":scale, "frame":frame},
+model => "deadtree" -> {"path":"models/e3/d3_deadtree.dkm", "scale":scale, "frame":frame},
+model => "deco1" -> {"path":"models/e3/d3_dkdeco1.dkm", "scale":scale, "frame":frame},
+model => "dragonstatue" -> {"path":"models/e3/d3_dragonstatue.dkm", "scale":scale, "frame":frame},
+model => "e3ctflag_blue" -> {"path":"models/e3/e3ctflag_blue.dkm", "scale":scale, "frame":frame},
+model => "e3ctflag_red" -> {"path":"models/e3/e3ctflag_red.dkm", "scale":scale, "frame":frame},
+model => "fireshelf" -> {"path":"models/e3/d3_fireshelf.dkm", "scale":scale, "frame":frame},
+model => "flag1" -> {"path":"models/e3/d3_flag1.dkm", "scale":scale, "frame":frame},
+model => "flag2" -> {"path":"models/e3/d3_flag2.dkm", "scale":scale, "frame":frame},
+model => "flag3" -> {"path":"models/e3/d3_flag3.dkm", "scale":scale, "frame":frame},
+model => "flamhold" -> {"path":"models/e3/d3_flamehold.dkm", "scale":scale, "frame":frame},
+model => "flask1" -> {"path":"models/e3/d3_flask1.dkm", "scale":scale, "frame":frame},
+model => "flask2" -> {"path":"models/e3/d3_flask2.dkm", "scale":scale, "frame":frame},
+model => "flask3" -> {"path":"models/e3/d3_flask3.dkm", "scale":scale, "frame":frame},
+model => "flask4" -> {"path":"models/e3/d3_flask4.dkm", "scale":scale, "frame":frame},
+model => "gar2" -> {"path":"models/e3/d3_dkgar2.dkm", "scale":scale, "frame":frame},
+model => "grain" -> {"path":"models/e3/d3_grain.dkm", "scale":scale, "frame":frame},
+model => "ice" -> {"path":"models/e3/d3_ice.dkm", "scale":scale, "frame":frame},
+model => "iceshard" -> {"path":"models/e3/d3_iceshard.dkm", "scale":scale, "frame":frame},
+model => "kegs" -> {"path":"models/e3/d3_kegs.dkm", "scale":scale, "frame":frame},
+model => "mug" -> {"path":"models/e3/d3_mug.dkm", "scale":scale, "frame":frame},
+model => "organ" -> {"path":"models/e3/d3_organ.dkm", "scale":scale, "frame":frame},
+model => "rat" -> {"path":"models/e3/d3_rat.dkm", "scale":scale, "frame":frame},
+model => "ribcage" -> {"path":"models/e3/d3_ribcage.dkm", "scale":scale, "frame":frame},
+model => "rod" -> {"path":"models/e3/d3_rod.dkm", "scale":scale, "frame":frame},
+model => "shield" -> {"path":"models/e3/d3_shield.dkm", "scale":scale, "frame":frame},
+model => "skull" -> {"path":"models/e3/d3_skull.dkm", "scale":scale, "frame":frame},
+model => "skullgate" -> {"path":"models/e3/d3_skullgate.dkm", "scale":scale, "frame":frame},
+model => "stool" -> {"path":"models/e3/d3_stool.dkm", "scale":scale, "frame":frame},
+model => "sword" -> {"path":"models/e3/d3_sword.dkm", "scale":scale, "frame":frame},
+model => "table" -> {"path":"models/e3/d3_table.dkm", "scale":scale, "frame":frame},
+model => "toga" -> {"path":"models/e3/m_toga_dude.dkm", "scale":scale, "frame":frame},
+model => "togag" -> {"path":"models/e3/m_toga_girl.dkm", "scale":scale, "frame":frame},
+model => "torch" -> {"path":"models/e3/d3_torch.dkm", "scale":scale, "frame":frame},
+model => "truck" -> {"path":"models/e3/e1_truck.dkm", "scale":scale, "frame":frame},
+model => "wingsk" -> {"path":"models/e3/d3_wingsk.dkm", "scale":scale, "frame":frame},
+model => "winlight1" -> {"path":"models/e3/d3_winlight1.dkm", "scale":scale, "frame":frame},
+model => "wynbook" -> {"path":"models/e3/d3_wynbook.dkm", "scale":scale, "frame":frame},
+model => "wynorb" -> {"path":"models/e3/d3_wynor.dkm", "scale":scale, "frame":frame},
+model => "wynstand" -> {"path":"models/e3/d3_wynstand.dkm", "scale":scale, "frame":frame},
+						{"path":"tb/questionmarkred.webp", "scale": 0.064}
 }}) = deco_e3 : "Episode 3 decoration"
 [
 model(choices) : "Monster type" : 0 =
 	[
-	"cart"	 :	"cart"
-	"barrel"   :	"barrel"
-	"fireshelf"	: "firreeeee"
-	"flamhold" :	"flamhold"
+		"alter":"alter"
+		"axe":"axe"
+		"barfloat":"barfloat"
+		"barrel":"barrel"
+		"bed1":"bed1"
+		"bone":"bone"
+		"brazier":"brazier"
+		"bubcorp1":"bubcorp1"
+		"bubcorp2":"bubcorp2"
+		"bubcorp3":"bubcorp3"
+		"bubskull":"bubskull"
+		"bubspine":"bubspine"
+		"candle":"candle"
+		"cart":"cart"
+		"chair2":"chair2"
+		"corpse":"corpse"
+		"croc":"croc"
+		"cross":"cross"
+		"crow":"crow"
+		"crowscage":"crowscage"
+		"deadtree":"deadtree"
+		"deco1":"deco1"
+		"dragonstatue":"dragonstatue"
+		"e3ctflag_blue":"e3ctflag_blue"
+		"e3ctflag_red":"e3ctflag_red"
+		"fireshelf":"fireshelf"
+		"flag1":"flag1"
+		"flag2":"flag2"
+		"flag3":"flag3"
+		"flamhold":"flamhold"
+		"flask1":"flask1"
+		"flask2":"flask2"
+		"flask3":"flask3"
+		"flask4":"flask4"
+		"gar2":"gar2"
+		"grain":"grain"
+		"ice":"ice"
+		"iceshard":"iceshard"
+		"kegs":"kegs"
+		"mug":"mug"
+		"organ":"organ"
+		"rat":"rat"
+		"ribcage":"ribcage"
+		"rod":"rod"
+		"shield":"shield"
+		"skull":"skull"
+		"skullgate":"skullgate"
+		"stool":"stool"
+		"sword":"sword"
+		"table":"table"
+		"toga":"toga"
+		"togag":"togag"
+		"torch":"torch"
+		"truck":"truck"
+		"wingsk":"wingsk"
+		"winlight1":"winlight1"
+		"wynbook":"wynbook"
+		"wynorb":"wynorb"
+		"wynstand":	"wynstand"
 	]
 	damage(integer): "damage applied when exploding. Default is 15." : 15
-	scale(float): "Scale of deco. Default 1.0." : "1.0"
+	scale(float):  "scale of deco. Default 1.0." : "1.0"
 	mass(float): "*optional* - including this overrides the mass value in decoinfo.txt" 
 	frame(integer): "allows you to specify the starting frame for the model."
 	animseq(integer): "allows you to specify an animation sequence for the model"
@@ -98,6 +207,7 @@ model(choices) : "Monster type" : 0 =
 //
 // Weapons (Episode 3)
 //
+
 @PointClass base(Weapons) model({ "path": ":models/e3/a_claw.dkm" }) = weapon_silverclaw : "Silverclaw" []
 @PointClass base(Weapons) model({ "path": ":models/e3/a_bolter.dkm" }) = weapon_bolter : "Bolter" []
 @PointClass base(Weapons) model({ "path": ":models/e3/a_bal.dkm" }) = weapon_ballista : "Ballista" []
@@ -105,10 +215,10 @@ model(choices) : "Monster type" : 0 =
 @PointClass base(Weapons) model({ "path": ":models/e3/a_wyndrx.dkm" }) = weapon_wyndrax : "Wyndrax's Wisp" []
 @PointClass base(Weapons) model({ "path": ":models/e3/a_nmare.dkm" }) = weapon_nightmare : "Nharre's Nightmare" []
 
-
 //
 // Ammo (Episode 3)
 //
+
 @PointClass base(Ammo) model({ "path": ":models/e3/wa_bolt.dkm" }) = ammo_bolts : "50 crossbow bolts." []
 @PointClass base(Ammo) model({ "path": ":models/e3/wa_stav.dkm" }) = ammo_stavros : "2 lava rocks." []
 @PointClass base(Ammo) model({ "path": ":models/e3/wa_bal.dkm" }) = ammo_ballista : "10 Ballista logs." []
