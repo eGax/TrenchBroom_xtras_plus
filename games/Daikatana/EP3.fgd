@@ -129,7 +129,7 @@ model => "wynstand" -> {"path":"models/e3/d3_wynstand.dkm", "scale":scale, "fram
 						{"path":"tb/questionmarkred.webp", "scale": 0.064}
 }}) = deco_e3 : "Episode 3 decoration"
 [
-model(choices) : "Monster type" : 0 =
+model(choices) : "model type" : "Type model name or pick from the choices below" =
 	[
 		"alter":"alter"
 		"axe":"axe"
