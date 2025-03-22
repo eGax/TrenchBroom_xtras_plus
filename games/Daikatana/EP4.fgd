@@ -11,6 +11,7 @@
 //
 // Items (Episode 4)
 //
+
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e4/a4_ar2.dkm" }) = item_ebonite_armor : "Ebonite armor" []
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e4/a4_ar1.dkm" }) = item_kevlar_armor : "Kevlar armor" []
 @PointClass base(Appearflags, KeyFlags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e4/a4_clcgr.dkm" }) = item_control_card_green : "Green control card" []
