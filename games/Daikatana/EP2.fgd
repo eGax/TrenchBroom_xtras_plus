@@ -1,17 +1,17 @@
 //
 // Daikatana game definition file (.fgd)
 // Episode 2 entities
-// for Trenchbroom
-// last update: 6 Oct, 2018
-// Version: 1
-//
+// for TrenchBroom
+
 // written by Dekonega <dekonega(at)windowslive.com>
 // email me with improvements and suggestions
-//
+
+// Edits & additions by xaGe 202503220100
 
 //
 // Items (Episode 2)
 //
+
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e2/a2_ar2.dkm" }) = item_gold_armor : "Gold armor" []
 @PointClass base(Appearflags, Sidekickflags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e2/a2_ar1.dkm" }) = item_silver_armor : "Silver armor" []
 @PointClass base(Appearflags, KeyFlags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e2/c_runes.dkm" }) = item_rune_s : "Rune S" []
@@ -23,10 +23,10 @@
 @PointClass base(Appearflags, KeyFlags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/e2/a2_drachma.dkm" }) = item_drachma : "Drachma" []
 @PointClass base(Appearflags, AntidoteFlags) color(0 0.5 0.8) size(-16 -16 -16, 16 16 16) model({ "path": "models/global/a_antidote.dkm" }) = item_antidote : "Cures poisonous wound." []
 
-
 //
 // Monsters (Episode 2)
 //
+
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-32 -32 -24, 32 32 64) model({ "path": "models/e2/m_cyclops.dkm" }) = monster_cyclops : "Cyclops" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-32 -32 -24, 32 32 40) model({ "path": "models/e2/m_medusa.dkm" }) = monster_medusa : "Medusa" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 32) model({ "path": "models/e2/m_centurion.dkm" }) = monster_centurion : "Centurion" []
@@ -41,10 +41,10 @@
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-32 -32 -8, 32 32 24) model({ "path": "models/e2/m_spider.dkm" }) = monster_spider : "Spider" []
 @PointClass base(Appearflags, MonsterFlags) color(1 0.5 0) size(-16 -16 -24, 16 16 32) model({ "path": "models/e2/m_skeleton.dkm" }) = monster_skeleton : "Skeleton" []
 
-
 //
 // Decorations (Episode 2)
 //
+
 @PointClass base(Appearflags, DecorationFlags) color(1 0 0) size(-8 -8 -32, 8 8 32) = deco_e2 : "Episode 2 decoration"
 [
 	damage(integer): "damage applied when exploding. Default is 15." : 15
@@ -61,10 +61,10 @@
     movetype(string): "none, toss, bounce, float, overrides value in e1decoinfo.csv" : "none"
 ]
 
-
 //
 // Weapons (Episode 2)
 //
+
 @PointClass base(Weapons) model({ "path": ":models/e2/a_disk.dkm" }) = weapon_discus : "Discus" []
 @PointClass base(Weapons) model({ "path": ":models/e2/a_venom.dkm" }) = weapon_venomous : "Venomous" []
 @PointClass base(Weapons) model({ "path": ":models/e2/a_sflare.dkm" }) = weapon_sunflare : "Sunflare" []
@@ -72,10 +72,10 @@
 @PointClass base(Weapons) model({ "path": ":models/e2/a_tri.dkm" }) = weapon_trident : "Trident" []
 @PointClass base(Weapons) model({ "path": ":models/e2/a_zeus.dkm" }) = weapon_zeus : "Eye of Zeus" []
 
-
 //
 // Ammo (Episode 2)
 //
+
 @PointClass base(Ammo) model({ "path": ":models/e2/wa_trident.dkm" }) = ammo_tritips : "30 trident tips." []
 @PointClass base(Ammo) model({ "path": ":models/e2/wa_venom.dkm" }) = ammo_venomous : "25 cobra venom for Venomous." []
 @PointClass base(Ammo) model({ "path": ":models/e2/wa_zeus.dkm" }) = ammo_zeus : "1 mystic eye for Zeus." []
