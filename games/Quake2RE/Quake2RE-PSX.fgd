@@ -2,11 +2,11 @@
 // Quake 2 game definition file (.fgd)
 //
 // Originally written by by autolycus
-// Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe, Konig.
+// Special thanks to: Disruptor, EutecTic, Imaginos, Zaphod, Zoid.
 //
 // Updated by Paril for re-release
 //
-// Updated since re-re by xaGe 20250623-093
+// Updated since re-re by xaGe 20250623-1500
 //
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd"
@@ -991,7 +991,8 @@ monster_mutant : "Mutant"
     ]
 ]
 
-@PointClass base(Monsters) size(-32 -32 -24, 32 32 24) model({ "path": ":models/monsters/fixbot/tris.md2" }) = monster_fixbot : "Fixbot"
+@PointClass base(Monsters) size(-32 -32 -24, 32 32 24) model({ "path": ":models/monsters/fixbot/tris.md2" }) = monster_fixbot : "<b>Fixbot</b><br><br>
+    Repair bots are <b>NOT</b> soldiers don't place them for attack! This bot can be a little useless on its own, its best to give it a path to follow, repairing objects, but make the path cross over where there would be dead Stroggs. If given the Scenic spawnflag, objects to weld will never fully regain health, allowing them to weld endlessly."
 [
     spawnflags(Flags) =
     [
@@ -1227,7 +1228,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 // if no color spawnflags are set, the laser color defaults to dim gray (and hard to see)
 // setting the damage to 0 makes it use the default damage of 1
 // setting the damage to a negative number will actually give health
-@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"})= target_laser : "Laser"
+@PointClass base(EditorFlags, Targetable, Target, Angleable) color(0 128 204) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"}) = target_laser : "Laser"
 [
     spawnflags(Flags) =
     [
@@ -1240,6 +1241,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
         64 : "Fat" : 0
         128 : "Stop on windows" : 0
         65536 : "Lightning" : 0
+        262144 : "No protection" : 0 : "Laser will damage even those with invulnerability."
     ]
     dmg(float) : "Damage"
     rgba(integer) : "Laser colors; four palette indices separated by spaces"
@@ -1360,6 +1362,10 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
         58 : "Berserk Slam"
     ]
 ]
+
+// PSX feature
+@SolidClass base(EditorFlags) color(128 128 128) = trigger_safe_fall : "When players touch this brush entity and they are
+currently in the air, their next fall will result in zero damage." []
 
 @PointClass base(EditorFlags, UseTargets) color(128 128 128) size(-8 -8 -8, 8 8 8) = trigger_always : "Always triggers" []
 
