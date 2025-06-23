@@ -2,10 +2,11 @@
 // Quake 2 game definition file (.fgd)
 //
 // Originally written by by autolycus
-// Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe.
+// Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe, Konig.
 //
 // Updated by Paril for re-release
-//// Updated since re-re by xaGe 2020708-1000
+//
+// Updated since re-re by xaGe 20250623-093
 //
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd"
@@ -37,6 +38,18 @@
     heightfog_end_color(color) : "end color of heightfog, 3d vector with values between 0-1 (r g b)"
     heightfog_start_dist(float) : "start distance value of heightfog, in world units"
     heightfog_end_dist(float) : "start distance value of heightfog, in world units"
+    physics_flags_sp(integer) : "Game Physics for SinglePlayer)<br><br>
+These can be used to forcefully change physics flags in SinglePlayer mode for your map. The flags are currently as follows:<br><br>
+<b>1</b> : N64 movement <i>(exclusive with 2)<br>
+<b>2</b> : PSX movement <i>(exclusive with 1)<br>
+<b>4</b> : PSX scale <i>(use 0.875 map scale)<br>
+<b>8</b> : Deathmatch modifier (for 1 | 2, but forces deathmatch-specific changes"
+    physics_flags_dm(integer) : "Game Physics for DeathMatch)<br><br>
+These can be used to forcefully change physics flags in DeathMatch mode for your map. The flags are currently as follows:<br><br>
+<b>1</b> : N64 movement <i>(exclusive with 2)<br>
+<b>2</b> : PSX movement <i>(exclusive with 1)<br>
+<b>4</b> : PSX scale <i>(use 0.875 map scale)<br>
+<b>8</b> : Deathmatch modifier (for 1 | 2, but forces deathmatch-specific changes"
 ]
 
 //
