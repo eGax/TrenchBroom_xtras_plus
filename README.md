@@ -11,11 +11,9 @@ To download a zip of it look to the *TrenchBroom_xtras_plus* #Quake2RE Branch to
 Open the **TrenchBroom_xtras_plus-2024####-Quake2RE.zip** and copy out the Quake2RE dir from the games_wip out to your TB install. To follow how TB does it the best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
 
 For windows users copy the `Quake2RE` and all its contents to :
-<p><code>%appdata%\TrenchBroom\games\</code></p>
+`%appdata%\TrenchBroom\games\`
 
-Windows users can also dropped the Quake2RE DIR into wherever they have there TB installed. For example : 
-<p><code>C:\games\tools\TrenchBroom-Win64-v2024.2-Release\games\</code></p>
-<br>
+Due to the recent TrenchBroom versions can now auto update Windows users should NEVER NEVER NEVER put custom anything in for example `C:\TrenchBroom\games\` it will be obliterated on current TrenchBroom auto updates, never to return.<br>
 
 <br>[*] See [`Troubleshooting`](#troubleshooting) if you install this in some other dir and or you want to open existing Quake 2 maps in this addon.
 ## Setup
