@@ -8,7 +8,7 @@ To download a zip of it look to the *TrenchBroom_xtras_plus* #Quake2RE Branch to
 
 ## Installing
 
-Open the **TrenchBroom_xtras_plus-2024####-Quake2RE.zip** and copy out the Quake2RE dir from the games_wip out to your TB install. To follow how TB does it the best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
+Open the **TrenchBroom_xtras_plus-2025####-Quake2RE.zip** and copy out the Quake2RE dir from the games_wip out to your TB install. To follow how TB does it the best place to install the add-on is in the user TB data saving location. Linux users should copy the folder `Quake2RE` from the and all its contents to your TB Home dir game data : `~/.TrenchBroom/games/`.<br>
 
 For windows users copy the `Quake2RE` and all its contents to :
 `%appdata%\TrenchBroom\games\`
