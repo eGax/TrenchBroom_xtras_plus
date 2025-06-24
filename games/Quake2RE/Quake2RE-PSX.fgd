@@ -6,7 +6,7 @@
 //
 // Updated by Paril for re-release
 //
-// Updated since re-re by xaGe 20250623-1500
+// Updated since re-re by xaGe 20250623-093
 //
 // Includes stuff from the tools for lighting etc
 @include "ericw_tools.fgd"
@@ -441,6 +441,7 @@ These can be used to forcefully change physics flags in DeathMatch mode for your
         128 : "Y Axis" : 0
         65536 : "Inactive (must be triggered)" : 0
         131072 : "Safe Open (opens opposite dir. if activator facing 'angles')" : 0
+        262144 : "No Collision" : 0 : "Disables collision on the door"
     ]
     team(string) : "Team"
     distance(float) : "Degrees of rotation" : "90"
@@ -741,10 +742,7 @@ misc_satellite_dish : "Satellite Dish"
     dmg(float) : "Damage" : "250"
 ]
 
-@PointClass base(misc_strogg_ship) model({ "path": ":models/objects/ship/tris.md2" }) = misc_transport : "Xatrix Transport"
-[
-]
-
+@PointClass base(misc_strogg_ship) model({ "path": ":models/objects/ship/tris.md2" }) = misc_transport : "Xatrix Transport" []
 
 //
 // Monsters!
@@ -761,6 +759,7 @@ misc_satellite_dish : "Satellite Dish"
         131072 : "Super Step" : 0
         262144 : "drop to ground" : 0
         524288 : "scenic (non-combative) enemies" : 0
+        1048576 : "No idle doors" : 0 : "Prevents doors touched by idle monsters from opening."
     ]
     combattarget(target_destination) : "Point combat target"
     deathtarget(target_destination) : "Entity to trigger at death"
@@ -1573,7 +1572,7 @@ spawnflags == 0 ->  {"path": "models/ctf/banner/small.md2", "scale":"1.0"},
     ]
     speed(integer) : "Speed" : 100
     accel(integer) : "Acceleration" : 500
-    lip(integer) : "Lip remaining after move" : 8
+    lip(float) : "Lip remaining after move" : 8
     height(integer) : "Movement distance"
 ]
 
