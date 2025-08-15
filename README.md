@@ -7,19 +7,23 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 
 #### Committed game profile so far as grouped into different branches :<br><br>
 
-Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="16" height="16"> [Daikatana](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="16" height="16">Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp; <b>/</b> &nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
 
 <hr>
 
 HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
+&nbsp;Browse branch :<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
 
 <hr>
 
 Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
+&nbsp;Browse branch : Jedi<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)
+
+<hr>
+
+NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/games/NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
 
 <hr>
 
@@ -37,7 +41,7 @@ RenegadeC : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs
 WolF : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Wolf.zip">download branch</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf/)<br>
 
-
+<hr>
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
