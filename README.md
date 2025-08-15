@@ -7,7 +7,7 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 
 #### Committed game profile so far as grouped into different branches :<br><br>
 
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="16" height="16" style="vertical-align:middle"> Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp; <b>/</b> &nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png"  width="24" height="24" style="vertical-align:middle"> Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp; <b>/</b> &nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
 
 <hr>
 
