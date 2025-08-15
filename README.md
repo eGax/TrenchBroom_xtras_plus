@@ -1,4 +1,4 @@
-# **TrenchBroom xtras plus:** &nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/NZP/Icon.png"  width="16" height="16"> **NZP**
+# **TrenchBroom xtras plus:** &nbsp;<img src="NZP/Icon.png"  width="16" height="16"> **NZP**
 ### My experimental game support profiles and works for Nazi Zombies: Portable.
 
 These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
