@@ -1,4 +1,4 @@
-# **TrenchBroom xtras plus: NZP**
+# **TrenchBroom xtras plus:** &nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/NZP/NZP/Icon.png"  width="16" height="16"> **NZP**
 ### My experimental game support profiles and works for Nazi Zombies: Portable.
 
 These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
@@ -8,7 +8,7 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 #### This is my committed game profile for NZP with improvements to the FGDs and GameConfig.cfg :<br><br>
 
 NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/games/NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
 
 <hr>
 
