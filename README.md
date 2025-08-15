@@ -8,7 +8,7 @@ FYI the official Linux TB precompiled build is now an x86_64 AppImage making it 
 #### This is my committed game profile for NZP with improvements to the FGDs and GameConfig.cfg :<br><br>
 
 NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
 
 <hr>
 
