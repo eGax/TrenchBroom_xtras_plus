@@ -1,18 +1,14 @@
 # **TrenchBroom xtras plus:** &nbsp;<img src="NZP/Icon.png"  width="32" height="32"> **NZP**
 ### My experimental game support profiles and works for Nazi Zombies: Portable.
 
-These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
+These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.3 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
 
 FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
-
-#### This is my committed game profile for NZP with improvements to the FGDs and GameConfig.cfg :<br><br>
-
-NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
-
 <hr>
-
-This a is a working WIP and meant to be used with the <a href="https://github.com/maraakate/NZP">Unofficial NZP v1.3 Patch</a> or newer. It brings Linux, Mac, and improved Windows engine ports, fixed up maps, and game code. You can read about it and grab it from their github.
+This a is a working WIP and meant to be used with <a href="https://github.com/nzp-team/nzportable)">NZP</a>. This is my committed game profile for NZP with improvements to the FGDs and GameConfig.cfg :<br><br>
+NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a>
+&nbsp;
+<hr>
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
