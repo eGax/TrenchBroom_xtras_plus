@@ -6,15 +6,10 @@ These are written for TB GameConfig syntax version 9, meant to be used with Tren
 FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
 
 #### Committed game profile so far as grouped into different branches :<br><br>
+     
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png" height="16"> <b>Daikatana</b> : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp;&nbsp;<b>/</b>&nbsp;&nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
 
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png" height="10"> Daikatana : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp;&nbsp;<b>/</b>&nbsp;&nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
-
-<hr>
-
-HalfLife : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a><br>
-&nbsp;Browse branch :<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png"  width="16" height="16"> [Half-Life](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
-
-<hr>
+<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png" height="16"> <b>Half-Life</b> : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a>&nbsp;&nbsp;<b>/</b>&nbsp;&nbsp;&nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
 
 Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip">download branch</a><br>
 &nbsp;Browse branch : Jedi<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
