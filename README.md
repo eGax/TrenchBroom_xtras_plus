@@ -1,6 +1,6 @@
 # <img src="/games/Quake2RE/Icon.png" width="24" height="24"> [Quake 2 RE-RELEASE]([/games_wip/Quake2/](https://store.steampowered.com/agecheck/app/2320/)https://store.steampowered.com/agecheck/app/2320/)<br>
 
-Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax to version 9, making it be _only_ compatible with TrenchBroom [2025.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2024.2) or newer builds from recent commits.<br>
+Took some of my custom stuff and added to [Paril's Q2kex setup](https://github.com/id-Software/quake2-rerelease-dll/tree/main/fgd), updating syntax to version 9, making it be _only_ compatible with TrenchBroom [2025.1](https://github.com/TrenchBroom/TrenchBroom/releases/tag/v2025.3) or newer builds from recent commits. This supports all the remaster game along with the PSX, and Ionized mods. All 3 entity definitions built in and selectable from the Entity tab inspector settings.<br>
 
 Instead of replacing the current Quake 2 addon from TB, this creates it's own game addon specifically for Quake2RE. There are too many changes to Q2RE to be a drop in replacement for vanilla Q2 so I choose to keep it a separate thing. I have ported most all my custom changes to this so make sure you install the whole thing or you will be missing parts to make it look & work correctly. 
 
