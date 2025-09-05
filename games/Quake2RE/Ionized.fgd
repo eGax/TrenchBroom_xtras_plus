@@ -910,7 +910,7 @@ Body Armor: 500 (Easy/Normal), 650 (Hard), 800 (Nightmare) + 250 per extra playe
 Spawnflag 8 removes Makron spawn, but adds 2,000 health to Jorg in all difficulties and Power Shield (same values as Body Armor)." [
     spawnflags(Flags) =
     [
-        8 : "No Makron" : 0
+        8 : "No Rider spawn" : 0
     ]
 ]
 
@@ -1998,6 +1998,7 @@ A decoratative player entity that will stand in idle animation holding the weapo
 //KONIG - Ionized additions
 //new items
 @PointClass base(Weapons) model({ "path": ":models/weapons/g_flareg/tris.md2" }) = weapon_grapple : "Grapple" []
+@PointClass base(Weapons) model({ "path": ":models/weapons/g_plasmr/tris.md2" }) = weapon_beta_disintegrator : "Disintegrator" []
 
 @PointClass base(Items) model({ "path": ":models/objects/trapfx/tris.md2" }) = item_foodcube : "+2 health" [
     count(integer) : "heal amount" : 2
@@ -2081,7 +2082,7 @@ Combat Armor: 50"
 	]
 	lip(integer) : "+-Range" : 0
 ]
-@PointClass base(Monsters) size(-32 -74 -30, 32 50 74) = monster_zboss : "Z-Sentien
+@PointClass base(Monsters) size(-24 -24 -30, 24 24 74) model({ "path": ":models/monsters/bossz/mech/tris.md2" }) = monster_zboss : "Z-Sentien
 Role: Ranged Explosives End Boss
 Health: 4,500 (Easy/Normal), 5,750 (Hard), 8,000 (Nightmare) + 500 per extra player in coop + 500 per skill in coop
 Power Armor: 500 (Easy/Normal), 650 (Hard), 800 (Nightmare) + 250 per extra player in coop + 250 per skill in coop
@@ -2254,7 +2255,7 @@ Body Armor: 500 (Easy/Normal), 650 (Hard), 800 (Nightmare) + 250 per extra playe
 	]
 ]
 
-@PointClass base(Monsters) size(-16 -16 -24, 16 16 24) model({ "path": ":models/monsters/fish/tris.md2" }) = monster_fish : "Rotfish
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 24) model({ "path": ":models/monsters/fish/tris.md2" }) = monster_rotfish : "Rotfish
 Role: Melee Aquatic
 Health: 40" []
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/scrag/tris.md2" }) = monster_scrag : "Scrag
@@ -2318,12 +2319,12 @@ Combat Armor: 50"
         16 : "Landing" : 0
     ]
 ]
-@PointClass base(Monsters) size(-48 -48 -20, 48 48 48) model({ "path": ":models/monsters/protector/tris.md2" }) = monster_protector : "Stream Protector
+@PointClass base(Monsters) size(-48 -48 -20, 48 48 48) model({ "path": ":models/monsters/protector/tris.md2","scale":"1.5" }) = monster_protector : "Stream Protector
 Role: Ranged, Tracking Explosives, Summons (Nightmare only)
 Health: 950
 Power Armor: 200" []
 
-@baseclass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/male/tris.md2"}) = monster_tactical_male : "Male Tactical
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/male/tris.md2"}) = monster_tactical_male : "Male Tactical
 Role: Multi-Weapon, Melee + Ranged + Explosives
 Health: 350
 Combat Armor: 100
@@ -2334,7 +2335,7 @@ Power Screen: 100" [
     ]
 ]
 
-@baseclass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/female/tris.md2"}) = monster_tactical_female : "Female Tactical
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/female/tris.md2"}) = monster_tactical_female : "Female Tactical
 Role: Multi-Weapon, Melee + Ranged + Explosives
 Health: 350
 Combat Armor: 100
@@ -2345,7 +2346,7 @@ Power Screen: 100" [
     ]
 ]
 
-@baseclass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/cyborg/tris.md2"}) = monster_tactical_cyborg : "Cyborg Tactical
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/tactical/cyborg/tris.md2"}) = monster_tactical_cyborg : "Cyborg Tactical
 Role: Multi-Weapon Miniboss, Melee + Ranged + Explosives
 Health: 850
 Combat Armor: 200
@@ -2356,7 +2357,7 @@ Power Screen: 200" [
     ]
 ]
 
-@PointClass base(Monsters) model({ "path": ":models/monsters/berserk/tris.md2", "skin":2 }) = monster_berserk2 : "Berserker Beta
+@PointClass base(Monsters) model({ "path": ":models/monsters/berserk/tris.md2", "skin":2,"scale":"1.2" }) = monster_berserk2 : "Berserker Beta
 Role: Leaping Melee, Ranged
 Health: 300
 Jacket Armor: 100" [
@@ -2365,7 +2366,7 @@ Jacket Armor: 100" [
         8 : "No jumping" : 0
     ]
 ]
-@PointClass base(Monsters) model({ "path": ":models/monsters/parasite/tris.md2", "skin": 2 }) = monster_dopper : "Teleport Dropper
+@PointClass base(Monsters) model({ "path": ":models/monsters/parasite/tris.md2", "skin": 2,"scale":"1.25" }) = monster_dropper : "Teleport Dropper
 Role: Non-Attacking Spawner (spawns various soldiers depending on difficulty)
 Health: 175
 Jacket Armor: 100"
@@ -2453,7 +2454,7 @@ Health: 400"
         8 : "No jumping" : 0
     ]
 ]
-@PointClass base(Monsters) size(-36 -36 -36, 36 36 64) model({ "path": ":models/monsters/gladiatr/tris.md2", "skin": 4 }) = monster_gladiator_flak : "Security Gladiator
+@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/gladiatr/tris.md2", "skin": 4 }) = monster_gladiator_flak : "Security Gladiator
 Role: Ranged
 Health: 600
 Combat Armor: 200" []
@@ -2545,9 +2546,9 @@ misc_commdish : "Communications Dish"
 		32 : "(editor only) Show End Position" : 0
    ]
 ]
-@PointClass base(misc_strogg_ship) size(-116 -56 -32, 40 56 16) model({ "path": ":models/ships/bulldog_s/main/tris.md2" }) = misc_bulldog_s : "Bulldog for flybys (wings not shown in editor)" []
-@PointClass base(misc_strogg_ship) size(-224 -112 -32, 80 112 64) model({ "path": ":models/ships/bulldog_m/main/tris.md2" }) = misc_bulldog_m : "Bulldog for flybys (wings not shown in editor)" []
-@PointClass base(EditorFlags, FX) color(255 128 0) size(-432 -120 -32, 144 120 96) model({ "path": ":models/ships/bulldog_l/main/tris.md2" }) = misc_bulldog_l : "Large stationary Bulldog (wings not shown in editor)" []
+@PointClass base(misc_strogg_ship) size(-116 -56 -32, 40 56 16) model({ "path": ":models/ships/bulldog_s/main/tris.md2" }) = misc_bulldog_s : "Strogg Bulldog for flybys (wings not shown in editor)" []
+@PointClass base(misc_strogg_ship) size(-224 -112 -32, 80 112 64) model({ "path": ":models/ships/bulldog_m/main/tris.md2" }) = misc_bulldog_m : "Strogg Bulldog for flybys (wings not shown in editor)" []
+@PointClass base(EditorFlags, FX) color(255 128 0) size(-432 -120 -32, 144 120 96) model({ "path": ":models/ships/bulldog_l/main/tris.md2" }) = misc_bulldog_l : "Large stationary Strogg Bulldog (wings not shown in editor)" []
 
 // set angle for gib direction, otherwise it just drops
 @PointClass base(Angleable, EditorFlags, FX) color(255 0 0) size(8 8 8) model({"path":":models/objects/gibs/head2/tris.md2"} ) = misc_gib_head2 : "Strogg head gibs, use with target_spawner" []
