@@ -1277,7 +1277,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     speed(float) : "Speed"
 ]
 
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) = target_speaker : "Sound player"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_yel.webp", "scale": .08}) = target_speaker : "Sound player"
 [
     spawnflags(Flags) =
     [
@@ -1298,20 +1298,16 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     volume(float) : "Volume (0.0 - 1.0)" : "1"
 ]
 
+@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.webp", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
 
-//@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.webp", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
-@PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_amb4 : "Amb4 speaker" []
-
-//@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.webp", "scale": .08}) = target_music : "Change music"
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) = target_music : "Change music"
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.webp", "scale": .08}) = target_music : "Change music"
 [
     sounds(integer) : "CD Track Number" : 1
 ]
 
-
 // "sounds" values other than 1 are silent.  leaving in the other
 // options for availability to mods/fixes
-//
+
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_splash : "Creates a splash when used"
 [
     sounds(choices) : "Type of splash" : 2 =
@@ -1995,6 +1991,3 @@ A decoratative player entity that will stand in idle animation holding the weapo
 {"path": "models/ctf/banner/small.md2"}, 
                 {"path": "models/ctf/banner/small.md2", "scale":"0.32"}
 }}) = red_banner_test : "Smaller flowing CTF banner" []
-
-
-//model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.webp","scale":"0.06"}
