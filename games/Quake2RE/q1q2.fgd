@@ -632,12 +632,9 @@ If you are using this light as a sun entity targeting an 'info_notnull', when '_
 
 // Expansion
 @PointClass base(EditorFlags, Targetable) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/core/tris.md2" }) = misc_nuke_core : "Nuke Core (must be targeted to appear)" []
-
 @PointClass base(EditorFlags) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/items/spawngro2/tris.md2", "frame": 2 }) = target_orb : "Large Orb" []
-
 @PointClass base(EditorFlags) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/items/spawngro2/tris.md2", "frame": 1 }) = target_blacklight : "Large Orb (black light)" []
-
-@PointClass base(EditorFlags) color(255 128 0) size(-16 -16 0, 16 16 16)    model({{
+@PointClass base(EditorFlags) color(255 128 0) size(-16 -16 0, 16 16 16) model({{
   spawnflags & 32 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 5 },
   spawnflags & 16 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 4 },
   spawnflags &  8 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 3 },
@@ -1232,9 +1229,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 // Expansion
-//@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"[]
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = misc_nuke : "Nuke (kill all entities)"[]
-
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"[]
 @PointClass base(EditorFlags, Targetable, Target) color(0 128 204) size(-8 -8 -8, 8 8 8) = target_mal_laser : "Laser (Xatrix; Mal Laser)"
 [
     spawnflags(Flags) =
@@ -1483,13 +1478,6 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
 
 
 // Expansions
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": "tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"[]
-
-
-
-
-
-
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_anger : "Anger (make monster angry at something)"
 [
     killtarget(target_destination) : "Target to be angry at"

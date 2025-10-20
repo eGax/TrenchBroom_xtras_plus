@@ -1247,10 +1247,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 ]
 
 // Expansion
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"
-[
-]
-
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"[]
 @PointClass base(EditorFlags, Targetable, Target) color(0 128 204) size(-8 -8 -8, 8 8 8) = target_mal_laser : "Laser (Xatrix; Mal Laser)"
 [
     spawnflags(Flags) =
@@ -1573,7 +1570,7 @@ spawnflags == 0 ->  {"path": "models/ctf/banner/small.md2", "scale":"1.0"},
     ]
     speed(integer) : "Speed" : 100
     accel(integer) : "Acceleration" : 500
-    lip(float) : "Lip remaining after move" : 8
+    lip(float) : "Lip remaining after move" : "8.0"
     height(integer) : "Movement distance"
 ]
 
