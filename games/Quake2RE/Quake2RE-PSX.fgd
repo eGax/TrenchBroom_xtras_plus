@@ -1284,8 +1284,9 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     noise(string) : "Noise to play" : "misc/secret.wav"
 ]
 
-// set speed and angle, otherwise spawned object drops
-@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_spawner : "Monster/Item spawner"
+@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(16 16 16) = target_spawner : "<p><b>Monster/Item spawner</b><br><br>
+- Set the target to the <b>targetname</b> of the item or monster you wish to spawn in.<br><br>
+<b>*<i>Remember to set speed and angle, otherwise the spawned object drops.</i></b></p>"
 [
     target(target_destination) : "Monster/Item to spawn"
     speed(float) : "Speed"
