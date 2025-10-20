@@ -1262,8 +1262,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     message(string) : "start/end light level"
 ]
 
-//@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/secret.webp", "scale": .06}) = target_secret : "Counts a secret found"
-@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 255) size(-8 -8 -8, 8 8 8) = target_secret : "Counts a secret found"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/secret.webp", "scale": .06}) = target_secret : "Counts a secret found"
 [
     message(string) : "Message to print"
 	noise(string) : "Noise to play" : "misc/secret.wav"
@@ -1479,8 +1478,17 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
                     {"path": "models/ctf/banner/small.md2", "scale":"0.48"}
 }}) = misc_ctf_small_banner : "Smaller flowing CTF banner" [spawnflags(Flags) = [1 : "Blue Team" : 0]]
 
+
+
+
+
 // Expansions
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_killplayers : "Nuke (kill all players)" []
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": "tb/nuke.webp", "scale":"0.065" }) = misc_nuke : "Nuke (kill all entities)"[]
+
+
+
+
+
 
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_anger : "Anger (make monster angry at something)"
 [
