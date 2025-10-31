@@ -5,9 +5,9 @@
 // Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe.
 //
 // Updated by Paril for re-release
-// Further updates by xaGe 20251030-2350
+// Further updates by xaGe 20251031-0013
 //
-// Includes stuff from the tools for lighting etc from a file is smae DIR:
+// Includes stuff from the tools for lighting etc from a file is same DIR:
 @include "ericw_tools.fgd" 
 
 //
@@ -121,7 +121,7 @@
 ]
 @baseclass = UseTargets : "Entity will call G_UseTargets" [
 	target(target_destination) : "Target to fire"
-	delay(float) : "Target delay"
+	delay(float) : "Determines the amount of time to pause before triggering."
 	message(string): "Message on activation"
 	killtarget(target_destination) : "Targets to fully delete"
 ]
@@ -1347,7 +1347,8 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     height(float) : "Height thrown upward" : "200"
 ]
 
-@PointClass base(EditorFlags, Targetable, UseTargets) color(128 128 128) = trigger_relay : "Relay trigger" []
+@PointClass base(EditorFlags, Targetable, UseTargets) color(128 128 128) = trigger_relay : "<b>Relay trigger</b><br><br>
+A rigger_relay is used to relay actions that can be used for a variety of effects and is used very often in the id levels. A trigger_relay is not triggered when touched so therefore it must have a <b>targetname</b> and must be triggered by something else to work. It must also have a <b>target</b>." []
 
 @SolidClass base(trigger_relay) = trigger_once : "Single fire trigger"
 [
@@ -1846,7 +1847,8 @@ misc_fiend_craft : "Fiend Crafting"
 	image(string) : "Image to display at the POI" : "friend"
 ]
 
-@PointClass base(Angleable, EditorFlags, Target, Targetable) color(255 255 0) size(-8 -8 -8, 8 8 8) = info_world_text : "Info_World_Text"
+@PointClass base(Angleable, EditorFlags, Target, Targetable) color(255 255 0) size(-8 -8 -8, 8 8 8) = info_world_text : "Info_World_Text<br><br>
+Sent a message to player on screen."
 [
 	spawnflags(Flags) =
 	[
