@@ -5,9 +5,9 @@
 // Special thanks to: Disruptor, Zoid, Zaphod, Imaginos, EutecTic, xaGe.
 //
 // Updated by Paril for re-release
-//// Updated since re-re by xaGe 2020708-1000
+// Further updates by xaGe 20251030-2015
 //
-// Includes stuff from the tools for lighting etc
+// Includes stuff from the tools for lighting etc from a file is smae DIR:
 @include "ericw_tools.fgd" 
 
 //
@@ -43,8 +43,7 @@
 // base marker definitions
 //
 
-// Setup Effects baseclass
-@baseclass = FX [   effects(flags) =
+@baseclass = FX : " Lets setup fx baseclass" [   effects(flags) =
 [   
   0   :   "NONE"
   1   :   "Rotate"
@@ -94,9 +93,7 @@
         2048    :   "RF_SHELL_GREEN"
         4096    :   "RF_SHELL_BLUE"
     ]]
-
-// EditorFlags apply to everything - all entities should inherit it.
-@baseclass = EditorFlags [
+@baseclass = EditorFlags : "EditorFlags apply to everything - all entities should inherit it." [
     spawnflags(Flags) =
     [
         256 : "Not in Easy" : 0
@@ -111,9 +108,7 @@
         32768 : "Reserved Editor Flag" : 0
     ]
 ]
-
-// Entity can take angle or angles.
-@baseclass = Angleable [
+@baseclass = Angleable : "Entity can take angle or angles." [
 	angle(choices) : "Facing angle (yaw)" : 0 =
 	[
 		-1 : "Up"
@@ -121,32 +116,22 @@
 	]
     angles(vector) : "pitch yaw roll" : "0 0 0" : "Facing angles"
 ]
-
-// Entity can be targeted by stuff.
-@baseclass = Targetable [
-	targetname(target_source) : "Name for firing"
+@baseclass = Targetable : "Entity can be targeted by stuff." [
+	targetname(target_source) : "Give this entity a name for firing by others"
 ]
-
-// Entity will call G_UseTargets
-@baseclass = UseTargets [
+@baseclass = UseTargets : "Entity will call G_UseTargets" [
 	target(target_destination) : "Target to fire"
 	delay(float) : "Target delay"
 	message(string): "Message on activation"
 	killtarget(target_destination) : "Targets to fully delete"
 ]
-
-// Entity supports pointing at something, but won't call G_UseTargets
-@baseclass = Target [
+@baseclass = Target : "Entity supports pointing at something, but won't call G_UseTargets" [
 	target(target_destination) : "Target to fire"
 ]
-
-// Entity supports "team"
-@baseclass = Teamable [
+@baseclass = Teamable : "Entity supports 'team'" [
 	team(string) : "Team identifier"
 ]
-
-// Entity supports brush model animations
-@baseclass = BmodelAnim [
+@baseclass = BmodelAnim : "Entity supports brush model animations" [
 	bmodel_anim_start(integer) : "Start frame of animation"
 	bmodel_anim_end(integer) : "End frame of animation"
 	bmodel_anim_style(choices) : "Animation style" : 0 =
@@ -157,7 +142,6 @@
     ]
 	bmodel_anim_speed(integer) : "Animation speed, in milliseconds"
 	bmodel_anim_nowrap(integer) : "If set, frames are clamped rather than wrapping"
-
 	bmodel_anim_alt_start(integer) : "Start frame of alternate animation"
 	bmodel_anim_alt_end(integer) : "End frame of alternate animation"
 	bmodel_anim_alt_style(choices) : "Alternate animation style" : 0 =
@@ -169,60 +153,39 @@
 	bmodel_anim_alt_speed(integer) : "Alternate animation speed, in milliseconds"
 	bmodel_anim_alt_nowrap(integer) : "If set, alternate frames are clamped rather than wrapping"
 ]
-
-// Entity supports brush model sound modifications
-@baseclass = BmodelSounds [
+@baseclass = BmodelSounds : "Entity supports brush model sound modifications" [
 	noise_start(string) : "Noise to play on activation"
 	noise_middle(string) : "Noise to play while traveling"
 	noise_end(string) : "Noise to play on end"
 ]
-
-// Entity supports noise key
-@baseclass = Noise [
+@baseclass = Noise : "Entity supports noise key "[
 	noise(string) : "Noise to play"
 ]
-
-// Entity supports alpha key
-@baseclass = Alpha [
+@baseclass = Alpha : "Entity supports alpha key" [
 	alpha(float) : "Alpha"
 ]
+@baseclass = Scale : "Entity supports scale key" [ scale(string) : "Scale" ]
 
-// Entity supports scale key
-/@baseclass = Scale [ scale(string) : "Scale" ]
-
-// Includes stuff related to the kex dynamic lights
+// Includes stuff related to the kex dynamic lights from a file in same DIR
 @include "kexlights.fgd"
 
 //
-// player start, deathmatch, coop, deathmatch intermission
+// player start, deathmatch, coop, intermission
 //
 
 @baseclass base(EditorFlags, Angleable) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":models/monsters/insane/tris.md2", "frame":209, "skin":1}) = PlayerClass []
 
 @PointClass base(PlayerClass) = info_player_start : "Player start" []
 @PointClass base(PlayerClass) = info_player_deathmatch : "Player deathmatch start" []
-@PointClass base(PlayerClass) = info_player_coop : "Player cooperative start" [
-    targetname(string) : "Spawn point name, to be matched to previous levels' target_changelevel"
-]
-
+@PointClass base(PlayerClass) = info_player_coop : "Player cooperative start" [     targetname(string) : "Spawn point name, to be matched to previous levels' target_changelevel"]
 @PointClass base(PlayerClass) = info_player_coop_lava : "Smart Water lava spawn point" []
-
 @PointClass base(PlayerClass, Targetable) = info_player_intermission : "Deathmatch intermission point" []
-
 @PointClass base(PlayerClass) color(255 0 0) = info_player_team1 : "CTF Red start" []
 @PointClass base(PlayerClass) color(0 0 255)= info_player_team2 : "CTF Blue start" []
 
-// Notes on the 'team' key: First of all, it's really only useful in DM because it creates a
-// random respawn pattern. Let's say that in one spot, you want to have the shotgun, Quad
-// damage and mega health item to respawn in alternance. Place all of them in approximately
-// the same location, team them and voila! The FIRST item that you place in the map will be
-// the team MASTER - the others will be SLAVES. In DM play, the Master will be the first one
-// to spawn. Once the Master is picked up, the respawn pattern becomes RANDOM: it could be
-// the same or one of the other 2. If you try to use this in a Single Player map, it's
-// pretty useless because only the team MASTER spawns and the others never appear obviously.
-// Also, in CTF, only the master appears. No idea why.
 @BaseClass base(EditorFlags, Angleable, UseTargets, Targetable) color(76 76 255) size(-15 -15 -15, 15 15 15) = Item [
-    team(string) : "Team"
+    team(string) : "<p>Team<br><br>
+The <b>'team'</b> key is really only useful in <b>DM</b> because it chains entities together to create a random respawn pattern between them. Let's say in one spot, you want to have the shotgun, quad damage, and mega health item to alternately respawn. Place all of them in the same location or approximate, give them all the same team name, and <i>voila</i>! The 1st item that you place in the map will be the team <b>main</b> and the others in the team are <b>secondary</b>. In <b>DM</b> play, the <b>main</b> will be the 1st one to spawn. Once the <b>main</b> is picked up, the respawn pattern becomes <b>random</b>. The next to spawn could be the <b>main</b> or any of the <b>secondaries</b>. If you try to use this in a <b>single-player</b> map or even <b>CTF</b>, only the team <b>main</b> will spawn.</p>"
     spawnflags(Flags) =
     [
         1 : "Trigger Spawn" : 0
@@ -330,10 +293,8 @@
 @PointClass base(Keys) model({ "path": ":players/male/flag2.md2","frame":"176" }) = item_flag_team2 : "CTF Flag (blue)" []
 
 
-// Keep in mind when using func_areaportal that it must
-// *completely* separate two areas.  otherwise, you will
-// get an error message and the areaportal will not work
-@SolidClass base(EditorFlags, Targetable) = func_areaportal : "Area portal (Vis blocker)" []
+@SolidClass base(EditorFlags, Targetable) = func_areaportal : "Area portal (Vis blocker)<br><br>
+Keep in mind when using func_areaportal that it must <b>*completely*</b> <i>separate</i> two areas.  otherwise, you will get an error message and the areaportal will not work" []
 
 @SolidClass base(EditorFlags, Angleable, UseTargets, Targetable, EWT_base_BModel, BmodelAnim, BmodelSounds) color(0 128 204) = func_button : "Button"
 [
@@ -463,6 +424,7 @@
         1 : "Trigger Spawn" : 0
         2 : "Animated" : 0
         4 : "Animated Fast" : 0
+		32 : "Keep for COTV DM" : 0
     ]
     health(float) : "Health" : "100"
     mass(float) : "Mass (debris)" : "75"
@@ -589,8 +551,8 @@
 
 @PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-8 -8 -8, 8 8 8) model({{
 spawnflags == "1" -> {"path":"tb/bulb.mdl", "skin":"1"},
-_sun == 1 -> 	 {"path":"tb/sun.webp", "scale":"0.5"},
-                 {"path":"tb/bulb.mdl", "skin":"0"}
+_sun == 1 -> 	     {"path":"tb/sun.webp", "scale":"0.5"},
+                     {"path":"tb/bulb.mdl", "skin":"0"}
 }}) = light : "An invisible light source :
 
 By default if spawnflag key value for 'Start Off' is empty (false) use lit skin (white) start light on, otherwise when set to 1 (true), start light off (black).
@@ -632,9 +594,12 @@ If you are using this light as a sun entity targeting an 'info_notnull', when '_
 
 // Expansion
 @PointClass base(EditorFlags, Targetable) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/core/tris.md2" }) = misc_nuke_core : "Nuke Core (must be targeted to appear)" []
+
 @PointClass base(EditorFlags) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/items/spawngro2/tris.md2", "frame": 2 }) = target_orb : "Large Orb" []
+
 @PointClass base(EditorFlags) color(255 128 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/items/spawngro2/tris.md2", "frame": 1 }) = target_blacklight : "Large Orb (black light)" []
-@PointClass base(EditorFlags) color(255 128 0) size(-16 -16 0, 16 16 16) model({{
+
+@PointClass base(EditorFlags) color(255 128 0) size(-16 -16 0, 16 16 16)    model({{
   spawnflags & 32 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 5 },
   spawnflags & 16 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 4 },
   spawnflags &  8 -> { "path": ":models/deadbods/dude/tris.md2", "frame": 3 },
@@ -715,15 +680,9 @@ misc_satellite_dish : "Satellite Dish"
 [
 ]
 
-@PointClass base(EditorFlags, Targetable, Target, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_missile : "Viper Missile"
-[
-    dmg(float) : "Damage" : "250"
-]
-
+@PointClass base(EditorFlags, Targetable, Target, FX) color(255 0 0) size(-8 -8 -8, 8 8 8) model({ "path": ":models/objects/bomb/tris.md2" }) = misc_viper_missile : "Viper Missile" [ dmg(float) : "Damage" : "250" ]
 @PointClass base(misc_strogg_ship) model({ "path": ":models/objects/ship/tris.md2" }) = misc_transport : "Xatrix Transport"
-[
-]
-
+[]
 
 //
 // Monsters!
@@ -1083,12 +1042,21 @@ Using a 'wait' value of -1 on a path corner causes a func_train to go silent bet
     ]
 ]
 
-@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path":"models/objects/laser/tris.md2"}) = target_blaster : "Blaster (use angles to point it)"
+@PointClass base(EditorFlags, Targetable, Angleable)
+    color(255 0 0)
+    size(-8 -8 -8, 8 8 8)
+    model({{
+        (spawnflags & 4) != 0 -> "models/objects/spike/tris.md2",   // Quake 1 Nail Shooter
+        (spawnflags & 2) != 0 -> "models/objects/laser/tris.md2",   // No Effects
+        { "path": "models/objects/laser/tris.md2", "skin": 0 } // por defecto
+    }})
+= target_blaster : "Blaster (use angles to point it)"
 [
     spawnflags(Flags) =
     [
         1 : "No Trail" : 0
         2 : "No Effects" : 0
+        16 : "Quake 1 Nail Shooter" : 0
     ]
     dmg(float) : "Damage" : "15"
     speed(float) : "Speed" : "1000"
@@ -1172,8 +1140,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     count(float) : "Duration" : "5"
 ]
 
-//@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.webp", "scale": .08}) = target_explosion : "Explosion"
-@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_explosion : "Explosion"
+@PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.webp", "scale": .08}) = target_explosion : "Explosion"
 [
     delay(float) : "Delay before explosion"
     dmg(float) : "Radius damage" : "0"
@@ -1193,11 +1160,9 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 	message(string) : "Boss name" : ""
 	target(string): "Boss" : ""
 ]
-//@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path": "tb/autosave.webp", "scale": .06}) = target_autosave : "Autosave" []
-@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) = target_autosave : "Autosave" []
+@PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) model({"path": "tb/autosave.webp", "scale": .06}) = target_autosave : "Autosave" []
 
-//@PointClass base(EditorFlags, Targetable) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/questionmark.webp", "scale": .06}) = target_help : "Computer help message"
-@PointClass base(EditorFlags, Targetable) color(255 0 255) size(-8 -8 -8, 8 8 8) = target_help : "Computer help message"
+@PointClass base(EditorFlags, Targetable) color(255 0 255) size(-8 -8 -8, 8 8 8) model({"path": "tb/questionmark.webp", "scale": .06}) = target_help : "Computer help message"
 [
     spawnflags(Flags) =
     [
@@ -1252,6 +1217,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     spawnflags(Flags) =
     [
         1 : "Toggle" : 0
+		32 : "Keep for DM" : 0 : "Exclusive for COTV"
     ]
     speed(float) : "Speed"
     message(string) : "start/end light level"
@@ -1263,9 +1229,8 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 	noise(string) : "Noise to play" : "misc/secret.wav"
 ]
 
-@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(16 16 16) = target_spawner : "<p><b>Monster/Item spawner</b><br><br>
-- Set the target to the <b>targetname</b> of the item or monster you wish to spawn in.<br><br>
-<b>*<i>Remember to set speed and angle, otherwise the spawned object drops.</i></b></p>"
+// set speed and angle, otherwise spawned object drops
+@PointClass base(EditorFlags, Targetable, Angleable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_spawner : "Monster/Item spawner"
 [
     target(target_destination) : "Monster/Item to spawn"
     speed(float) : "Speed"
@@ -1295,14 +1260,9 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 @PointClass base(EditorFlags) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/speaker_grn.webp", "scale": .08}) = misc_amb4 : "Amb4 speaker" []
 
 @PointClass base(EditorFlags, Targetable) size(-8 -8 -8, 8 8 8) color(255 255 0) model({"path": "tb/speaker_org.webp", "scale": .08}) = target_music : "Change music"
-[
-    sounds(integer) : "CD Track Number" : 1
-]
+[ sounds(integer) : "CD Track Number" : 1 ]
 
-// "sounds" values other than 1 are silent.  leaving in the other
-// options for availability to mods/fixes
-
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_splash : "Creates a splash when used"
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_splash : "Creates a silent blue water splash by default when used, but only <b>'Sparks'</b> emits a sound, all other values are silent. Other options are left for availability to other mods/fixes"
 [
     sounds(choices) : "Type of splash" : 2 =
     [
@@ -1412,7 +1372,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     wait(float) : "Seconds between triggers" : "0"
 ]
 
-@SolidClass base(EditorFlags) color(128 128 128) = trigger_push : "Push trigger"
+@SolidClass base(Target,EditorFlags) color(128 128 128) = trigger_push : "Push trigger"
 [
     spawnflags(Flags) =
     [
@@ -1473,11 +1433,9 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
                     {"path": "models/ctf/banner/small.md2", "scale":"0.48"}
 }}) = misc_ctf_small_banner : "Smaller flowing CTF banner" [spawnflags(Flags) = [1 : "Blue Team" : 0]]
 
-
-
-
-
 // Expansions
+@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_killplayers : "Nuke (kill all players)" []
+
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_anger : "Anger (make monster angry at something)"
 [
     killtarget(target_destination) : "Target to be angry at"
@@ -1552,7 +1510,6 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
 	height(integer) : "Movement distance"
 ]
 
-
 @PointClass base(EditorFlags) size(16 16 16) model({{
 image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp","scale":"0.64"}
 }}) = misc_flare : "<p><b>(N64) Light Flare</b>
@@ -1604,6 +1561,7 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 //CALL OF THE VOID
 //HYBRID MONSTERS
 @PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/shamblerstrogg/tris.md2" }) = monster_shambler_strogg : "Shambler strogg"[]
+@PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/shamacudda/tris.md2" }) = monster_shamacudda : "Shamacudda"[]
 @PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/ogrestrogg/tris.md2" }) = monster_ogre_strogg : "Ogre strogg"[]
 @PointClass base(Monsters) size(-32 -32 -24, 32 32 64) model({ "path": ":models/monsters/ogre2strogg/tris.md2" }) = monster_ogre2_strogg : "Ogre Shotgunner strogg"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/grunt_strogg/tris.md2" }) = monster_soldier_strogg : "Soldier strogg"[]
@@ -1615,6 +1573,7 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/shalrathstrogg/tris.md2" }) = monster_shalrath_strogg : "Shalrath strogg"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/wizardstrogg/tris.md2" }) = monster_wizard_strogg : "Wizard strogg"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/scraggacuda/tris.md2" }) = monster_wizarcuda_strogg : "Scraggacuda"[]
+@PointClass base(Monsters) size(-100 -100 -0, 100 100 325) model({ "path": ":models/monsters/shamjorg/tris.md2" }) = monster_shamjorg : "Shamjorg"[]
 @PointClass base(Monsters) size(-100 -100 -0, 100 100 325) model({ "path": ":models/monsters/chtjor/tris.md2" }) = monster_chtjor : "Chtjor"[]
 @PointClass base(Monsters) size(-64 -64 0, 64 64 72) model({ "path": ":models/monsters/shamblertank/tris.md2" }) = monster_supershamblertank : "Shambler Tank"[]
 @PointClass base(Monsters) size(-32 -32 0, 32 32 96) model({ "path": ":models/monsters/shamblerthunder/tris.md2" }) = monster_shamedic : "Shamedic"[]
@@ -1622,7 +1581,13 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/insane_spawn/tris.md2" }) = monster_insane_spawn : "Insane Spawn"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/fishgunner/tris.md2"}) = monster_fishgunner : "Fishgunner"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/rotflyer/tris.md2"}) = monster_rotflyer : "Rotflyer"[]
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/ironvore/tris.md2"}) = monster_ironvore : "Iron Vore"[]
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/hyperknight/tris.md2" }) = monster_hknight_hyper : "HyperKnight"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/hellberserkerstrogg/tris.md2" }) = monster_hknight_bsk_strogg : "Hellzerker strogg"
+[
+    spawnflags(Flags) =    [        8 : "No jumping" : 0    ]
+]
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/mutantspawn/tris.md2" }) = monster_mutantspawn : "Mutant Spawn"
 [
     spawnflags(Flags) =    [        8 : "No jumping" : 0    ]
 ]
@@ -1641,6 +1606,8 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/shalrath_prototype/tris.md2" }) = monster_shalrath_prototype : "Shalrath Prototype"[]
 
 //Q1 VANILLA 
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/spawn/tris.md2" }) = monster_spawn : "Spawn Q1"[]
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/fish/tris.md2" }) = monster_fish : "Fish Q1"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/hellknight/tris.md2" }) = monster_hellknight : "Hellknight Q1"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/dog/tris.md2" }) = monster_dog : "Dog Q1"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/enforcer/tris.md2" }) = monster_enforcer : "Enforcer Q1"[]
@@ -1651,14 +1618,16 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/fiend/tris.md2" }) = monster_fiend : "Fiend Q1"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/knight/tris.md2" }) = monster_knight : "Knight Q1"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/shalrath/tris.md2" }) = monster_shalrath : "Shalrath Q1"[]
+@PointClass base(Monsters) size(-128 -128 -24, 128 128 256) model({ "path": ":models/monsters/chthon/tris.md2", "frame": "57"}) = monster_chthon : "Chthon"[]
 
 //OTHER STUFF
+@PointClass base(Targetable) = event_lighting : "Chthon's lightning" []
 @PointClass base(Targetable) size(-16 -16 -16, 16 16 16)
 	color(255 128 64) studio({ 
     "path" : model,
-    "skin" : pos2,
-    "modelscale" : modelscale,
-    "frame": pos1
+    "skin" : skin,
+    "scale" : scale,
+    "frame": frame
 }) = misc_model : "Misc Models" [
 	spawnflags(Flags) = [
 		 1 : "Toggles the model casting shadows on the map surfaces." : 0
@@ -1669,14 +1638,16 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 		 6 : "Spawnflag 2 plus Spawnflag 4." : 0
 		 7 : "Spawnflag 1 plus Spawnflag 2 plus Spawnflag 4." : 0
 	]
+	mins(string): "size mins" : "-16 -16 -16"
+	maxs(string): "size maxs" : "16 16 16"
 	model(string) : "Model to load (progs/model.mdl)"
 	angles(string) : "pitch roll yaw" : : "up/down, angle, tilt left/right "
 	ideal_yaw(choices) : "Y axis rotation" = [
 		0 : "No rotation"
 		1 : "Random"
 	]
-	pos1(string) : "Frame Selection" : : "X=0, Y=0, Z=exact frame number, X->Y, Z=0 : will randomly pick a frame from the X,Y range, X->Y, Z=-1 : will animate between the X,Y range, can forward or backward setup"
-	pos2(string) : "Skin Selection" : : "X=0, Y=0, Z=exact skin number, X->Y, Z=0 : will randomly pick a skin from the X,Y range"
+	frame(integer) : "Frame": 0
+	skin(integer) : "Skin Selection" : 0
 ]
 
 @PointClass base(EditorFlags, Targetable, FX) color(255 128 0) size(-64 -64 0, 64 64 128)
@@ -1689,9 +1660,7 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 misc_fiend_craft : "Fiend Crafting" 
 [
    spawnflags(Flags) =
-   [
-		32 : "(editor only) Show End Position" : 44
-   ]
+   [ 32 : "(editor only) Show End Position" : 44 ]
 ]
 
 @PointClass base(Targetable) size(-16 -16 -16, 16 16 16)
@@ -1728,9 +1697,21 @@ misc_fiend_craft : "Fiend Crafting"
     [
         1 : "NO Message if you dont have the item or key" : 0
         2 : "NO Activation Sound" : 0		
-        4 : "NO Item/Key  Remove" : 0		
+        4 : "NO Item/Key Remove" : 0		
     ]	
 ]
+
+@PointClass base(Keys) model({ "path": ":models/items/keys/base/b_g_key.md2" }) = key_q1_base_gold_key : "Quake 1 Base Gold Key" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/base/b_s_key.md2" }) = key_q1_base_silver_key : "Quake 1 Base Silver Key" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/medieval/m_g_key.md2" }) = key_q1_medieval_gold_key : "Quake 1 Medieval Gold Key" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/medieval/m_s_key.md2" }) = key_q1_medieval_silver_key : "Quake 1 Medieval Silver Key" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/wizard/w_g_key.md2" }) = key_q1_runic_gold_key : "Quake 1 Runic Gold Key" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/wizard/w_s_key.md2" }) = key_q1_runic_silver_key : "Quake 1 Runic Silver Key" []
+
+@PointClass base(Keys) model({ "path": ":models/items/keys/end1/end1.md2" }) = key_q1_rune_end1 : "Quake 1 Rune End 1" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/end2/end2.md2" }) = key_q1_rune_end2 : "Quake 1 Rune End 2" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/end3/end3.md2" }) = key_q1_rune_end3 : "Quake 1 Rune End 3" []
+@PointClass base(Keys) model({ "path": ":models/items/keys/end4/end4.md2" }) = key_q1_rune_end4 : "Quake 1 Rune End 4" []
 
 @PointClass base(EditorFlags, Targetable, Target, EWT_base_PointLight) color(0 255 0) size(-2 -2 -12, 2 2 12) model({ "path": ":models/props/flame/tris.md2" }) = light_flame_small : "Q1 Light flame Small"   
 [
@@ -1837,19 +1818,12 @@ misc_fiend_craft : "Fiend Crafting"
 
 @SolidClass base(EditorFlags, Targetable, EWT_base_BModel, BmodelAnim) color(0 128 204) = func_animation : "Similar to func_wall, but triggering it will toggle animation state rather than going on/off."
 [
-    spawnflags(Flags) =
-    [
-        1 : "Start in Alternate" : 0
-    ]
+    spawnflags(Flags) = [ 1 : "Start in Alternate" : 0 ]
 ]
 
 @SolidClass base(EditorFlags, Targetable, UseTargets, EWT_base_BModel) color(128 128 128) = trigger_coop_relay : "Co-op relay trigger; will only fire if all entities are inside of the bounds, otherwise prints messages."
 [
-    spawnflags(Flags) =
-    [
-        1 : "Auto-Fire" : 0
-    ]
-
+    spawnflags(Flags) = [ 1 : "Auto-Fire" : 0 ]
     message(string) : "Trigger message to send to the triggerer"
     message2(string) : "Trigger message to send to the players not in the bounds"
 	wait(float) : "1.0" : "Time in seconds for auto-fire triggers to check bounds"
@@ -1987,3 +1961,6 @@ A decoratative player entity that will stand in idle animation holding the weapo
 {"path": "models/ctf/banner/small.md2"}, 
                 {"path": "models/ctf/banner/small.md2", "scale":"0.32"}
 }}) = red_banner_test : "Smaller flowing CTF banner" []
+
+
+//model != NUll -> {"path":model,"skin":rgba,"frame":frame,"scale":scale,"alpha":alpha},{"path":"tb/questionmarkred.webp","scale":"0.06"}
