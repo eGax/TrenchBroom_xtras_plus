@@ -1,48 +1,20 @@
-# **TrenchBroom xtras plus**
-### My experimental game support profiles and works.
+# **TrenchBroom xtras plus:** &nbsp;<img src="Quake/Icon.png"  width="32" height="32"> **Quake**
+### My experimental game support profiles and works for Quake/Quake remaster.
 
-These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2024.2 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
+These are written for TB GameConfig syntax version 9, meant to be used with TrenchBroom 2025.3 or [newer 2025 releases](https://github.com/TrenchBroom/TrenchBroom/releases) to function as intended. Always use [current builds](https://github.com/TrenchBroom/TrenchBroom/releases) for all the latest addtions, improvements and bug fixes.<br>
 
 FYI the official Linux TB precompiled build is now an x86_64 AppImage making it easy running for current distros.
-
-#### Committed game profile so far as grouped into different branches :<br><br>
-     
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Daikatana/games/Daikatana/Icon.png" height="16"> <b>Daikatana</b> : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Daikatana.zip">download branch</a>&nbsp;&nbsp;<b>/</b>&nbsp;&nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Daikatana)
-
-<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/HalfLife/games/Halflife/Icon.png" height="16"> <b>Half-Life</b> : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/HalfLife.zip">download branch</a>&nbsp;&nbsp;<b>/</b>&nbsp;&nbsp;&nbsp;[browse branch](https://github.com/eGax/TrenchBroom_xtras_plus/tree/HalfLife)
-
-Jedi : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Jedi.zip">download branch</a><br>
-&nbsp;Browse branch : Jedi<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Academy/Icon.png"  width="16" height="16"> [Jedi Academy](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Jedi/games/Jedi Outcast/Icon.png"  width="16" height="16"> [Jedi Outcast](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Jedi)
-
 <hr>
-
-NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/NZP.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/NZP/games/NZP/Icon.png"  width="16" height="16"> [NZP](https://github.com/eGax/TrenchBroom_xtras_plus/tree/NZP)
-
-<hr>
-
-Quake2RE : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/">Quake 2 RE-release</a>
-
-<hr>
-
-RenegadeC : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/RenegadeC.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/RenRacer/Icon.png"  width="16" height="16"> &nbsp; [Ren Racer](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/RenegadeC/games/TAoV/Icon.png"  width="16" height="16"> &nbsp; [The Ascension of Vigil](https://github.com/eGax/TrenchBroom_xtras_plus/tree/RenegadeC/)<br>
-
-<hr>
-
-WolF : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Wolf.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Wolf/games/WolfET/Icon.png"  width="16" height="16"> [WolfET](https://github.com/eGax/TrenchBroom_xtras_plus/tree/Wolf/)<br>
-
+This a is a working WIP and meant to be used with <a href="https://store.steampowered.com/app/2310/Quake/">Quake</a>. This is my committed game profile for NZP with improvements to the FGDs and GameConfig.cfg :<br><br>
+Quake : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake.zip">download branch</a>
+&nbsp;
 <hr>
 
 ### How-to-Install
 You can either grab individual files from the branch/games dirs, but everything is needed inside of the game profile dir to work properly. You can grab all directly from the branch downloads above, then just copy the games/profile folders you want out into your `TrenchBroom/games` dir.
 Best to install add-ons in the user TB data saving location.
 
-**Linux** users should copy the folder Quake2RE from the and all its contents to your TB Home dir game data :
+**Linux** users should copy the folder NZP from the zip and all its contents to your TB Home dir game data :
 
 ### `~/.TrenchBroom/games/`
 
