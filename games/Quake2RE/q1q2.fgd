@@ -1580,14 +1580,13 @@ image != NUll -> {"path":"tb/flare.webp","scale":radius},{"path":"tb/flare.webp"
 @PointClass base(Monsters) size(-32 -32 0, 32 32 96) model({ "path": ":models/monsters/shamblerthunder/tris.md2" }) = monster_shamedic : "Shamedic"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/knightstrogg/tris.md2" }) = monster_knight_strogg : "Knight strogg"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/insane_spawn/tris.md2" }) = monster_insane_spawn : "Insane Spawn"[]
-@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/fishgunner/tris.md2"}) = monster_fishgunner : "Fishgunner"[]
+@PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/fishgunner/tris.md2"}) = monster_fishgunner : "Fishgunner"
+[ spawnflags(Flags) = [ 8 : "No jumping" : 0 ]]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/rotflyer/tris.md2"}) = monster_rotflyer : "Rotflyer"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/ironvore/tris.md2"}) = monster_ironvore : "Iron Vore"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/hyperknight/tris.md2" }) = monster_hknight_hyper : "HyperKnight"[]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/hellberserkerstrogg/tris.md2" }) = monster_hknight_bsk_strogg : "Hellzerker strogg"
-[
-    spawnflags(Flags) =    [        8 : "No jumping" : 0    ]
-]
+[ spawnflags(Flags) = [ 8 : "No jumping" : 0 ]]
 @PointClass base(Monsters) size(-16 -16 -24, 16 16 40) model({ "path": ":models/monsters/mutantspawn/tris.md2" }) = monster_mutantspawn : "Mutant Spawn"
 [
     spawnflags(Flags) =    [        8 : "No jumping" : 0    ]
