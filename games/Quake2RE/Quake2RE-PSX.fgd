@@ -1070,14 +1070,14 @@ monster_gekk : "Gekk"
     ]
 ]
 
-@PointClass base(Monsters) size(-28 -28 -18, 28 28 18) model({ "path": ":models/monsters/stalker/tris.md2" }) = monster_stalker : "Stalker"
+@PointClass base(Monsters) size(-28 -28 -18, 28 28 18) model({{ spawnflags & 8 -> {"path":":models/monsters/stalker/inverted.md2"},":models/monsters/stalker/tris.md2"}})= monster_stalker : "Stalker<br><br>Does ranged attacks as well as in your face melee damage."
 [
     spawnflags(Flags) =
     [
         1 : "Ambush" : 0
         2 : "Trigger Spawn" : 0
-        8 : "Start On Roof" : 0
-        16 : "No Jumping" : 0
+        8 : "Start On Roof" : 0 // inverted
+		16 : "No Jumping" : 0
     ]]
 
 @PointClass base(EditorFlags, Targetable, UseTargets) color(128 76 0) size(-8 -8 -8, 8 8 8) = path_corner : "Path marker
