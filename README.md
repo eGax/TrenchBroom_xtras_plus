@@ -23,7 +23,7 @@ NZP : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads
 <hr>
 
 Quake2RE : <a href="https://github.com/eGax/TrenchBroom_xtras_plus/archive/refs/heads/Quake2RE.zip">download branch</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> <a href="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/">Quake 2 RE-release</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eGax/TrenchBroom_xtras_plus/blob/Quake2RE/games/Quake2RE/Icon.png"  width="16" height="16"> <a href="https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE">Quake 2 RE-release</a>
 
 <hr>
 
