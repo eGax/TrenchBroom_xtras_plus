@@ -44,7 +44,7 @@
 //
 
 // Setup Effects baseclass
-@baseclass = FX [   effects(flags) =
+@BaseClass = FX [   effects(flags) =
 [   
   0   :   "NONE"
   1   :   "Rotate"
@@ -96,7 +96,7 @@
     ]]
 
 // EditorFlags apply to everything - all entities should inherit it.
-@baseclass = EditorFlags [
+@BaseClass = EditorFlags [
     spawnflags(Flags) =
     [
         256 : "Not in Easy" : 0
@@ -113,22 +113,21 @@
 ]
 
 // Entity can take angle or angles.
-@baseclass = Angleable [
+@BaseClass = Angleable [
+    angles(vector) : "pitch yaw roll" : "0 0 0" : "Facing angles"
 	angle(choices) : "Facing angle (yaw)" : 0 =
 	[
 		-1 : "Up"
 		-2 : "Down"
-	]
-    angles(vector) : "pitch yaw roll" : "0 0 0" : "Facing angles"
-]
+	]]
 
 // Entity can be targeted by stuff.
-@baseclass = Targetable [
+@BaseClass = Targetable [
 	targetname(target_source) : "Name for firing"
 ]
 
 // Entity will call G_UseTargets
-@baseclass = UseTargets [
+@BaseClass = UseTargets [
 	target(target_destination) : "Target to fire"
 	delay(float) : "Target delay"
 	message(string): "Message on activation"
@@ -136,17 +135,17 @@
 ]
 
 // Entity supports pointing at something, but won't call G_UseTargets
-@baseclass = Target [
+@BaseClass = Target [
 	target(target_destination) : "Target to fire"
 ]
 
 // Entity supports "team"
-@baseclass = Teamable [
+@BaseClass = Teamable [
 	team(string) : "Team identifier"
 ]
 
 // Entity supports brush model animations
-@baseclass = BmodelAnim [
+@BaseClass = BmodelAnim [
 	bmodel_anim_start(integer) : "Start frame of animation"
 	bmodel_anim_end(integer) : "End frame of animation"
 	bmodel_anim_style(choices) : "Animation style" : 0 =
@@ -171,24 +170,24 @@
 ]
 
 // Entity supports brush model sound modifications
-@baseclass = BmodelSounds [
+@BaseClass = BmodelSounds [
 	noise_start(string) : "Noise to play on activation"
 	noise_middle(string) : "Noise to play while traveling"
 	noise_end(string) : "Noise to play on end"
 ]
 
 // Entity supports noise key
-@baseclass = Noise [
+@BaseClass = Noise [
 	noise(string) : "Noise to play"
 ]
 
 // Entity supports alpha key
-@baseclass = Alpha [
+@BaseClass = Alpha [
 	alpha(float) : "Alpha"
 ]
 
 // Entity supports scale key
-@baseclass = Scale [
+@BaseClass = Scale [
 	scale(string) : "Scale"
 ]
 
@@ -199,7 +198,7 @@
 // player start, deathmatch, coop, deathmatch intermission
 //
 
-@baseclass base(EditorFlags, Angleable) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":models/monsters/insane/tris.md2", "frame":209, "skin":1}) = PlayerClass []
+@BaseClass base(EditorFlags, Angleable) size(-16 -16 -24, 16 16 32) color(0 255 0) model({ "path": ":models/monsters/insane/tris.md2", "frame":209, "skin":1}) = PlayerClass []
 
 @PointClass base(PlayerClass) = info_player_start : "Player start" []
 @PointClass base(PlayerClass) = info_player_deathmatch : "Player deathmatch start" []
@@ -1308,10 +1307,22 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 // "sounds" values other than 1 are silent.  leaving in the other
 // options for availability to mods/fixes
 //
-@PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_splash : "Creates a splash when used"
+
+@PointClass base(EditorFlags, Angleable, Targetable) color(0 200 255) size(-8 -8 -8, 8 8 8) model({{
+sounds == NULL -> {"path":"tb/splash_grays.webp","scale":"0.21"},
+sounds == "1" ->  {"path":"tb/splash_sparks.webp","scale":"0.21"},
+sounds == "2" ->  {"path":"tb/splash_water.webp","scale":"0.21"},
+sounds == "3" ->  {"path":"tb/splash_bwater.webp","scale":"0.21"},
+sounds == "4" ->  {"path":"tb/splash_slime.webp","scale":"0.21"},
+sounds == "5" ->  {"path":"tb/splash_lava.webp","scale":"0.21"},
+sounds == "6" ->  {"path":"tb/splash_blood.webp","scale":"0.21"},
+sounds == "7" ->  {"path":"tb/splash_n64.webp","scale":"0.16 0.18 0.2"},
+                  {"path":"tb/splash_grays.webp","scale":"0.21"}
+}})= target_splash : "Creates a splash when used."
 [
-    sounds(choices) : "Type of splash" : 2 =
-    [
+    sounds(choices) : "Type of splash" : 0 =
+    [   
+        0 : "Light grey"
         1 : "Sparks"
         2 : "Blue water"
         3 : "Brown water"
