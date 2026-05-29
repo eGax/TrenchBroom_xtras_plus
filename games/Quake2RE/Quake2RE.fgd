@@ -1270,7 +1270,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 - Set the target to the <b>targetname</b> of the item or monster you wish to spawn in.<br><br>
 <b>*<i>Remember to set speed and angle, otherwise the spawned object drops.</i></b></p>"
 [
-    target(target_destination) : "Monster/Item to spawn"
+    target(string) : "Monster/Item to spawn"
     speed(float) : "Speed"
 ]
 
