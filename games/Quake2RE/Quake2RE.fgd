@@ -1250,12 +1250,47 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     dmg(float) : "Damage"
 ]
 
+@PointClass base(Targetname, Target) color(255 192 64) size(-8 -8 -8, 8 8 8) = target_story : "Story message trigger
+
+ A simple entity that puts a permanent text on the screen; needs a follow-up empty target_story to remove."
+[
+    message(string) : "Story Text" : "" : "Displays narrative on screen text to the activating player when used.
+]
+    
+@PointClass base(EditorFlags, Target, Targetable)model({"path": "tb/bulb.mdl", "scale":"1.0", "skin":"5"}) = target_light : "Dynamic light entity that follows a lightstyle"
+[
+    radius(integer) : "Radius" : 300
+
+    rgba(integer) : "Colors; four palette indices separated by spaces"
+
+    speed(float) : "Fade Speed" : 0 : "Rate at which the light interpolates between states."
+
+    spawnflags(flags) =
+    [
+        1 : "Start Off" : 0
+        2 : "No Lerp" : 0
+        4 : "Flicker" : 0
+    ]
+    style(Choices) : "Style" : 0 =
+    [
+        0 : "Normal"
+        1 : "Flicker #1"
+        6 : "Flicker #2"
+        2 : "Slow Strong Pulse"
+        3 : "Candle #1"
+        7 : "Candle #2"
+        8 : "Candle #3"
+        4 : "Fast Strobe"
+        5 : "Gentle Pulse #1"
+        9 : "Slow Strobe"
+        10 : "Fluorescent Flicker"
+        11 : "Slow pulse, no black"
+    ]
+]
+
 @PointClass base(EditorFlags, Targetable, Target) color(0 128 204) size(-8 -8 -8, 8 8 8) = target_lightramp : "Light ramp"
 [
-    spawnflags(Flags) =
-    [
-        1 : "Toggle" : 0
-    ]
+    spawnflags(Flags) = [ 1 : "Toggle" : 0 ]
     speed(float) : "Speed"
     message(string) : "start/end light level"
 ]
@@ -1342,7 +1377,6 @@ A simple entity that puts a permanent text on the screen; needs a follow-up empt
     message(string) : "Story Text" : "" : "Displays narrative text to the activating player when used. Leave blank to remove."
 ]
 
-// eye candy... Particles #2 (style 22) is quite cool
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_temp_entity : "Temp entity"
 [
     style(choices) : "Style" : 22 =
