@@ -1250,21 +1250,18 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     dmg(float) : "Damage"
 ]
 
-@PointClass base(Targetname, Target) color(255 192 64) size(-8 -8 -8, 8 8 8) = target_story : "Story message trigger
+@PointClass base(Targetable, Target) color(255 192 64) size(-8 -8 -8, 8 8 8) = target_story : "Story message trigger
 
- A simple entity that puts a permanent text on the screen; needs a follow-up empty target_story to remove."
+A simple entity that puts a permanent text on the screen; needs a follow-up empty target_story to remove."
 [
-    message(string) : "Story Text" : "" : "Displays narrative on screen text to the activating player when used.
+    message(string) : "Story Text" : "" : "Displays narrative on screen text to the activating player when used."
 ]
     
 @PointClass base(EditorFlags, Target, Targetable)model({"path": "tb/bulb.mdl", "scale":"1.0", "skin":"5"}) = target_light : "Dynamic light entity that follows a lightstyle"
 [
     radius(integer) : "Radius" : 300
-
     rgba(integer) : "Colors; four palette indices separated by spaces"
-
-    speed(float) : "Fade Speed" : 0 : "Rate at which the light interpolates between states."
-
+    speed(float) : "Fade Speed" : "0.0" : "Rate at which the light interpolates between states."
     spawnflags(flags) =
     [
         1 : "Start Off" : 0
@@ -1368,13 +1365,6 @@ sounds == "7" ->  {"path":"tb/splash_n64.webp","scale":"0.16 0.18 0.2"},
     ]
     count(integer) : "Number of pixels in splash (1 - 255)"
     dmg(float) : "Radius damage"
-]
-
-@PointClass base(Targetname, Target) color(255 192 64) size(-8 -8 -8, 8 8 8) = target_story : "Story message trigger
-
-A simple entity that puts a permanent text on the screen; needs a follow-up empty target_story to remove it."
-[
-    message(string) : "Story Text" : "" : "Displays narrative text to the activating player when used. Leave blank to remove."
 ]
 
 @PointClass base(EditorFlags, Targetable) color(255 0 0) size(-8 -8 -8, 8 8 8) = target_temp_entity : "Temp entity"
